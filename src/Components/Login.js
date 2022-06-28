@@ -20,7 +20,7 @@ function LoginPage(){
             <form>
                 <input type="text" name="id" value={id} placeholder="아이디" className="id_input" onChange={onIdHandler} /><br/>
                 <input type="password" name="password" value={password} placeholder="비밀번호" className="pw_input" onChange={onPasswordHandler} /><br/>
-                <button type="submit" className="login_button">로그인</button>
+                <button type="submit" className="login_button" onSubmit={onSubmit} >로그인</button>
             </form>
         </div>
     )
