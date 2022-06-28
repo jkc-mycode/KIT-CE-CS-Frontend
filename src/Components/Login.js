@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 
 function LoginPage(){
-    const [id, setid] = useState("");
-    const [password, setpassword] = useState("");
+    const [id, setId] = useState("");
+    const [password, setPassword] = useState("");
 
     const onIdHandler = (event) => {
-        setid(event.currentTarget.value);
+        setId(event.currentTarget.value);
     }
     const onPasswordHandler = (event) => {
-        setpassword(event.currentTarget.value);
+        setPassword(event.currentTarget.value);
     }
     const onSubmit = (event) => {
         event.preventDefault();
