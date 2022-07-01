@@ -1,0 +1,13 @@
+.menubar{
+    border : 1px solid black;
+    height: 50px;
+    display: flex;
+    width : 90%;
+    margin : 0 auto;
+}
+
+.menubar_items{
+    border: 1px solid black;
+    height: 100%;
+    width : 100%;
+}

@@ -1,0 +1,34 @@
+.board_list_container{
+
+}
+
+.board_list_table{
+    border : 1px black solid;
+    margin : 2% auto;
+    width : 90%;
+}
+
+
+tr > th, td {
+    border : 1px black solid;
+}
+
+tr > th:nth-child(1) {
+    width : 5%
+}
+tr > th:nth-child(2) {
+
+}
+tr > th:nth-child(3) {
+    width : 8%
+}
+tr > th:nth-child(4) {
+    width : 8%
+}
+tr > th:nth-child(5) {
+    width : 5%
+}
+
+tr:nth-child(2n){
+    background-color: lightgray;
+}

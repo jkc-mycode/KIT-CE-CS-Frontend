@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 import './view_test.css';
 
+
+import Header from './header';
+import MenuBar from './menubar';
+import BoardList from './boardlist';
+
 function ViewPage(){
     const [post, setPost] = useState({});
 
@@ -8,21 +13,6 @@ function ViewPage(){
 
     return (
         <>
-            <div className = "header">
-                <div className = "items">CE-SE</div>
-                <div className = "items">login</div>
-                <div className = "items">MyPage</div>
-            </div>
-            <div className = "menu_fixed">
-                <div className = "menubar">
-                    <div className = "menu_items">전체 게시판</div>
-                    <div className = "menu_items">졸업생 게시판</div>
-                    <div className = "menu_items">질문 게시판</div>
-                    <div className = "menu_items">학업 게시판</div>
-                    <div className = "menu_items">차후 추가 예정</div>
-                    <div className = "menu_items">차후 추가 예정</div>
-                </div>
-            </div>
             <h1 className="title">게시글 타이틀</h1> {/* {post.title} */}
             <div>
                 <table className="post_info_table">
@@ -46,18 +36,7 @@ function ViewPage(){
                 </table>
             </div>
             <div className="test">댓글 메뉴 위치 (예정)</div><br/>
-            <div className="board">
-                <table>
-                    <tr>
-                        <td>번호</td>
-                        <td>제목</td>
-                        <td>작성자</td>
-                        <td>작성일</td>
-                        <td>조회수</td>
-                    </tr>
-                    <td>더미데이터</td>
-                </table>
-            </div>
+            <BoardList/>
         </>
     )
 }
