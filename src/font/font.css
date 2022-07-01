@@ -5,6 +5,7 @@
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Bold.woff2') format('woff2'),
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Bold.woff') format('woff'),
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Bold.ttf') format('truetype');
+    letter-spacing: -0.05em;
 }
 
 @font-face {
@@ -14,6 +15,7 @@
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Medium.woff2') format('woff2'),
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Medium.woff') format('woff'),
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Medium.ttf') format('truetype');
+    letter-spacing: -0.05em;
 }
 
 @font-face {
@@ -23,6 +25,7 @@
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Regular.woff2') format('woff2'),
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Regular.woff') format('woff'),
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Regular.ttf') format('truetype');
+    letter-spacing: -0.05em;
 }
 
 @font-face {
@@ -32,6 +35,7 @@
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Light.woff2') format('woff2'),
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Light.woff') format('woff'),
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Light.ttf') format('truetype');
+    letter-spacing: -0.05em;
 }
 
 @font-face {
@@ -41,5 +45,108 @@
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Thin.woff2') format('woff2'),
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Thin.woff') format('woff'),
     url('./SpoqaHanSansNeo/SpoqaHanSansNeo-Thin.ttf') format('truetype');
+    letter-spacing: -0.05em;
 }
 
+
+
+
+
+@font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 700;
+    src: local('Inter Bold'),
+    url('./Inter/Inter-Bold.woff2') format('woff2'),
+    url('./Inter/Inter-Bold.woff') format('woff');
+    unicode-range: U+0041-005A, U+0061-007A;
+    letter-spacing: -0.05em;
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 500;
+    src: local('Inter Medium'),
+    url('./Inter/Inter-Medium.woff2') format('woff2'),
+    url('./Inter/Inter-Medium.woff') format('woff');
+    unicode-range: U+0041-005A, U+0061-007A;
+    letter-spacing: -0.05em;
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 400;
+    src: local('Inter Regular'),
+    url('./Inter/Inter-Regular.woff2') format('woff2'),
+    url('./Inter/Inter-Regular.woff') format('woff');
+    unicode-range: U+0041-005A, U+0061-007A;
+    letter-spacing: -0.05em;
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 300;
+    src: local('Inter Light'),
+    url('./Inter/Inter-Light.woff2') format('woff2'),
+    url('./Inter/Inter-Light.woff') format('woff');
+    unicode-range: U+0041-005A, U+0061-007A;
+    letter-spacing: -0.05em;
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 100;
+    src: local('Inter Thin'),
+    url('./Inter/Inter-Thin.woff2') format('woff2'),
+    url('./Inter/Inter-Thin.woff') format('woff');
+    unicode-range: U+0041-005A, U+0061-007A;
+    letter-spacing: -0.05em;
+}
+
+
+
+
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 700;
+    src: local('Inter Bold'),
+    url('./Inter/Inter-Bold.woff2') format('woff2'),
+    url('./Inter/Inter-Bold.woff') format('woff');
+    letter-spacing: -0.05em;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 500;
+    src: local('Inter Medium'),
+    url('./Inter/Inter-Medium.woff2') format('woff2'),
+    url('./Inter/Inter-Medium.woff') format('woff');
+    letter-spacing: -0.05em;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 400;
+    src: local('Inter Regular'),
+    url('./Inter/Inter-Regular.woff2') format('woff2'),
+    url('./Inter/Inter-Regular.woff') format('woff');
+    letter-spacing: -0.05em;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 300;
+    src: local('Inter Light'),
+    url('./Inter/Inter-Light.woff2') format('woff2'),
+    url('./Inter/Inter-Light.woff') format('woff');
+    letter-spacing: -0.05em;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 100;
+    src: local('Inter Thin'),
+    url('./Inter/Inter-Thin.woff2') format('woff2'),
+    url('./Inter/Inter-Thin.woff') format('woff');
+    letter-spacing: -0.05em;
+}
