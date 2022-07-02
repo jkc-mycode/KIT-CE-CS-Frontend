@@ -7,16 +7,36 @@
     margin-bottom: 30px;
 }
 
-.name_input, .webmail_input, .reg_id_input, .reg_pw_input, .confirm_pw_input, .register_button {
+.name_input, .webmail_input, .reg_id_input, .reg_pw_input, .confirm_pw_input, .register_button, .message, .input_msg {
     width: 100%;
     padding: 0px;
 
-    font-family: 'Inter';
     font-weight: 400;
     font-size: 20px;
     letter-spacing: -0.05em;
 
     color: rgba(115, 115, 115, 0.8);
+}
+
+.message {
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 15px;
+
+    color: #0D0D0D;
+}
+
+.input_msg {
+    box-sizing: border-box;
+    margin-top: 35px;
+    margin-bottom: -19px;
+
+    font-weight: 500;
+    color: #0D0D0D;
+}
+
+.name_input, .webmail_input, .reg_id_input, .reg_pw_input, .confirm_pw_input {
+    border: 0;
 }
 
 .input_row {
@@ -27,10 +47,6 @@
     border-bottom: 2px solid rgba(115, 115, 115, 0.8);
 
     width: 100%;
-}
-
-.name_input, .webmail_input, .reg_id_input, .reg_pw_input, .confirm_pw_input {
-    border: 0;
 }
 
 .register_button {

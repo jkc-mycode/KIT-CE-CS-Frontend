@@ -32,24 +32,29 @@ function RegisterPage(){
 
     return (
         <div className="register_box">
-            <h2 className="register_title">&#xE001;_회원가입</h2>
+            <h1 className="register_title">&#xE001;_ Register</h1>
+            <h3 className="message">회원가입을 위해 아래 정보를 입력해주세요</h3>
             <form>
+                <div className="input_msg">이름</div>
                 <div className="input_row">
-                    <input type="text" name="name" value={name} placeholder="이름" className="name_input" onChange={onNameHandler} /><br/>
+                    <input type="text" name="name" value={name} placeholder="Name" className="name_input" onChange={onNameHandler} /><br/>
+                </div>
+                <div className="input_msg">아이디</div>
+                <div className="input_row">
+                    <input type="text" name="id" value={id} placeholder="ID" className="reg_id_input" onChange={onIdHandler} /><br/>
+                </div>
+                <div className="input_msg">비밀번호</div>
+                <div className="input_row">
+                    <input type="password" name="password" value={password} placeholder="Password" className="reg_pw_input" onChange={onPasswordHandler} /><br/>
                 </div>
                 <div className="input_row">
-                    <input type="email" name="webmail" value={webmail} placeholder="웹메일 ex) WebMail@kumoh.ar.kr" className="webmail_input" onChange={onMailHandler} /><br/>
+                    <input type="password" name="confirmPassword" value={confirmPassword} placeholder="Password Confirm" className="confirm_pw_input" onChange={onConfirmPasswordHandler} /><br/>
                 </div>
+                <div className="input_msg">금오공대 웹메일</div>
                 <div className="input_row">
-                    <input type="text" name="id" value={id} placeholder="아이디" className="reg_id_input" onChange={onIdHandler} /><br/>
+                    <input type="email" name="webmail" value={webmail} placeholder="WebMail@kumoh.ac.kr" className="webmail_input" onChange={onMailHandler} /><br/>
                 </div>
-                <div className="input_row">
-                    <input type="password" name="password" value={password} placeholder="비밀번호" className="reg_pw_input" onChange={onPasswordHandler} /><br/>
-                </div>
-                <div className="input_row">
-                    <input type="password" name="confirmPassword" value={confirmPassword} placeholder="비밀번호 확인" className="confirm_pw_input" onChange={onConfirmPasswordHandler} /><br/>
-                </div>
-                <button type="submit" className="register_button" onSubmit={onSubmit} >회원가입</button>
+                <button type="submit" className="register_button" onSubmit={onSubmit} >register</button>
             </form>
         </div>
     )
