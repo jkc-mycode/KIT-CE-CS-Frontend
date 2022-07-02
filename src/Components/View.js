@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './view_test.css';
+import './view.css';
 
 
 import Header from './header';
