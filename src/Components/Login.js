@@ -18,7 +18,7 @@ function LoginPage(){
     const navigate = useNavigate();
     return (
         <div className="login_box">
-            <h1 className="login_title">&#xE001;_Login</h1>
+            <h1 className="login_title">&#xE001;_ Login</h1>
             <form>
                 <div className="input_row">
                     <input type="text" name="id" value={id} placeholder="ID" className="id_input" onChange={onIdHandler} /><br/>

@@ -5,6 +5,7 @@ body {
   font-family: 'Spoqa Han Sans Neo', 'Inter';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #0D0D0D;
 }
 
 code {
@@ -14,5 +15,5 @@ code {
 
 a {
   text-decoration: none;
-  color : black;
+  color : #0D0D0D;
 }
