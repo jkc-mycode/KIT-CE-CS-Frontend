@@ -54,7 +54,9 @@ function RegisterPage(){
                 <div className="input_row">
                     <input type="email" name="webmail" value={webmail} placeholder="WebMail@kumoh.ac.kr" className="webmail_input" onChange={onMailHandler} /><br/>
                 </div>
-                <button type="submit" className="register_button" onSubmit={onSubmit} >register</button>
+                <div className="button_container">
+                    <button type="submit" className="register_button" onSubmit={onSubmit} >register</button>
+                </div>
             </form>
         </div>
     )
