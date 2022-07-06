@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './mypage.css';
 
-function RegisterPage(){
+function MyPage(){
     const [password, setPassword] = useState(""); //비밀번호
     const [confirmPassword, setConfirmPassword] = useState(""); //비밀번호 확인
 
