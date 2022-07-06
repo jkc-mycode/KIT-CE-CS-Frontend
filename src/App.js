@@ -14,6 +14,7 @@ import ViewPage from './Components/View';
 function App() {
   return (
     <Fragment>
+      {/* <div className="view_section"> */}
         <Header></Header>
         <MenuBar></MenuBar>
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/signup" element={<Register/>}></Route>
             <Route path="/view/:viewId" element={<ViewPage/>}></Route>
         </Routes>
+      {/* </div> */}
     </Fragment>
   );
 }
