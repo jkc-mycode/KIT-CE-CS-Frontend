@@ -1,4 +1,7 @@
-
+.view_section {
+  margin: 0 auto;
+  width: 85%;
+}
 
 .menubar{
   border : 1px solid black;
