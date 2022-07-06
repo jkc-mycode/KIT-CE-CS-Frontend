@@ -1,9 +1,5 @@
 .title {
-    position: absolute;
-    width: 58px;
-    height: 39px;
-    left: 462px;
-    top: 285px;
+    margin-left: 15px;  
 
     font-style: Bold;
     font-weight: 700;
@@ -13,13 +9,41 @@
     color: #0D0D0D;
 }
 
-.test {
-    border: 1px solid black;
-    height: 30px;
-    margin-top: 10px;
+.line {
+    width: 100%;
+
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
 }
-table, td, tr {
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: 300px;
+
+.post_info_table {
+    margin-top: 20px;
+    margin-left: 15px;
+    border: 0px;
+
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(115, 115, 115, 0.8);
+}
+
+.post_content {
+    margin: 15px 15px; 
+    
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.post_tag, .edit_delete_list {
+    font-weight: 400;
+    font-size: 16px;
+    color: #224459;
+}
+
+.post_tag {
+    margin-left: 15px;
+}
+
+.edit_delete_list {
+    margin-left: auto;
+    margin-right: 15px;
+    border: 0px;
 }
