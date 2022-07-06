@@ -2,7 +2,8 @@ import React from "react";
 import './boardlist.css';
 import BoardRow from './boardrow';
 
-const boardlist = [{
+const boardlist = [
+    {
     no: 1,
     title : "ㅇ러ㅐ오랴볼댜로댜로댤댜ㅗㄹ도ㅑㄹ도",
     author : '120404214',

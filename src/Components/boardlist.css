@@ -3,30 +3,39 @@
 }
 
 .board_list_table{
-    border : 1px black solid;
-    margin : 2% auto;
-    width : 90%;
+    border : 0px;
+    margin : 0 auto;
+    width : 85%;
+}
+
+.board_head {
+    font-size: 16px;
+    font-weight: 500;
 }
 
 
 tr > th, td {
-    border : 1px black solid;
+    border : 0px;
 }
 
 tr > th:nth-child(1) {
-    width : 5%
+    width : 5%;
 }
+
 tr > th:nth-child(2) {
 
 }
+
 tr > th:nth-child(3) {
-    width : 8%
+    width : 8%;
 }
+
 tr > th:nth-child(4) {
-    width : 8%
+    width : 10%;
 }
+
 tr > th:nth-child(5) {
-    width : 5%
+    width : 5%;
 }
 
 tr:nth-child(2n){
