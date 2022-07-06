@@ -1,4 +1,13 @@
+.post_section {
+    width: 70%;
+}
+
+.board_list_table {
+    width: 100%;
+}
+
 .title {
+    margin-top: 50px;
     margin-left: 15px;  
 
     font-weight: 700;
@@ -18,8 +27,10 @@
     margin-left: 15px;
     border: 0px;
 
+    width: 100%;
+
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     color: rgba(115, 115, 115, 0.8);
 }
 

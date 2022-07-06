@@ -12,7 +12,7 @@ function ViewPage(){
     //useEffect() 처리
 
     return (
-        <>
+        <div className="view_section">
             <div className="post_section">
                 <h1 className="title">&#xE001;_ 게시글 타이틀</h1> {/* {post.title} */}
                 <div>
@@ -38,10 +38,11 @@ function ViewPage(){
                     <div className="line"></div>
                 </div>
                 <div className="test">댓글 메뉴 위치 (예정)</div>
+                <div className="line"></div>
+                <br/>
+                <BoardList/>
             </div>
-            <br/>
-            <BoardList/>
-        </>
+        </div>
     )
 }
 export default ViewPage;
