@@ -4,7 +4,7 @@
 
 .board_list_table{
     border : 0px;
-    margin : 0 auto;
+    margin : 15px auto;
     width : 85%;
 }
 
@@ -31,7 +31,7 @@ tr > th:nth-child(3) {
 }
 
 tr > th:nth-child(4) {
-    width : 10%;
+    width : 12%;
 }
 
 tr > th:nth-child(5) {
