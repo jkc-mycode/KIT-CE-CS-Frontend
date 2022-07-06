@@ -9,7 +9,7 @@
     margin-bottom: 30px;
 }
 
-.name_show, .webmail_show, .id_show, .reg_pw_input, .confirm_pw_input, .register_button, .message, .input_msg {
+.name_show, .webmail_show, .id_show, .reg_pw_input, .confirm_pw_input, .pw_edit_button, .mypage_msg {
     width: 100%;
     padding: 0px;
 
@@ -19,12 +19,6 @@
 
 .reg_pw_input, .confirm_pw_input {
     color: rgba(115, 115, 115, 0.8);
-}
-
-.message {
-    box-sizing: border-box;
-    margin-top: 20px;
-    margin-bottom: 15px;
 }
 
 .mypage_msg {
