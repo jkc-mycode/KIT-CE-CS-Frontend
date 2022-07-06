@@ -25,7 +25,7 @@ function ViewPage(){
                     </table>
                     <div className="line"></div>
                     <div className="post_content" style={{height: '400px'}}>더미 데이터 게시글</div> {/* {post.content} */}
-                    <div className="post_tag" >태그 정보</div> {/* {post.tag} */}
+                    <div className="post_tag" ># Tags</div> {/* {post.tag} */}
                 </div>
                 <div>
                     <table className="edit_delete_list">
