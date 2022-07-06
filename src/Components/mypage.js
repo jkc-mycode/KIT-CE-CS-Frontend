@@ -43,7 +43,7 @@ function RegisterPage(){
                     <input type="password" name="confirmPassword" value={confirmPassword} placeholder="Password Confirm" className="confirm_pw_input" onChange={onConfirmPasswordHandler} /><br/>
                 </div>
                 <div className="button_container">
-                    <button className="pw_edit_button" onSubmit={onSubmit} >비밀번호 변경</button>
+                    <button type="submit" className="pw_edit_button" onSubmit={onSubmit} >비밀번호 변경</button>
                 </div>
             </form>
         </div>
