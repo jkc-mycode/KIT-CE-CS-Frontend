@@ -1,10 +1,15 @@
+.view_section {
+    margin: 0 auto;
+    width: 85%;
+}
+
 .post_section {
     width: 70%;
 }
 
-.board_list_table {
+/* .board_list_table {
     width: 100%;
-}
+} */
 
 .title {
     margin-top: 50px;
