@@ -5,6 +5,19 @@ function RegisterPage(){
     const [password, setPassword] = useState(""); //비밀번호
     const [confirmPassword, setConfirmPassword] = useState(""); //비밀번호 확인
 
+    const onPasswordHandler = (event) => {
+        setPassword(event.currentTarget.value);
+    }
+    const onConfirmPasswordHandler = (event) => {
+        setPassword(event.currentTarget.value);
+    }
+    const onSubmit = (event) => {
+        event.preventDefault();
+        if(password !== confirmPassword){ //비밀번호 입력이 같은지 확인
+            return alert("비밀번호가 서로 일치하지 않습니다.");
+        }
+    }
+
 
     return (
         <div className="mypage_box">
@@ -16,7 +29,7 @@ function RegisterPage(){
                 </div>
                 <div className="mypage_msg">금오공대 웹메일</div>
                 <div className="mypage_row">
-                    <div className="webmail_show">WebMail@kumoh</div> {/* {user.name} */}
+                    <div className="webmail_show">WebMail@kumoh</div> {/* {user.mail} */}
                 </div>
                 <div className="mypage_msg">아이디</div>
                 <div className="mypage_row">
