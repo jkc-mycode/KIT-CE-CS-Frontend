@@ -26,8 +26,10 @@ function LoginPage(){
                 <div className="input_row">
                     <input type="password" name="password" value={password} placeholder="Password" className="pw_input" onChange={onPasswordHandler} /><br/>
                 </div>
-                <button className="signup_button" onClick={()=>navigate('/signup')}>Sign Up</button>
-                <button type="submit" className="login_button" onSubmit={onSubmit} >Login</button>
+                <div className="button_container">
+                    <button className="signup_button" onClick={()=>navigate('/signup')}>Sign Up</button>
+                    <button type="submit" className="login_button" onSubmit={onSubmit} >Login</button>
+                    </div>
             </form>
         </div>
     )
