@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Register.css';
+import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 function RegisterPage(){
     const [name, setName] = useState(""); //이름
@@ -21,13 +23,29 @@ function RegisterPage(){
         setPassword(event.currentTarget.value);
     }
     const onConfirmPasswordHandler = (event) => {
-        setPassword(event.currentTarget.value);
+        setConfirmPassword(event.currentTarget.value);
     }
+    const navigate = useNavigate();
+
     const onSubmit = (event) => {
         event.preventDefault();
-        if(password !== confirmPassword){ //비밀번호 입력이 같은지 확인
-            return alert("비밀번호가 서로 일치하지 않습니다.");
-        }
+        let data = {
+            name: `${name}`,
+            webmail: `${webmail}`,
+            id: `${id}`,
+            password: `${password}`,
+            confirmPassword: `${confirmPassword}`,
+            verify: true
+        };
+        const headers = {
+            "Content-Type": `application/json`,
+        };
+        axios.post('/sign/user', data, headers) //임의의 user 라우터 만들어서 사용함 => 경로 수정 필요
+            .then((res) => {
+                console.log(res.data)
+            })
+            .catch()
+        navigate('/login');
     }
 
     return (
@@ -49,7 +67,7 @@ function RegisterPage(){
                 <div className="input_row">
                     <input type="password" name="confirmPassword" value={confirmPassword} placeholder="비밀번호 확인" className="confirm_pw_input" onChange={onConfirmPasswordHandler} /><br/>
                 </div>
-                <button type="submit" className="register_button" onSubmit={onSubmit} >회원가입</button>
+                <button type="button" className="register_button" onClick={onSubmit} >회원가입</button>
             </form>
         </div>
     )
