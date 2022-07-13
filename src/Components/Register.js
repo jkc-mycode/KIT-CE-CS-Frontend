@@ -43,6 +43,9 @@ function RegisterPage(){
                 <div className="input_row">
                     <input type="text" name="id" value={id} placeholder="ID" className="reg_id_input" onChange={onIdHandler} /><br/>
                 </div>
+                <div className="button_container">
+                    <button className="idcheck_button">중복 체크</button>
+                </div>
                 <div className="input_msg">비밀번호</div>
                 <div className="input_row">
                     <input type="password" name="password" value={password} placeholder="Password" className="reg_pw_input" onChange={onPasswordHandler} /><br/>
@@ -51,8 +54,9 @@ function RegisterPage(){
                     <input type="password" name="confirmPassword" value={confirmPassword} placeholder="Password Confirm" className="confirm_pw_input" onChange={onConfirmPasswordHandler} /><br/>
                 </div>
                 <div className="input_msg">금오공대 웹메일</div>
-                <div className="input_row">
-                    <input type="email" name="webmail" value={webmail} placeholder="WebMail@kumoh.ac.kr" className="webmail_input" onChange={onMailHandler} /><br/>
+                <div className="email_input_row">
+                    <input type="email" name="webmail" value={webmail} placeholder="WebMail" className="webmail_input" onChange={onMailHandler} />
+                    <div className="email_msg">@kumoh.ac.kr</div>
                 </div>
                 <div className="button_container">
                     <button type="submit" className="register_button" onSubmit={onSubmit} >register</button>
