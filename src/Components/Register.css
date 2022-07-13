@@ -100,3 +100,17 @@
     position: relative;
     padding-bottom: 15px;
 }
+
+.check_msg {
+    padding: 13px;
+}
+
+.failure {
+    padding: 13px;
+    color: red;
+}
+
+.success {
+    padding: 13px;
+    color: blue;
+}
