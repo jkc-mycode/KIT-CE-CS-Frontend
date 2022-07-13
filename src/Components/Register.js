@@ -7,6 +7,23 @@ function RegisterPage(){
     const [id, setId] = useState(""); //아이디
     const [password, setPassword] = useState(""); //비밀번호
     const [confirmPassword, setConfirmPassword] = useState(""); //비밀번호 확인
+    const [idCheckMsg, setidCheckMsg] = useState(""); // 아이디 확인 메시지
+    const [pwCheckMsg, setpwCheckMsg] = useState(""); // 비밀번호 확인 메시지
+    const [pwMsgBool, setpwMsgBool] = useState(false);
+
+    function checkPassword(target)
+    {
+        if (password !== target)
+        {
+            setpwMsgBool(false);
+            setpwCheckMsg("비밀번호가 서로 일치하지 않습니다.");
+        }
+        else if (password === target)
+        {
+            setpwMsgBool(true);
+            setpwCheckMsg("비밀번호가 일치합니다.");
+        }
+    }
 
     const onNameHandler = (event) => {
         setName(event.currentTarget.value);
@@ -46,6 +63,7 @@ function RegisterPage(){
                 <div className="button_container">
                     <button className="idcheck_button">중복 체크</button>
                 </div>
+                <div className="check_msg">{idCheckMsg}</div>
                 <div className="input_msg">비밀번호</div>
                 <div className="input_row">
                     <input type="password" name="password" value={password} placeholder="Password" className="reg_pw_input" onChange={onPasswordHandler} /><br/>
@@ -53,6 +71,7 @@ function RegisterPage(){
                 <div className="input_row">
                     <input type="password" name="confirmPassword" value={confirmPassword} placeholder="Password Confirm" className="confirm_pw_input" onChange={onConfirmPasswordHandler} /><br/>
                 </div>
+                <div className={pwMsgBool ? 'success' : 'failure'}>{pwCheckMsg}</div>
                 <div className="input_msg">금오공대 웹메일</div>
                 <div className="email_input_row">
                     <input type="email" name="webmail" value={webmail} placeholder="WebMail" className="webmail_input" onChange={onMailHandler} />
