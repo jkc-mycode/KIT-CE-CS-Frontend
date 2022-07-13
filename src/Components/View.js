@@ -14,18 +14,16 @@ function ViewPage(){
     return (
         <div className="view_section">
             <div className="post_section">
+                <div className="post_tag" ># Tags</div> {/* {post.tag} */}
                 <h1 className="title">&#xE001;_ 게시글 타이틀</h1> {/* {post.title} */}
                 <div>
-                    <table className="post_info_table">
-                        <tr>
-                            <td>작성자</td> {/* {post.author} */}
-                            <td>조회수 &nbsp;</td> {/* {post.hit} */}
-                            <td>작성일 &nbsp;</td> {/* {post.date} */}
-                        </tr>
-                    </table>
+                    <div className="post_info_table">
+                        <div className="post_info_author">작성자</div> {/* {post.author} */}
+                        <div className="post_info_hit">조회수 &nbsp;</div> {/* {post.hit} */}
+                        <div className="post_info_date">2022.07.11 10:09 &nbsp;</div> {/* {post.date} */}
+                    </div>
                     <div className="line"></div>
                     <div className="post_content" style={{height: '400px'}}>더미 데이터 게시글</div> {/* {post.content} */}
-                    <div className="post_tag" ># Tags</div> {/* {post.tag} */}
                 </div>
                 <div>
                     <table className="edit_delete_list">
@@ -40,7 +38,17 @@ function ViewPage(){
                 <div className="test">댓글 메뉴 위치 (예정)</div>
                 <div className="line"></div>
                 <br/>
-                <BoardList/>
+                <table className="post_table">
+                    <tr>
+                        <td>&#xE000; 이전글</td>
+                        <td>이전글 제목</td>
+                    </tr>
+                    <tr>
+                        <td>다음글 &#xE001;</td>
+                        <td>다음글 제목</td>
+                    </tr>
+                </table>
+                {/* <BoardList/> */}
             </div>
         </div>
     )

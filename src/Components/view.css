@@ -4,6 +4,7 @@
 }
 
 .post_section {
+    margin-top: 50px;
     width: 70%;
 }
 
@@ -12,7 +13,7 @@
 } */
 
 .title {
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 15px;  
 
     font-weight: 700;
@@ -30,13 +31,30 @@
 .post_info_table {
     margin-top: 20px;
     margin-left: 15px;
+    margin-bottom: 10px;
     border: 0px;
 
     width: 100%;
 
+    display: table; 
+
     font-weight: 500;
     font-size: 16px;
     color: rgba(115, 115, 115, 0.8);
+}
+
+.post_info_author, .post_info_hit, .post_info_date {
+    display: table-cell;
+}
+
+.post_info_hit {
+    text-align: right;
+}
+
+.post_info_date {
+    width: 150px;
+    text-align: right;
+    padding-right: 20px;
 }
 
 .post_content {
