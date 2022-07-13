@@ -29,7 +29,7 @@ function MyPage(){
                 </div>
                 <div className="mypage_msg">금오공대 웹메일</div>
                 <div className="mypage_row">
-                    <div className="webmail_show">WebMail@kumoh</div> {/* {user.mail} */}
+                    <div className="webmail_show">WebMail@kumoh.ac.kr</div> {/* {user.mail} */}
                 </div>
                 <div className="mypage_msg">아이디</div>
                 <div className="mypage_row">

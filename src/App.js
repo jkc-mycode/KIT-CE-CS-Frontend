@@ -10,6 +10,7 @@ import BoardList from './Components/boardlist'
 import LoginPage from './Components/Login'
 import Register from './Components/Register';
 import ViewPage from './Components/View';
+import MyPage from './Components/mypage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             </Route>
             <Route path="/signup" element={<Register/>}></Route>
             <Route path="/view/:viewId" element={<ViewPage/>}></Route>
+            <Route path="/mypage" element={<MyPage/>}></Route>
         </Routes>
       {/* </div> */}
     </Fragment>
