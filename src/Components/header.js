@@ -7,9 +7,13 @@ function Header(){
         <div className = "header">
             <div className ="header_container">
                 <Link to="/">CE-SE</Link>
-                <Link to="/login">로그인</Link>
-                <Link to="/signup">회원가입</Link>
-                <Link to="/MyPage">MyPage</Link>
+                <div className="header-right-container">
+                    <Link to="/login">로그인</Link>
+                    <div className="header_line"></div>
+                    <Link to="/signup">회원가입</Link>
+                    <div className="header_line"></div>
+                    <Link to="/MyPage">MyPage</Link>
+                </div>
             </div>
         </div>
     );
