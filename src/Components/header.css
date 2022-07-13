@@ -9,7 +9,7 @@
 
 }
 
-a{
+.header_items{
     margin : 30px;
     width : 100px;
     height : 50px;
@@ -18,11 +18,11 @@ a{
     flex-shrink: 0;
 }
 
-a:nth-child(2){
+.header_items:nth-child(2){
     margin-left : 45%;
 }
 
-a:nth-child(1){
+.header_items:nth-child(1){
     margin-left : 5%;
     font-size : 50px;
     width : 250px;
