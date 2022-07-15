@@ -29,8 +29,8 @@
 
 .input_msg {
     box-sizing: border-box;
-    margin-top: 15px;
-    margin-bottom: -20px;
+    margin-top: 35px;
+    margin-bottom: -19px;
 
     font-weight: 500;
     color: #0D0D0D;
@@ -50,6 +50,38 @@
     width: 100%;
 }
 
+.email_input_row {
+    box-sizing: border-box;
+    margin-top: 22px;
+    height: 50px;
+    padding: 13px 15px;
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+
+    width: 335px;
+}
+
+.email_msg {
+    margin-top: -25px;
+    margin-left: 335px;
+
+    font-size: 20px;
+}
+
+.idcheck_button {
+    margin-top : 15px;
+    padding: 0px;
+    border: 0px;
+
+    position: absolute;
+    right: 15px;
+
+    font-size: 14px;
+    text-align: right;
+
+    color: #224459;
+    background: none;
+}
+
 .register_button {
     margin-top: 40px;
     border: 0px;
@@ -66,6 +98,7 @@
 
 .button_container{
     position: relative;
+    padding-bottom: 15px;
 }
 
 .check_msg {

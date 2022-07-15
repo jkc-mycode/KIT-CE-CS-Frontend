@@ -11,20 +11,6 @@ function RegisterPage(){
     const [pwCheckMsg, setpwCheckMsg] = useState(""); // 비밀번호 확인 메시지
     const [pwMsgBool, setpwMsgBool] = useState(false);
 
-    function checkPassword(target)
-    {
-        if (password !== target)
-        {
-            setpwMsgBool(false);
-            setpwCheckMsg("비밀번호가 서로 일치하지 않습니다.");
-        }
-        else if (password === target)
-        {
-            setpwMsgBool(true);
-            setpwCheckMsg("비밀번호가 일치합니다.");
-        }
-    }
-
     const onNameHandler = (event) => {
         setName(event.currentTarget.value);
     }
@@ -46,6 +32,20 @@ function RegisterPage(){
         event.preventDefault();
     }
 
+    function checkPassword(target)
+    {
+        if (password !== target)
+        {
+            setpwMsgBool(false);
+            setpwCheckMsg("비밀번호가 서로 일치하지 않습니다.");
+        }
+        else if (password === target)
+        {
+            setpwMsgBool(true);
+            setpwCheckMsg("비밀번호가 일치합니다.");
+        }
+    }
+
     return (
         <div className="register_box">
             <h1 className="register_title">&#xE001;_ Register</h1>
@@ -60,6 +60,9 @@ function RegisterPage(){
                     <input type="text" name="id" value={id} placeholder="ID" className="reg_id_input" onChange={onIdHandler} /><br/>
                 </div>
                 <div className="check_msg">{idCheckMsg}</div>
+                <div className="button_container">
+                    <button className="idcheck_button">중복 체크</button>
+                </div>
                 <div className="input_msg">비밀번호</div>
                 <div className="input_row">
                     <input type="password" name="password" value={password} placeholder="Password" className="reg_pw_input" onChange={onPasswordHandler} /><br/>
@@ -69,8 +72,9 @@ function RegisterPage(){
                 </div>
                 <div className={pwMsgBool ? 'success' : 'failure'}>{pwCheckMsg}</div>
                 <div className="input_msg">금오공대 웹메일</div>
-                <div className="input_row">
-                    <input type="email" name="webmail" value={webmail} placeholder="WebMail@kumoh.ac.kr" className="webmail_input" onChange={onMailHandler} /><br/>
+                <div className="email_input_row">
+                    <input type="email" name="webmail" value={webmail} placeholder="WebMail" className="webmail_input" onChange={onMailHandler} />
+                    <div className="email_msg">@kumoh.ac.kr</div>
                 </div>
                 <div className="button_container">
                     <button type="submit" className="register_button" onSubmit={onSubmit} >register</button>
