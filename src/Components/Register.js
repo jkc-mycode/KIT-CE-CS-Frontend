@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Register.css';
+import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 function RegisterPage(){
     const [name, setName] = useState(""); //이름
@@ -28,8 +30,27 @@ function RegisterPage(){
         setConfirmPassword(event.currentTarget.value);
         checkPassword(event.currentTarget.value);
     }
+    const navigate = useNavigate();
+
     const onSubmit = (event) => {
         event.preventDefault();
+        let data = {
+            name: `${name}`,
+            webmail: `${webmail}`,
+            id: `${id}`,
+            password: `${password}`,
+            confirmPassword: `${confirmPassword}`,
+            verify: true
+        };
+        const headers = {
+            "Content-Type": `application/json`,
+        };
+        axios.post('/sign/user', data, headers) //임의의 user 라우터 만들어서 사용함 => 경로 수정 필요
+            .then((res) => {
+                console.log(res.data)
+            })
+            .catch()
+        navigate('/login');
     }
 
     function checkPassword(target)
