@@ -1,0 +1,9 @@
+.footer_box {
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    display: flex;
+    height: auto;
+}
