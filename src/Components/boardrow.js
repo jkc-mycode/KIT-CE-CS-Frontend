@@ -10,15 +10,15 @@ function BoardRow ({boardList}){
                 list.map((i) => {
 
                     let goView = (e) => {
-                        navigate('view/'+i.no, {state : e.target.value});
+                        navigate('view/'+i._id, {state : e.target.value});
                     }
                     return (
                         <tr onClick={goView}>
-                            <td>{i.no}</td>
+                            <td>1</td>
                             <td>{i.title}</td>
                             <td>{i.author}</td>
                             <td>{i.date}</td>
-                            <td>{i.increment}</td>
+                            <td>{i.views}</td>
                         </tr>
                     )
                 })
