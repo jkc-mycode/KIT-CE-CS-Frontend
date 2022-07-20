@@ -4,7 +4,7 @@ import './View.css';
 
 import Header from './header';
 import MenuBar from './menubar';
-import BoardList from './boardlist';
+// import BoardList from './boardlist';
 
 function ViewPage(){
     const [post, setPost] = useState({});

@@ -79,3 +79,11 @@
     margin-right: 15px;
     border: 0px;
 }
+
+.post_table{
+    width: 100%;
+}
+
+tr> td:nth-child(1) {
+    width : 10%;
+}
