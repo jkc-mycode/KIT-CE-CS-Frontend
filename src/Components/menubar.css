@@ -1,7 +1,7 @@
 .menubar{
     border: 0px;
     border-bottom: 2px solid rgba(115, 115, 115, 0.8);
-    height: 35px;
+    height: 40px;
     display: flex;
     width : 85%;
     margin : 30px auto;
@@ -17,4 +17,10 @@
     width : 100%;
 
     font-size: 18px;
+}
+
+.menubar_line{
+    margin-top: 0px;
+    height: 25px;
+    border-right: 1px solid rgba(115, 115, 115, 0.8);
 }
