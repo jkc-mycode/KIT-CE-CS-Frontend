@@ -63,7 +63,7 @@ function LoginPage(){
                 </div>
                 <div className="button_container">
                     <button className="signup_button" onClick={()=>navigate('/signup')}>Sign Up</button>
-                    <button type="submit" className="login_button" onSubmit={onSubmit} >Login</button>
+                    <button type="submit" className="login_button" onSubmit={onClickLogin} >Login</button>
                     </div>
             </form>
         </div>
