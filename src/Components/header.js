@@ -18,11 +18,11 @@ function Header(){
         return(
             <div className = "header">
                 <div className ="header_container">
-                    <Link to="/">CE-SE</Link>
+                    <Link to="/" className="header_items">CE-SE</Link>
                     <div className="header-right-container">
-                        <Link to="/" onClick={onClickLogout}>Logout</Link>
+                        <Link to="/" className="header_items" onClick={onClickLogout}>Logout</Link>
                         <div className="header_line"></div>
-                        <Link to="/MyPage">MyPage</Link>
+                        <Link to="/MyPage" className="header_items">MyPage</Link>
                     </div>
                 </div>
             </div>
@@ -31,13 +31,13 @@ function Header(){
         return(
             <div className = "header">
                 <div className ="header_container">
-                    <Link to="/">CE-SE</Link>
+                    <Link to="/" className="header_items">CE-SE</Link>
                     <div className="header-right-container">
-                        <Link to="/login">로그인</Link>
+                        <Link to="/login" className="header_items">로그인</Link>
                         <div className="header_line"></div>
-                        <Link to="/signup">회원가입</Link>
+                        <Link to="/signup" className="header_items">회원가입</Link>
                         <div className="header_line"></div>
-                        <Link to="/MyPage">MyPage</Link>
+                        <Link to="/MyPage" className="header_items">MyPage</Link>
                     </div>
                 </div>
             </div>
