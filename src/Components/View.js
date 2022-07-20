@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import './view_test.css';
 import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import './View.css';
 
 
 import Header from './header';
 import MenuBar from './menubar';
-import BoardList from './boardlist';
+// import BoardList from './boardlist';
 
 
 function ViewPage(){
@@ -31,32 +31,45 @@ function ViewPage(){
     }, [])
     refresh();
     return (
-        <>
-            <h1 className="title">게시글 타이틀</h1> {/* {post.title} */}
-            <div>
-                <table className="post_info_table">
+        <div className="view_section">
+            <div className="post_section">
+                <div className="post_tag" ># Tags</div> {/* {post.tag} */}
+                <h1 className="title">&#xE001;_ 게시글 타이틀</h1> {/* {post.title} */}
+                <div>
+                    <div className="post_info_table">
+                        <div className="post_info_author">작성자</div> {/* {post.author} */}
+                        <div className="post_info_hit">조회수 &nbsp;</div> {/* {post.hit} */}
+                        <div className="post_info_date">2022.07.11 10:09 &nbsp;</div> {/* {post.date} */}
+                    </div>
+                    <div className="line"></div>
+                    <div className="post_content" style={{height: '400px'}}>더미 데이터 게시글</div> {/* {post.content} */}
+                </div>
+                <div>
+                    <table className="edit_delete_list">
+                        <tr>
+                            <td>수정</td>
+                            <td>삭제</td>
+                            <td>목록</td>
+                        </tr>
+                    </table>
+                    <div className="line"></div>
+                </div>
+                <div className="test">댓글 메뉴 위치 (예정)</div>
+                <div className="line"></div>
+                <br/>
+                <table className="post_table">
                     <tr>
-                        <td>{list.article.author}</td> {/* {post.author} */}
-                        <td>작성일 &nbsp;</td> {/* {post.date} */}
-                        <td>조회수 &nbsp;</td> {/* {post.hit} */}
+                        <td>&#xE000; 이전글</td>
+                        <td>이전글 제목</td>
+                    </tr>
+                    <tr>
+                        <td>다음글 &#xE001;</td>
+                        <td>다음글 제목</td>
                     </tr>
                 </table>
-                <div className="test" style={{height: '400px'}}>{1234}</div> {/* {post.content} */}
-                <div className="test" >태그 정보</div> {/* {post.tag} */}
+                {/* <BoardList/> */}
             </div>
-            <br/>
-            <div>
-                <table className="revise_delete_list">
-                    <tr>
-                        <td>수정(버튼)</td>
-                        <td>삭제(버튼)</td>
-                        <td>목록(버튼)</td>
-                    </tr>
-                </table>
-            </div>
-            <div className="test">댓글 메뉴 위치 (예정)</div><br/>
-            <BoardList/>
-        </>
+        </div>
     )
 }
 export default ViewPage;

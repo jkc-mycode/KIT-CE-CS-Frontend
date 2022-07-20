@@ -9,6 +9,9 @@ function RegisterPage(){
     const [id, setId] = useState(""); //아이디
     const [password, setPassword] = useState(""); //비밀번호
     const [confirmPassword, setConfirmPassword] = useState(""); //비밀번호 확인
+    const [idCheckMsg, setidCheckMsg] = useState(""); // 아이디 확인 메시지
+    const [pwCheckMsg, setpwCheckMsg] = useState(""); // 비밀번호 확인 메시지
+    const [pwMsgBool, setpwMsgBool] = useState(false);
 
     const onNameHandler = (event) => {
         setName(event.currentTarget.value);
@@ -21,9 +24,11 @@ function RegisterPage(){
     }
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value);
+        checkPassword(event.currentTarget.value);
     }
     const onConfirmPasswordHandler = (event) => {
         setConfirmPassword(event.currentTarget.value);
+        checkPassword(event.currentTarget.value);
     }
     const navigate = useNavigate();
 
@@ -48,26 +53,53 @@ function RegisterPage(){
         navigate('/login');
     }
 
+    function checkPassword(target)
+    {
+        if (password !== target)
+        {
+            setpwMsgBool(false);
+            setpwCheckMsg("비밀번호가 서로 일치하지 않습니다.");
+        }
+        else if (password === target)
+        {
+            setpwMsgBool(true);
+            setpwCheckMsg("비밀번호가 일치합니다.");
+        }
+    }
+
     return (
         <div className="register_box">
-            <h2 className="register_title">&#xE001;_회원가입</h2>
+            <h1 className="register_title">&#xE001;_ Register</h1>
+            <h3 className="message">회원가입을 위해 아래 정보를 입력해주세요.</h3>
             <form>
+                <div className="input_msg">이름</div>
                 <div className="input_row">
-                    <input type="text" name="name" value={name} placeholder="이름" className="name_input" onChange={onNameHandler} /><br/>
+                    <input type="text" name="name" value={name} placeholder="Name" className="name_input" onChange={onNameHandler} /><br/>
+                </div>
+                <div className="input_msg">아이디</div>
+                <div className="input_row">
+                    <input type="text" name="id" value={id} placeholder="ID" className="reg_id_input" onChange={onIdHandler} /><br/>
+                </div>
+                <div className="check_msg">{idCheckMsg}</div>
+                <div className="button_container">
+                    <button className="idcheck_button">중복 체크</button>
+                </div>
+                <div className="input_msg">비밀번호</div>
+                <div className="input_row">
+                    <input type="password" name="password" value={password} placeholder="Password" className="reg_pw_input" onChange={onPasswordHandler} /><br/>
                 </div>
                 <div className="input_row">
-                    <input type="email" name="webmail" value={webmail} placeholder="웹메일 ex) WebMail@kumoh.ar.kr" className="webmail_input" onChange={onMailHandler} /><br/>
+                    <input type="password" name="confirmPassword" value={confirmPassword} placeholder="Password Confirm" className="confirm_pw_input" onChange={onConfirmPasswordHandler} /><br/>
                 </div>
-                <div className="input_row">
-                    <input type="text" name="id" value={id} placeholder="아이디" className="reg_id_input" onChange={onIdHandler} /><br/>
+                <div className={pwMsgBool ? 'success' : 'failure'}>{pwCheckMsg}</div>
+                <div className="input_msg">금오공대 웹메일</div>
+                <div className="email_input_row">
+                    <input type="email" name="webmail" value={webmail} placeholder="WebMail" className="webmail_input" onChange={onMailHandler} />
+                    <div className="email_msg">@kumoh.ac.kr</div>
                 </div>
-                <div className="input_row">
-                    <input type="password" name="password" value={password} placeholder="비밀번호" className="reg_pw_input" onChange={onPasswordHandler} /><br/>
+                <div className="button_container">
+                    <button type="submit" className="register_button" onSubmit={onSubmit} >register</button>
                 </div>
-                <div className="input_row">
-                    <input type="password" name="confirmPassword" value={confirmPassword} placeholder="비밀번호 확인" className="confirm_pw_input" onChange={onConfirmPasswordHandler} /><br/>
-                </div>
-                <button type="button" className="register_button" onClick={onSubmit} >회원가입</button>
             </form>
         </div>
     )

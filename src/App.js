@@ -14,10 +14,12 @@ import BoardList_Graduate from './Components/boardlist_graduate'
 import LoginPage from './Components/Login'
 import Register from './Components/Register';
 import ViewPage from './Components/View';
+import MyPage from './Components/mypage';
 
 function App() {
   return (
     <Fragment>
+      {/* <div className="view_section"> */}
         <Header></Header>
         <MenuBar></MenuBar>
 
@@ -29,12 +31,14 @@ function App() {
             <Route path="/boardlist_graduate" element={<BoardList_Graduate/>}></Route>
             <Route path="/login" element={<LoginPage/>}></Route>
             <Route path="/signup" element={<Register/>}></Route>
+            <Route path="/mypage" element={<MyPage/>}></Route>
             <Route path="/view/:viewId" element={<ViewPage/>}></Route>
             <Route path="/boardlist_notice/view/:viewId" element={<ViewPage/>}></Route>
             <Route path="/boardlist_free/view/:viewId" element={<ViewPage/>}></Route>
             <Route path="/boardlist_study/view/:viewId" element={<ViewPage/>}></Route>
             <Route path="/boardlist_graduate/view/:viewId" element={<ViewPage/>}></Route>
         </Routes>
+      {/* </div> */}
     </Fragment>
   );
 }

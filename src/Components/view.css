@@ -1,14 +1,89 @@
-.title {
-    position: absolute;
-    width: 58px;
-    height: 39px;
-    left: 462px;
-    top: 285px;
+.view_section {
+    margin: 0 auto;
+    width: 85%;
+}
 
-    font-style: Bold;
+.post_section {
+    margin-top: 50px;
+    width: 70%;
+}
+
+/* .board_list_table {
+    width: 100%;
+} */
+
+.title {
+    margin-top: 20px;
+    margin-left: 15px;  
+
     font-weight: 700;
     font-size: 32px;
-    letter-spacing: -0.05em;
 
     color: #0D0D0D;
+}
+
+.line {
+    width: 100%;
+
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+}
+
+.post_info_table {
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border: 0px;
+
+    width: 100%;
+
+    display: table; 
+
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(115, 115, 115, 0.8);
+}
+
+.post_info_author, .post_info_hit, .post_info_date {
+    display: table-cell;
+}
+
+.post_info_hit {
+    text-align: right;
+}
+
+.post_info_date {
+    width: 150px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.post_content {
+    margin: 15px 15px; 
+    
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.post_tag, .edit_delete_list {
+    font-weight: 400;
+    font-size: 16px;
+    color: #224459;
+}
+
+.post_tag {
+    margin-left: 15px;
+}
+
+.edit_delete_list {
+    margin-left: auto;
+    margin-right: 15px;
+    border: 0px;
+}
+
+.post_table{
+    width: 100%;
+}
+
+tr> td:nth-child(1) {
+    width : 10%;
 }

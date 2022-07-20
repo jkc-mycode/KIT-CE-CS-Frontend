@@ -1,0 +1,62 @@
+.mypage_box {
+    margin: 0 auto;
+    margin-top: 50px;
+
+    width: 500px;
+}
+
+.mypage_title {
+    margin-bottom: 30px;
+}
+
+.name_show, .webmail_show, .id_show, .reg_pw_input, .confirm_pw_input, .pw_edit_button, .mypage_msg {
+    width: 100%;
+    padding: 0px;
+
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.reg_pw_input, .confirm_pw_input {
+    color: rgba(115, 115, 115, 0.8);
+}
+
+.mypage_msg {
+    box-sizing: border-box;
+    margin-top: 35px;
+    margin-bottom: -19px;
+
+    font-weight: 500;
+}
+
+.name_show, .webmail_show, .id_show, .reg_pw_input, .confirm_pw_input {
+    border: 0;
+}
+
+.mypage_row {
+    box-sizing: border-box;
+    margin-top: 22px;
+    height: 50px;
+    padding: 13px 15px;
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+
+    width: 100%;
+}
+
+.pw_edit_button {
+    margin-top: 40px;
+    border: 0px;
+    border-radius: 5px;
+
+    position: absolute;
+    right: 0%;
+
+    width: 140px;
+    height: 60px;
+
+    background: #D9D9D9;
+}
+
+.button_container{
+    position: relative;
+}

@@ -1,13 +1,4 @@
-
-
-.menubar{
-  border : 1px solid black;
-  height: 90px;
-  display: flex;
-}
-
-.menu_items{
-  border: 1px solid black;
-  height: 100%;
-  width : 100%;
-}
+/* .view_section {
+  margin: 0 auto;
+  width: 85%;
+} */
