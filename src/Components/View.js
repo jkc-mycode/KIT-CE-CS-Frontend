@@ -1,48 +1,71 @@
 import React, {useEffect, useState} from 'react';
-import {useParams, useNavigate} from 'react-router-dom';
+import {useParams, useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
-import './View.css';
-
-
-import Header from './header';
-import MenuBar from './menubar';
-// import BoardList from './boardlist';
+import './view.css';
 
 
 function ViewPage(){
-    const [list, setList] = useState({});
+    const location = useLocation();
+    //const data = location.state.data;
+    const [list, setList] = useState([]);
+    const [next, setNext] = useState([]);
+    const [prev, setPrev] = useState([]);
+    const [date, setDate] = useState();
     let test = useParams().viewId;
 
-    async function refresh(){
-        await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + test)
-            .then((res) => {
-                console.log(res.data);
-                setList(res.data);
-                console.log(list);
-            })
-            .catch((e) => {
-                console.log(e);
-            })
+    function timer(d){
+        let timestamp = d;
+        let date = new Date(timestamp);
+
+        return (date.getFullYear()+
+            "/"+(date.getMonth()+1)+
+            "/"+date.getDate()+
+            " "+date.getHours()+
+            ":"+date.getMinutes()+
+            ":"+date.getSeconds());
     }
 
+    const getPost = async () => {
+        //await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + test)
+        const posts = await axios.get("/article/view/" + test)
+        console.log(posts.data.article);
+        setList(posts.data.article);
+        setNext(posts.data.next);
+        setPrev(posts.data.prev);
+        setDate(timer(posts.data.article.date));
+    }
     useEffect(() => {
-       //refresh();
-
+        // async function temp(){
+        //     await axios.get("/article/view/" + test)
+        //         .then((res) => {
+        //             //setList(res.data);
+        //             console.log(test);
+        //             console.log(res.data);
+        //             window.localStorage.setItem("aaaa", JSON.stringify(res.data));
+        //             console.log(window.localStorage.getItem("aaaa"));
+        //         })
+        //         .catch((e) => {
+        //             console.log(e);
+        //         })
+        // }
+        // obj = JSON.parse(window.localStorage.getItem("aaaa"));
+        // console.log(obj);
+        // window.localStorage.removeItem("aaaa");
+        getPost();
     }, [])
-    refresh();
     return (
         <div className="view_section">
             <div className="post_section">
-                <div className="post_tag" ># Tags</div> {/* {post.tag} */}
-                <h1 className="title">&#xE001;_ 게시글 타이틀</h1> {/* {post.title} */}
+                <div className="post_tag" >#{list.tag}</div> {/* {post.tag} */}
+                <h1 className="title">&#xE001;_ {list.title}</h1> {/* {post.title} */}
                 <div>
                     <div className="post_info_table">
-                        <div className="post_info_author">작성자</div> {/* {post.author} */}
-                        <div className="post_info_hit">조회수 &nbsp;</div> {/* {post.hit} */}
-                        <div className="post_info_date">2022.07.11 10:09 &nbsp;</div> {/* {post.date} */}
+                        <div className="post_info_author">{list.author}</div> {/* {post.author} */}
+                        <div className="post_info_hit">{list.views} &nbsp;</div> {/* {post.hit} */}
+                        <div className="post_info_date">{date} &nbsp;</div> {/* {post.date} */}
                     </div>
                     <div className="line"></div>
-                    <div className="post_content" style={{height: '400px'}}>더미 데이터 게시글</div> {/* {post.content} */}
+                    <div className="post_content" style={{height: '400px'}}>{list.content}</div> {/* {post.content} */}
                 </div>
                 <div>
                     <table className="edit_delete_list">
@@ -60,11 +83,11 @@ function ViewPage(){
                 <table className="post_table">
                     <tr>
                         <td>&#xE000; 이전글</td>
-                        <td>이전글 제목</td>
+                        <td>{next.title}</td>
                     </tr>
                     <tr>
                         <td>다음글 &#xE001;</td>
-                        <td>다음글 제목</td>
+                        <td>{prev.title}</td>
                     </tr>
                 </table>
                 {/* <BoardList/> */}
