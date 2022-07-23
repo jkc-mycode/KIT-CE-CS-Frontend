@@ -10,8 +10,8 @@ function BoardList() {
         //axios.get("http://kittaxipool.iptime.org:3000/article/")
         axios.get("/article/")
             .then((res) => {
-                console.log(res.data);
-                setList(res.data);
+                console.log(res.data.board);
+                setList(res.data.board);
             })
             .catch((e) => {
                 console.log(e);
