@@ -35,22 +35,6 @@ function ViewPage(){
         setDate(timer(posts.data.article.date));
     }
     useEffect(() => {
-        // async function temp(){
-        //     await axios.get("/article/view/" + test)
-        //         .then((res) => {
-        //             //setList(res.data);
-        //             console.log(test);
-        //             console.log(res.data);
-        //             window.localStorage.setItem("aaaa", JSON.stringify(res.data));
-        //             console.log(window.localStorage.getItem("aaaa"));
-        //         })
-        //         .catch((e) => {
-        //             console.log(e);
-        //         })
-        // }
-        // obj = JSON.parse(window.localStorage.getItem("aaaa"));
-        // console.log(obj);
-        // window.localStorage.removeItem("aaaa");
         getPost();
     }, [])
     return (
