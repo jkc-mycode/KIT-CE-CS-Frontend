@@ -25,18 +25,18 @@ function App() {
 
         <Routes>
             <Route path="/" element={<BoardList/>}></Route>
-            <Route path="/boardlist_notice" element={<BoardList_Notice/>}></Route>
-            <Route path="/boardlist_free" element={<BoardList_Free/>}></Route>
-            <Route path="/boardlist_study" element={<BoardList_Study/>}></Route>
-            <Route path="/boardlist_graduate" element={<BoardList_Graduate/>}></Route>
+            <Route path="/notice" element={<BoardList_Notice/>}></Route>
+            <Route path="/free" element={<BoardList_Free/>}></Route>
+            <Route path="/study" element={<BoardList_Study/>}></Route>
+            <Route path="/graduate" element={<BoardList_Graduate/>}></Route>
             <Route path="/login" element={<LoginPage/>}></Route>
             <Route path="/signup" element={<Register/>}></Route>
             <Route path="/mypage" element={<MyPage/>}></Route>
             <Route path="/view/:viewId" element={<ViewPage/>}></Route>
-            <Route path="/boardlist_notice/view/:viewId" element={<ViewPage/>}></Route>
-            <Route path="/boardlist_free/view/:viewId" element={<ViewPage/>}></Route>
-            <Route path="/boardlist_study/view/:viewId" element={<ViewPage/>}></Route>
-            <Route path="/boardlist_graduate/view/:viewId" element={<ViewPage/>}></Route>
+            <Route path="/notice/view/:viewId" element={<ViewPage/>}></Route>
+            <Route path="/free/view/:viewId" element={<ViewPage/>}></Route>
+            <Route path="/study/view/:viewId" element={<ViewPage/>}></Route>
+            <Route path="/graduate/view/:viewId" element={<ViewPage/>}></Route>
         </Routes>
       {/* </div> */}
     </Fragment>
