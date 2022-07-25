@@ -1,5 +1,6 @@
-import React, {Fragment, useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, {Fragment} from 'react';
+import {useNavigate} from 'react-router-dom';
+import BoardFooter from './boardlist_footer';
 
 function BoardRow ({boardList}){
     const list = boardList;
@@ -26,12 +27,6 @@ function BoardRow ({boardList}){
                     }
                     return (
                         <tr onClick={goView}>
-                            {/*<td onClick={() => selectContent(i._id)}>*/}
-                            {/*    <Link to={'view/' + i._id} state={{ data: i}}>{i.no}</Link>*/}
-                            {/*</td>*/}
-                            {/*<td onClick={() => selectContent(i._id)}>*/}
-                            {/*    <Link to={'view/' + i._id} state={{ data: i}}>{i.title}</Link>*/}
-                            {/*</td>*/}
                             <td>{i.no}</td>
                             <td>{i.title}</td>
                             <td>{i.author}</td>
@@ -41,6 +36,8 @@ function BoardRow ({boardList}){
                     )
                 })
             }
+            <br/>
+            <BoardFooter></BoardFooter>
         </Fragment>
     )
 }

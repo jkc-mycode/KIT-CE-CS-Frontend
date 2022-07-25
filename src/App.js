@@ -15,6 +15,7 @@ import LoginPage from './Components/Login'
 import Register from './Components/Register';
 import ViewPage from './Components/View';
 import MyPage from './Components/mypage';
+import PostWrite from './Components/post_write';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/free/view/:viewId" element={<ViewPage/>}></Route>
             <Route path="/study/view/:viewId" element={<ViewPage/>}></Route>
             <Route path="/graduate/view/:viewId" element={<ViewPage/>}></Route>
+            <Route path="/post_write" element={<PostWrite/>}></Route>
         </Routes>
       {/* </div> */}
     </Fragment>

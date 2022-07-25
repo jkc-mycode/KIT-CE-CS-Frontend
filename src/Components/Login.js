@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './Login.css'
-import {useNavigate, useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 function LoginPage(){
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
     let sessionStorage = window.sessionStorage;
+    const navigate = useNavigate();
 
     const onIdHandler = (event) => {
         setId(event.currentTarget.value);
@@ -31,11 +32,12 @@ function LoginPage(){
             console.log('ID : ', id)
             console.log('PW : ', password)
 
-            axios.post('/log/in', data, headers)
+            axios.post('/log/in', data, headers, {withCredentials : true})
                 .then((res) => {
-                    console.log(res.data)
                     sessionStorage.setItem("id", id);
                     sessionStorage.setItem("message", res.data.message);
+                    sessionStorage.setItem("name", res.data.name);
+                    console.log(res.data);
                     if(res.data.message === "Invalid ID" || res.data.message === "Wrong ID or Password"){
                         alert(res.data.message);
                         navigate('/login');
@@ -45,12 +47,10 @@ function LoginPage(){
                     }
                 })
                 .catch((e) => {
-                    alert((e))
+                    alert(e.response.data.message);
                 })
         }
     }
-    const navigate = useNavigate();
-
     return (
         <div className="login_box">
             <h1 className="login_title">&#xE001;_ Login</h1>
@@ -63,7 +63,7 @@ function LoginPage(){
                 </div>
                 <div className="button_container">
                     <button className="signup_button" onClick={()=>navigate('/signup')}>Sign Up</button>
-                    <button type="submit" className="login_button" onSubmit={onClickLogin} >Login</button>
+                    <button type="submit" className="login_button" onClick={onClickLogin} >Login</button>
                     </div>
             </form>
         </div>

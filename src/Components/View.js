@@ -49,7 +49,8 @@ function ViewPage(){
                         <div className="post_info_date">{date} &nbsp;</div> {/* {post.date} */}
                     </div>
                     <div className="line"></div>
-                    <div className="post_content" style={{height: '400px'}}>{list.content}</div> {/* {post.content} */}
+                    <div className="post_content" style={{height: '400px'}} dangerouslySetInnerHTML={{__html : list.content}}>
+                    </div> {/* {post.content} */}
                 </div>
                 <div>
                     <table className="edit_delete_list">
