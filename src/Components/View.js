@@ -6,12 +6,13 @@ import './view.css';
 
 function ViewPage(){
     const location = useLocation();
+    const navigate = useNavigate();
     //const data = location.state.data;
     const [list, setList] = useState([]);
     const [next, setNext] = useState([]);
     const [prev, setPrev] = useState([]);
     const [date, setDate] = useState();
-    let test = useParams().viewId;
+    let id = useParams().viewId;
 
     function timer(d){
         let timestamp = d;
@@ -25,13 +26,23 @@ function ViewPage(){
             ":"+date.getSeconds());
     }
 
+    const loginCheck = () => {
+        if(list.author !== window.sessionStorage.getItem("name")){
+            alert("사용이 불가합니다.");
+        }else{
+            navigate('/post_update/' + id, {state: list});
+        }
+    }
+
     const getPost = async () => {
-        //await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + test)
-        const posts = await axios.get("/article/view/" + test)
+        //await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + id)
+        const posts = await axios.get("/article/view/" + id)
         console.log(posts.data.article);
+        console.log(posts.data.next[0]);
+        console.log(posts.data.prev[0]);
         setList(posts.data.article);
-        setNext(posts.data.next);
-        setPrev(posts.data.prev);
+        setNext(posts.data.next[0]);
+        setPrev(posts.data.prev[0]);
         setDate(timer(posts.data.article.date));
     }
     useEffect(() => {
@@ -55,7 +66,7 @@ function ViewPage(){
                 <div>
                     <table className="edit_delete_list">
                         <tr>
-                            <td>수정</td>
+                            <td onClick={loginCheck}>수정</td>
                             <td>삭제</td>
                             <td>목록</td>
                         </tr>
@@ -68,11 +79,19 @@ function ViewPage(){
                 <table className="post_table">
                     <tr>
                         <td>&#xE000; 이전글</td>
-                        <td>{next.title}</td>
+                        {
+                            prev === undefined
+                            ? <td>이전 글이 없습니다.</td>
+                            : <td>{prev.title}</td>
+                        }
                     </tr>
                     <tr>
                         <td>다음글 &#xE001;</td>
-                        <td>{prev.title}</td>
+                        {
+                            next === undefined
+                            ? <td>다음 글이 없습니다.</td>
+                            : <td>{next.title}</td>
+                        }
                     </tr>
                 </table>
                 {/* <BoardList/> */}
