@@ -5,7 +5,7 @@ import BoardFooter from './boardlist_footer';
 function BoardRow ({boardList}){
     const list = boardList;
     const navigate = useNavigate();
-    let num = 1;
+    let num = list.length;
 
     function timer(d){
         let timestamp = d;
@@ -28,7 +28,7 @@ function BoardRow ({boardList}){
                     }
                     return (
                         <tr onClick={goView}>
-                            <td>{num++}</td>
+                            <td>{num--}</td>
                             <td>{i.title}</td>
                             <td>{i.author}</td>
                             <td>{timer(i.date)}</td>
