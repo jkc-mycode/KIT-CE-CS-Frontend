@@ -26,11 +26,25 @@ function ViewPage(){
             ":"+date.getSeconds());
     }
 
-    const loginCheck = () => {
+    const updateLoginCheck = () => {
         if(list.author !== window.sessionStorage.getItem("name")){
             alert("사용이 불가합니다.");
         }else{
             navigate('/post_update/' + id, {state: list});
+        }
+    }
+    const deletePost = () => {
+        if(list.author !== window.sessionStorage.getItem("name")){
+            alert("사용이 불가합니다.");
+        }else{
+            axios.delete('/article/' + id)
+                .then((res) => {
+                    console.log(res.data);
+                    navigate('/');
+                })
+                .catch((e) => {
+                    console.log(e);
+                })
         }
     }
 
@@ -66,8 +80,8 @@ function ViewPage(){
                 <div>
                     <table className="edit_delete_list">
                         <tr>
-                            <td onClick={loginCheck}>수정</td>
-                            <td>삭제</td>
+                            <td onClick={updateLoginCheck}>수정</td>
+                            <td onClick={deletePost}>삭제</td>
                             <td>목록</td>
                         </tr>
                     </table>
@@ -82,7 +96,7 @@ function ViewPage(){
                         {
                             prev === undefined
                             ? <td>이전 글이 없습니다.</td>
-                            : <td>{prev.title}</td>
+                            : <td onClick={() => {navigate('/view/'+prev._id); window.location.reload(); }}>{prev.title}</td>
                         }
                     </tr>
                     <tr>
@@ -90,7 +104,7 @@ function ViewPage(){
                         {
                             next === undefined
                             ? <td>다음 글이 없습니다.</td>
-                            : <td>{next.title}</td>
+                            : <td onClick={() => {navigate('/view/'+next._id); window.location.reload(); }}>{next.title}</td>
                         }
                     </tr>
                 </table>

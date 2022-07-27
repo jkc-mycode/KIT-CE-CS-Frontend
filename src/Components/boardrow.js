@@ -5,6 +5,7 @@ import BoardFooter from './boardlist_footer';
 function BoardRow ({boardList}){
     const list = boardList;
     const navigate = useNavigate();
+    let num = 1;
 
     function timer(d){
         let timestamp = d;
@@ -21,13 +22,13 @@ function BoardRow ({boardList}){
     return(
         <Fragment>
             {
-                list.map((i) => {
+                list.reverse().map((i) => {
                     let goView = (e) => {
                         navigate('view/'+i._id, {state : i});
                     }
                     return (
                         <tr onClick={goView}>
-                            <td>{i.no}</td>
+                            <td>{num++}</td>
                             <td>{i.title}</td>
                             <td>{i.author}</td>
                             <td>{timer(i.date)}</td>
