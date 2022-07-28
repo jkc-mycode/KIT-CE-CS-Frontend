@@ -1,11 +1,12 @@
 import React, {Fragment} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate,useParams, useLocation} from 'react-router-dom';
 import BoardFooter from './boardlist_footer';
 
 function BoardRow ({boardList}){
     const list = boardList;
     const navigate = useNavigate();
     let num = list.length;
+    const location = useLocation();
     let cat = "";
 
     function timer(d){
@@ -20,7 +21,7 @@ function BoardRow ({boardList}){
 
         return returnDate;
     }
-
+    console.log(location);
     return(
         <Fragment>
             {
@@ -40,7 +41,11 @@ function BoardRow ({boardList}){
                     return (
                         <tr onClick={goView}>
                             <td>{num--}</td>
-                            <td>{cat}</td>
+                            {
+                                location.pathname === '/'
+                                    ? <td>{cat}</td>
+                                    : null
+                            }
                             <td>{i.title}</td>
                             <td>{i.author}</td>
                             <td>{timer(i.date)}</td>
