@@ -11,12 +11,13 @@ function BoardRow ({boardList}){
         let timestamp = d;
         let date = new Date(timestamp);
 
-        return (date.getFullYear()+
-            "/"+(date.getMonth()+1)+
-            "/"+date.getDate()+
-            " "+date.getHours()+
-            ":"+date.getMinutes()+
-            ":"+date.getSeconds());
+        let year = date.getFullYear().toString(); //년도 뒤에 두자리
+        let month = ("0" + (date.getMonth() + 1)).slice(-2); //월 2자리 (01, 02 ... 12)
+        let day = ("0" + date.getDate()).slice(-2); //일 2자리 (01, 02 ... 31)
+
+        let returnDate = year + "." + month + "." + day;
+
+        return returnDate;
     }
 
     return(
