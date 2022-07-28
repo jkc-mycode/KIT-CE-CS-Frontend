@@ -1,12 +1,18 @@
 import React from "react";
 import './header.css';
 import {Link} from 'react-router-dom';
+import axios from "axios";
 
 const onClickLogout = (event) => {
-    event.preventDefault();
-    let sessionStorage = window.sessionStorage;
-    sessionStorage.clear();
-    window.location.reload();
+    axios.delete('/log/out')
+        .then((res) => {
+            console.log(res);
+            window.sessionStorage.clear();
+            window.location.replace('/');
+        })
+        .catch((e) => {
+            console.log(e);
+        })
 }
 
 function Header(){
@@ -22,7 +28,7 @@ function Header(){
                     <div className="header-right-container">
                         <Link to="/" className="header_items" onClick={onClickLogout}>Logout</Link>
                         <div className="header_line"></div>
-                        <Link to="/MyPage" className="header_items">MyPage</Link>
+                        <Link to="/info" className="header_items">MyPage</Link>
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@ import BoardList_Graduate from './Components/boardlist_graduate'
 import LoginPage from './Components/Login'
 import Register from './Components/Register';
 import ViewPage from './Components/View';
-import MyPage from './Components/mypage';
+import MyInfoPage from './Components/mypage';
 import PostWrite from './Components/post_write';
 import PostUpdate from './Components/post_update';
 
@@ -33,7 +33,7 @@ function App() {
             <Route path="/graduate" element={<BoardList_Graduate/>}></Route>
             <Route path="/login" element={<LoginPage/>}></Route>
             <Route path="/signup" element={<Register/>}></Route>
-            <Route path="/mypage" element={<MyPage/>}></Route>
+            <Route path="/info" element={<MyInfoPage/>}></Route>
             <Route path="/view/:viewId" element={<ViewPage/>}></Route>
             <Route path="/notice/view/:viewId" element={<ViewPage/>}></Route>
             <Route path="/free/view/:viewId" element={<ViewPage/>}></Route>
