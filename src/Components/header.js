@@ -13,8 +13,8 @@ function Header(){
     let sessionStorage = window.sessionStorage;
     let user_id = sessionStorage.getItem("id");
     let loginmessage = sessionStorage.getItem("message");
-    console.log(JSON.stringify(sessionStorage));
-    if(loginmessage === "Welcome! asd"){
+    //console.log(JSON.stringify(sessionStorage));
+    if(loginmessage === "Welcome! "+user_id){
         return(
             <div className = "header">
                 <div className ="header_container">
@@ -36,8 +36,6 @@ function Header(){
                         <Link to="/login" className="header_items">로그인</Link>
                         <div className="header_line"></div>
                         <Link to="/signup" className="header_items">회원가입</Link>
-                        <div className="header_line"></div>
-                        <Link to="/MyPage" className="header_items">MyPage</Link>
                     </div>
                 </div>
             </div>
