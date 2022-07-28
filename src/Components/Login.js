@@ -62,8 +62,9 @@ function LoginPage(){
                     <input type="password" name="password" value={password || ''} placeholder="Password" className="pw_input" onChange={onPasswordHandler} /><br/>
                 </div>
                 <div className="button_container">
-                    <button className="signup_button" onClick={()=>navigate('/signup')}>Sign Up</button>
                     <button type="submit" className="login_button" onClick={onClickLogin} >Login</button>
+                    <button className="signup_button" onClick={()=>navigate('/signup')}>Sign Up</button>
+
                     </div>
             </form>
         </div>
