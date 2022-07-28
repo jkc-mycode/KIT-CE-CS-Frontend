@@ -6,6 +6,7 @@ function BoardRow ({boardList}){
     const list = boardList;
     const navigate = useNavigate();
     let num = list.length;
+    let cat = "";
 
     function timer(d){
         let timestamp = d;
@@ -27,9 +28,19 @@ function BoardRow ({boardList}){
                     let goView = (e) => {
                         navigate('view/'+i._id, {state : i});
                     }
+                    if(i.tag === "notice"){
+                        cat = "[공지]";
+                    }else if(i.tag === "free"){
+                        cat = "[자유]";
+                    }else if(i.tag === "study"){
+                        cat = "[학업]";
+                    }else{
+                        cat = "[졸업]";
+                    }
                     return (
                         <tr onClick={goView}>
                             <td>{num--}</td>
+                            <td>{cat}</td>
                             <td>{i.title}</td>
                             <td>{i.author}</td>
                             <td>{timer(i.date)}</td>
