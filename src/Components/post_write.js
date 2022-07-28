@@ -9,7 +9,7 @@ import './post_write.css';
 
 function PostWrite(){
     const [title, setTitle] = useState(""); //제목
-    let content = "" //내용 (HTML 통째로 저장)
+    const [content, setContent ] = useState(""); //내용 (HTML 통째로 저장)
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [dropdownName, setDropdownName] = useState("게시판을 선택해주세요.");
     const [dropdownValue, setDropdownValue] = useState("");
@@ -19,8 +19,8 @@ function PostWrite(){
         setTitle(event.currentTarget.value);
     }
     const onContentHandler = (value) => {
-        console.log(value);
-        content = value;
+        setContent(value);
+        console.log(content);
     }
     const onDropdownHandler = (event) => {
         console.log(event.currentTarget.name);
@@ -70,6 +70,7 @@ function PostWrite(){
                 console.log(e);
             })
         navigate('/');
+        console.log(content);
     }
 
     return (
@@ -112,7 +113,7 @@ function PostWrite(){
                     formats={formats}
                     placeholder="내용을 입력해주세요."
                     onChange={onContentHandler}
-                    value={content || ''}
+
                 />
             </div>
             <br/><br/><br/>
