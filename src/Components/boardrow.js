@@ -23,7 +23,7 @@ function BoardRow ({boardList}){
     return(
         <Fragment>
             {
-                list.reverse().map((i) => {
+                list.slice(0).reverse().map((i) => {
                     let goView = (e) => {
                         navigate('view/'+i._id, {state : i});
                     }
