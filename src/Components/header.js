@@ -20,7 +20,7 @@ function Header(){
     let user_id = sessionStorage.getItem("id");
     let loginmessage = sessionStorage.getItem("message");
     //console.log(JSON.stringify(sessionStorage));
-    if(loginmessage === "Welcome! "+user_id){
+    if(loginmessage === "Welcome! "+user_id){ //sessionStorage로 변경할것
         return(
             <div className = "header">
                 <div className ="header_container">

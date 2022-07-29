@@ -10,13 +10,22 @@ function BoardList() {
         //axios.get("http://kittaxipool.iptime.org:3000/article/")
         axios.get("/article/")
             .then((res) => {
-                console.log(res.data.board);
+                console.log(res.data);
                 setList(res.data.board);
             })
             .catch((e) => {
                 console.log(e);
             })
     }, [])
+    // const getList = async () => {
+    //     const posts = await axios.get("/article/")
+    //     console.log(posts.data);
+    //     setList(posts.data);
+    // }
+    // useEffect(() => {
+    //     //axios.get("http://kittaxipool.iptime.org:3000/article/")
+    //     getList();
+    // }, [])
     return(
         <div className = "board_list_container">
             <table className = "board_list_table">

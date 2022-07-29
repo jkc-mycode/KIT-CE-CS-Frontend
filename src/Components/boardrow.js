@@ -1,13 +1,24 @@
-import React, {Fragment} from 'react';
-import {useNavigate,useParams, useLocation} from 'react-router-dom';
+import React, {Fragment, useState, useEffect} from 'react';
+import {useNavigate, useLocation} from 'react-router-dom';
 import BoardFooter from './boardlist_footer';
 
 function BoardRow ({boardList}){
-    const list = boardList;
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(5);
+    const [total, setTotal] = useState(12);
+    const offset = (page-1) * limit;
+    const copy = boardList.slice(); //slice()는 배열의 복사복을 만듦
+    const list = copy.reverse();
     const navigate = useNavigate();
-    let num = list.length;
     const location = useLocation();
-    let cat = "";
+    let cat = ""; //카테고리
+    //let num = boardList.board.length; //게시물 길이(게시물 번호를 위한 것)
+
+    // useEffect(() => {
+    //     setList(boardList.board);
+    //     setLimit(boardList.postLimit);
+    //     setPage(boardList.pageNum);
+    // })
 
     function timer(d){
         let timestamp = d;
@@ -21,11 +32,11 @@ function BoardRow ({boardList}){
 
         return returnDate;
     }
-    console.log(location);
+
     return(
-        <Fragment>
+        <>
             {
-                list.slice(0).reverse().map((i) => {
+                list.slice(offset,offset+limit).map((i) => {
                     let goView = (e) => {
                         navigate('view/'+i._id, {state : i});
                     }
@@ -40,7 +51,7 @@ function BoardRow ({boardList}){
                     }
                     return (
                         <tr onClick={goView}>
-                            <td>{num--}</td>
+                            <td>{list.length-list.indexOf(i)}</td>
                             {
                                 location.pathname === '/'
                                     ? <td>{cat}</td>
@@ -55,8 +66,14 @@ function BoardRow ({boardList}){
                 })
             }
             <br/>
-            <BoardFooter></BoardFooter>
-        </Fragment>
+            <BoardFooter
+                total={total}
+                limit={limit}
+                page={page}
+                setPage={setPage}
+            />
+            {/*<BoardFooter/>*/}
+        </>
     )
 }
 
