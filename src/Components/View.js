@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useParams, useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
-import './view.css';
+import './View.css';
 
 
 function ViewPage(){
@@ -69,46 +69,43 @@ function ViewPage(){
     return (
         <div className="view_section">
             <div className="post_section">
-                <div className="post_tag" >#{list.tag}</div> {/* {post.tag} */}
-                <h1 className="title">&#xE001;_ {list.title}</h1> {/* {post.title} */}
+                <div className="post_tag">#{list.tag}</div>
+                <h1 className="title">&#xE001;_ {list.title}</h1>
                 <div>
                     <div className="post_info_table">
-                        <div className="post_info_author">{list.author}</div> {/* {post.author} */}
-                        <div className="post_info_hit">{list.views} &nbsp;</div> {/* {post.hit} */}
-                        <div className="post_info_date">{date} &nbsp;</div> {/* {post.date} */}
+                        <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span> seongjxn{/* {list.author} */}</div>
+                        <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span> 2{/* {list.views} */}</div>
+                        <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span> 2022.07.30 18:09:00{/* {date} */}</div>
                     </div>
                     <div className="line"></div>
-                    <div className="post_content" style={{height: '400px'}} dangerouslySetInnerHTML={{__html : list.content}}>
-                    </div> {/* {post.content} */}
+                    <div className="post_content" style={{height: '400px'}} dangerouslySetInnerHTML={{__html : list.content}}></div>
                 </div>
                 <div>
-                    <table className="edit_delete_list">
-                        <tr>
-                            <td onClick={updateLoginCheck}>수정</td>
-                            <td onClick={deletePost}>삭제</td>
-                            <td>목록</td>
-                        </tr>
-                    </table>
+                    <div className="edit_delete_table">
+                        <div className="post_edit" onClick={updateLoginCheck}><span class="material-symbols-outlined">&#xe3c9;</span> 수정</div>
+                        <div className="post_delete" onClick={deletePost}><span class="material-symbols-outlined">&#xe92b;</span> 삭제</div>
+                    </div>
                     <div className="line"></div>
                 </div>
                 <div className="test">댓글 메뉴 위치 (예정)</div>
                 <div className="line"></div>
                 <br/>
+                <div className="post_list"><span class="material-symbols-outlined">&#xe241;</span> 목록</div>
                 <table className="post_table">
                     <tr>
-                        <td>&#xE000; 이전글</td>
-                        {
-                            prev === undefined
-                            ? <td>이전 글이 없습니다.</td>
-                            : <td onClick={() => {navigate('/view/'+prev._id); window.location.reload(); }}>{prev.title}</td>
-                        }
-                    </tr>
-                    <tr>
-                        <td>다음글 &#xE001;</td>
+                        <td><span class="material-symbols-outlined">&#xe316;</span> 다음글</td>
                         {
                             next === undefined
                             ? <td>다음 글이 없습니다.</td>
                             : <td onClick={() => {navigate('/view/'+next._id); window.location.reload(); }}>{next.title}</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td><span class="material-symbols-outlined">&#xe313;</span> 이전글</td>
+                        {
+                            prev === undefined
+                            ? <td>이전 글이 없습니다.</td>
+                            : <td onClick={() => {navigate('/view/'+prev._id); window.location.reload(); }}>{prev.title}</td>
                         }
                     </tr>
                 </table>

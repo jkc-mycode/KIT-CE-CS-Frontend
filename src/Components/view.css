@@ -34,7 +34,7 @@
     margin-bottom: 10px;
     border: 0px;
 
-    width: 100%;
+    width: calc(100% - 15px * 2);
 
     display: table; 
 
@@ -52,9 +52,8 @@
 }
 
 .post_info_date {
-    width: 150px;
+    width: 190px;
     text-align: right;
-    padding-right: 20px;
 }
 
 .post_content {
@@ -80,10 +79,40 @@
     border: 0px;
 }
 
+.edit_delete_table {
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border: 0px;
+
+    width: calc(100% - 15px * 2);
+
+    display: table; 
+
+    /* font-weight: 500;
+    font-size: 16px; */
+    color: #224459;
+}
+
+.post_edit, .post_delete {
+    display: table-cell;
+    text-align: right;
+}
+
+.post_list {
+    margin-left: 15px;
+    color: #224459;
+}
+
+.post_delete {
+    width: 65px;
+}
+
 .post_table{
     width: 100%;
 }
 
 tr> td:nth-child(1) {
-    width : 10%;
+    width: 70px;
+    text-align: center;
 }

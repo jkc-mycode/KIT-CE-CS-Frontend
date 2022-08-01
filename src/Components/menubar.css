@@ -19,6 +19,10 @@
     font-size: 18px;
 }
 
+.menubar_items:hover {
+    color: rgba(115, 115, 115);
+}
+
 .menubar_line{
     margin-top: 0px;
     height: 25px;

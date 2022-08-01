@@ -20,6 +20,7 @@ function BoardList() {
 
     return(
         <div className = "board_list_container">
+            <div className="nowBoard">#공지사항</div>
             <table className = "board_list_table">
                 <thead className = "board_head">
                 <tr>

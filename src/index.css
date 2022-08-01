@@ -1,8 +1,9 @@
 @import url('./font/font.css');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 body {
   margin: 0;
-  font-family: 'Spoqa Han Sans Neo', 'Inter';
+  font-family: 'Spoqa Han Sans Neo', 'Inter', 'Material Icons';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #0D0D0D;

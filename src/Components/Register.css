@@ -15,8 +15,6 @@
 
     font-weight: 400;
     font-size: 20px;
-
-    color: rgba(115, 115, 115, 0.8);
 }
 
 .message {
@@ -38,6 +36,10 @@
 
 .name_input, .webmail_input, .reg_id_input, .reg_pw_input, .confirm_pw_input {
     border: 0;
+}
+
+.name_input::placeholder, .webmail_input::placeholder, .reg_id_input::placeholder, .reg_pw_input::placeholder, .confirm_pw_input::placeholder {
+    color: rgba(115, 115, 115, 0.8);
 }
 
 .input_row {
@@ -82,6 +84,10 @@
     background: none;
 }
 
+.idcheck_button:hover {
+    color: rgba(115, 115, 115, 0.8);
+}
+
 .register_button {
     margin-top: 40px;
     border: 0px;
@@ -94,6 +100,10 @@
     height: 60px;
 
     background: #D9D9D9;
+}
+
+.register_button:hover {
+    background: rgba(115, 115, 115, 0.4);
 }
 
 .button_container{

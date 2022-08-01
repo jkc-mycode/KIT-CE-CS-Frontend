@@ -1,3 +1,22 @@
+.view_section {
+    margin: 0 auto;
+    width: 85%;
+}
+
+.post_write_section {
+    margin-top: 50px;
+    width: 70%;
+}
+
+.board_title_section {
+    width: 100%;
+    /* display: table; */
+}
+
+.post_dropdown_box, .input_title_row {
+    /* display: table-cell; */
+}
+
 /*드롭다운 css*/
 @keyframes slide-fade-in-dropdown-animation {
     0% {
@@ -42,3 +61,37 @@
     position : absolute;
 }
 /*======================================*/
+
+.input_title_row {
+    box-sizing: border-box;
+    /* margin-top: 22px; */
+    margin-left: 150px;
+    height: 50px;
+    padding: 13px 15px;
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+
+    width: calc(100% - 150px);
+}
+
+.input_title {
+    width: 100%;
+    padding: 0px;
+
+    border: 0px;
+
+    font-size: 20px;
+
+    color: rgba(115, 115, 115, 0.8);
+}
+
+
+
+.post_write_box {
+    width: 100%;
+}
+
+.line {
+    width: 100%;
+
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+}

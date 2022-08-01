@@ -19,6 +19,7 @@ function BoardList() {
     }, [])
     return(
         <div className = "board_list_container">
+            <div className="nowBoard">#졸업생 게시판</div>
             <table className = "board_list_table">
                 <thead className = "board_head">
                 <tr>
