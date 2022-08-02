@@ -1,24 +1,36 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import {useNavigate, useLocation} from 'react-router-dom';
 import BoardFooter from './boardlist_footer';
+import axios from "axios";
+import Pagination from "react-js-pagination";
+import './boardrow.css';
 
-function BoardRow ({boardList}){
+function BoardRow (){
+    const [list, setList] = useState([]);
     const [page, setPage] = useState(1);
-    const [limit, setLimit] = useState(5);
+    const [limit, setLimit] = useState(3);
     const [total, setTotal] = useState(12);
     const offset = (page-1) * limit;
-    const copy = boardList.slice(); //slice()는 배열의 복사복을 만듦
-    const list = copy.reverse();
     const navigate = useNavigate();
     const location = useLocation();
     let cat = ""; //카테고리
-    //let num = boardList.board.length; //게시물 길이(게시물 번호를 위한 것)
+    //let num = boardList.articles.length; //게시물 길이(게시물 번호를 위한 것)
 
-    // useEffect(() => {
-    //     setList(boardList.board);
-    //     setLimit(boardList.postLimit);
-    //     setPage(boardList.pageNum);
-    // })
+    const handlePageChange = (page) => {
+        setPage(page);
+    };
+    const getList = async () => {
+        const posts = await axios.get("/article" + location.pathname)
+        console.log(posts.data);
+        //setList(posts.data.articles);
+        const copy = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
+        const _list = copy.reverse();
+        setList(_list);
+    }
+    useEffect(() => {
+        //axios.get("http://kittaxipool.iptime.org:3000/article/")
+        getList();
+    }, [])
 
     function timer(d){
         let timestamp = d;
@@ -66,13 +78,16 @@ function BoardRow ({boardList}){
                 })
             }
             <br/>
-            <BoardFooter
-                total={total}
-                limit={limit}
-                page={page}
-                setPage={setPage}
+            <BoardFooter/>
+            <Pagination
+                activePage={page} //현재 페이지
+                itemsCountPerPage={limit} //한 페이지당 보여줄 리스트 아이템의 개수
+                totalItemsCount={list.length} //총 아이템의 개수
+                pageRangeDisplayed={5} //Paginator 내에서 보여줄 페이지의 범위
+                prevPageText={"‹"} //"이전"을 나타낼 텍스트
+                nextPageText={"›"} //"다음"을 나타낼 텍스트
+                onChange={handlePageChange} //페이지가 바뀔 때 핸들링해줄 함수
             />
-            {/*<BoardFooter/>*/}
         </>
     )
 }

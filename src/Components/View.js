@@ -55,13 +55,13 @@ function ViewPage(){
     const getPost = async () => {
         //await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + id)
         const posts = await axios.get("/article/view/" + id)
-        console.log(posts.data.article);
+        console.log(posts.data);
         console.log(posts.data.next[0]);
         console.log(posts.data.prev[0]);
-        setList(posts.data.article);
+        setList(posts.data.articleInfo);
         setNext(posts.data.next[0]);
         setPrev(posts.data.prev[0]);
-        setDate(timer(posts.data.article.date));
+        setDate(timer(posts.data.articleInfo.date));
     }
     useEffect(() => {
         getPost();
@@ -73,9 +73,9 @@ function ViewPage(){
                 <h1 className="title">&#xE001;_ {list.title}</h1>
                 <div>
                     <div className="post_info_table">
-                        <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span> seongjxn{/* {list.author} */}</div>
-                        <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span> 2{/* {list.views} */}</div>
-                        <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span> 2022.07.30 18:09:00{/* {date} */}</div>
+                        <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span>{list.author}</div>
+                        <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span>{list.views}</div>
+                        <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span>{date}</div>
                     </div>
                     <div className="line"></div>
                     <div className="post_content" style={{height: '400px'}} dangerouslySetInnerHTML={{__html : list.content}}></div>

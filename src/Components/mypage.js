@@ -125,25 +125,19 @@ function MyInfoPage(){
             </div>
             <div className="mypost_box">
                 {
-                    // myArticle.slice(0).reverse().map((i) => {
-                    //     let goView = (e) => {
-                    //         navigate('view/'+i._id, {state : i});
-                    //     }
-                    //     return (
-                    //         <tr onClick={goView}>
-                    //             <td>{num--}</td>
-                    //             <td>{i.title}</td>
-                    //             <td>{timer(i.date)}</td>
-                    //             <td>{i.commentList.length}</td>
-                    //         </tr>
-                    //     )
-                    // })
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                    </tr>
+                    myArticle.slice(0).reverse().map((i) => {
+                        let goView = (e) => {
+                            navigate('view/'+i._id, {state : i});
+                        }
+                        return (
+                            <tr onClick={goView}>
+                                <td>{num--}</td>
+                                <td>{i.title}</td>
+                                <td>{timer(i.date)}</td>
+                                <td>{i.commentList.length}</td>
+                            </tr>
+                        )
+                    })
                 }
             </div>
         </>

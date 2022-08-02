@@ -14,30 +14,9 @@ function BoardFooter({ total, limit, page, setPage }){
         }
     }
     return (
-        <>
-            <Nav>
-                <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
-                    &lt;
-                </Button>
-                {Array(numPages)
-                    .fill()
-                    .map((_, i) => (
-                        <Button
-                            key={i + 1}
-                            onClick={() => setPage(i + 1)}
-                            aria-current={page === i + 1 ? "page" : null}
-                        >
-                            {i + 1}
-                        </Button>
-                    ))}
-                <Button onClick={() => setPage(page + 1)} disabled={page === numPages}>
-                    &gt;
-                </Button>
-            </Nav>
-            <div className = "boardlist_footer">
-                <button type="button" className="post_write" onClick={loginCheck}>글쓰기</button>
-            </div>
-        </>
+        <div className = "boardlist_footer">
+            <button type="button" className="post_write" onClick={loginCheck}>글쓰기</button>
+        </div>
     )
 }
 
