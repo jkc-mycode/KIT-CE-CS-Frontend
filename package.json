@@ -52,5 +52,5 @@
     "babel-eslint": "^10.1.0",
     "http-proxy-middleware": "^2.0.6"
   },
-  "proxy": "http://localhost:3001/"
+  "proxy": "http://kittaxipool.iptime.org:3000/"
 }

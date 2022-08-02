@@ -8,7 +8,7 @@ function BoardList() {
     const [list, setList] = useState([]);
     let temp = []; //배열 임시저장 변수
     useEffect(() => {
-        axios.get("/article/free")
+        axios.get("http://kittaxipool.iptime.org:3000/article/free")
             .then((res) => {
                 console.log(res.data.board);
                 setList(res.data.board);

@@ -62,7 +62,7 @@ function PostWrite(){
             "Content-Type": `application/json`,
         };
         console.log(data.author);
-        axios.post('/article', data, headers)
+        axios.post('http://kittaxipool.iptime.org:3000/article', data, headers)
             .then((res) => {
                 console.log(res.data);
             })
