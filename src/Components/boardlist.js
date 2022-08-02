@@ -7,11 +7,11 @@ import axios from 'axios';
 function BoardList() {
     const [list, setList] = useState([]);
     useEffect(() => {
-        //axios.get("http://kittaxipool.iptime.org:3000/article/")
-        axios.get("/article/")
+        axios.get("http://kittaxipool.iptime.org:3000/article/")
+        //axios.get("/article/")
             .then((res) => {
                 console.log(res.data);
-                setList(res.data.board);
+                setList(res.data.articles);
             })
             .catch((e) => {
                 console.log(e);

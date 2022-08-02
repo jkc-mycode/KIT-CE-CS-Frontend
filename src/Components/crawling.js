@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './crawling.css';
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
 
@@ -38,6 +39,7 @@ function Crawling() {
 
     return (
         <div className="crawlingBox">
+            <div className="crawlingBoxMsg">#학과 공지사항</div>
             <table>
                 {
                     testlist.map((i) => {

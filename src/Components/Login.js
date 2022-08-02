@@ -32,7 +32,7 @@ function LoginPage(){
             console.log('ID : ', id)
             console.log('PW : ', password)
 
-            axios.post('/log/in', data, headers, {withCredentials : true})
+            axios.post('http://kittaxipool.iptime.org:3000/log/in', data, headers, {withCredentials : true})
                 .then((res) => {
                     sessionStorage.setItem("id", id);
                     sessionStorage.setItem("message", res.data.message);
@@ -42,7 +42,7 @@ function LoginPage(){
                         alert(res.data.message);
                         navigate('/login');
                     }else{
-                        navigate('/'); //임시로 메인으로 이돟
+                        // navigate('/'); //임시로 메인으로 이돟
                         window.location.reload();
                     }
                 })
