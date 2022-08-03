@@ -13,9 +13,9 @@ function PostUpdate(){
     const [title, setTitle] = useState(location.state.title); //제목
     let content = location.state.content //내용 (HTML 통째로 저장)
     const viewId = useParams(); //게시물id
-    // const [dropdownVisibility, setDropdownVisibility] = useState(false);
-    // const [dropdownName, setDropdownName] = useState("게시판을 선택해주세요.");
-    // const [dropdownValue, setDropdownValue] = useState("");
+    const [dropdownVisibility, setDropdownVisibility] = useState(false);
+    const [dropdownName, setDropdownName] = useState("게시판을 선택해주세요.");
+    const [dropdownValue, setDropdownValue] = useState("");
     const navigate = useNavigate();
 
     const onTitleHandler = (event) => {
@@ -25,12 +25,12 @@ function PostUpdate(){
         console.log(value);
         content = value;
     }
-    // const onDropdownHandler = (event) => {
-    //     console.log(event.currentTarget.name);
-    //     setDropdownName(event.currentTarget.name);
-    //     setDropdownValue(event.currentTarget.value);
-    //     setDropdownVisibility(false);
-    // }
+    const onDropdownHandler = (event) => {
+        console.log(event.currentTarget.name);
+        setDropdownName(event.currentTarget.name);
+        setDropdownValue(event.currentTarget.value);
+        setDropdownVisibility(false);
+    }
 
     const modules = {
         toolbar: [
@@ -56,9 +56,9 @@ function PostUpdate(){
         event.preventDefault();
         let data = {
             title: `${title}`,
-            // author: `${window.sessionStorage.getItem("name")}`,
-            // //세션으로 message만 가져와서 name도 가져오도록  backend코드 수정
-            // tag: `${dropdownValue}`,
+            author: `${window.sessionStorage.getItem("name")}`,
+            //세션으로 message만 가져와서 name도 가져오도록  backend코드 수정
+            tag: `${dropdownValue}`,
             content: `${content}`
         };
         const headers = {
@@ -87,23 +87,23 @@ function PostUpdate(){
                 />
             </div>
             <br/>
-            {/*<div className="post_dropdown_box">*/}
-            {/*    <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>*/}
-            {/*        {*/}
-            {/*            dropdownVisibility*/}
-            {/*                ? `${dropdownName}`*/}
-            {/*                : `${dropdownName}`*/}
-            {/*        }*/}
-            {/*    </button>*/}
-            {/*    <Dropdown visibility={dropdownVisibility}>*/}
-            {/*        <ul>*/}
-            {/*            <li><button type="button" value="free" name="자유게시판" onClick={onDropdownHandler}>자유게시판</button></li>*/}
-            {/*            <li><button type="button" value="notice" name="공지사항" onClick={onDropdownHandler}>공지사항</button></li>*/}
-            {/*            <li><button type="button" value="study" name="학업게시판" onClick={onDropdownHandler}>학업게시판</button></li>*/}
-            {/*            <li><button type="button" value="graduate" name="졸업생게시판" onClick={onDropdownHandler}>졸업생게시판</button></li>*/}
-            {/*        </ul>*/}
-            {/*    </Dropdown>*/}
-            {/*</div>*/}
+            <div className="post_dropdown_box">
+                <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
+                    {
+                        dropdownVisibility
+                            ? `${dropdownName}`
+                            : `${dropdownName}`
+                    }
+                </button>
+                <Dropdown visibility={dropdownVisibility}>
+                    <ul>
+                        <li><button type="button" value="free" name="자유게시판" onClick={onDropdownHandler}>자유게시판</button></li>
+                        <li><button type="button" value="notice" name="공지사항" onClick={onDropdownHandler}>공지사항</button></li>
+                        <li><button type="button" value="study" name="학업게시판" onClick={onDropdownHandler}>학업게시판</button></li>
+                        <li><button type="button" value="graduate" name="졸업생게시판" onClick={onDropdownHandler}>졸업생게시판</button></li>
+                    </ul>
+                </Dropdown>
+            </div>
             <br/>
             <br/>
             <div className="post_write_box">

@@ -19,8 +19,8 @@ function Header(){
     let sessionStorage = window.sessionStorage;
     let user_id = sessionStorage.getItem("id");
     let loginmessage = sessionStorage.getItem("message");
-    //console.log(JSON.stringify(sessionStorage));
-    if(loginmessage === "Welcome! "+user_id){ //sessionStorage로 변경할것
+    console.log(user_id);
+    if(user_id !== null){ //sessionStorage로 변경할것
         return(
             <div className = "header">
                 <div className ="header_container">

@@ -27,28 +27,28 @@ function App() {
         <Header></Header>
         <MenuBar></MenuBar>
 
-        <Routes>
-            <Route path="/" element={<BoardList/>}></Route>
-            <Route path="/notice" element={<BoardList_Notice/>}></Route>
-            <Route path="/free" element={<BoardList_Free/>}></Route>
-            <Route path="/study" element={<BoardList_Study/>}></Route>
-            <Route path="/graduate" element={<BoardList_Graduate/>}></Route>
-            <Route path="/login" element={<LoginPage/>}></Route>
-            <Route path="/signup" element={<Register/>}></Route>
-            <Route path="/info" element={<MyInfoPage/>}></Route>
-            <Route path="/view/:viewId" element={<ViewPage/>}></Route>
-            <Route path="/notice/view/:viewId" element={<ViewPage/>}></Route>
-            <Route path="/free/view/:viewId" element={<ViewPage/>}></Route>
-            <Route path="/study/view/:viewId" element={<ViewPage/>}></Route>
-            <Route path="/graduate/view/:viewId" element={<ViewPage/>}></Route>
-            <Route path="/post_write" element={<PostWrite/>}></Route>
-            <Route path="/post_update/:viewId" element={<PostUpdate/>}></Route>
-        </Routes>
-        <Crawling></Crawling>
-        <Footer></Footer>
-      {/* </div> */}
-    </Fragment>
-  );
+            <Routes>
+                <Route path="/" element={<BoardList/>}></Route>
+                <Route path="/notice" element={<BoardList_Notice/>}></Route>
+                <Route path="/free" element={<BoardList_Free/>}></Route>
+                <Route path="/study" element={<BoardList_Study/>}></Route>
+                <Route path="/graduate" element={<BoardList_Graduate/>}></Route>
+                <Route path="/login" element={<LoginPage/>}></Route>
+                <Route path="/signup" element={<Register/>}></Route>
+                <Route path="/info" element={<MyInfoPage/>}></Route>
+                <Route path="/view/:viewId" element={<ViewPage/>}></Route>
+                <Route path="/notice/view/:viewId" element={<ViewPage/>}></Route>
+                <Route path="/free/view/:viewId" element={<ViewPage/>}></Route>
+                <Route path="/study/view/:viewId" element={<ViewPage/>}></Route>
+                <Route path="/graduate/view/:viewId" element={<ViewPage/>}></Route>
+                <Route path="/post_write" element={<PostWrite/>}></Route>
+                <Route path="/post_update/:viewId" element={<PostUpdate/>}></Route>
+            </Routes>
+            {/*<Crawling></Crawling>*/}
+            {/*<Footer></Footer>*/}
+            {/* </div> */}
+        </Fragment>
+    );
 }
 
 export default App;

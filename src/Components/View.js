@@ -55,7 +55,7 @@ function ViewPage(){
     const getPost = async () => {
         //await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + id)
         const posts = await axios.get("/article/view/" + id)
-        console.log(posts.data);
+        console.log(posts.data.article);
         console.log(posts.data.next[0]);
         console.log(posts.data.prev[0]);
         setList(posts.data.articleInfo);
@@ -96,16 +96,16 @@ function ViewPage(){
                         <td><span class="material-symbols-outlined">&#xe316;</span> 다음글</td>
                         {
                             next === undefined
-                            ? <td>다음 글이 없습니다.</td>
-                            : <td onClick={() => {navigate('/view/'+next._id); window.location.reload(); }}>{next.title}</td>
+                                ? <td>다음 글이 없습니다.</td>
+                                : <td onClick={() => {navigate('/view/'+next._id); window.location.reload(); }}>{next.title}</td>
                         }
                     </tr>
                     <tr>
                         <td><span class="material-symbols-outlined">&#xe313;</span> 이전글</td>
                         {
                             prev === undefined
-                            ? <td>이전 글이 없습니다.</td>
-                            : <td onClick={() => {navigate('/view/'+prev._id); window.location.reload(); }}>{prev.title}</td>
+                                ? <td>이전 글이 없습니다.</td>
+                                : <td onClick={() => {navigate('/view/'+prev._id); window.location.reload(); }}>{prev.title}</td>
                         }
                     </tr>
                 </table>

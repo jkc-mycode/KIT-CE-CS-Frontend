@@ -11,7 +11,7 @@ function PostWrite(){
     const [title, setTitle] = useState(""); //제목
     const [content, setContent ] = useState(""); //내용 (HTML 통째로 저장)
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
-    const [dropdownName, setDropdownName] = useState("게시판 선택");
+    const [dropdownName, setDropdownName] = useState("게시판을 선택해주세요.");
     const [dropdownValue, setDropdownValue] = useState("");
     const navigate = useNavigate();
 
@@ -62,7 +62,7 @@ function PostWrite(){
             "Content-Type": `application/json`,
         };
         console.log(data.author);
-        axios.post('http://kittaxipool.iptime.org:3000/article', data, headers)
+        axios.post('/article', data, headers)
             .then((res) => {
                 console.log(res.data);
             })
@@ -94,15 +94,15 @@ function PostWrite(){
                             </ul>
                         </Dropdown>
                     </div>
-                    <div className="input_title_box">&#xE001;_ 
+                    <div className="input_title_box">&#xE001;_
                         <div className="input_title_row">
                             <input type="text"
-                                name="title"
-                                value={title}
-                                placeholder="제목을 입력해주세요."
-                                className="input_title"
-                                onChange={onTitleHandler}
-                                style={{height: "20px", width: "800px"}}
+                                   name="title"
+                                   value={title}
+                                   placeholder="제목을 입력해주세요."
+                                   className="input_title"
+                                   onChange={onTitleHandler}
+                                   style={{height: "20px", width: "800px"}}
                             />
                         </div>
                     </div>
