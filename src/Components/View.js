@@ -31,31 +31,33 @@ function ViewPage(){
     }
 
     const updateLoginCheck = () => {
-        if(list.author !== window.sessionStorage.getItem("name")){
+        if(list.author !== window.sessionStorage.getItem("id")){
             alert("사용이 불가합니다.");
         }else{
             navigate('/post_update/' + id, {state: list});
         }
     }
     const deletePost = () => {
-        if(list.author !== window.sessionStorage.getItem("name")){
-            alert("사용이 불가합니다.");
-        }else{
+        if(window.confirm("정말 삭제하시겠습니까?")){
+            console.log("여기",id);
             axios.delete('/article/' + id)
                 .then((res) => {
                     console.log(res.data);
+                    alert("삭제되었습니다.");
                     navigate('/');
                 })
                 .catch((e) => {
                     console.log(e);
                 })
+        }else{
+            console.log("취소");
         }
     }
 
     const getPost = async () => {
-        //await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + id)
+        //const posts = await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + id)
         const posts = await axios.get("/article/view/" + id)
-        console.log(posts.data.article);
+        console.log(posts);
         console.log(posts.data.next[0]);
         console.log(posts.data.prev[0]);
         setList(posts.data.articleInfo);
@@ -73,7 +75,7 @@ function ViewPage(){
                 <h1 className="title">&#xE001;_ {list.title}</h1>
                 <div>
                     <div className="post_info_table">
-                        <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span>{list.author}</div>
+                        <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span>{list.authorName}</div>
                         <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span>{list.views}</div>
                         <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span>{date}</div>
                     </div>
@@ -82,8 +84,15 @@ function ViewPage(){
                 </div>
                 <div>
                     <div className="edit_delete_table">
-                        <div className="post_edit" onClick={updateLoginCheck}><span class="material-symbols-outlined">&#xe3c9;</span> 수정</div>
-                        <div className="post_delete" onClick={deletePost}><span class="material-symbols-outlined">&#xe92b;</span> 삭제</div>
+                        {
+                            list.author === "kjc"
+                                ? <>
+                                <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
+                                <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
+                                </>
+                                : null
+                        }
+
                     </div>
                     <div className="line"></div>
                 </div>
