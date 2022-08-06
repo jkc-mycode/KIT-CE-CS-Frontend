@@ -21,9 +21,8 @@ function BoardRow (){
     };
     const getList = async () => {
         //const posts = await axios.get("http://kittaxipool.iptime.org:3000/article/")
-        const posts = await axios.get("/article/")
+        const posts = await axios.get("/article" + location.pathname)
         console.log(posts);
-        //setList(posts.data.articles);
         const copy = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
         const _list = copy.reverse();
         setList(_list);

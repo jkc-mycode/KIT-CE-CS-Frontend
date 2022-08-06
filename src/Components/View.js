@@ -85,7 +85,7 @@ function ViewPage(){
                 <div>
                     <div className="edit_delete_table">
                         {
-                            list.author === "kjc"
+                            list.author === window.sessionStorage.getItem("id")
                                 ? <>
                                 <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
                                 <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>

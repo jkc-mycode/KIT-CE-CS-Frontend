@@ -56,8 +56,6 @@ function PostUpdate(){
         event.preventDefault();
         let data = {
             title: `${title}`,
-            author: `${window.sessionStorage.getItem("name")}`,
-            //세션으로 message만 가져와서 name도 가져오도록  backend코드 수정
             tag: `${dropdownValue}`,
             content: `${content}`
         };
