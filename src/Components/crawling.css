@@ -1,14 +1,14 @@
-.crawlingBox {
-    float: right;
-    width: 25%;
-}
-
-
 .crawlingBoxMsg {
-    margin: 50px auto auto;
-    width: 85%;
+    margin-top: 50px;
+    margin-left: 15px;
 
     font-weight: 500;
     font-size: 24px;
     /* color: #224459; */
+}
+
+.crawling {
+    margin-top: 15px;
+
+    width: 100%;
 }

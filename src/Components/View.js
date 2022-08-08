@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams, useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
 import './View.css';
+import Crawling from './crawling.js';
 
 
 function ViewPage(){
@@ -70,7 +71,7 @@ function ViewPage(){
     }, [])
     return (
         <div className="view_section">
-            <div className="post_section">
+            <div className="left_section">
                 <div className="post_tag">#{list.tag}</div>
                 <h1 className="title">&#xE001;_ {list.title}</h1>
                 <div>
@@ -119,6 +120,9 @@ function ViewPage(){
                     </tr>
                 </table>
                 {/* <BoardList/> */}
+            </div>
+            <div className='right_section'>
+                <Crawling></Crawling>
             </div>
         </div>
     )

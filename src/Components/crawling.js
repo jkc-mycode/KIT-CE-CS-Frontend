@@ -40,7 +40,7 @@ function Crawling() {
     return (
         <div className="crawlingBox">
             <div className="crawlingBoxMsg">#학과 공지사항</div>
-            <table>
+            <table className="crawling">
                 {
                     testlist.map((i) => {
                         let goView = (e) => {
