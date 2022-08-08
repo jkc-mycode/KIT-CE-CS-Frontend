@@ -39,7 +39,7 @@ function Crawling() {
 
     return (
         <div className="crawlingBox">
-            <div className="crawlingBoxMsg">#학과 공지사항</div>
+            <div className="crawlingBoxMsg">&#xE001;_ 학과 공지사항</div>
             <table className="crawling">
                 {
                     testlist.map((i) => {

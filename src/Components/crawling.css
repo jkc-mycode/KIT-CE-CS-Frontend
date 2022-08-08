@@ -11,4 +11,10 @@
     margin-top: 15px;
 
     width: 100%;
+
+    border-collapse: collapse;
+    border-top: 2px solid rgba(115, 115, 115, 0.8);
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+
+    text-align: center;
 }

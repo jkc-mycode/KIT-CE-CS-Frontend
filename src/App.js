@@ -44,7 +44,7 @@ function App() {
                 <Route path="/post_write" element={<PostWrite/>}></Route>
                 <Route path="/post_update/:viewId" element={<PostUpdate/>}></Route>
             </Routes>
-            {/*<Crawling></Crawling>*/}
+            
             {/*<Footer></Footer>*/}
             {/* </div> */}
         </Fragment>
