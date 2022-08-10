@@ -1,22 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import './boardlist.css';
 import BoardRow from './boardrow';
-import axios from 'axios';
-
 
 function BoardList() {
-    const [list, setList] = useState([]);
-    let temp = []; //배열 임시저장 변수
-    useEffect(() => {
-        axios.get("http://kittaxipool.iptime.org:3000/article/free")
-            .then((res) => {
-                console.log(res.data.board);
-                setList(res.data.board);
-            })
-            .catch((e) => {
-                console.log(e);
-            })
-    }, [])
     return(
         <div className = "board_list_container">
             <div className="nowBoard">#자유 게시판</div>
@@ -31,7 +17,7 @@ function BoardList() {
                 </tr>
                 </thead>
                 <tbody className = "board_body">
-                <BoardRow boardList={list}/>
+                <BoardRow/>
                 </tbody>
             </table>
         </div>
