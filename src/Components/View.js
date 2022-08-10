@@ -12,6 +12,7 @@ function ViewPage(){
     const [next, setNext] = useState([]);
     const [prev, setPrev] = useState([]);
     const [date, setDate] = useState();
+    const [file, setFile] = useState([]);
     let id = useParams().viewId;
 
     function timer(d){
@@ -34,32 +35,32 @@ function ViewPage(){
         const responseType = "blob";
         const fileData = await axios.get("/article/download/62f3943331b4d954ec88bcc7", responseType)
         console.log(fileData);
-        const blob = new Blob([fileData.data])
-
-        const fileUrl = window.URL.createObjectURL(blob);
-
-        const link = document.createElement('a');
-        link.href = fileUrl;
-        link.style.display = 'none';
-
-        const injectFilename = (res) => {
-            const disposition = res.headers['content-disposition'];
-
-            const fileName = decodeURI(
-                disposition
-                    .split('filename*=UTF-8')[1]
-                    // .match(/filename*[^;=\n]*=((['"]).*?\2|[^;\n]*)/)
-                    .replace(/['"]/g, '')
-            );
-            console.log(fileName);
-            return fileName;
-        };
-
-        link.download = injectFilename(fileData);
-
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
+        // const blob = new Blob([fileData.data])
+        //
+        // const fileUrl = window.URL.createObjectURL(blob);
+        //
+        // const link = document.createElement('a');
+        // link.href = fileUrl;
+        // link.style.display = 'none';
+        //
+        // const injectFilename = (res) => {
+        //     const disposition = res.headers['content-disposition'];
+        //
+        //     const fileName = decodeURI(
+        //         disposition
+        //             .split('filename*=UTF-8')[1]
+        //             // .match(/filename*[^;=\n]*=((['"]).*?\2|[^;\n]*)/)
+        //             .replace(/['"]/g, '')
+        //     );
+        //     console.log(fileName);
+        //     return fileName;
+        // };
+        //
+        // link.download = injectFilename(fileData);
+        //
+        // document.body.appendChild(link);
+        // link.click();
+        // link.remove();
     }
     const updateLoginCheck = () => {
         if(list.author !== window.sessionStorage.getItem("id")){
@@ -94,6 +95,8 @@ function ViewPage(){
         setNext(posts.data.next[0]);
         setPrev(posts.data.prev[0]);
         setDate(timer(posts.data.articleInfo.date));
+        console.log(posts.data.files);
+        setFile(posts.data.files);
     }
     useEffect(() => {
         getPost();
@@ -111,7 +114,7 @@ function ViewPage(){
                     </div>
                     <div className="line"></div>
                     <div className="file_download_box" onClick={fileDownload}>파일 다운로드란</div>
-
+                    {/*<a href={"http://localhost:3001/article/download/"+file[0]._id}>{file[0].originName}</a>*/}
                     <div className="line"></div>
                     <div className="post_content" style={{height: '400px'}} dangerouslySetInnerHTML={{__html : list.content}}></div>
                 </div>

@@ -45,6 +45,7 @@ function LoginPage(){
                     }else{
                         navigate('/'); //임시로 메인으로 이돟
                         window.location.reload();
+                        console.log(res);
                     }
                 })
                 .catch((e) => {

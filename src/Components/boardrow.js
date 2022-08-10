@@ -8,7 +8,7 @@ import './boardrow.css';
 function BoardRow (){
     const [list, setList] = useState([]);
     const [page, setPage] = useState(1);
-    const [limit, setLimit] = useState(3);
+    const [limit, setLimit] = useState(3); //20개 고정
     const [total, setTotal] = useState(12);
     const offset = (page-1) * limit;
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ function BoardRow (){
     };
     const getList = async () => {
         //const posts = await axios.get("http://kittaxipool.iptime.org:3000/article/")
-        const posts = await axios.get("/article" + location.pathname)
+        const posts = await axios.get("/article" + location.pathname) //뒤에 pagenum붙여서 보내는 걸로
         console.log(posts);
         const copy = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
         const _list = copy.reverse();
@@ -83,7 +83,7 @@ function BoardRow (){
                 activePage={page} //현재 페이지
                 itemsCountPerPage={limit} //한 페이지당 보여줄 리스트 아이템의 개수
                 totalItemsCount={list.length} //총 아이템의 개수
-                pageRangeDisplayed={5} //Paginator 내에서 보여줄 페이지의 범위
+                pageRangeDisplayed={2} //Paginator 내에서 보여줄 페이지의 범위(10개)
                 prevPageText={"‹"} //"이전"을 나타낼 텍스트
                 nextPageText={"›"} //"다음"을 나타낼 텍스트
                 onChange={handlePageChange} //페이지가 바뀔 때 핸들링해줄 함수
