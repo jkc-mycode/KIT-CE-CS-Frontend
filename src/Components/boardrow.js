@@ -14,7 +14,6 @@ function BoardRow (){
     const navigate = useNavigate();
     const location = useLocation();
     let cat = ""; //카테고리
-    //let num = boardList.articles.length; //게시물 길이(게시물 번호를 위한 것)
 
     const handlePageChange = (page) => {
         setPage(page);
@@ -68,7 +67,9 @@ function BoardRow (){
                                     ? <td>{cat}</td>
                                     : null
                             }
-                            <td>{i.title}</td>
+                            <td>
+                                <div className="title_length">{i.title}</div>
+                            </td>
                             <td>{i.authorName}</td>
                             <td>{timer(i.date)}</td>
                             <td>{i.views}</td>

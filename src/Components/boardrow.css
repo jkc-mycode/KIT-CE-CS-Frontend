@@ -52,3 +52,10 @@ ul.pagination li a.active {
     height: 30px;
     color: #337ab7;
 }
+.title_length {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
+    height: 20px;
+}
