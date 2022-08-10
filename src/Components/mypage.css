@@ -1,8 +1,30 @@
+.view_section {
+    margin: 0 auto;
+    width: 85%;
+    display: table;
+}
+
+.left_mypage {
+    margin-top: 50px;
+    width: 35%;
+    display: table-cell;
+}
+
+.margin_section {
+    width: 3%;
+}
+
+.right_mypage {
+    margin-top: 50px;
+    width: 62%;
+    display: table-cell;
+}
+
 .mypage_box {
     margin: 0 auto;
     margin-top: 50px;
 
-    width: 500px;
+    /* width: 500px; */
 }
 
 .mypage_title {
@@ -59,4 +81,12 @@
 
 .button_container{
     position: relative;
+}
+
+.mypost_box {
+    width: 100%;
+}
+
+.mypost_box > table {
+    width: 100%;
 }
