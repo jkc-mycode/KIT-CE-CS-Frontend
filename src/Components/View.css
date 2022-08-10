@@ -1,11 +1,23 @@
 .view_section {
     margin: 0 auto;
     width: 85%;
+    display: table;
 }
 
-.post_section {
+.left_section {
     margin-top: 50px;
     width: 70%;
+    display: table-cell;
+}
+
+.margin_section {
+    width: 3%;
+}
+
+.right_section {
+    margin-top: 50px;
+    width: 27%;
+    display: table-cell;
 }
 
 /* .board_list_table {

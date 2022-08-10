@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams, useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
 import './View.css';
+import Crawling from './crawling.js';
 
 
 function ViewPage(){
@@ -103,7 +104,7 @@ function ViewPage(){
     }, [])
     return (
         <div className="view_section">
-            <div className="post_section">
+            <div className="left_section">
                 <div className="post_tag">#{list.tag}</div>
                 <h1 className="title">&#xE001;_ {list.title}</h1>
                 <div>
@@ -118,20 +119,17 @@ function ViewPage(){
                     <div className="line"></div>
                     <div className="post_content" style={{height: '400px'}} dangerouslySetInnerHTML={{__html : list.content}}></div>
                 </div>
-                <div>
-                    <div className="edit_delete_table">
-                        {
-                            list.author === window.sessionStorage.getItem("id")
-                                ? <>
-                                <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
-                                <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
-                                </>
-                                : null
-                        }
-
-                    </div>
-                    <div className="line"></div>
+                <div className="edit_delete_table">
+                    {
+                        list.author === window.sessionStorage.getItem("id")
+                            ? <>
+                            <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
+                            <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
+                            </>
+                            : null
+                    }
                 </div>
+                <div className="line"></div>
                 <div className="test">댓글 메뉴 위치 (예정)</div>
                 <div className="line"></div>
                 <br/>
@@ -154,7 +152,10 @@ function ViewPage(){
                         }
                     </tr>
                 </table>
-                {/* <BoardList/> */}
+            </div>
+            <div className="margin_section"></div>
+            <div className='right_section'>
+                <Crawling></Crawling>
             </div>
         </div>
     )
