@@ -30,6 +30,37 @@ function ViewPage(){
         return returnDate;
     }
 
+    const fileDownload = async () => {
+        const responseType = "blob";
+        const fileData = await axios.get("/article/download/62f3943331b4d954ec88bcc7", responseType)
+        console.log(fileData);
+        const blob = new Blob([fileData.data])
+
+        const fileUrl = window.URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = fileUrl;
+        link.style.display = 'none';
+
+        const injectFilename = (res) => {
+            const disposition = res.headers['content-disposition'];
+
+            const fileName = decodeURI(
+                disposition
+                    .split('filename*=UTF-8')[1]
+                    // .match(/filename*[^;=\n]*=((['"]).*?\2|[^;\n]*)/)
+                    .replace(/['"]/g, '')
+            );
+            console.log(fileName);
+            return fileName;
+        };
+
+        link.download = injectFilename(fileData);
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    }
     const updateLoginCheck = () => {
         if(list.author !== window.sessionStorage.getItem("id")){
             alert("사용이 불가합니다.");
@@ -53,7 +84,6 @@ function ViewPage(){
             console.log("취소");
         }
     }
-
     const getPost = async () => {
         //const posts = await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + id)
         const posts = await axios.get("/article/view/" + id)
@@ -79,6 +109,9 @@ function ViewPage(){
                         <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span>{list.views}</div>
                         <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span>{date}</div>
                     </div>
+                    <div className="line"></div>
+                    <div className="file_download_box" onClick={fileDownload}>파일 다운로드란</div>
+
                     <div className="line"></div>
                     <div className="post_content" style={{height: '400px'}} dangerouslySetInnerHTML={{__html : list.content}}></div>
                 </div>

@@ -58,16 +58,18 @@ function PostWrite(){
         console.log(fileUpload);
 
         const formData = new FormData();
-        await formData.append('fileList', fileUpload);
-
+        if(fileUpload){
+            await formData.append('fileList', fileUpload);
+        }
         let data = {
             title: `${title}`,
-            author: `${window.sessionStorage.getItem("name")}`,
+            author: `${window.sessionStorage.getItem("id")}`, //사실 없어도 그만?
             tag: `${dropdownValue}`,
             content: `${content}`,
             // files: `${formData}`
         };
         formData.append("data", JSON.stringify(data));
+        console.log(data);
         const res = await axios.post(
             '/article/',
             formData,
@@ -77,8 +79,9 @@ function PostWrite(){
                 }
             }
         );
-        alert("게시물이 등록되었습니다!");
-        navigate('/');
+
+        // alert("게시물이 등록되었습니다!");
+        // navigate('/');
 
         // let data = {
         //     title: `${title}`,
@@ -99,7 +102,7 @@ function PostWrite(){
         //     })
         // // alert("게시물이 등록되었습니다!");
         // // navigate('/');
-    }, [fileUpload])
+    }, [fileUpload, title, dropdownValue, content])
 
     return (
         <div className="view_section">
