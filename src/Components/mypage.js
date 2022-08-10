@@ -125,6 +125,9 @@ function MyInfoPage(){
                         </div>
                     </form>
                 </div>
+                <div className='admin_box'>
+                    <h1>&#xE001;_ UserGrade</h1>
+                </div>
             </div>
             <div className="margin_section"></div>
             <div className='right_mypage'>
@@ -157,6 +160,29 @@ function MyInfoPage(){
                             <td>title</td>
                             <td>date</td>
                             <td>2z</td>
+                        </tr>
+                    </table>
+                </div>
+                <div className='report_box'>
+                    <h1>&#xE001;_ ReportList</h1>
+                    <table>
+                        <tr>
+                            <th>번호</th>
+                            <th>카테고리</th>
+                            <th>ID</th>
+                            <th>신고사유</th>
+                            <th>신고자</th>
+                            <th>신고일</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>댓글</td>
+                            <td>asdf213</td>
+                            <td>qwer</td>
+                            <td>qwerty</td>
+                            <td>2022.08.10 17:00</td>
+                            <td>삭제</td>
                         </tr>
                     </table>
                 </div>

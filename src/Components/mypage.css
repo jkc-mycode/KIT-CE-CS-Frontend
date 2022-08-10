@@ -25,6 +25,7 @@
     margin-top: 50px;
 
     /* width: 500px; */
+    height : 800px
 }
 
 .mypage_title {
@@ -85,8 +86,13 @@
 
 .mypost_box {
     width: 100%;
+    height: 800px;
 }
 
 .mypost_box > table {
+    width: 100%;
+}
+
+.report_box > table {
     width: 100%;
 }
