@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
@@ -13,6 +13,7 @@ function PostWrite(){
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [dropdownName, setDropdownName] = useState("게시판을 선택해주세요.");
     const [dropdownValue, setDropdownValue] = useState("");
+    const [fileUpload, setFileUpload] = useState([]);	//파일
     const navigate = useNavigate();
 
     const onTitleHandler = (event) => {
@@ -28,6 +29,10 @@ function PostWrite(){
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
     }
+    const onFileHandler = useCallback(async (e) => {
+        console.log(e.target.files);
+        setFileUpload(e.target.files[0]);
+    }, [fileUpload])
 
     const modules = {
         toolbar: [
@@ -49,29 +54,52 @@ function PostWrite(){
         'align', 'color', 'background',
     ]
 
-    const postWrite = (event) => { //이어서하기
-        event.preventDefault();
+    const postWrite = useCallback(async () => {
+        console.log(fileUpload);
+
+        const formData = new FormData();
+        await formData.append('fileList', fileUpload);
+
         let data = {
             title: `${title}`,
             author: `${window.sessionStorage.getItem("name")}`,
-            //세션으로 message만 가져와서 name도 가져오도록  backend코드 수정
             tag: `${dropdownValue}`,
-            content: `${content}`
+            content: `${content}`,
+            // files: `${formData}`
         };
-        const headers = {
-            "Content-Type": `application/json`,
-        };
-        console.log(data.author);
-        axios.post('/article', data, headers)
-            .then((res) => {
-                console.log(res.data);
-            })
-            .catch((e) => {
-                console.log(e);
-            })
+        formData.append("data", JSON.stringify(data));
+        const res = await axios.post(
+            '/article/',
+            formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        );
+        alert("게시물이 등록되었습니다!");
         navigate('/');
-        console.log(content);
-    }
+
+        // let data = {
+        //     title: `${title}`,
+        //     author: `${window.sessionStorage.getItem("name")}`,
+        //     tag: `${dropdownValue}`,
+        //     content: `${content}`,
+        //     // files: `${formData}`
+        // };
+        // const headers = {
+        //     "Content-Type": `multipart/form-data`,
+        // };
+        // await axios.post('/article/', data, headers)
+        //     .then((res) => {
+        //         console.log(res);
+        //     })
+        //     .catch((e) => {
+        //         console.log(e.response);
+        //     })
+        // // alert("게시물이 등록되었습니다!");
+        // // navigate('/');
+    }, [fileUpload])
 
     return (
         <div className="view_section">
@@ -116,10 +144,11 @@ function PostWrite(){
                         formats={formats}
                         placeholder="내용을 입력해주세요."
                         onChange={onContentHandler}
-
                     />
                 </div>
                 <br/><br/><br/>
+                <input type="file" id="file" onChange={onFileHandler} multiple="multiple" />
+                <br/><br/>
                 <div className="post_write_button">
                     <button type="button" className="post_register" onClick={postWrite}>등록</button>
                     <button type="button" className="post_cancel" onClick={() => navigate('/')}>취소</button>
