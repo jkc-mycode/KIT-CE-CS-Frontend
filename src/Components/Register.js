@@ -136,18 +136,13 @@ function RegisterPage(){
             const headers = {
                 "Content-Type": `application/json`,
             };
-            axios.post('/sign/dupId', data, headers, {withCredentials : true})
+            axios.get('/sign/dupId/?id=' + id)
                 .then((res) => {
-                    console.log(res);
-                    if(res.data.message === 'OK'){
-                        setDupIdFlag(true);
-                        setDupIdMsg("사용 가능한 ID입니다.");
-                    }else{
-                        alert(res.data.message);
-                    }
+                    setDupIdFlag(true);
+                    setDupIdMsg("사용 가능한 ID입니다.");
                 })
                 .catch((e) => {
-                    console.log(e.response);
+                    console.log(e);
                     if(e.response.data.message === "Duplicated Id"){
                         setDupIdMsg("중복된 ID입니다.");
                     }else if(e.response.data.message === "No User"){
