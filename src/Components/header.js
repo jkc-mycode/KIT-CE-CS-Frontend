@@ -74,12 +74,12 @@ function Header(){
                 <div className ="header_container">
                     <Link to="/" className="header_items">CE-SE</Link>
                     <div className="header-right-container">
-                        <Link to="/" className="header_items" onClick={onClickLogout}>Logout</Link>
+                        <Link to="/" className="header_items" onClick={onClickLogout}>로그아웃</Link>
                         <div className="header_line"></div>
-                        <Link to="/info" className="header_items">MyPage</Link>
+                        <Link to="/info" className="header_items">마이페이지</Link>
                     </div>
                     <div className="header_search_container">
-                        <form>
+                        <form action="/search" method="get">
                             <input type="text"  placeholder="검색어를 입력해주세요." />
                             <button type="button" onClick={onSearch}>검색</button>
                         </form>
@@ -98,8 +98,8 @@ function Header(){
                         <Link to="/signup" className="header_items">회원가입</Link>
                     </div>
                     <div className="header_search_container">
-                        <form>
-                            <input type="text" placeholder="검색어를 입력해주세요."/>
+                        <form action="/search" method="get">
+                            <input type="text" placeholder="검색어를 입력해주세요." name="content"/>
                             <input type="submit" value="검색" />
                         </form>
                     </div>
