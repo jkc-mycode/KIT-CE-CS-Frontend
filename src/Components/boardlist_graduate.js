@@ -1,6 +1,7 @@
 import React from "react";
 import './boardlist.css';
 import BoardRow from './boardrow';
+import Crawling from './crawling';
 
 
 function BoardList() {
