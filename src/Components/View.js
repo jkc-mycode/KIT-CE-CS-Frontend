@@ -15,6 +15,7 @@ function ViewPage(){
     const [date, setDate] = useState();
     const [file, setFile] = useState([]);
     let id = useParams().viewId;
+    const [test, setTest] = useState(false);
 
     function timer(d){
         let timestamp = d;
@@ -32,37 +33,6 @@ function ViewPage(){
         return returnDate;
     }
 
-    const fileDownload = async () => {
-        const responseType = "blob";
-        const fileData = await axios.get("/article/download/62f3943331b4d954ec88bcc7", responseType)
-        console.log(fileData);
-        // const blob = new Blob([fileData.data])
-        //
-        // const fileUrl = window.URL.createObjectURL(blob);
-        //
-        // const link = document.createElement('a');
-        // link.href = fileUrl;
-        // link.style.display = 'none';
-        //
-        // const injectFilename = (res) => {
-        //     const disposition = res.headers['content-disposition'];
-        //
-        //     const fileName = decodeURI(
-        //         disposition
-        //             .split('filename*=UTF-8')[1]
-        //             // .match(/filename*[^;=\n]*=((['"]).*?\2|[^;\n]*)/)
-        //             .replace(/['"]/g, '')
-        //     );
-        //     console.log(fileName);
-        //     return fileName;
-        // };
-        //
-        // link.download = injectFilename(fileData);
-        //
-        // document.body.appendChild(link);
-        // link.click();
-        // link.remove();
-    }
     const updateLoginCheck = () => {
         if(list.author !== window.sessionStorage.getItem("id")){
             alert("사용이 불가합니다.");
@@ -90,14 +60,17 @@ function ViewPage(){
         //const posts = await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + id)
         const posts = await axios.get("/article/view/" + id)
         console.log(posts);
-        console.log(posts.data.next[0]);
-        console.log(posts.data.prev[0]);
         setList(posts.data.articleInfo);
         setNext(posts.data.next[0]);
         setPrev(posts.data.prev[0]);
         setDate(timer(posts.data.articleInfo.date));
-        console.log(posts.data.files);
+        console.log(posts.data.files[0]);
         setFile(posts.data.files);
+        if(posts.data.files[0] !== undefined){
+            setTest(true);
+        }else{
+            setTest(false);
+        }
     }
     useEffect(() => {
         getPost();
@@ -113,9 +86,20 @@ function ViewPage(){
                         <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span>{list.views}</div>
                         <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span>{date}</div>
                     </div>
-                    <div className="line"></div>
-                    <div className="file_download_box" onClick={fileDownload}>파일 다운로드란</div>
-                    {/*<a href={"http://localhost:3001/article/download/"+file[0]._id}>{file[0].originName}</a>*/}
+                    {
+                        test === true
+                            ? <div className="line"></div>
+                            : null
+                    }
+                    {
+                        file.map((i) => {
+                            let id = i._id;
+                            let fileName = i.originName;
+                            return (
+                                <a href={"http://localhost:3001/article/download/"+id}>{fileName}</a>
+                            )
+                        })
+                    }
                     <div className="line"></div>
                     <div className="post_content" style={{height: '400px'}} dangerouslySetInnerHTML={{__html : list.content}}></div>
                 </div>
