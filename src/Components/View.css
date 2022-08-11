@@ -92,7 +92,7 @@
     border: 0px;
 }
 
-.edit_delete_table {
+.edit_delete_report_table {
     margin-top: 20px;
     margin-left: 15px;
     margin-bottom: 10px;
@@ -102,23 +102,23 @@
 
     display: table;
 
-    /* font-weight: 500;
-    font-size: 16px; */
+    /* font-weight: 500; */
+    font-size: 16px;
     color: #224459;
 }
 
-.post_edit, .post_delete {
+.post_edit, .post_delete, .post_report {
     display: table-cell;
     text-align: right;
+}
+
+.post_delete, .post_report {
+    width: 65px;
 }
 
 .post_list {
     margin-left: 15px;
     color: #224459;
-}
-
-.post_delete {
-    width: 65px;
 }
 
 .post_table{
