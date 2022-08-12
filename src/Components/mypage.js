@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './mypage.css';
-
+import { getCookie } from '../cookie';
 
 function MyInfoPage(){
     const [user, setUser] = useState([]); //user 정보
@@ -15,6 +15,17 @@ function MyInfoPage(){
     const [pwMsgBool, setpwMsgBool] = useState(false); //같은지 유무 메시지
     const navigate = useNavigate();
     let num = myArticle.length; //article 길이
+    
+    useEffect(() => {
+        checkLogin();
+    }, [])
+
+    const checkLogin = () => {
+        if (!getCookie('kit_acs')) {
+            alert("로그인이 필요합니다.")
+            navigate("/login");
+        }
+    }
 
     const onCurrentPasswordHandler = (event) => {
         setCurrentPassword(event.currentTarget.value);
