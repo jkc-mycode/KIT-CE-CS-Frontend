@@ -7,7 +7,7 @@ function MenuBar(){
         <div className = "menubar">
             <Link className="menubar_items" to="/">전체 게시판</Link>
             <div className="menubar_line"></div>
-            <Link className="menubar_items" to="/notice?page=1">공지사항</Link>
+            <Link className="menubar_items" to="/notice">공지사항</Link>
             <div className="menubar_line"></div>
             <Link className="menubar_items" to="/study">학업 게시판</Link>
             <div className="menubar_line"></div>
