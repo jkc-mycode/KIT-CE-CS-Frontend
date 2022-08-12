@@ -21,17 +21,15 @@ function PostWrite(){
     }
     const onContentHandler = (value) => {
         setContent(value);
-        console.log(content);
     }
     const onDropdownHandler = (event) => {
-        console.log(event.currentTarget.name);
         setDropdownName(event.currentTarget.name);
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
     }
     const onFileHandler = useCallback(async (e) => {
         console.log(e.target.files);
-        setFileUpload(e.target.files[0]);
+        setFileUpload(e.target.files);
     }, [fileUpload])
 
     const modules = {
@@ -55,23 +53,28 @@ function PostWrite(){
     ]
 
     const postWrite = useCallback(async () => {
-        console.log(fileUpload);
+        if (dropdownValue === '') {
+            alert("게시판을 선택해주세요.")
+            return
+        }
 
         const formData = new FormData();
-        if(fileUpload){
-            await formData.append('fileList', fileUpload);
-        }
+        
+        [].forEach.call(fileUpload, (file) => {
+            formData.append('fileList', file)
+        })
+
         let data = {
-            title: `${title}`,
-            author: `${window.sessionStorage.getItem("id")}`, //사실 없어도 그만?
-            tag: `${dropdownValue}`,
-            content: `${content}`,
-            // files: `${formData}`
+            title: title,
+            tag: dropdownValue,
+            content: content,
         };
+        
         formData.append("data", JSON.stringify(data));
-        console.log(data);
+
+        console.log(formData)
         const res = await axios.post(
-            '/article/',
+            'http://localhost:3001/article/',
             formData,
             {
                 headers: {
@@ -80,28 +83,8 @@ function PostWrite(){
             }
         );
 
-        // alert("게시물이 등록되었습니다!");
+        alert("게시물이 등록되었습니다!");
         // navigate('/');
-
-        // let data = {
-        //     title: `${title}`,
-        //     author: `${window.sessionStorage.getItem("name")}`,
-        //     tag: `${dropdownValue}`,
-        //     content: `${content}`,
-        //     // files: `${formData}`
-        // };
-        // const headers = {
-        //     "Content-Type": `multipart/form-data`,
-        // };
-        // await axios.post('/article/', data, headers)
-        //     .then((res) => {
-        //         console.log(res);
-        //     })
-        //     .catch((e) => {
-        //         console.log(e.response);
-        //     })
-        // // alert("게시물이 등록되었습니다!");
-        // // navigate('/');
     }, [fileUpload, title, dropdownValue, content])
 
     return (

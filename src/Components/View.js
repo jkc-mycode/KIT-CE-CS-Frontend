@@ -34,7 +34,7 @@ function ViewPage(){
     }
 
     const updateLoginCheck = () => {
-        if(list.author !== window.sessionStorage.getItem("id")){
+        if(!list.isMine){
             alert("사용이 불가합니다.");
         }else{
             navigate('/post_update/' + id, {state: list});
@@ -43,7 +43,7 @@ function ViewPage(){
     const deletePost = () => {
         if(window.confirm("정말 삭제하시겠습니까?")){
             console.log("여기",id);
-            axios.delete('/article/' + id)
+            axios.delete('http://localhost:3001/article/' + id)
                 .then((res) => {
                     console.log(res.data);
                     alert("삭제되었습니다.");
@@ -57,14 +57,12 @@ function ViewPage(){
         }
     }
     const getPost = async () => {
-        //const posts = await axios.get("http://kittaxipool.iptime.org:3000/article/view/" + id)
-        const posts = await axios.get("/article/view/" + id)
-        console.log(posts);
+        const posts = await axios.get("http://localhost:3001/article/view/" + id)
+        //const posts = await axios.get("/article/view/" + id)
         setList(posts.data.articleInfo);
         setNext(posts.data.next[0]);
         setPrev(posts.data.prev[0]);
         setDate(timer(posts.data.articleInfo.date));
-        console.log(posts.data.files[0]);
         setFile(posts.data.files);
         if(posts.data.files[0] !== undefined){
             setTest(true);
@@ -96,16 +94,18 @@ function ViewPage(){
                             let id = i._id;
                             let fileName = i.originName;
                             return (
-                                <a href={"http://localhost:3001/article/download/"+id}>{fileName}</a>
+                                <div>
+                                    <a href={"http://localhost:3001/article/download/"+id}>&#xE226;{fileName}</a>
+                                </div>
                             )
                         })
                     }
                     <div className="line"></div>
-                    <div className="post_content" style={{height: '400px'}} dangerouslySetInnerHTML={{__html : list.content}}></div>
+                    <div className="post_content"  dangerouslySetInnerHTML={{__html : list.content}}></div>
                 </div>
                 <div className="edit_delete_table">
                     {
-                        list.author === window.sessionStorage.getItem("id")
+                        list.isMine
                             ? <>
                             <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
                             <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
