@@ -27,6 +27,10 @@
     text-align: center;
 }
 
+.header_items:hover {
+    color: rgba(115, 115, 115);
+}
+
 .header_line {
     margin-top: 45px;
     height: 20px;
@@ -66,4 +70,8 @@
 
     vertical-align: bottom;
     background: #fff;
+}
+
+.search_button:hover {
+    background: rgba(115, 115, 115, 0.4);
 }
