@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import './header.css';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import axios from "axios";
 import { getCookie, removeCookie } from '../cookie';
+import Dropdown from "./post_dropdown";
 
 const onClickLogout = (event) => {
     axios.delete('/log/out')
@@ -17,19 +18,26 @@ const onClickLogout = (event) => {
         })
 }
 
-function Header(){
+function Header(props){
     const [search, setSearch] = useState("");
+
+    const [dropdownVisibility, setDropdownVisibility] = useState(false);
+    const [dropdownName, setDropdownName] = useState("제목");
+    const [dropdownValue, setDropdownValue] = useState("title");
+
+    const location = useLocation();
+
+    const onDropdownHandler = (event) => {
+        console.log(event.currentTarget.value);
+        setDropdownName(event.currentTarget.name);
+        setDropdownValue(event.currentTarget.value);
+        setDropdownVisibility(false);
+    }
     const onSearchHandler = async (e) => {
         e.preventDefault();
         const temp = await e.currentTarget.value;
         setSearch(temp);
         console.log(temp);
-    }
-    const onSearch = (e) => {
-        e.preventDefault();
-        // const res = await axios.get("/article/search")
-        console.log(search);
-        console.log(window.location);
     }
 
     // return(
@@ -79,9 +87,24 @@ function Header(){
                         <Link to="/info" className="header_items">마이페이지</Link>
                     </div>
                     <div className="header_search_container">
-                        <form action="/search" method="get">
-                            <input type="text"  placeholder="검색어를 입력해주세요." />
-                            <button type="button" onClick={onSearch}>검색</button>
+                        <div className="post_dropdown_box">
+                            <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
+                                {
+                                    dropdownVisibility
+                                        ? `${dropdownName}`
+                                        : `${dropdownName}`
+                                }
+                            </button>
+                            <Dropdown visibility={dropdownVisibility}>
+                                <ul>
+                                    <li><button type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></li>
+                                    <li><button type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></li>
+                                </ul>
+                            </Dropdown>
+                        </div>
+                        <form action={location.pathname}>
+                            <input type="text" placeholder="검색어를 입력해주세요." name={dropdownValue} onChange={onSearchHandler}/>
+                            <button type="submit">검색</button>
                         </form>
                     </div>
                 </div>
@@ -98,9 +121,24 @@ function Header(){
                         <Link to="/signup" className="header_items">회원가입</Link>
                     </div>
                     <div className="header_search_container">
-                        <form action="/search" method="get">
-                            <input type="text" placeholder="검색어를 입력해주세요." name="content"/>
-                            <input type="submit" value="검색" />
+                        <div className="post_dropdown_box">
+                            <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
+                                {
+                                    dropdownVisibility
+                                        ? `${dropdownName}`
+                                        : `${dropdownName}`
+                                }
+                            </button>
+                            <Dropdown visibility={dropdownVisibility}>
+                                <ul>
+                                    <li><button type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></li>
+                                    <li><button type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></li>
+                                </ul>
+                            </Dropdown>
+                        </div>
+                        <form action={location.pathname}>
+                            <input type="text" placeholder="검색어를 입력해주세요." name={dropdownValue} onChange={onSearchHandler}/>
+                            <button type="submit">검색</button>
                         </form>
                     </div>
                 </div>

@@ -18,14 +18,23 @@ function BoardRow (){
     const [num, setNum] = useState(0); //각 페이지 제일 윗번호
     let x = -1;
 
-
     const handlePageChange = (page) => {
         setPage(page);
     };
     const getList = async () => {
-        console.log(location.pathname);
-        const posts = await axios.get("/article"+ location.pathname + "?pageNum=" + page)
-        // const posts = await axios.get("/article" + location.pathname + "?page=" + page) //뒤에 pagenum붙여서 보내는 걸로
+        console.log(location);
+        const params = new URLSearchParams(location.search);
+        const title = params.get("title");
+        const content = params.get("content");
+        let posts = null;
+
+        if(title === null && content === null){
+            posts = await axios.get("/article"+ location.pathname + "?pageNum=" + page)
+        }else if(content === null){
+            posts = await axios.get("/article"+ location.pathname + "?pageNum=" + page + "&title=" + title)
+        }else{
+            posts = await axios.get("/article"+ location.pathname + "?pageNum=" + page + "&content=" + content)
+        }
         console.log(posts);
         const _list = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
         setList(_list);
@@ -35,7 +44,7 @@ function BoardRow (){
     }
     useEffect(() => {
         getList();
-    }, [page])
+    }, [page, location.search])
 
     function timer(d){
         let timestamp = d;
