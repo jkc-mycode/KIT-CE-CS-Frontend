@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
@@ -14,8 +14,19 @@ function PostUpdate(){
     let content = location.state.content //내용 (HTML 통째로 저장)
     const viewId = useParams(); //게시물id
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
-    const [dropdownName, setDropdownName] = useState("게시판을 선택해주세요.");
-    const [dropdownValue, setDropdownValue] = useState("");
+    const [dropdownName, setDropdownName] = useState(() => {
+        if(location.state.tag === "notice"){
+            return "공지사항";
+        }else if(location.state.tag === "free"){
+            return "자유게시판";
+        }else if(location.state.tag === "study"){
+            return "학업게시판";
+        }else{
+            return "졸업생게시판";
+        }
+    });
+    const [dropdownValue, setDropdownValue] = useState(location.state.tag);
+    const [fileUpload, setFileUpload] = useState(location.state.fileList[0]);	//파일
     const navigate = useNavigate();
 
     const onTitleHandler = (event) => {
@@ -31,6 +42,10 @@ function PostUpdate(){
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
     }
+    const onFileHandler = useCallback(async (e) => {
+        console.log(e.target.files);
+        setFileUpload(e.target.files[0]);
+    }, [fileUpload])
 
     const modules = {
         toolbar: [
@@ -116,6 +131,8 @@ function PostUpdate(){
                 />
             </div>
             <br/><br/><br/>
+            <input type="file" id="file" onChange={onFileHandler} multiple="multiple" />
+            <br/><br/>
             <div className="post_write_button">
                 <button type="button" className="post_register" onClick={postUpdate}>등록</button>
                 <button type="button" className="post_cancel" onClick={() => navigate('/view/'+location.state._id)}>취소</button>

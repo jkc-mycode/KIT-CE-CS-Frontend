@@ -3,6 +3,7 @@ import {useNavigate, useLocation} from 'react-router-dom';
 import BoardFooter from './boardlist_footer';
 import axios from "axios";
 import Pagination from "react-js-pagination";
+// import Pagination from "./Pagination";
 import './boardrow.css';
 
 function BoardRow (){
@@ -14,20 +15,23 @@ function BoardRow (){
     const navigate = useNavigate();
     const location = useLocation();
     let cat = ""; //카테고리
+    const [num, setNum] = useState(0); //각 페이지 제일 윗번호
+    let x = -1;
+
 
     const handlePageChange = (page) => {
         setPage(page);
     };
     const getList = async () => {
         console.log(location.pathname);
-        const posts = await axios.get("http://localhost:3001/article"+ location.pathname + "?page=" + page)
+        const posts = await axios.get("/article"+ location.pathname + "?pageNum=" + page)
         // const posts = await axios.get("/article" + location.pathname + "?page=" + page) //뒤에 pagenum붙여서 보내는 걸로
-        // console.log(posts);
-        const copy = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
-        const _list = copy.reverse();
+        console.log(posts);
+        const _list = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
         setList(_list);
         setTotal(posts.data.totalArticle);
         setLimit(posts.data.postLimit);
+        setNum(posts.data.totalArticle - (page * posts.data.postLimit)+posts.data.postLimit);
     }
     useEffect(() => {
         getList();
@@ -49,7 +53,8 @@ function BoardRow (){
     return(
         <>
             {
-                list.slice(offset,offset+limit).map((i) => {
+                list.slice(0).map((i) => {
+                    x = x + 1;
                     let goView = (e) => {
                         navigate('view/'+i._id, {state : i});
                     }
@@ -62,9 +67,9 @@ function BoardRow (){
                     }else{
                         cat = "[졸업]";
                     }
-                    return (
+                    return ( //각 페이지에서 시작하는 번호가 필요할듯
                         <tr onClick={goView}>
-                            <td>{total-(list.indexOf(i) * page)}</td>
+                            <td>{num-x}</td>
                             {
                                 location.pathname === '/'
                                     ? <td>{cat}</td>
@@ -92,6 +97,13 @@ function BoardRow (){
                 onChange={handlePageChange} //페이지가 바뀔 때 핸들링해줄 함수
                 onClick={getList}
             />
+            {/*<Pagination*/}
+            {/*    className="pagination-bar"*/}
+            {/*    currentPage={page}*/}
+            {/*    totalCount={total}*/}
+            {/*    pageSize={limit}*/}
+            {/*    onPageChange={page => setPage(page)}*/}
+            {/*/>*/}
         </>
     )
 }

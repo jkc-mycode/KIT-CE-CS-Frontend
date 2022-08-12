@@ -32,8 +32,8 @@ function LoginPage(){
             console.log('ID : ', id)
             console.log('PW : ', password)
 
-            axios.post('http://localhost:3001/log/in', data, headers, {withCredentials : true})
-            // axios.post('/log/in', data, headers, {withCredentials : true})
+            // axios.post('http://kittaxipool.iptime.org:3000/log/in', data, headers, {withCredentials : true})
+            axios.post('/log/in', data, headers, {withCredentials : true})
                 .then((res) => {
                     if(res.data.message === "Invalid ID" || res.data.message === "Wrong ID or Password"){
                         alert(res.data.message);
@@ -45,7 +45,9 @@ function LoginPage(){
                     }
                 })
                 .catch((e) => {
-                    alert(e.response.data.message);
+                    if(e.response.data.message === "Try again"){
+                        onClickLogin();
+                    }
                 })
         }
     }

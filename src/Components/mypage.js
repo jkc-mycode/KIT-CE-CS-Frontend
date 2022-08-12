@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './mypage.css';
+import {getCookie} from "../cookie";
 
 
 function MyInfoPage(){
@@ -74,11 +75,14 @@ function MyInfoPage(){
                 })
                 .catch((e) => {
                     console.log(e);
-                    window.sessionStorage.clear();
                 })
         }
     }
     useEffect(() => {
+        if(!getCookie('kit_acs')){
+            alert("로그인 후 이용가능!!");
+            navigate("/");
+        }
         //mypage 정보 가져오는 axios
         axios.get('/mypage/')
             .then((res) => {

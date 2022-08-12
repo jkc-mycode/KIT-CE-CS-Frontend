@@ -28,7 +28,7 @@ function ViewPage(){
         let minute = ("0" + date.getMinutes()).slice(-2); //분 2자리 (00, 01 ... 59)
         let second = ("0" + date.getSeconds()).slice(-2); //초 2자리 (00, 01 ... 59)
 
-        let returnDate = year + "." + month + "." + day + ". " + hour + ":" + minute + ":" + second;
+        let returnDate = month + "." + day + ". " + hour + ":" + minute + ":" + second;
 
         return returnDate;
     }
@@ -43,7 +43,7 @@ function ViewPage(){
     const deletePost = () => {
         if(window.confirm("정말 삭제하시겠습니까?")){
             console.log("여기",id);
-            axios.delete('http://localhost:3001/article/' + id)
+            axios.delete('article/' + id)
                 .then((res) => {
                     console.log(res.data);
                     alert("삭제되었습니다.");
@@ -57,8 +57,7 @@ function ViewPage(){
         }
     }
     const getPost = async () => {
-        const posts = await axios.get("http://localhost:3001/article/view/" + id)
-        //const posts = await axios.get("/article/view/" + id)
+        const posts = await axios.get("/article/view/" + id)
         setList(posts.data.articleInfo);
         setNext(posts.data.next[0]);
         setPrev(posts.data.prev[0]);
@@ -117,7 +116,7 @@ function ViewPage(){
                 <div className="test">댓글 메뉴 위치 (예정)</div>
                 <div className="line"></div>
                 <br/>
-                <div className="post_list"><span class="material-symbols-outlined">&#xe241;</span> 목록</div>
+                <div className="post_list" onClick={() => navigate("/")}><span class="material-symbols-outlined">&#xe241;</span> 목록</div>
                 <table className="post_table">
                     <tr>
                         <td><span class="material-symbols-outlined">&#xe316;</span> 다음글</td>

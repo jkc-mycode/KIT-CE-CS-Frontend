@@ -21,8 +21,10 @@ function PostWrite(){
     }
     const onContentHandler = (value) => {
         setContent(value);
+        console.log(content);
     }
     const onDropdownHandler = (event) => {
+        console.log(event.currentTarget.name);
         setDropdownName(event.currentTarget.name);
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
@@ -57,24 +59,20 @@ function PostWrite(){
             alert("게시판을 선택해주세요.")
             return
         }
-
         const formData = new FormData();
-        
         [].forEach.call(fileUpload, (file) => {
             formData.append('fileList', file)
         })
 
         let data = {
-            title: title,
-            tag: dropdownValue,
-            content: content,
+            title: `${title}`,
+            tag: `${dropdownValue}`,
+            content: `${content}`
         };
-        
         formData.append("data", JSON.stringify(data));
-
-        console.log(formData)
+        console.log(data);
         const res = await axios.post(
-            'http://localhost:3001/article/',
+            '/article/',
             formData,
             {
                 headers: {
@@ -83,8 +81,28 @@ function PostWrite(){
             }
         );
 
-        alert("게시물이 등록되었습니다!");
+        // alert("게시물이 등록되었습니다!");
         // navigate('/');
+
+        // let data = {
+        //     title: `${title}`,
+        //     author: `${window.sessionStorage.getItem("name")}`,
+        //     tag: `${dropdownValue}`,
+        //     content: `${content}`,
+        //     // files: `${formData}`
+        // };
+        // const headers = {
+        //     "Content-Type": `multipart/form-data`,
+        // };
+        // await axios.post('/article/', data, headers)
+        //     .then((res) => {
+        //         console.log(res);
+        //     })
+        //     .catch((e) => {
+        //         console.log(e.response);
+        //     })
+        // // alert("게시물이 등록되었습니다!");
+        // // navigate('/');
     }, [fileUpload, title, dropdownValue, content])
 
     return (
@@ -133,7 +151,7 @@ function PostWrite(){
                     />
                 </div>
                 <br/><br/><br/>
-                <input type="file" id="file" onChange={onFileHandler} multiple="multiple" />
+                <input type="file" id="file" onChange={onFileHandler} multiple/>
                 <br/><br/>
                 <div className="post_write_button">
                     <button type="button" className="post_register" onClick={postWrite}>등록</button>
