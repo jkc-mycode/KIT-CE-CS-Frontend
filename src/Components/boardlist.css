@@ -52,7 +52,7 @@
 }
 
 tr > th, td {
-    border-bottom: 1px solid rgba(115, 115, 115, 0.8);
+    border-bottom: 1px solid lightgray;
     padding: 5px;
 }
 
@@ -85,12 +85,8 @@ tr > th {
     width : 5%;
 }
 
-tr:nth-child(2n){
-    background-color: rgba(115, 115, 115, 0.15);
-}
-
 tr > td {
-    padding: 5px;
+    padding: 1%;
 }
 
 tr > td:nth-child(3) {
@@ -101,3 +97,7 @@ tr > td:nth-child(3) {
     text-align: left;
 }
 
+.title_length:hover {
+    font-weight: bold;
+    cursor: pointer;
+}

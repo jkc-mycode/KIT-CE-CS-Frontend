@@ -28,7 +28,7 @@ function ViewPage(){
         let minute = ("0" + date.getMinutes()).slice(-2); //분 2자리 (00, 01 ... 59)
         let second = ("0" + date.getSeconds()).slice(-2); //초 2자리 (00, 01 ... 59)
 
-        let returnDate = year + "." + month + "." + day + ". " + hour + ":" + minute + ":" + second;
+        let returnDate = year + "/" + month + "/" + day + "/ " + hour + ":" + minute + ":" + second;
 
         return returnDate;
     }
