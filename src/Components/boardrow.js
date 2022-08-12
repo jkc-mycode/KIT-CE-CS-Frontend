@@ -14,15 +14,20 @@ function BoardRow (){
     let cat = ""; //카테고리
     const [num, setNum] = useState(0); //각 페이지 제일 윗번호
     let x = -1;
-
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
 
     const handlePageChange = (page) => {
         setPage(page);
     };
     const getList = async () => {
         console.log(location.pathname);
-        const posts = await axios.get("http://localhost:3001/article"+ location.pathname + "?pageNum=" + page)
-        // const posts = await axios.get("/article" + location.pathname + "?page=" + page) //뒤에 pagenum붙여서 보내는 걸로
+        let url = "http://localhost:3001/article"+ location.pathname + "?pageNum=" + page
+        if (title)
+            url += "&title="+title
+        else if (content)
+            url += "&content="+content
+        const posts = await axios.get(url)
         console.log(posts);
         const _list = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
         setList(_list);
