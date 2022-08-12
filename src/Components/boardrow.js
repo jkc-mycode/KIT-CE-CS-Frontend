@@ -46,45 +46,36 @@ function BoardRow (){
     return(
         <>
             {
-                // list.slice(offset,offset+limit).map((i) => {
-                //     let goView = (e) => {
-                //         navigate('view/'+i._id, {state : i});
-                //     }
-                //     if(i.tag === "notice"){
-                //         cat = "[공지]";
-                //     }else if(i.tag === "free"){
-                //         cat = "[자유]";
-                //     }else if(i.tag === "study"){
-                //         cat = "[학업]";
-                //     }else{
-                //         cat = "[졸업]";
-                //     }
-                //     return (
-                //         <tr onClick={goView}>
-                //             <td>{total-(list.indexOf(i) * page)}</td>
-                //             {
-                //                 location.pathname === '/'
-                //                     ? <td>{cat}</td>
-                //                     : null
-                //             }
-                //             <td>
-                //                 <div className="title_length">{i.title}</div>
-                //             </td>
-                //             <td>{i.authorName}</td>
-                //             <td>{timer(i.date)}</td>
-                //             <td>{i.views}</td>
-                //         </tr>
-                //     )
-                <tr>
-                    <td>1</td>
-                    <td>공지</td>
-                    <td>
-                        <div className="title_length">제목123</div>
-                    </td>
-                    <td>작성자</td>
-                    <td>2022.08.12</td>
-                    <td>33</td>
-                </tr>
+                list.slice(offset,offset+limit).map((i) => {
+                    let goView = (e) => {
+                        navigate('view/'+i._id, {state : i});
+                    }
+                    if(i.tag === "notice"){
+                        cat = "[공지]";
+                    }else if(i.tag === "free"){
+                        cat = "[자유]";
+                    }else if(i.tag === "study"){
+                        cat = "[학업]";
+                    }else{
+                        cat = "[졸업]";
+                    }
+                    return (
+                        <tr onClick={goView}>
+                            <td>{total-(list.indexOf(i) * page)}</td>
+                            {
+                                location.pathname === '/'
+                                    ? <td>{cat}</td>
+                                    : null
+                            }
+                            <td>
+                                <div className="title_length">{i.title}</div>
+                            </td>
+                            <td>{i.authorName}</td>
+                            <td>{timer(i.date)}</td>
+                            <td>{i.views}</td>
+                        </tr>
+                    )
+                })
             }
         </>
     )
