@@ -2,16 +2,18 @@ import React, {useState} from "react";
 import './header.css';
 import {Link} from 'react-router-dom';
 import axios from "axios";
+import { getCookie, removeCookie } from '../cookie';
 
 const onClickLogout = (event) => {
-    axios.delete('/log/out')
+    axios.delete('http://localhost:3001/log/out')
         .then((res) => {
-            console.log(res);
-            window.sessionStorage.clear();
-            window.location.replace('/');
+            removeCookie("kit_acs");
         })
         .catch((e) => {
             console.log(e);
+        })
+        .finally(() => {
+            window.location.replace('/');
         })
 }
 
@@ -30,8 +32,6 @@ function Header(){
         console.log(window.location);
     }
 
-    let sessionStorage = window.sessionStorage;
-    let user_id = sessionStorage.getItem("id");
     // return(
     //     <div className = "header">
     //         <div className ="header_container">
@@ -68,7 +68,7 @@ function Header(){
     //         </div>
     //     </div>
     // );
-    if(user_id !== null){
+    if(getCookie('kit_acs')){
         return(
             <div className = "header">
                 <div className ="header_container">
