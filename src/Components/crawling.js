@@ -1,32 +1,26 @@
 import React, { useEffect, useState } from "react";
 import './crawling.css';
 import axios from "axios";
-import {useNavigate} from 'react-router-dom';
-
 
 const testlist = [{
         no: 1,
-        title : "test1",
-        views : 123,
-        commentListlength : 12
+        tag: "CE",
+        title : "test1"
     },
     {
         no: 2,
+        tag: "SE",
         title : "test2",
-        views : 111,
-        commentListlength : 1
     },
     {
         no: 3,
+        tag: "AI",
         title : "test3",
-        views : 222,
-        commentListlength : 33
     }
 ]
 
 function Crawling() {
     const [list, setList] = useState([]);
-    const navigate = useNavigate();
     useEffect(() => {
         axios.get("/")
             .then((res) => {
@@ -41,23 +35,29 @@ function Crawling() {
         <div className="crawlingBox">
             <div className="crawlingBoxMsg">&#xE001;_ 학과 공지사항</div>
             <table className="crawling">
+                <thead className = "board_head">
+                    <tr>
+                        <th>구분</th>
+                        <th>제목</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {
                     testlist.map((i) => {
                         let goView = (e) => {
-                            navigate('view/'+i.no, {state : e.target.value});
+                            window.open("http://www.naver.com", '_blank').focus();
                         }
                         return (
                             <>
                             <tr onClick={goView}>
+                                <td>{i.tag}</td>
                                 <td>{i.title}</td>
-                                <td>{i.views}</td>
-                                <td>{i.commentListlength}</td>
                             </tr>
-                            {/*<span onClick={goView}>{i.title} </span>*/}
                             </>
                         )
                     })
                 }
+                </tbody>
             </table>
         </div>
     );
