@@ -79,8 +79,10 @@ function Header(){
                         <div className="header_items">
                             <div className="header_search">
                                 <form action="/search" method="get">
-                                    <input type="text"  placeholder="검색어를 입력해주세요." />
-                                    <button type="button" onClick={onSearch}><Icon fontSize='small'>search</Icon></button>
+                                    <span className="search_row">
+                                        <input type="text" placeholder="검색어를 입력해주세요." className="search_input"/>
+                                    </span>
+                                    <button type="button" onClick={onSearch} className="search_button"><Icon fontSize='small'>search</Icon></button>
                                 </form>
                             </div>
                         </div>   
@@ -101,8 +103,10 @@ function Header(){
                         <div className="header_items">
                             <div className="header_search">
                                 <form action="/search" method="get">
-                                    <input type="text"  placeholder="검색어를 입력해주세요." />
-                                    <button type="button" onClick={onSearch}><Icon fontSize='small'>search</Icon></button>
+                                    <span className="search_row">
+                                        <input type="text" placeholder="검색어를 입력해주세요." className="search_input"/>
+                                    </span>
+                                    <button type="button" onClick={onSearch} className="search_button"><Icon fontSize='small'>search</Icon></button>
                                 </form>
                             </div>
                         </div>   

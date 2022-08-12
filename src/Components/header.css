@@ -34,8 +34,36 @@
 }
 
 .header_search {
+    
     vertical-align: middle;
 }
 
+.search_row {
+    /* box-sizing: border-box; */
+    height: 28px;
+    padding: 10px 15px;
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
 
+    width: 150px;
+}
 
+.search_input {
+    /* width: 100%; */
+    padding: 0px;
+    border: 0px;
+
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.search_button {
+    margin-bottom: 4px;
+    margin-left: 2px;
+    border: 2px solid rgba(115, 115, 115, 0.8);
+
+    width: 40px;
+    height: 40px;
+
+    vertical-align: bottom;
+    background: #fff;
+}
