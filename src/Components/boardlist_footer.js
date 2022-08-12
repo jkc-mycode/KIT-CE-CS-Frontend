@@ -26,7 +26,7 @@ function BoardFooter() {
     };
     const getList = async () => {
         //const posts = await axios.get("http://kittaxipool.iptime.org:3000/article/")
-        const posts = await axios.get("/article" + location.pathname + "/?pageNum=" + page) //뒤에 pagenum붙여서 보내는 걸로
+        const posts = await axios.get("http://localhost:3001/article" + location.pathname + "/?pageNum=" + page) //뒤에 pagenum붙여서 보내는 걸로
         console.log(posts);
         const copy = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
         var _list = copy.reverse();

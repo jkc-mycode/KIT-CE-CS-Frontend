@@ -73,74 +73,76 @@ function ViewPage(){
     }, [])
     return (
         <div className="view_section">
-            <div className="left_section">
-                <div className="post_tag">#{list.tag}</div>
-                <h1 className="title">&#xE001;_ {list.title}</h1>
-                <div>
-                    <div className="post_info_table">
-                        <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span>{list.authorName}</div>
-                        <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span>{list.views}</div>
-                        <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span>{date}</div>
+            <div className = "body_section">
+                <div className="left_section">
+                    <div className="post_tag">#{list.tag}</div>
+                    <h1 className="title">&#xE001;_ {list.title}</h1>
+                    <div>
+                        <div className="post_info_table">
+                            <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span>{list.authorName}</div>
+                            <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span>{list.views}</div>
+                            <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span>{date}</div>
+                        </div>
+                        {
+                            test === true
+                                ? <div className="line"></div>
+                                : null
+                        }
+                        {
+                            file.map((i) => {
+                                let id = i._id;
+                                let fileName = i.originName;
+                                return (
+                                    <div>
+                                        <a href={"http://localhost:3001/article/download/"+id}>&#xE226;{fileName}</a>
+                                    </div>
+                                )
+                            })
+                        }
+                        <div className="line"></div>
+                        <div className="post_content"  dangerouslySetInnerHTML={{__html : list.content}}></div>
                     </div>
-                    {
-                        test === true
-                            ? <div className="line"></div>
-                            : null
-                    }
-                    {
-                        file.map((i) => {
-                            let id = i._id;
-                            let fileName = i.originName;
-                            return (
-                                <div>
-                                    <a href={"http://localhost:3001/article/download/"+id}>&#xE226;{fileName}</a>
-                                </div>
-                            )
-                        })
-                    }
+                    <div className="edit_delete_report_table">
+                        {
+                            list.isMine
+                                ? <>
+                                <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
+                                <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
+                                <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>                            {/* 기능 추가해야 함 */}
+                                </>
+                                : <>
+                                <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>                            {/* 기능 추가해야 함 */}
+                                </>
+                        }
+                    </div>
                     <div className="line"></div>
-                    <div className="post_content"  dangerouslySetInnerHTML={{__html : list.content}}></div>
+                    <div className="test">댓글 메뉴 위치 (예정)</div>
+                    <div className="line"></div>
+                    <br/>
+                    <div className="post_list" onClick={() => navigate("/")}><span class="material-symbols-outlined">&#xe241;</span> 목록</div>
+                    <table className="post_table">
+                        <tr>
+                            <td><span class="material-symbols-outlined">&#xe316;</span> 다음글</td>
+                            {
+                                next === undefined
+                                    ? <td>다음 글이 없습니다.</td>
+                                    : <td onClick={() => {navigate('/view/'+next._id); window.location.reload(); }}>{next.title}</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td><span class="material-symbols-outlined">&#xe313;</span> 이전글</td>
+                            {
+                                prev === undefined
+                                    ? <td>이전 글이 없습니다.</td>
+                                    : <td onClick={() => {navigate('/view/'+prev._id); window.location.reload(); }}>{prev.title}</td>
+                            }
+                        </tr>
+                    </table>
                 </div>
-                <div className="edit_delete_report_table">
-                    {
-                        list.isMine
-                            ? <>
-                            <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
-                            <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
-                            <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>                            {/* 기능 추가해야 함 */}
-                            </>
-                            : <>
-                            <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>                            {/* 기능 추가해야 함 */}
-                            </>
-                    }
+                <div className="margin_section"></div>
+                <div className='right_section'>
+                    <Crawling></Crawling>
                 </div>
-                <div className="line"></div>
-                <div className="test">댓글 메뉴 위치 (예정)</div>
-                <div className="line"></div>
-                <br/>
-                <div className="post_list" onClick={() => navigate("/")}><span class="material-symbols-outlined">&#xe241;</span> 목록</div>
-                <table className="post_table">
-                    <tr>
-                        <td><span class="material-symbols-outlined">&#xe316;</span> 다음글</td>
-                        {
-                            next === undefined
-                                ? <td>다음 글이 없습니다.</td>
-                                : <td onClick={() => {navigate('/view/'+next._id); window.location.reload(); }}>{next.title}</td>
-                        }
-                    </tr>
-                    <tr>
-                        <td><span class="material-symbols-outlined">&#xe313;</span> 이전글</td>
-                        {
-                            prev === undefined
-                                ? <td>이전 글이 없습니다.</td>
-                                : <td onClick={() => {navigate('/view/'+prev._id); window.location.reload(); }}>{prev.title}</td>
-                        }
-                    </tr>
-                </table>
-            </div>
-            <div className="margin_section"></div>
-            <div className='right_section'>
-                <Crawling></Crawling>
             </div>
         </div>
     )

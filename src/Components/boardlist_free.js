@@ -24,8 +24,7 @@ function BoardList() {
                     <BoardRow />
                     </tbody>
                 </table>
-                    <BoardFooter />
-                
+                <BoardFooter />
             </div>
             <div className="margin_section"></div>
             <div className="right_section">
