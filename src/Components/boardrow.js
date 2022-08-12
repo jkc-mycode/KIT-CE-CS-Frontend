@@ -1,9 +1,6 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import {useNavigate, useLocation} from 'react-router-dom';
-import BoardFooter from './boardlist_footer';
 import axios from "axios";
-import Pagination from "react-js-pagination";
-// import Pagination from "./Pagination";
 import './boardrow.css';
 
 function BoardRow (){
@@ -18,23 +15,14 @@ function BoardRow (){
     const [num, setNum] = useState(0); //각 페이지 제일 윗번호
     let x = -1;
 
+
     const handlePageChange = (page) => {
         setPage(page);
     };
     const getList = async () => {
-        console.log(location);
-        const params = new URLSearchParams(location.search);
-        const title = params.get("title");
-        const content = params.get("content");
-        let posts = null;
-
-        if(title === null && content === null){
-            posts = await axios.get("/article"+ location.pathname + "?pageNum=" + page)
-        }else if(content === null){
-            posts = await axios.get("/article"+ location.pathname + "?pageNum=" + page + "&title=" + title)
-        }else{
-            posts = await axios.get("/article"+ location.pathname + "?pageNum=" + page + "&content=" + content)
-        }
+        console.log(location.pathname);
+        const posts = await axios.get("http://localhost:3001/article"+ location.pathname + "?pageNum=" + page)
+        // const posts = await axios.get("/article" + location.pathname + "?page=" + page) //뒤에 pagenum붙여서 보내는 걸로
         console.log(posts);
         const _list = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
         setList(_list);
@@ -44,7 +32,7 @@ function BoardRow (){
     }
     useEffect(() => {
         getList();
-    }, [page, location.search])
+    }, [page])
 
     function timer(d){
         let timestamp = d;
@@ -54,7 +42,7 @@ function BoardRow (){
         let month = ("0" + (date.getMonth() + 1)).slice(-2); //월 2자리 (01, 02 ... 12)
         let day = ("0" + date.getDate()).slice(-2); //일 2자리 (01, 02 ... 31)
 
-        let returnDate = year + "." + month + "." + day;
+        let returnDate = month + "/" + day;
 
         return returnDate;
     }
@@ -94,25 +82,6 @@ function BoardRow (){
                     )
                 })
             }
-            <br/>
-            <BoardFooter/>
-            <Pagination
-                activePage={page} //현재 페이지
-                itemsCountPerPage={limit} //한 페이지당 보여줄 리스트 아이템의 개수
-                totalItemsCount={total} //총 아이템의 개수
-                pageRangeDisplayed={10} //Paginator 내에서 보여줄 페이지의 범위(10개)
-                prevPageText={"‹"} //"이전"을 나타낼 텍스트
-                nextPageText={"›"} //"다음"을 나타낼 텍스트
-                onChange={handlePageChange} //페이지가 바뀔 때 핸들링해줄 함수
-                onClick={getList}
-            />
-            {/*<Pagination*/}
-            {/*    className="pagination-bar"*/}
-            {/*    currentPage={page}*/}
-            {/*    totalCount={total}*/}
-            {/*    pageSize={limit}*/}
-            {/*    onPageChange={page => setPage(page)}*/}
-            {/*/>*/}
         </>
     )
 }

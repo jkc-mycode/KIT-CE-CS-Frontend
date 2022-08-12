@@ -222,7 +222,7 @@ function RegisterPage(){
                     <button type="button" className="emailcheck_button" onClick={dupEmailCheck}>중복 체크</button>
                 </div>
                 <div className="button_container">
-                    <button type="button" className="register_button" onClick={onSubmit}>register</button>
+                    <button type="button" className="register_button" onClick={onSubmit}>회원가입</button>
                 </div>
             </form>
         </div>

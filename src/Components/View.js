@@ -27,9 +27,8 @@ function ViewPage(){
         let hour = ("0" + date.getHours()).slice(-2); //시 2자리 (00, 01 ... 23)
         let minute = ("0" + date.getMinutes()).slice(-2); //분 2자리 (00, 01 ... 59)
         let second = ("0" + date.getSeconds()).slice(-2); //초 2자리 (00, 01 ... 59)
-
+        
         let returnDate = month + "." + day + ". " + hour + ":" + minute + ":" + second;
-
         return returnDate;
     }
 
@@ -57,7 +56,7 @@ function ViewPage(){
         }
     }
     const getPost = async () => {
-        const posts = await axios.get("/article/view/" + id)
+        const posts = await axios.get("http://localhost:3001/article/view/" + id)
         setList(posts.data.articleInfo);
         setNext(posts.data.next[0]);
         setPrev(posts.data.prev[0]);
@@ -102,14 +101,17 @@ function ViewPage(){
                     <div className="line"></div>
                     <div className="post_content"  dangerouslySetInnerHTML={{__html : list.content}}></div>
                 </div>
-                <div className="edit_delete_table">
+                <div className="edit_delete_report_table">
                     {
                         list.isMine
                             ? <>
                             <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
                             <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
+                            <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>                            {/* 기능 추가해야 함 */}
                             </>
-                            : null
+                            : <>
+                            <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>                            {/* 기능 추가해야 함 */}
+                            </>
                     }
                 </div>
                 <div className="line"></div>

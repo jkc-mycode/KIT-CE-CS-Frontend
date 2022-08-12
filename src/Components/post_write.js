@@ -79,30 +79,14 @@ function PostWrite(){
                     'Content-Type': 'multipart/form-data'
                 }
             }
-        );
-
-        // alert("게시물이 등록되었습니다!");
-        // navigate('/');
-
-        // let data = {
-        //     title: `${title}`,
-        //     author: `${window.sessionStorage.getItem("name")}`,
-        //     tag: `${dropdownValue}`,
-        //     content: `${content}`,
-        //     // files: `${formData}`
-        // };
-        // const headers = {
-        //     "Content-Type": `multipart/form-data`,
-        // };
-        // await axios.post('/article/', data, headers)
-        //     .then((res) => {
-        //         console.log(res);
-        //     })
-        //     .catch((e) => {
-        //         console.log(e.response);
-        //     })
-        // // alert("게시물이 등록되었습니다!");
-        // // navigate('/');
+        ).then((res) => {
+            alert("게시물이 등록되었습니다!");
+            navigate('/');
+        }).catch((e) => {
+            if (e.response.data.message === "Unauthorized") {
+                alert("다시 로그인해주세요.");
+            }
+        })
     }, [fileUpload, title, dropdownValue, content])
 
     return (
