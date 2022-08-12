@@ -1,8 +1,8 @@
 import React from "react";
 import './boardlist.css';
 import BoardRow from './boardrow';
-import Crawling from './crawling';
-
+import Crawling from './crawling.js';
+import BoardFooter from './boardlist_footer';
 
 function BoardList() {
     return(
@@ -14,6 +14,7 @@ function BoardList() {
                     <thead className = "board_head">
                     <tr>
                         <th>번호</th>
+                        <th>카테고리</th>
                         <th>제목</th>
                         <th>작성자</th>
                         <th>작성일</th>
@@ -21,9 +22,11 @@ function BoardList() {
                     </tr>
                     </thead>
                     <tbody className = "board_body">
+                    <BoardRow />
                     </tbody>
                 </table>
-                <BoardRow/>
+                    <BoardFooter />
+                
             </div>
             <div className="margin_section"></div>
             <div className="right_section">

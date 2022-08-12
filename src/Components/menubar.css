@@ -28,3 +28,8 @@
     height: 25px;
     border-right: 1px solid rgba(115, 115, 115, 0.8);
 }
+
+.boardlist_footer button{
+    width: 8%;
+    margin-top: 20px;
+}
