@@ -24,13 +24,13 @@ function BoardList() {
                     <tbody className = "board_body">
                     </tbody>
                 </table>
+                <BoardRow/>
             </div>
             <div className="margin_section"></div>
             <div className="right_section">
                 <Crawling></Crawling>
             </div>
             </div>
-            <BoardRow/>
         </div>
     )
 }
