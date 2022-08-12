@@ -25,6 +25,8 @@ function RegisterPage(){
     //중복체크 여부 검사
     const [dupIdFlag, setDupIdFlag] = useState(false);
     const [dupIdMsg, setDupIdMsg] = useState("");
+    const [dupEmailFlag, setDupEmailFlag] = useState(false);
+    const [dupEmailMsg, setDupEmailMsg] = useState("");
     const navigate = useNavigate();
 
     const onNameHandler = useCallback((e) => {
@@ -136,7 +138,7 @@ function RegisterPage(){
             const headers = {
                 "Content-Type": `application/json`,
             };
-            axios.get('/sign/dupId/?id=' + id)
+            axios.get('http://localhost:3001/sign/dupId/?id=' + id)
                 .then((res) => {
                     setDupIdFlag(true);
                     setDupIdMsg("사용 가능한 ID입니다.");
@@ -151,6 +153,31 @@ function RegisterPage(){
                 })
         }
     }
+
+    const dupEmailCheck = (event) => {
+        event.preventDefault();
+        if(!isEmail){
+            return alert("이메일을 다시 확인해주세요!");
+        }else{
+            const headers = {
+                "Content-Type": `application/json`,
+            };
+            axios.get('http://localhost:3001/sign/dupWebmail?webmail=' + webmail)
+                .then((res) => {
+                    setDupEmailFlag(true);
+                    setDupEmailMsg("사용 가능한 Email입니다.");
+                })
+                .catch((e) => {
+                    console.log(e);
+                    if(e.response.data.message === "Duplicated Webmail"){
+                        setDupEmailMsg("중복된 Email입니다.");
+                    }else if(e.response.data.message === "No User"){
+                        setDupEmailMsg("Email을 입력해주세요.");
+                    }
+                })
+        }
+    }
+
     return (
         <div className="register_box">
             <h1 className="register_title">&#xE001;_ Register</h1>
@@ -186,7 +213,14 @@ function RegisterPage(){
                     <input type="text" name="webmail" value={webmail} placeholder="WebMail" className="webmail_input" onChange={onMailHandler} />
                     <div className="email_msg">@kumoh.ac.kr</div>
                 </div>
-                <div className={isEmail ? 'success' : 'failure'}>{emailMessage}</div>
+                {
+                    dupEmailFlag === false
+                        ? <div className={isEmail ? 'success' : 'failure'}>{emailMessage}</div>
+                        : <div className={dupEmailFlag ? 'success' : 'failure'}>{dupEmailMsg}</div>
+                }
+                <div className="button_container">
+                    <button type="button" className="emailcheck_button" onClick={dupEmailCheck}>중복 체크</button>
+                </div>
                 <div className="button_container">
                     <button type="button" className="register_button" onClick={onSubmit}>register</button>
                 </div>
