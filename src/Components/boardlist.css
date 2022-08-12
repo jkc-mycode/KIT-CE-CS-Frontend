@@ -1,7 +1,11 @@
 .view_section {
     margin: 0 auto;
     width: 85%;
+}
+
+.body_section {
     display: table;
+    width: 100%;
 }
 
 .left_section {
@@ -31,12 +35,11 @@
 
 .board_list_table{
     margin-top: 15px;
-    
     border-collapse: collapse;
     border-top: 2px solid rgba(115, 115, 115, 0.8);
     border-bottom: 2px solid rgba(115, 115, 115, 0.8);
-
     text-align: center;
+    width: 100%;
 }
 
 .board_head {
@@ -47,14 +50,16 @@
 
 tr > th, td {
     border-bottom: 1px solid rgba(115, 115, 115, 0.8);
+    padding: 5px;
 }
 
 tr > th {
     border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+    width: 100%;
 }
 
 tr > th:nth-child(1) {
-    width : 7%;
+    width : 5%;
 }
 
 tr > th:nth-child(2) {
@@ -62,7 +67,8 @@ tr > th:nth-child(2) {
 }
 
 tr > th:nth-child(3) {
-    padding: 7px;
+    
+    width : 50%;
 }
 
 tr > th:nth-child(4) {
@@ -74,7 +80,7 @@ tr > th:nth-child(5) {
 }
 
 tr > th:nth-child(6) {
-    width : 10%;
+    width : 5%;
 }
 
 tr:nth-child(2n){

@@ -23,7 +23,7 @@ function BoardRow (){
         const posts = await axios.get("/article" + location.pathname + "/?pageNum=" + page) //뒤에 pagenum붙여서 보내는 걸로
         console.log(posts);
         const copy = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
-        const _list = copy.reverse();
+        var _list = copy.reverse();
         setList(_list);
         setTotal(posts.data.totalArticle);
         setLimit(posts.data.postLimit);

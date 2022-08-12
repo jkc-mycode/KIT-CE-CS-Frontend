@@ -7,6 +7,7 @@ import Crawling from './crawling';
 function BoardList() {
     return(
         <div className = "view_section">
+            <div className = "body_section">
             <div className="left_section">
                 <div className="nowBoard">&#xE001;_ 공지사항</div>
                 <table className = "board_list_table">
@@ -20,7 +21,6 @@ function BoardList() {
                     </tr>
                     </thead>
                     <tbody className = "board_body">
-                    <BoardRow/>
                     </tbody>
                 </table>
             </div>
@@ -28,6 +28,8 @@ function BoardList() {
             <div className="right_section">
                 <Crawling></Crawling>
             </div>
+            </div>
+            <BoardRow/>
         </div>
     )
 }
