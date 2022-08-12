@@ -47,6 +47,9 @@
     font-weight: 500;
 }
 
+.board_list_table tr {
+    width: 100%;
+}
 
 tr > th, td {
     border-bottom: 1px solid rgba(115, 115, 115, 0.8);

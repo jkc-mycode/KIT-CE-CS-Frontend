@@ -1,8 +1,6 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import {useNavigate, useLocation} from 'react-router-dom';
-import BoardFooter from './boardlist_footer';
 import axios from "axios";
-import Pagination from "react-js-pagination";
 import './boardrow.css';
 
 function BoardRow (){
@@ -79,18 +77,6 @@ function BoardRow (){
                     )
                 })
             }
-            <br/>
-            <BoardFooter/>
-            <Pagination
-                activePage={page} //현재 페이지
-                itemsCountPerPage={limit} //한 페이지당 보여줄 리스트 아이템의 개수
-                totalItemsCount={total} //총 아이템의 개수
-                pageRangeDisplayed={10} //Paginator 내에서 보여줄 페이지의 범위(10개)
-                prevPageText={"‹"} //"이전"을 나타낼 텍스트
-                nextPageText={"›"} //"다음"을 나타낼 텍스트
-                onChange={handlePageChange} //페이지가 바뀔 때 핸들링해줄 함수
-                onClick={getList}
-            />
         </>
     )
 }

@@ -2,6 +2,7 @@ import React from "react";
 import './boardlist.css';
 import BoardRow from './boardrow';
 import Crawling from './crawling.js';
+import BoardFooter from './boardlist_footer';
 
 function BoardList() {
     return(
@@ -21,9 +22,11 @@ function BoardList() {
                     </tr>
                     </thead>
                     <tbody className = "board_body">
+                    <BoardRow />
                     </tbody>
                 </table>
-                <BoardRow />
+                    <BoardFooter />
+                
             </div>
             <div className="margin_section"></div>
             <div className="right_section">
