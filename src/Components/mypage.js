@@ -77,7 +77,7 @@ function MyInfoPage(){
             const headers = {
                 "Content-Type": `application/json`,
             };
-            axios.patch('/mypage/password', data, headers)
+            axios.patch('http://localhost:3001/mypage/password', data, headers)
                 .then((res) => {
                     console.log(res);
                     alert("변경되었습니다.");
@@ -94,7 +94,7 @@ function MyInfoPage(){
             navigate("/");
         }
         //mypage 정보 가져오는 axios
-        axios.get('/mypage/')
+        axios.get('http://localhost:3001/mypage/')
             .then((res) => {
                 console.log(res.data);
                 setUser(res.data);

@@ -77,7 +77,7 @@ function PostUpdate(){
         const headers = {
             "Content-Type": `application/json`,
         };
-        axios.patch('/article/' + location.state._id, data, headers)
+        axios.patch('http://localhost:3001/article/' + location.state._id, data, headers)
             .then((res) => {
                 console.log(res.data);
             })

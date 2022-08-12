@@ -7,7 +7,7 @@ import { getCookie, removeCookie } from '../cookie';
 
 
 const onClickLogout = (event) => {
-    axios.delete('/log/out')
+    axios.delete('http://localhost:3001/log/out')
         .then((res) => {
             removeCookie("kit_acs");
         })

@@ -72,7 +72,7 @@ function PostWrite(){
         formData.append("data", JSON.stringify(data));
         console.log(data);
         const res = await axios.post(
-            '/article/',
+            'http://localhost:3001/article/',
             formData,
             {
                 headers: {
