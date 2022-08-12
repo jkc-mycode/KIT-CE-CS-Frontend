@@ -188,7 +188,7 @@ function RegisterPage(){
                 </div>
                 <div className={isEmail ? 'success' : 'failure'}>{emailMessage}</div>
                 <div className="button_container">
-                    <button type="button" className="register_button" onClick={onSubmit}>register</button>
+                    <button type="button" className="register_button" onClick={onSubmit}>회원가입</button>
                 </div>
             </form>
         </div>
