@@ -42,7 +42,7 @@ function ViewPage(){
     const deletePost = () => {
         if(window.confirm("정말 삭제하시겠습니까?")){
             console.log("여기",id);
-            axios.delete('article/' + id)
+            axios.delete('/article/' + id)
                 .then((res) => {
                     console.log(res.data);
                     alert("삭제되었습니다.");
@@ -56,7 +56,7 @@ function ViewPage(){
         }
     }
     const getPost = async () => {
-        const posts = await axios.get("http://localhost:3001/article/view/" + id)
+        const posts = await axios.get("/article/view/" + id)
         setList(posts.data.articleInfo);
         setNext(posts.data.next[0]);
         setPrev(posts.data.prev[0]);

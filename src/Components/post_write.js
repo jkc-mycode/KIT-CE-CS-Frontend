@@ -72,7 +72,7 @@ function PostWrite(){
         formData.append("data", JSON.stringify(data));
         console.log(data);
         const res = await axios.post(
-            'http://localhost:3001/article/',
+            '/article/',
             formData,
             {
                 headers: {
@@ -81,7 +81,7 @@ function PostWrite(){
             }
         ).then((res) => {
             alert("게시물이 등록되었습니다!");
-            navigate('/');
+            navigate('/' + dropdownValue);
         }).catch((e) => {
             if (e.response.data.message === "Unauthorized") {
                 alert("다시 로그인해주세요.");

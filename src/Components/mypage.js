@@ -77,7 +77,7 @@ function MyInfoPage(){
             const headers = {
                 "Content-Type": `application/json`,
             };
-            axios.patch('http://localhost:3001/mypage/password', data, headers)
+            axios.patch('/mypage/password', data, headers)
                 .then((res) => {
                     console.log(res);
                     alert("변경되었습니다.");
@@ -94,7 +94,7 @@ function MyInfoPage(){
             navigate("/");
         }
         //mypage 정보 가져오는 axios
-        axios.get('http://localhost:3001/mypage/')
+        axios.get('/mypage/')
             .then((res) => {
                 console.log(res.data);
                 setUser(res.data);
@@ -117,7 +117,7 @@ function MyInfoPage(){
                         </div>
                         <div className="mypage_msg">금오공대 웹메일</div>
                         <div className="mypage_row">
-                            <div className="webmail_show">{user.email}</div>
+                            <div className="webmail_show">{user.email}@kumoh.ac.kr</div>
                         </div>
                         <div className="mypage_msg">아이디</div>
                         <div className="mypage_row">
