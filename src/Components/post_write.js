@@ -81,7 +81,7 @@ function PostWrite(){
             }
         ).then((res) => {
             alert("게시물이 등록되었습니다!");
-            navigate('/' + dropdownValue);
+            navigate(-1);
         }).catch((e) => {
             if (e.response.data.message === "Unauthorized") {
                 alert("다시 로그인해주세요.");
