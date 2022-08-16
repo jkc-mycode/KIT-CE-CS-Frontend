@@ -3,6 +3,7 @@ import {useParams, useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
 import './View.css';
 import Crawling from './crawling.js';
+import Comments from './comments';
 
 
 function ViewPage(){
@@ -21,14 +22,14 @@ function ViewPage(){
         let timestamp = d;
         let date = new Date(timestamp);
 
-        let year = date.getFullYear().toString().slice(-2); //년도 뒤에 두자리
+        let year = date.getFullYear().toString().slice(0); //년도 뒤에 두자리
         let month = ("0" + (date.getMonth() + 1)).slice(-2); //월 2자리 (01, 02 ... 12)
         let day = ("0" + date.getDate()).slice(-2); //일 2자리 (01, 02 ... 31)
         let hour = ("0" + date.getHours()).slice(-2); //시 2자리 (00, 01 ... 23)
         let minute = ("0" + date.getMinutes()).slice(-2); //분 2자리 (00, 01 ... 59)
         let second = ("0" + date.getSeconds()).slice(-2); //초 2자리 (00, 01 ... 59)
         
-        let returnDate = month + "." + day + ". " + hour + ":" + minute + ":" + second;
+        let returnDate = year + "/" + month + "/" + day + "/ " + hour + ":" + minute + ":" + second;
         return returnDate;
     }
 
@@ -116,7 +117,11 @@ function ViewPage(){
                         }
                     </div>
                     <div className="line"></div>
-                    <div className="test">댓글 메뉴 위치 (예정)</div>
+                    <br/>
+                    <div className="post_comments_box">
+                        <Comments post_id={id} />
+                    </div>
+                    <br/>
                     <div className="line"></div>
                     <br/>
                     <div className="post_list" onClick={() => navigate("/")}><span class="material-symbols-outlined">&#xe241;</span> 목록</div>
