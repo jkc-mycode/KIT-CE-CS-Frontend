@@ -39,8 +39,8 @@ function LoginPage(){
                         alert(res.data.message);
                         navigate('/login');
                     }else{
-                        navigate('/'); //임시로 메인으로 이돟
-                        window.location.reload();
+                        navigate(-1); //임시로 메인으로 이돟
+                        //window.location.reload();
                         // console.log(res);
                     }
                 })
