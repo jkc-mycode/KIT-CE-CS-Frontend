@@ -71,10 +71,90 @@ function Crawling() {
                         </tbody>
                     </table>
                 </div>
-                
-                <div className="conbox AI"></div>
-                <div className="conbox CE"></div>
-                <div className="conbox SE"></div>
+
+                <div className="conbox AI">
+                    <table className="crawling">
+                        <thead className = "board_head">
+                            <tr>
+                                <th>구분</th>
+                                <th>제목</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            testlist.map((i) => {
+                                let goView = (e) => {
+                                    window.open("http://www.naver.com", '_blank').focus();
+                                }
+                                return (
+                                    <>
+                                    <tr onClick={goView}>
+                                        <td>{i.tag}</td>
+                                        <td>{i.title}</td>
+                                    </tr>
+                                    </>
+                                )
+                            })
+                        }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div className="conbox CE">
+                    <table className="crawling">
+                        <thead className = "board_head">
+                            <tr>
+                                <th>구분</th>
+                                <th>제목</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            testlist.map((i) => {
+                                let goView = (e) => {
+                                    window.open("http://www.naver.com", '_blank').focus();
+                                }
+                                return (
+                                    <>
+                                    <tr onClick={goView}>
+                                        <td>{i.tag}</td>
+                                        <td>{i.title}</td>
+                                    </tr>
+                                    </>
+                                )
+                            })
+                        }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div className="conbox SE">
+                    <table className="crawling">
+                        <thead className = "board_head">
+                            <tr>
+                                <th>구분</th>
+                                <th>제목</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            testlist.map((i) => {
+                                let goView = (e) => {
+                                    window.open("http://www.naver.com", '_blank').focus();
+                                }
+                                return (
+                                    <>
+                                    <tr onClick={goView}>
+                                        <td>{i.tag}</td>
+                                        <td>{i.title}</td>
+                                    </tr>
+                                    </>
+                                )
+                            })
+                        }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
