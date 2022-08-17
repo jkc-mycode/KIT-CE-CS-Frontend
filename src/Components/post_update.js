@@ -134,8 +134,8 @@ function PostUpdate(){
             <input type="file" id="file" onChange={onFileHandler} multiple="multiple" />
             <br/><br/>
             <div className="post_write_button">
-                <button type="button" className="post_register" onClick={postUpdate}>등록</button>
-                <button type="button" className="post_cancel" onClick={() => navigate('/view/'+location.state._id)}>취소</button>
+                <button type="button" className="post_register_button" onClick={postUpdate}>등록</button>
+                <button type="button" className="post_cancel_button" onClick={() => navigate('/view/'+location.state._id)}>취소</button>
             </div>
         </div>
     )

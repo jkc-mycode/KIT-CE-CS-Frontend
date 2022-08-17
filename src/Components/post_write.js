@@ -138,8 +138,8 @@ function PostWrite(){
                 <input type="file" id="file" onChange={onFileHandler} multiple/>
                 <br/><br/>
                 <div className="post_write_button">
-                    <button type="button" className="post_register" onClick={postWrite}>등록</button>
-                    <button type="button" className="post_cancel" onClick={() => navigate('/')}>취소</button>
+                    <button type="button" className="post_register_button" onClick={postWrite}>등록</button>
+                    <button type="button" className="post_cancel_button" onClick={() => navigate('/')}>취소</button>
                 </div>
             </div>
         </div>
