@@ -35,16 +35,16 @@ function LoginPage(){
             // axios.post('http://kittaxipool.iptime.org:3000/log/in', data, headers, {withCredentials : true})
             axios.post('/log/in', data, headers, {withCredentials : true})
                 .then((res) => {
-                    if(res.data.message === "Invalid ID" || res.data.message === "Wrong ID or Password"){
-                        alert(res.data.message);
-                        navigate('/login');
-                    }else{
-                        navigate(-1); //임시로 메인으로 이돟
-                        //window.location.reload();
-                        // console.log(res);
-                    }
+                    navigate('/'); //임시로 메인으로 이돟
+                    //window.location.reload();
+                    console.log(res);
                 })
                 .catch((e) => {
+                    console.log(e);
+                    if(e.response.data.message === "Invalid ID" || e.response.data.message === "Wrong ID or Password"){
+                        alert(e.response.data.message);
+                        navigate('/login');
+                    }
                     if(e.response.data.message === "Try again"){
                         onClickLogin();
                     }
