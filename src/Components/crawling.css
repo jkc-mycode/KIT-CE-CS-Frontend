@@ -8,8 +8,6 @@
 }
 
 .crawling {
-    margin-top: 15px;
-
     width: 100%;
 
     border-collapse: collapse;
@@ -19,13 +17,27 @@
     text-align: center;
 }
 
+.crawlingBox_tab {
+    margin-top: 15px;
+    width: 100%;
+
+    border-top: 2px solid rgba(115, 115, 115, 0.8);
+    
+}
+
 input[type="radio"] {
     display: none;
 }
 
 input[type="radio"] + label {
     display: inline-block;
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    vertical-align: middle;
+    text-align: center;
+
+    height: 30px;
+    /* width: 100%; */
 }
 
 input[type="radio"]:checked + label {
