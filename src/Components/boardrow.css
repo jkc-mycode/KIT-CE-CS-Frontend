@@ -59,7 +59,8 @@ ul.pagination li a.active {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width:fit-content;
+    width: 200px;
+    /* 제목 길면 ... 해주는거 할려면 길이 고정이 필요 */
 }
 
 .title_length:visited {

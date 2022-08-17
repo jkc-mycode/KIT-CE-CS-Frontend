@@ -90,6 +90,8 @@ function RegisterPage(){
             return alert("비밀번호를 다시 확인해주세요!");
         }else if(!isEmail){
             return alert("웹메일을 다시 확인해주세요!");
+        }else if(!dupEmailFlag){
+            return alert("웹메일 중복체크해주세요!");
         }else{
             let data = {
                 name: `${name}`,
@@ -138,7 +140,7 @@ function RegisterPage(){
             const headers = {
                 "Content-Type": `application/json`,
             };
-            axios.get('http://localhost:3001/sign/dupId/?id=' + id)
+            axios.get('/sign/dupId/?id=' + id)
                 .then((res) => {
                     setDupIdFlag(true);
                     setDupIdMsg("사용 가능한 ID입니다.");
@@ -162,7 +164,7 @@ function RegisterPage(){
             const headers = {
                 "Content-Type": `application/json`,
             };
-            axios.get('http://localhost:3001/sign/dupWebmail?webmail=' + webmail)
+            axios.get('/sign/dupWebmail?webmail=' + webmail)
                 .then((res) => {
                     setDupEmailFlag(true);
                     setDupEmailMsg("사용 가능한 Email입니다.");

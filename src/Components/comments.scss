@@ -1,0 +1,92 @@
+.comments_wrapper {
+  .comments_header {
+    margin: 1rem 0;
+    display: flex;
+
+    .comments_header_textarea {
+      flex: 1;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    button {
+      margin-left: 0.5rem;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.comment_username_date {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  .comment_date {
+    color: lightgray;
+  }
+}
+
+.comment_content {
+  // \n(엔터)를 태그 안의 텍스트에 적용
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0.4rem auto;
+}
+
+.comment_username {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
+  font-weight: 600;
+}
+
+//=====================대댓글====================
+
+.recomments_body {
+  margin-left: 2.5rem;
+}
+
+.recomments_wrapper {
+  .comments_header {
+    margin: 1rem 0;
+    display: flex;
+
+    .comments_header_textarea {
+      flex: 1;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    button {
+      margin-left: 0.5rem;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.comment_username_date {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  .comment_date {
+    color: lightgray;
+  }
+}
+
+.comment_content {
+  // \n(엔터)를 태그 안의 텍스트에 적용
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0.4rem auto;
+}
+
+.comment_username {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
+  font-weight: 600;
+}
+

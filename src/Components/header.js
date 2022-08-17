@@ -7,10 +7,10 @@ import { getCookie, removeCookie } from '../cookie';
 import Dropdown from "./post_dropdown";
 
 
-const onClickLogout = (event) => {
-    axios.delete('http://localhost:3001/log/out')
+const onClickLogout = async (event) => {
+    await axios.delete('/log/out')
         .then((res) => {
-            removeCookie("kit_acs");
+            removeCookie("kit_acs", { domain: "localhost", path: "/" });
         })
         .catch((e) => {
             console.log(e);
@@ -74,7 +74,7 @@ function Header(){
                                 </div>
                             </div>     
                         <div className="header_line"></div>
-                        <Link to="/" className="header_items" onClick={onClickLogout}>로그아웃</Link>
+                        <Link to="" className="header_items" onClick={onClickLogout}>로그아웃</Link>
                         <div className="header_line"></div>
                         <Link to="/info" className="header_items">마이페이지</Link>
                     </div>
