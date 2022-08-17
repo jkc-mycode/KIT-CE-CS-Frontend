@@ -18,3 +18,36 @@
 
     text-align: center;
 }
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label {
+    display: inline-block;
+    padding: 20px;
+}
+
+input[type="radio"]:checked + label {
+    background: #aaa;
+}
+
+input[id="tab_all"]:checked ~ .all {
+    display: block;
+}
+
+input[id="tab_AI"]:checked ~ .AI {
+    display: block;
+}
+
+input[id="tab_CE"]:checked ~ .CE {
+    display: block;
+}
+
+input[id="tab_SE"]:checked ~ .SE {
+    display: block;
+}
+
+.conbox {
+    display: none;
+}
