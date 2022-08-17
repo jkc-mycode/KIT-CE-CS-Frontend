@@ -33,21 +33,12 @@
     /* color: #224459; */
 }
 
-.board_list_table{
-    margin-top: 15px;
-    border-collapse: collapse;
-    border-top: 2px solid rgba(115, 115, 115, 0.8);
-    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
-    text-align: center;
-    width: 100%;
-}
-
 .board_head {
     font-size: 16px;
     font-weight: 500;
 }
 
-.board_list_table tr {
+.board_list_table tr, .boardlist_table tr {
     width: 100%;
 }
 
@@ -60,8 +51,33 @@ tr > th {
     border-bottom: 2px solid rgba(115, 115, 115, 0.8);
 }
 
+tr > td {
+    padding: 1%;
+}
+
+.right_section {
+    text-align: left;
+}
+
+.title_length:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* 전체 게시판, 공지사항 테이블 설정 */
+
+.board_list_table {
+    margin-top: 15px;
+    border-collapse: collapse;
+    border-top: 2px solid rgba(115, 115, 115, 0.8);
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+    text-align: center;
+    width: 100%;
+}
+
 .board_list_table tr > th:nth-child(1), .board_list_table td:nth-child(1) {
-    width : 5%;
+    width : 10%;
 }
 
 .board_list_table tr > th:nth-child(2), .board_list_table td:nth-child(2) {
@@ -69,7 +85,7 @@ tr > th {
 }
 
 .board_list_table tr > th:nth-child(3), .board_list_table td:nth-child(3) {
-    width : 50%;
+    width : 40%;
 }
 
 .board_list_table tr > th:nth-child(4), .board_list_table td:nth-child(4) {
@@ -81,22 +97,44 @@ tr > th {
 }
 
 .board_list_table tr > th:nth-child(6), .board_list_table td:nth-child(6) {
-    width : 5%;
+    width : 10%;
 }
 
-tr > td {
-    padding: 1%;
-}
-
-tr > td:nth-child(3) {
+.board_list_table tr > td:nth-child(3) {
     text-align: left;
 }
 
-.right_section {
-    text-align: left;
+/* 전체 게시판, 공지사항 외 게시판 테이블 설정 */
+
+.boardlist_table {
+    margin-top: 15px;
+    border-collapse: collapse;
+    border-top: 2px solid rgba(115, 115, 115, 0.8);
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+    text-align: center;
+    width: 100%;
 }
 
-.title_length:hover {
-    font-weight: bold;
-    cursor: pointer;
+.boardlist_table tr > th:nth-child(1), .boardlist_table td:nth-child(1) {
+    width : 10%;
+}
+
+.boardlist_table tr > th:nth-child(2), .boardlist_table td:nth-child(2) {
+    width : 60%;
+}
+
+.boardlist_table tr > th:nth-child(3), .boardlist_table td:nth-child(3) {
+    width : 10%;
+}
+
+.boardlist_table tr > th:nth-child(4), .boardlist_table td:nth-child(4) {
+    width : 10%;
+}
+
+.boardlist_table tr > th:nth-child(5), .boardlist_table td:nth-child(5) {
+    width : 10%;
+}
+
+.boardlist_table tr > td:nth-child(2) {
+    text-align: left;
 }
