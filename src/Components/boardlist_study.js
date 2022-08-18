@@ -10,7 +10,7 @@ function BoardList() {
             <div className = "body_section">
                 <div className="left_section">
                     <div className="nowBoard">&#xE001;_ 학업 게시판</div>
-                    <table className = "board_list_table">
+                    <table className = "boardlist_table">
                         <thead className = "board_head">
                         <tr>
                             <th>번호</th>

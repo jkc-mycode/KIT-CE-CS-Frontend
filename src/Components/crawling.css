@@ -8,8 +8,6 @@
 }
 
 .crawling {
-    margin-top: 15px;
-
     width: 100%;
 
     border-collapse: collapse;
@@ -17,4 +15,51 @@
     border-bottom: 2px solid rgba(115, 115, 115, 0.8);
 
     text-align: center;
+}
+
+.crawlingBox_tab {
+    margin-top: 15px;
+    width: 100%;
+
+    border-top: 2px solid rgba(115, 115, 115, 0.8);
+
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label {
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+    vertical-align: middle;
+    text-align: center;
+
+    height: 30px;
+    /* width: 100%; */
+}
+
+input[type="radio"]:checked + label {
+    background: #aaa;
+}
+
+input[id="tab_all"]:checked ~ .all {
+    display: block;
+}
+
+input[id="tab_AI"]:checked ~ .AI {
+    display: block;
+}
+
+input[id="tab_CE"]:checked ~ .CE {
+    display: block;
+}
+
+input[id="tab_SE"]:checked ~ .SE {
+    display: block;
+}
+
+.conbox {
+    display: none;
 }
