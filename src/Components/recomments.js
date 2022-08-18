@@ -72,6 +72,22 @@ const Recomments = (props) => {
             })
     }
 
+    //댓글 삭제 axios
+    const deleteComment = async (e) => {
+        if(window.confirm("정말 삭제하시겠습니까?")){
+            const res = await axios.delete('/comment/' + e.currentTarget.value)
+                .then((res) => {
+                    alert("댓글이 삭제되었습니다.");
+                    console.log(res);
+                })
+                .catch((e) => {
+                    console.log(e);
+                })
+        }else{
+            console.log("취소");
+        }
+    }
+
     useEffect(() => {
         getCommentList();
     }, [])
@@ -79,9 +95,16 @@ const Recomments = (props) => {
     return (
         <>
             <div className="recomments_wrapper">
-            <div className="comment_update">수정</div>
-            <div className="comment_delete">삭제</div>
-            <div className="recomment_button" onClick={onCheckRecomment}>댓글달기</div><hr/>
+                {
+                    props.comment.isDeleted === true
+                        ? null
+                        : <>
+                            <div className="comment_update">수정</div>
+                            <button type="button" className="comment_delete" value={props.comment._id} onClick={deleteComment}>삭제</button>
+                            <div className="recomment_button" onClick={onCheckRecomment}>댓글달기</div>
+                        </>
+                }
+                <hr/>
             {
                 isReComment === true
                     ? <div className="comments_header">
@@ -114,7 +137,7 @@ const Recomments = (props) => {
                                 <div className="comment_content">{item.content}</div>
                                 <div className="comment_username">{item.author}</div>
                                 <div className="comment_update">수정</div>
-                                <div className="comment_delete">삭제</div>
+                                <button type="button" className="comment_delete" value={item._id} onClick={deleteComment}>삭제</button>
                             </div>
                             {
                                 commentsList.indexOf(item) !== commentsList.length-1
