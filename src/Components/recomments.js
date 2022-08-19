@@ -79,12 +79,10 @@ const Recomments = (props) => {
     return (
         <>
             <div className="recomments_wrapper">
-            <div className="comment_update">수정</div>
-            <div className="comment_delete">삭제</div>
-            <div className="recomment_button" onClick={onCheckRecomment}>댓글달기</div><hr/>
-            {
-                isReComment === true
-                    ? <div className="comments_header">
+                <div className="recomment_button" onClick={onCheckRecomment}>댓글달기</div><hr/>
+                {
+                    isReComment === true
+                        ? <div className="comments_header">
                             <TextField
                                 className="comments_header_textarea"
                                 maxRows={3}
@@ -101,30 +99,36 @@ const Recomments = (props) => {
                             }
                         </div>
                     : null
-            }
-            </div>
-            <div className="recomments_body">
-                {
-                    commentsList.map((item, index) => (
-                        <>
-                            <div key={index} className="comments_comment">
-                                <div className="comment_username_date">
-                                    <div className="comment_date">{timer(item.date)}</div>
-                                </div>
-                                <div className="comment_content">{item.content}</div>
-                                <div className="comment_username">{item.author}</div>
-                                <div className="comment_update">수정</div>
-                                <div className="comment_delete">삭제</div>
-                            </div>
-                            {
-                                commentsList.indexOf(item) !== commentsList.length-1
-                                ? <hr/>
-                                : null
-                            }
-                        </>
-                    ))
                 }
-            </div>
+                </div>
+                <div className="recomments_body">
+                    {
+                        commentsList.map((item, index) => (
+                            <>
+                                <div key={index} className="comments_comment">
+                                    <div className="comment_username_date">
+                                        <div className="comment_date">{timer(item.date)}</div>
+                                    </div>
+                                    <div className="comment_content">{item.content}</div>
+                                    <div className="comment_username">{item.authorName}({item.author})</div>
+                                    {
+                                        item.isMine ?
+                                        <>
+                                            <div className="comment_update">수정</div>
+                                            <div className="comment_delete">삭제</div>
+                                        </>
+                                        : null
+                                    }
+                                </div>
+                                {
+                                    commentsList.indexOf(item) !== commentsList.length-1
+                                    ? <hr/>
+                                    : null
+                                }
+                            </>
+                        ))
+                    }
+                </div>
         </>
     )
 }

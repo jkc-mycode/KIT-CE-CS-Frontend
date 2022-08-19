@@ -80,7 +80,7 @@ function ViewPage(){
                     <h1 className="title">&#xE001;_ {list.title}</h1>
                     <div>
                         <div className="post_info_table">
-                            <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span>{list.authorName}</div>
+                            <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span>{list.authorName}({list.author})</div>
                             <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span>{list.views}</div>
                             <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span>{date}</div>
                         </div>

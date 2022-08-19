@@ -100,7 +100,15 @@ const Comments = (props) => {
                                    <div className="comment_date">{timer(item.date)}</div>
                                </div>
                                <div className="comment_content">{item.content}</div>
-                               <div className="comment_username">{item.author}</div>
+                               <div className="comment_username">{item.authorName}({item.author})</div>
+                               {
+                                    item.isMine ?
+                                    <>
+                                        <div className="comment_update">수정</div>
+                                        <div className="comment_delete">삭제</div>
+                                    </>
+                                    : null
+                                }
                                <div className="recomment_box">
                                    <Recomments post_id={item._id} comment={item}></Recomments>
                                </div>
