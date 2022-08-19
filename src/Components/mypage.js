@@ -103,7 +103,7 @@ function MyInfoPage(){
     //회원탈퇴 axios
     const onDeleteAccount = async () => {
         if(window.confirm("정말로 탈퇴하시겠습니까??")){
-            await axios.delete('/sign/' + user.id, {
+            await axios.delete('/sign/', {
                 data: {
                     password: `${deleteAccountPassword}`
                 }
