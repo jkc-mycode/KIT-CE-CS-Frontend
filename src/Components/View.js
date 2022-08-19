@@ -76,7 +76,7 @@ function ViewPage(){
         <div className="view_section">
             <div className = "body_section">
                 <div className="left_section">
-                    <div className="post_tag">#{list.tag}</div>
+                    <div className="post_tag" onClick={() => navigate("/"+list.tag)}>#{list.tag}</div>
                     <h1 className="title">&#xE001;_ {list.title}</h1>
                     <div>
                         <div className="post_info_table">
