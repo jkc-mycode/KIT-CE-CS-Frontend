@@ -11,6 +11,7 @@ const Recomments = (props) => {
     const [content, setContent] = useState(""); //댓글 내용
     const [isReComment, setIsReComment] = useState(false); //댓글달기 버튼 클릭 체크
     const [isUpdateButton, setIsUpdateButton] = useState(false); //수정 버튼 클릭 체크
+    const [originComment, setOriginComment] = useState(""); //원래 댓글 내용 (수정하기 버튼 비활성화 용도)
 
     function timer(d) {
         let timestamp = d;
@@ -37,6 +38,7 @@ const Recomments = (props) => {
     //수정 버튼 체크
     const onCheckUpdate = (e) => {
         setContent(e.currentTarget.value);
+        setOriginComment(e.currentTarget.value);
         setIsUpdateButton(!isUpdateButton);
         setIsReComment(false);
     }
@@ -94,8 +96,16 @@ const Recomments = (props) => {
     }
 
     //댓글 수정 axios
-    const updateComment = async () => {
-
+    const updateComment = async (e) => {
+        console.log(e.currentTarget.value);
+        const res = await axios.patch('/comment/' + e.currentTarget.value, data, headers)
+            .then((res) => {
+                console.log(res);
+                window.location.reload();
+            })
+            .catch((e) => {
+                console.log(e);
+            })
     }
 
     useEffect(() => {
@@ -163,8 +173,8 @@ const Recomments = (props) => {
                                         multiline placeholder="댓글을 입력해주세요✏️"
                                     />
                                     {
-                                        content !== content
-                                            ? <Button variant="outlined" onClick={updateComment}>수정하기</Button>
+                                        content !== originComment
+                                            ? <Button variant="outlined" value={comment._id} onClick={updateComment}>수정하기</Button>
                                             : <Button variant="outlined" disabled={true}>수정하기</Button>
                                     }
                                 </div>
