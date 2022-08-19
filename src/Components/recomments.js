@@ -6,13 +6,11 @@ import './comments.scss';
 
 
 const Recomments = (props) => {
-    console.log(props);
-    const [commentsList, setCommentsList] = useState([]); //보여줄 comments 리스트
+    const [reCommentsList, setReCommentsList] = useState([]);
+    const [comment, setComment] = useState([]);
     const [content, setContent] = useState(""); //댓글 내용
-    // const [reCommentContent, setReCommentContent] = useState(""); //대댓글 내용
-    const [isReComment, setIsReComment] = useState(false);
-    const [isUpdateButton, setIsUpdateButton] = useState(false);
-    // const [isReCommentUpdateButton, setIsReCommentUpdateButton] = useState(false);
+    const [isReComment, setIsReComment] = useState(false); //댓글달기 버튼 클릭 체크
+    const [isUpdateButton, setIsUpdateButton] = useState(false); //수정 버튼 클릭 체크
 
     function timer(d) {
         let timestamp = d;
@@ -29,22 +27,19 @@ const Recomments = (props) => {
         return returnDate;
     }
 
+    //댓글달기 버튼 체크
     const onCheckRecomment = () => {
         setContent("");
         setIsReComment(!isReComment);
         setIsUpdateButton(false);
     }
 
+    //수정 버튼 체크
     const onCheckUpdate = (e) => {
         setContent(e.currentTarget.value);
         setIsUpdateButton(!isUpdateButton);
         setIsReComment(false);
     }
-
-    // const onCheckReCommentUpdate = (e) => {
-    //     setReCommentContent(e.currentTarget.value);
-    //     setIsReCommentUpdateButton(!isReCommentUpdateButton);
-    // }
 
     //로그인 유무 확인
     const isLogin = () => {
@@ -81,18 +76,6 @@ const Recomments = (props) => {
             })
     }
 
-    //댓글 리스트 가져오는 axios
-    const getCommentList = async () => {
-        const list = await axios.get('/comment/' + props.comment._id)
-            .then((res) => {
-                setCommentsList(res.data);
-                console.log(res);
-            })
-            .catch((e) => {
-                console.log(e);
-            })
-    }
-
     //댓글 삭제 axios
     const deleteComment = async (e) => {
         if(window.confirm("정말 삭제하시겠습니까?")){
@@ -116,24 +99,36 @@ const Recomments = (props) => {
     }
 
     useEffect(() => {
-        getCommentList();
+        setReCommentsList(props.recomments)
+        setComment(props.comment)
     }, [])
 
     return (
         <>
             <div className="recomments_wrapper">
                 {
-                    props.comment.isDeleted === true
+                    comment.isDeleted === true
                         ? null
                         : <>
-                            <button type="button" className="comment_update" value={props.comment.content} onClick={onCheckUpdate}>수정</button>
-                            <button type="button" className="comment_delete" value={props.comment._id} onClick={deleteComment}>삭제</button>
                             {
-                                props.comment.isRecomment === false
+                                comment.isMine
+                                    ? <>
+                                        <button type="button" className="comment_update" value={comment.content} onClick={onCheckUpdate}>수정</button>
+                                        <button type="button" className="comment_delete" value={comment._id} onClick={deleteComment}>삭제</button>
+                                    </>
+                                    : null
+                            }
+                            {
+                                comment.isRecomment === false
                                     ? <button type="button" className="recomment_button" onClick={onCheckRecomment}>댓글달기</button>
                                     : null
                             }
                         </>
+                }
+                {
+                    comment.isDeleted === false
+                        ? <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
+                        : null
                 }
                 <hr/>
                 {
@@ -179,7 +174,7 @@ const Recomments = (props) => {
             </div>
             <div className="recomments_body">
                 {
-                    commentsList.map((item, index) => (
+                    reCommentsList.map((item, index) => (
                         <>
                             <div key={index} className="comments_comment">
                                 <div className="comment_username_date">
@@ -187,48 +182,10 @@ const Recomments = (props) => {
                                 </div>
                                 <div className="comment_content">{item.content}</div>
                                 <div className="comment_username">{item.author}</div>
-                                {/*<button type="button" className="comment_update" value={item.content} onClick={onCheckReCommentUpdate}>수정</button>*/}
-                                {/*<button type="button" className="comment_delete" value={item._id} onClick={deleteComment}>삭제</button>*/}
                             </div>
                             <div className="recomment_box">
-                                <Recomments post_id={item._id} comment={item}></Recomments>
+                                <Recomments comment={item} recomments={item.recommentList}></Recomments>
                             </div>
-                            {/*{*/}
-                            {/*    commentsList.indexOf(item) !== commentsList.length-1*/}
-                            {/*    ? <hr/>*/}
-                            {/*    : null*/}
-                            {/*}*/}
-                            {/*{*/}
-                            {/*    isReCommentUpdateButton === true*/}
-                            {/*        ? <div className="comments_header">*/}
-                            {/*            {*/}
-                            {/*                commentsList.indexOf(item) !== 0*/}
-                            {/*                    ? <hr/>*/}
-                            {/*                    : null*/}
-                            {/*            }*/}
-                            {/*            <TextField*/}
-                            {/*                className="comments_header_textarea"*/}
-                            {/*                maxRows={3}*/}
-                            {/*                onClick={isLogin}*/}
-                            {/*                onChange={(e) => {*/}
-                            {/*                    setReCommentContent(e.target.value)*/}
-                            {/*                }}*/}
-                            {/*                value={reCommentContent}*/}
-                            {/*                multiline placeholder="댓글을 입력해주세요✏️"*/}
-                            {/*            />*/}
-                            {/*            {*/}
-                            {/*                reCommentContent !== reCommentContent*/}
-                            {/*                    ? <Button variant="outlined" onClick={updateComment}>수정하기</Button>*/}
-                            {/*                    : <Button variant="outlined" disabled={true}>수정하기</Button>*/}
-                            {/*            }*/}
-                            {/*            {*/}
-                            {/*                commentsList.indexOf(item) !== commentsList.length-1*/}
-                            {/*                    ? <hr/>*/}
-                            {/*                    : null*/}
-                            {/*            }*/}
-                            {/*        </div>*/}
-                            {/*        : null*/}
-                            {/*}*/}
                         </>
                     ))
                 }

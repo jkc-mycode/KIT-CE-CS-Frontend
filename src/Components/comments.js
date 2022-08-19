@@ -108,7 +108,7 @@ const Comments = (props) => {
                                        </>
                                }
                                <div className="recomment_box">
-                                   <Recomments post_id={item._id} comment={item}></Recomments>
+                                   <Recomments comment={item} recomments={item.recommentList}></Recomments>
                                </div>
                            </div>
                            {
