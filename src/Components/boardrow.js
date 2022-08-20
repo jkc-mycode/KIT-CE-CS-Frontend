@@ -34,11 +34,11 @@ function BoardRow (){
         const obj = new URLSearchParams(location.search)
         let posts = null;
         if(!obj.get("title") && !obj.get("content")){
-            posts = await axios.get("/article" + location.pathname + "/?pageNum=" + page) //뒤에 pagenum붙여서 보내는 걸로
+            posts = await axios.get("/article" + location.pathname + "/?page=" + page) //뒤에 pagenum붙여서 보내는 걸로
         }else if(obj.get("title")){
-            posts = await axios.get("/article" + location.pathname + "/?pageNum=" + page + "&title=" + obj.get("title"))
+            posts = await axios.get("/article" + location.pathname + "/?page=" + page + "&title=" + obj.get("title"))
         }else{
-            posts = await axios.get("/article" + location.pathname + "/?pageNum=" + page + "&content=" + obj.get("content"))
+            posts = await axios.get("/article" + location.pathname + "/?page=" + page + "&content=" + obj.get("content"))
         }
         console.log(posts);
         const _list = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
