@@ -125,7 +125,7 @@
     width: 100%;
 }
 
-tr> td:nth-child(1) {
-    width: 70px;
+.post_table tr > td:nth-child(1) {
+    width: 100px;
     text-align: center;
 }
