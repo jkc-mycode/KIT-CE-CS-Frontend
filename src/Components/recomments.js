@@ -61,11 +61,6 @@ const Recomments = (props) => {
 
     //댓글 작성 axios
     const commentOnSubmit = async () => {
-        // if(!`${content}`){
-        //     data = {content: `${reCommentContent}`}
-        // }else{
-        //     data = {content: `${content}`}
-        // }
         const res = await axios.post('/comment/' + props.comment._id, data, headers)
             .then((res) => {
                 console.log(res);
@@ -97,7 +92,6 @@ const Recomments = (props) => {
 
     //댓글 수정 axios
     const updateComment = async (e) => {
-        console.log(e.currentTarget.value);
         const res = await axios.patch('/comment/' + e.currentTarget.value, data, headers)
             .then((res) => {
                 console.log(res);
@@ -133,12 +127,8 @@ const Recomments = (props) => {
                                     ? <button type="button" className="recomment_button" onClick={onCheckRecomment}>댓글달기</button>
                                     : null
                             }
+                            <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
                         </>
-                }
-                {
-                    comment.isDeleted === false
-                        ? <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
-                        : null
                 }
                 <hr/>
                 {
@@ -191,43 +181,26 @@ const Recomments = (props) => {
                                     <div className="comment_date">{timer(item.date)}</div>
                                 </div>
                                 <div className="comment_content">{item.content}</div>
-                                <div className="comment_username">{item.author}</div>
+                                <div className="comment_username">{item.authorName}({item.author})</div>
+                                {
+                                    item.isMine ?
+                                    <>
+                                        <button type="button" className="comment_update" value={item.content} onClick={onCheckUpdate}>수정</button>
+                                        <button type="button" className="comment_delete" value={item._id} onClick={deleteComment}>삭제</button>
+                                    </>
+                                    : null
+                                }
+                                <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
                             </div>
-                            <div className="recomment_box">
-                                <Recomments comment={item} recomments={item.recommentList}></Recomments>
-                            </div>
+                            {
+                                reCommentsList.indexOf(item) !== reCommentsList.length-1
+                                ? <hr/>
+                                : null
+                            }
                         </>
                     ))
                 }
-                </div>
-                <div className="recomments_body">
-                    {
-                        reCommentsList.map((item, index) => (
-                            <>
-                                <div key={index} className="comments_comment">
-                                    <div className="comment_username_date">
-                                        <div className="comment_date">{timer(item.date)}</div>
-                                    </div>
-                                    <div className="comment_content">{item.content}</div>
-                                    <div className="comment_username">{item.authorName}({item.author})</div>
-                                    {
-                                        item.isMine ?
-                                        <>
-                                            <div className="comment_update">수정</div>
-                                            <div className="comment_delete">삭제</div>
-                                        </>
-                                        : null
-                                    }
-                                </div>
-                                {
-                                    reCommentsList.indexOf(item) !== reCommentsList.length-1
-                                    ? <hr/>
-                                    : null
-                                }
-                            </>
-                        ))
-                    }
-                </div>
+            </div>
         </>
     )
 }
