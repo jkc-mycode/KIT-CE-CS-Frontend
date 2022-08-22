@@ -22,12 +22,14 @@ function MyInfoPage(){
         let timestamp = d;
         let date = new Date(timestamp);
 
-        let year = date.getFullYear().toString(); //년도 뒤에 두자리
+        let year = date.getFullYear().toString().slice(0); //년도 뒤에 두자리
         let month = ("0" + (date.getMonth() + 1)).slice(-2); //월 2자리 (01, 02 ... 12)
         let day = ("0" + date.getDate()).slice(-2); //일 2자리 (01, 02 ... 31)
+        let hour = ("0" + date.getHours()).slice(-2); //시 2자리 (00, 01 ... 23)
+        let minute = ("0" + date.getMinutes()).slice(-2); //분 2자리 (00, 01 ... 59)
+        let second = ("0" + date.getSeconds()).slice(-2); //초 2자리 (00, 01 ... 59)
 
-        let returnDate = year + "." + month + "." + day;
-
+        let returnDate = year + "/" + month + "/" + day + "/ " + hour + ":" + minute + ":" + second;
         return returnDate;
     }
     
@@ -123,12 +125,28 @@ function MyInfoPage(){
     const getReportList = async () => {
         const res = await axios.get('/report')
             .then((res) => {
-                console.log(res.data);
-                setReportList(res.data);
+                console.log(res.data.reports);
+                setReportList(res.data.reports);
             })
             .catch((e) => {
                 console.log(e);
             })
+    }
+
+    //신고 리스트 삭제 axios
+    const deleteReport = (e) => {
+        if(window.confirm("정말 삭제하시겠습니까?")){
+            axios.delete('/report/' + e.currentTarget.value)
+                .then((res) => {
+                    console.log(res);
+                    window.location.reload();
+                })
+                .catch((e) => {
+                    console.log(e);
+                })
+        }else{
+            console.log("취소");
+        }
     }
 
     useEffect(() => {
@@ -161,7 +179,7 @@ function MyInfoPage(){
                         </div>
                         <div className="mypage_msg">금오공대 웹메일</div>
                         <div className="mypage_row">
-                            <div className="webmail_show">{user.email}@kumoh.ac.kr</div>
+                            <div className="webmail_show">{user.email}</div>
                         </div>
                         <div className="mypage_msg">아이디</div>
                         <div className="mypage_row">
@@ -233,15 +251,29 @@ function MyInfoPage(){
                             <th>신고일</th>
                             <th></th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>댓글</td>
-                            <td>asdf213</td>
-                            <td>qwer</td>
-                            <td>qwerty</td>
-                            <td>2022.08.10 17:00</td>
-                            <td>삭제</td>
-                        </tr>
+                        {
+                            reportList.map((item) => {
+                                let type = null;
+                                if(item.targetType === "article"){
+                                    type = "게시물"
+                                }else{
+                                    type = "댓글"
+                                }
+                                return(
+                                    <tr>
+                                        <td>1</td>
+                                        <td>{type}</td>
+                                        <td>여긴?</td>
+                                        <td>{item.reason}</td>
+                                        <td>{item.reporter}</td>
+                                        <td>{timer(item.date)}</td>
+                                        <td>
+                                            <button type="button" className="report_delete_button" value={item._id} onClick={deleteReport}>삭제</button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </table>
                 </div>
                 <br/><br/><br/>
