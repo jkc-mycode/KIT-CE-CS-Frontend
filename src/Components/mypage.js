@@ -164,7 +164,9 @@ function MyInfoPage(){
             .catch((e) => {
                 console.log(e);
             })
-        getReportList();
+        if(user.id === "admin"){
+            getReportList();
+        }
     }, [])
 
     return (
@@ -239,43 +241,47 @@ function MyInfoPage(){
                         </tr>
                     </table>
                 </div>
-                <div className='report_box'>
-                    <h1>&#xE001;_ ReportList</h1>
-                    <table>
-                        <tr>
-                            <th>번호</th>
-                            <th>카테고리</th>
-                            <th>ID</th>
-                            <th>신고사유</th>
-                            <th>신고자</th>
-                            <th>신고일</th>
-                            <th></th>
-                        </tr>
-                        {
-                            reportList.map((item) => {
-                                let type = null;
-                                if(item.targetType === "article"){
-                                    type = "게시물"
-                                }else{
-                                    type = "댓글"
+                {
+                    user.id === "admin"
+                        ? <div className='report_box'>
+                            <h1>&#xE001;_ ReportList</h1>
+                            <table>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>카테고리</th>
+                                    <th>ID</th>
+                                    <th>신고사유</th>
+                                    <th>신고자</th>
+                                    <th>신고일</th>
+                                    <th></th>
+                                </tr>
+                                {
+                                    reportList.map((item) => {
+                                        let type = null;
+                                        if(item.targetType === "article"){
+                                            type = "게시물"
+                                        }else{
+                                            type = "댓글"
+                                        }
+                                        return(
+                                            <tr>
+                                                <td>1</td>
+                                                <td>{type}</td>
+                                                <td>여긴?</td>
+                                                <td>{item.reason}</td>
+                                                <td>{item.reporter}</td>
+                                                <td>{timer(item.date)}</td>
+                                                <td>
+                                                    <button type="button" className="report_delete_button" value={item._id} onClick={deleteReport}>삭제</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
                                 }
-                                return(
-                                    <tr>
-                                        <td>1</td>
-                                        <td>{type}</td>
-                                        <td>여긴?</td>
-                                        <td>{item.reason}</td>
-                                        <td>{item.reporter}</td>
-                                        <td>{timer(item.date)}</td>
-                                        <td>
-                                            <button type="button" className="report_delete_button" value={item._id} onClick={deleteReport}>삭제</button>
-                                        </td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </table>
-                </div>
+                            </table>
+                        </div>
+                        : null
+                }
                 <br/><br/><br/>
                 <input type="password" className="delete_account_password" onChange={onDeleteAccountPassword} placeholder="비밀번호를 입력해주세요"/>
                 <button type="button" className="delete_account" onClick={onDeleteAccount}>회원탈퇴</button>
