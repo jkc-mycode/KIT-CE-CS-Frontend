@@ -1,5 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import {useNavigate} from 'react-router-dom';
+import { getCookie } from '../cookie';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -24,13 +25,15 @@ function PostWrite(){
         console.log(content);
     }
     const onDropdownHandler = (event) => {
-        console.log(event.currentTarget.name);
+        if (event.currentTarget.name === "공지사항" && parseInt(getCookie("kit_acs_class")) < 2) {
+            alert("공지사항 쓰기 권한이 없습니다.")
+            return
+        }
         setDropdownName(event.currentTarget.name);
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
     }
     const onFileHandler = useCallback(async (e) => {
-        console.log(e.target.files);
         setFileUpload(e.target.files);
     }, [fileUpload])
 
@@ -70,8 +73,7 @@ function PostWrite(){
             content: `${content}`
         };
         formData.append("data", JSON.stringify(data));
-        console.log(data);
-        const res = await axios.post(
+        await axios.post(
             '/article/',
             formData,
             {
@@ -83,8 +85,12 @@ function PostWrite(){
             alert("게시물이 등록되었습니다!");
             navigate(-1);
         }).catch((e) => {
+            console.log(e)
             if (e.response.data.message === "Unauthorized") {
                 alert("다시 로그인해주세요.");
+            }
+            else if (e.response.data.message === "No Permission") {
+                alert("공지사항 쓰기 권한이 없습니다.");
             }
         })
     }, [fileUpload, title, dropdownValue, content])

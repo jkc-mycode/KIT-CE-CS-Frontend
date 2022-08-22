@@ -11,6 +11,7 @@ const onClickLogout = async (event) => {
     await axios.delete('/log/out')
         .then((res) => {
             removeCookie("kit_acs", { domain: "localhost", path: "/" });
+            removeCookie("kit_acs_class");
         })
         .catch((e) => {
             console.log(e);
