@@ -104,7 +104,7 @@ const Comments = (props) => {
                                                <div className="comment_date">{timer(item.date)}</div>
                                            </div>
                                            <div className="comment_content">{item.content}</div>
-                                           <div className="comment_username">{item.author}</div>
+                                           <div className="comment_username">{item.authorName}({item.author})</div>
                                        </>
                                }
                                <div className="recomment_box">
