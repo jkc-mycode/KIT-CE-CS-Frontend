@@ -96,13 +96,19 @@ const Comments = (props) => {
                    commentsList.map((item, index) => (
                        <>
                            <div key={index} className="comments_comment">
-                               <div className="comment_username_date">
-                                   <div className="comment_date">{timer(item.date)}</div>
-                               </div>
-                               <div className="comment_content">{item.content}</div>
-                               <div className="comment_username">{item.author}</div>
+                               {
+                                   item.isDeleted === true
+                                       ? <div className="delete_message">삭제된 댓글입니다.</div>
+                                       : <>
+                                           <div className="comment_username_date">
+                                               <div className="comment_date">{timer(item.date)}</div>
+                                           </div>
+                                           <div className="comment_content">{item.content}</div>
+                                           <div className="comment_username">{item.author}</div>
+                                       </>
+                               }
                                <div className="recomment_box">
-                                   <Recomments post_id={item._id} comment={item}></Recomments>
+                                   <Recomments comment={item} recomments={item.recommentList}></Recomments>
                                </div>
                            </div>
                            {

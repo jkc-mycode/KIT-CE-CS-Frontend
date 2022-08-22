@@ -3,10 +3,10 @@ import './crawling.css';
 import axios from "axios";
 
 const testlist = [{
-        no: 1,
-        tag: "CE",
-        title : "test1"
-    },
+    no: 1,
+    tag: "CE",
+    title : "test1"
+},
     {
         no: 2,
         tag: "SE",
@@ -60,10 +60,10 @@ function Crawling() {
                                 }
                                 return (
                                     <>
-                                    <tr onClick={goView}>
-                                        <td>{i.tag}</td>
-                                        <td>{i.title}</td>
-                                    </tr>
+                                        <tr onClick={goView}>
+                                            <td>{i.tag}</td>
+                                            <td>{i.title}</td>
+                                        </tr>
                                     </>
                                 )
                             })
@@ -88,10 +88,10 @@ function Crawling() {
                                 }
                                 return (
                                     <>
-                                    <tr onClick={goView}>
-                                        <td>{i.tag}</td>
-                                        <td>{i.title}</td>
-                                    </tr>
+                                        <tr onClick={goView}>
+                                            <td>{i.tag}</td>
+                                            <td>{i.title}</td>
+                                        </tr>
                                     </>
                                 )
                             })
@@ -103,10 +103,10 @@ function Crawling() {
                 <div className="conbox CE">
                     <table className="crawling">
                         <thead className = "board_head">
-                            <tr>
-                                <th>구분</th>
-                                <th>제목</th>
-                            </tr>
+                        <tr>
+                            <th>구분</th>
+                            <th>제목</th>
+                        </tr>
                         </thead>
                         <tbody>
                         {
@@ -116,10 +116,10 @@ function Crawling() {
                                 }
                                 return (
                                     <>
-                                    <tr onClick={goView}>
-                                        <td>{i.tag}</td>
-                                        <td>{i.title}</td>
-                                    </tr>
+                                        <tr onClick={goView}>
+                                            <td>{i.tag}</td>
+                                            <td>{i.title}</td>
+                                        </tr>
                                     </>
                                 )
                             })
@@ -131,10 +131,10 @@ function Crawling() {
                 <div className="conbox SE">
                     <table className="crawling">
                         <thead className = "board_head">
-                            <tr>
-                                <th>구분</th>
-                                <th>제목</th>
-                            </tr>
+                        <tr>
+                            <th>구분</th>
+                            <th>제목</th>
+                        </tr>
                         </thead>
                         <tbody>
                         {
@@ -144,10 +144,10 @@ function Crawling() {
                                 }
                                 return (
                                     <>
-                                    <tr onClick={goView}>
-                                        <td>{i.tag}</td>
-                                        <td>{i.title}</td>
-                                    </tr>
+                                        <tr onClick={goView}>
+                                            <td>{i.tag}</td>
+                                            <td>{i.title}</td>
+                                        </tr>
                                     </>
                                 )
                             })

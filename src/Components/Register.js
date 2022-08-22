@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import './Register.css';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
@@ -9,6 +9,7 @@ function RegisterPage(){
     const [id, setId] = useState(""); //아이디
     const [password, setPassword] = useState(""); //비밀번호
     const [confirmPassword, setConfirmPassword] = useState(""); //비밀번호 확인
+    const navigate = useNavigate();
 
     //오류메시지 상태 저장
     const [nameMessage, setNameMessage] = useState("");
@@ -27,7 +28,8 @@ function RegisterPage(){
     const [dupIdMsg, setDupIdMsg] = useState("");
     const [dupEmailFlag, setDupEmailFlag] = useState(false);
     const [dupEmailMsg, setDupEmailMsg] = useState("");
-    const navigate = useNavigate();
+    const [dupIdButtonCheck, setDupIdButtonCheck] = useState(false); //ID 중복체크 버튼 확인용
+    const [dupEmailButtonCheck, setDupEmailButtonCheck] = useState(false); //Email 중복체크 버튼 확인용
 
     const onNameHandler = useCallback((e) => {
         const nameRegExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{2,5}$/;
@@ -129,19 +131,15 @@ function RegisterPage(){
         }
     }
 
-    const dupIdCheck = (event) => {
+    const dupIdCheck = async (event) => {
         event.preventDefault();
+        setDupIdButtonCheck(true);
         if(!isId){
-            return alert("아이디를 다시 확인해주세요!");
+            return setDupIdMsg("아이디를 다시 확인해주세요!");
         }else{
-            let data = {
-                id: `${id}`
-            };
-            const headers = {
-                "Content-Type": `application/json`,
-            };
-            axios.get('/sign/dupId/?id=' + id)
+            await axios.get('/sign/dupId/?id=' + id)
                 .then((res) => {
+                    console.log(res);
                     setDupIdFlag(true);
                     setDupIdMsg("사용 가능한 ID입니다.");
                 })
@@ -158,19 +156,17 @@ function RegisterPage(){
 
     const dupEmailCheck = (event) => {
         event.preventDefault();
+        setDupEmailButtonCheck(true);
         if(!isEmail){
-            return alert("이메일을 다시 확인해주세요!");
+            return setDupEmailMsg("이메일을 다시 확인해주세요!");
         }else{
-            const headers = {
-                "Content-Type": `application/json`,
-            };
             axios.get('/sign/dupWebmail?webmail=' + webmail)
                 .then((res) => {
                     setDupEmailFlag(true);
                     setDupEmailMsg("사용 가능한 Email입니다.");
                 })
                 .catch((e) => {
-                    console.log(e);
+                    console.log(e.response.data.message);
                     if(e.response.data.message === "Duplicated Webmail"){
                         setDupEmailMsg("중복된 Email입니다.");
                     }else if(e.response.data.message === "No User"){
@@ -195,7 +191,7 @@ function RegisterPage(){
                     <input type="text" name="id" value={id} placeholder="ID" className="reg_id_input" onChange={onIdHandler} /><br/>
                 </div>
                 {
-                    dupIdFlag === false
+                    dupIdButtonCheck === false
                         ? <div className={isId ? 'success' : 'failure'}>{idMessage}</div>
                         : <div className={dupIdFlag ? 'success' : 'failure'}>{dupIdMsg}</div>
                 }
@@ -216,7 +212,7 @@ function RegisterPage(){
                     <div className="email_msg">@kumoh.ac.kr</div>
                 </div>
                 {
-                    dupEmailFlag === false
+                    dupEmailButtonCheck === false
                         ? <div className={isEmail ? 'success' : 'failure'}>{emailMessage}</div>
                         : <div className={dupEmailFlag ? 'success' : 'failure'}>{dupEmailMsg}</div>
                 }

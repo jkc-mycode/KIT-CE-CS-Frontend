@@ -2,19 +2,34 @@ import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './mypage.css';
-import { getCookie } from '../cookie';
+import { getCookie, removeCookie } from '../cookie';
 
 function MyInfoPage(){
     const [user, setUser] = useState([]); //user 정보
+    const [reportList, setReportList] = useState([]);
     const [myArticle, setMyArticle] = useState([]); //게시물
     const [currentPassword, setCurrentPassword] = useState(""); //기존 비밀번호
     const [newPassword, setNewPassword] = useState(""); //새로운 비밀번호
+    const [deleteAccountPassword, setDeleteAccountPassword] = useState(""); //탈퇴 비밀번호 확인
 
     const [confirmPassword, setConfirmPassword] = useState(""); //새로운 비밀번호 확인
     const [pwCheckMsg, setpwCheckMsg] = useState(""); // 비밀번호 확인 메시지
     const [pwMsgBool, setpwMsgBool] = useState(false); //같은지 유무 메시지
     const navigate = useNavigate();
-    let num = myArticle.length; //article 길이
+    //let num = myArticle.length; //article 길이
+
+    function timer(d){
+        let timestamp = d;
+        let date = new Date(timestamp);
+
+        let year = date.getFullYear().toString(); //년도 뒤에 두자리
+        let month = ("0" + (date.getMonth() + 1)).slice(-2); //월 2자리 (01, 02 ... 12)
+        let day = ("0" + date.getDate()).slice(-2); //일 2자리 (01, 02 ... 31)
+
+        let returnDate = year + "." + month + "." + day;
+
+        return returnDate;
+    }
     
     useEffect(() => {
         checkLogin();
@@ -27,6 +42,7 @@ function MyInfoPage(){
         }
     }
 
+    //비밀번호 변경관련 핸들러
     const onCurrentPasswordHandler = (event) => {
         setCurrentPassword(event.currentTarget.value);
         checkPassword(event.currentTarget.value);
@@ -38,6 +54,9 @@ function MyInfoPage(){
     const onConfirmPasswordHandler = (event) => {
         setConfirmPassword(event.currentTarget.value);
         checkPassword(event.currentTarget.value);
+    }
+    const onDeleteAccountPassword = (event) => {
+        setDeleteAccountPassword(event.currentTarget.value);
     }
     function checkPassword(target) {
         if (newPassword !== target)
@@ -51,19 +70,8 @@ function MyInfoPage(){
             setpwCheckMsg("비밀번호가 일치합니다.");
         }
     }
-    function timer(d){
-        let timestamp = d;
-        let date = new Date(timestamp);
 
-        let year = date.getFullYear().toString(); //년도 뒤에 두자리
-        let month = ("0" + (date.getMonth() + 1)).slice(-2); //월 2자리 (01, 02 ... 12)
-        let day = ("0" + date.getDate()).slice(-2); //일 2자리 (01, 02 ... 31)
-
-        let returnDate = year + "." + month + "." + day;
-
-        return returnDate;
-    }
-
+    //비밀번호 변경 axios
     const onPasswordChange = (event) => {
         event.preventDefault();
         if(newPassword !== confirmPassword){ //비밀번호 입력이 같은지 확인
@@ -88,6 +96,41 @@ function MyInfoPage(){
                 })
         }
     }
+
+    //회원탈퇴 axios
+    const onDeleteAccount = async () => {
+        if(window.confirm("정말로 탈퇴하시겠습니까??")){
+            await axios.delete('/sign/', {
+                data: {
+                    password: `${deleteAccountPassword}`
+                }
+            })
+                .then((res) => {
+                    console.log(res);
+                    alert("탈퇴되었습니다ㅠㅠ");
+                    removeCookie("kit_acs", { domain: "localhost", path: "/" });
+                    navigate('/');
+                })
+                .catch((e) => {
+                    console.log(e);
+                })
+        }else{
+            console.log("취소");
+        }
+    }
+
+    //신고 리스트 가져오는 axios
+    const getReportList = async () => {
+        const res = await axios.get('/report')
+            .then((res) => {
+                console.log(res.data);
+                setReportList(res.data);
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+    }
+
     useEffect(() => {
         if(!getCookie('kit_acs')){
             alert("로그인 후 이용가능!!");
@@ -103,6 +146,7 @@ function MyInfoPage(){
             .catch((e) => {
                 console.log(e);
             })
+        getReportList();
     }, [])
 
     return (
@@ -200,6 +244,9 @@ function MyInfoPage(){
                         </tr>
                     </table>
                 </div>
+                <br/><br/><br/>
+                <input type="password" className="delete_account_password" onChange={onDeleteAccountPassword} placeholder="비밀번호를 입력해주세요"/>
+                <button type="button" className="delete_account" onClick={onDeleteAccount}>회원탈퇴</button>
             </div>
         </div>
     )
