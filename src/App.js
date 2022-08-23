@@ -17,9 +17,9 @@ import ViewPage from './Components/View';
 import MyInfoPage from './Components/mypage';
 import PostWrite from './Components/post_write';
 import PostUpdate from './Components/post_update';
+import About from './Components/about';
 import Footer from './Components/footer';
 import Crawling from './Components/crawling';
-import Search from './Components/search';
 
 function App() {
   return (
@@ -44,7 +44,7 @@ function App() {
                 <Route path="/graduate/view/:viewId" element={<ViewPage/>}></Route>
                 <Route path="/post_write" element={<PostWrite/>}></Route>
                 <Route path="/post_update/:viewId" element={<PostUpdate/>}></Route>
-                <Route path="/search" element={<Search/>}></Route>
+                <Route path="/about" element={<About/>}></Route>
             </Routes>
             
             {/*<Footer></Footer>*/}

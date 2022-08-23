@@ -14,6 +14,8 @@ function MenuBar(){
             <Link className="menubar_items" to="/free">자유 게시판</Link>
             <div className="menubar_line"></div>
             <Link className="menubar_items" to="/graduate">졸업생 게시판</Link>
+            <div className="menubar_line"></div>
+            <Link className="menubar_items" to="/about">도움말</Link>
         </div>
     )
 }
