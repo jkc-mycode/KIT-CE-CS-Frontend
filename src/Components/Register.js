@@ -108,7 +108,9 @@ function RegisterPage(){
             };
             axios.post('/sign/up', data, headers)
                 .then((res) => {
-                    console.log(res.data)
+                    console.log(res.data);
+                    alert("가입완료!!");
+                    alert("*****웹메일에서 인증 진행후 로그인 가능합니다.*****");
                 })
                 .catch((e) => {
                     console.log(e);
