@@ -9,17 +9,16 @@ function BoardList() {
         <div className = "view_section">
             <div className = "body_section">
             <div className="left_section">
-                <div className="nowBoard">&#xE001;_ 공지사항</div>
-                <table className = "board_list_table">
+                <div className="boxTitle">&#xE001;_ 공지사항</div>
+                <table className = "boardlist_table">
                     <thead className = "board_head">
-                    <tr>
-                        <th>번호</th>
-                        <th>카테고리</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>작성일</th>
-                        <th>조회수</th>
-                    </tr>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                            <th>조회수</th>
+                        </tr>
                     </thead>
                     <tbody className = "board_body">
                     <BoardRow />

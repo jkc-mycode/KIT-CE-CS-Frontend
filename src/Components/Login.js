@@ -53,8 +53,8 @@ function LoginPage(){
         }
     }
     return (
-        <div className="login_box">
-            <h1 className="login_title">&#xE001;_ Login</h1>
+        <div className="box login_box">
+            <h1 className="boxTitle">&#xE001;_ Login</h1>
             <form>
                 <div className="input_row">
                     <input type="text" name="id" value={id || ''} placeholder="ID" className="id_input" onChange={onIdHandler} /><br/>
@@ -63,8 +63,8 @@ function LoginPage(){
                     <input type="password" name="password" value={password || ''} placeholder="Password" className="pw_input" onChange={onPasswordHandler} /><br/>
                 </div>
                 <div className="button_container">
-                    <button type="submit" className="login_button" onClick={onClickLogin} >Login</button>
-                    <button className="signup_button" onClick={()=>navigate('/signup')}>Sign Up</button>
+                    <button type="submit" className="mbutton login_button" onClick={onClickLogin} >Login</button>
+                    <button className="ebutton signup_button" onClick={()=>navigate('/signup')}>Sign Up</button>
 
                 </div>
             </form>

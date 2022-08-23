@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {Link, useLocation} from 'react-router-dom';
-import { Icon } from "@material-ui/core";
 import './header.css';
 import axios from "axios";
 import { getCookie, removeCookie } from '../cookie';
@@ -70,7 +69,7 @@ function Header(){
                                         <span className="search_row">
                                             <input type="text" placeholder="       입력해주세요." name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
                                         </span>
-                                        <button type="submit" className="search_button"><Icon fontSize='small'>search</Icon></button>
+                                        <button type="submit" className="search_button"><span class="material-icons">search</span></button>
                                     </form>
                                 </div>
                             </div>     
@@ -110,7 +109,7 @@ function Header(){
                                     <span className="search_row">
                                         <input type="text" placeholder="       입력해주세요." name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
                                     </span>
-                                    <button type="submit" className="search_button"><Icon fontSize='small'>search</Icon></button>
+                                    <button type="submit" className="search_button"><span class="material-icons">search</span></button>
                                 </form>
                             </div>
                         </div>   

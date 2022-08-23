@@ -129,14 +129,14 @@ function ViewPage(){
     return (
         <div className="view_section">
             <div className = "body_section">
-                <div className="left_section">
+                <div className="box left_section">
                     <div className="post_tag" onClick={() => navigate("/"+list.tag)}>#{list.tag}</div>
-                    <h1 className="title">&#xE001;_ {list.title}</h1>
+                    <h1 className="boxBigTitle">&#xE001;_ {list.title}</h1>
                     <div>
                         <div className="post_info_table">
-                            <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span>{list.authorName}({list.author})</div>
-                            <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span>{list.views}</div>
-                            <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span>{date}</div>
+                            <div className="post_info_author"><span class="material-icons-outlined">&#xe7fd;</span>{list.authorName}({list.author})</div>
+                            <div className="post_info_hit"><span class="material-icons-outlined">&#xe8f4;</span>{list.views}</div>
+                            <div className="post_info_date"><span class="material-icons-outlined">&#xebcc;</span>{date}</div>
                         </div>
                         {
                             test === true
@@ -161,9 +161,9 @@ function ViewPage(){
                         {
                             list.isMine
                                 ? <>
-                                    <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
-                                    <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
-                                    <div className="post_report" onClick={openReport}><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
+                                    <div className="post_edit" onClick={updateLoginCheck}><span className="material-icons-outlined">&#xe3c9;</span> 수정</div>
+                                    <div className="post_delete" onClick={deletePost}><span className="material-icons-outlined">&#xe92b;</span> 삭제</div>
+                                    <div className="post_report" onClick={openReport}><span className="material-icons-outlined">&#xe160;</span> 신고</div>
                                 </>
                                 : <>
                                     <Report open={reportOpen} close={closeReport} submit={reportSubmit} header="신고하기">
@@ -175,7 +175,7 @@ function ViewPage(){
                                             })
                                         }
                                     </Report>
-                                    <div className="post_report" onClick={openReport}><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
+                                    <div className="post_report" onClick={openReport}><span className="material-icons-outlined">&#xe160;</span> 신고</div>
                                 </>
                         }
                     </div>
@@ -187,10 +187,10 @@ function ViewPage(){
                     <br/>
                     <div className="line"></div>
                     <br/>
-                    <div className="post_list" onClick={() => navigate("/")}><span class="material-symbols-outlined">&#xe241;</span> 목록</div>
+                    <div className="post_list" onClick={() => navigate("/")}><span class="material-icons-outlined">&#xe241;</span> 목록</div>
                     <table className="post_table">
                         <tr>
-                            <td><span class="material-symbols-outlined">&#xe316;</span> 다음글</td>
+                            <td><span class="material-icons-outlined">&#xe316;</span> 다음글</td>
                             {
                                 next === undefined
                                     ? <td>다음 글이 없습니다.</td>
@@ -198,7 +198,7 @@ function ViewPage(){
                             }
                         </tr>
                         <tr>
-                            <td><span class="material-symbols-outlined">&#xe313;</span> 이전글</td>
+                            <td><span class="material-icons-outlined">&#xe313;</span> 이전글</td>
                             {
                                 prev === undefined
                                     ? <td>이전 글이 없습니다.</td>

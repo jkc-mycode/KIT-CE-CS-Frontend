@@ -22,11 +22,10 @@ import Crawling from './Components/crawling';
 import Search from './Components/search';
 
 function App() {
-  return (
-    <Fragment>
-      {/* <div className="view_section"> */}
-        <Header></Header>
-        <MenuBar></MenuBar>
+    return (
+        <Fragment>
+            <Header></Header>
+            <MenuBar></MenuBar>
 
             <Routes>
                 <Route path="/" element={<BoardList/>}></Route>
@@ -47,8 +46,7 @@ function App() {
                 <Route path="/search" element={<Search/>}></Route>
             </Routes>
             
-            {/*<Footer></Footer>*/}
-            {/* </div> */}
+            <Footer />
         </Fragment>
     );
 }

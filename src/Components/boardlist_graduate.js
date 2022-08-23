@@ -9,7 +9,7 @@ function BoardList() {
         <div className = "view_section">
             <div className = "body_section">
                 <div className="left_section">
-                    <div className="nowBoard">&#xE001;_ 졸업생 게시판</div>
+                    <div className="boxTitle">&#xE001;_ 졸업생 게시판</div>
                     <table className = "boardlist_table">
                         <thead className = "board_head">
                         <tr>

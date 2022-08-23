@@ -97,7 +97,7 @@ function PostWrite(){
 
     return (
         <div className="view_section">
-            <div className="post_write_section">
+            <div className="box post_write_section">
                 <div className="board_title_section">
                     <div className="post_dropdown_box">
                         <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
@@ -144,8 +144,8 @@ function PostWrite(){
                 <input type="file" id="file" onChange={onFileHandler} multiple/>
                 <br/><br/>
                 <div className="post_write_button">
-                    <button type="button" className="post_register_button" onClick={postWrite}>등록</button>
-                    <button type="button" className="post_cancel_button" onClick={() => navigate('/')}>취소</button>
+                    <button type="button" className="mbutton post_register_button" onClick={postWrite}>등록</button>
+                    <button type="button" className="sbutton post_cancel_button" onClick={() => navigate('/')}>취소</button>
                 </div>
             </div>
         </div>

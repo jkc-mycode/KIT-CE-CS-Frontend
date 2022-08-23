@@ -4,14 +4,16 @@
 }
 
 .body_section {
-    display: table;
+    display: flex;
+    position: absolute;
     width: 100%;
 }
 
 .left_section {
     margin-top: 50px;
     width: 70%;
-    display: table-cell;
+    display: flex;
+    position: relative;
 }
 
 .margin_section {
@@ -21,16 +23,8 @@
 .right_section {
     margin-top: 50px;
     width: 27%;
-    display: table-cell;
-}
-
-.nowBoard {
-    /* margin: 50px auto auto; */
-    margin-left: 20px;
-
-    font-weight: 500;
-    font-size: 24px;
-    /* color: #224459; */
+    display: flex;
+    position: relative;
 }
 
 .board_head {

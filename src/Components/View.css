@@ -20,30 +20,14 @@
     display: table-cell;
 }
 
-/* .board_list_table {
-    width: 100%;
-} */
-
-.title {
+.boxBigTitle {
     margin-top: 20px;
-    margin-left: 15px;
-
-    font-weight: 700;
-    font-size: 32px;
-
-    color: #0D0D0D;
     word-break: break-all;
-}
-
-.line {
-    width: 100%;
-
-    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
 }
 
 .post_info_table {
     margin-top: 20px;
-    margin-left: 15px;
+    /* margin-left: 15px; */
     margin-bottom: 10px;
     border: 0px;
 
@@ -83,7 +67,8 @@
 }
 
 .post_tag {
-    margin-left: 15px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .edit_delete_list {
@@ -121,11 +106,10 @@
     color: #224459;
 }
 
-.post_table{
+.post_table {
     width: 100%;
 }
 
 .post_table tr > td:nth-child(1) {
-    width: 100px;
-    text-align: center;
+    width: 90px;
 }

@@ -8,8 +8,8 @@ function BoardList() {
     return(
         <div className = "view_section">
             <div className = "body_section">
-            <div className="left_section">
-                <div className="nowBoard">&#xE001;_ 전체 게시판</div>
+            <div className="box left_section">
+                <div className="boxTitle">&#xE001;_ 전체 게시판</div>
                 <table className = "board_list_table">
                     <thead className = "board_head">
                     <tr>

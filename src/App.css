@@ -1,4 +1,93 @@
-/* .view_section {
-  margin: 0 auto;
-  width: 85%;
-} */
+/* -------------------- 공통 CSS -------------------- */
+
+body {
+    background-color: #f9f9f9;
+}
+
+
+/* --------------- 틀 --------------- */
+
+.main {
+
+}
+
+.side {
+
+}
+
+.box {
+    padding: 20px;
+    border: 0px;
+    border-bottom: 1px solid rgba(115, 115, 115, 0.2);
+    border-radius: 10px;
+
+    background-color: #FFFFFF;
+}
+.boxTitle {
+    margin-top: 10px;
+
+    font-weight: 500;
+    font-size: 24px;
+    cursor: default;
+}
+.boxBigTitle {
+    margin-top: 10px;
+
+    font-weight: 700;
+    font-size: 32px;
+    cursor: default;
+}
+
+.line {
+    border-bottom: 1px solid rgba(115, 115, 115, 0.8);
+    width: 100%;
+}
+
+/* --------------- 입력창 --------------- */
+
+.input::placeholder {
+    color: rgba(115, 115, 115, 0.8);
+}
+
+
+/* --------------- 버튼 --------------- */
+
+.mbutton {
+    border: 2px solid #4AA4F4;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+.mbutton:hover {
+    background-color: #4AA4F4;
+
+    color: #FFFFFF;
+}
+
+.sbutton {
+    border: 2px solid #D9D9D9;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+
+    font-size: 18px;
+    
+    cursor: pointer;
+}
+.sbutton:hover {
+    background-color: #D9D9D9;
+}
+
+.ebutton {
+    background: none;
+
+    color: #224459;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+.ebutton:hover {
+    color: #6D8797;
+}
