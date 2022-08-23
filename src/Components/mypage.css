@@ -85,9 +85,14 @@
     background: #fff;
 }
 
+.grade_box {
+    width: 100%;
+    height: 200px;
+}
+
 .mypost_box {
     width: 100%;
-    height: 800px;
+    height: 300px;
 }
 
 .mypost_box > table {
@@ -96,4 +101,12 @@
 
 .report_box > table {
     width: 100%;
+}
+
+.title_length {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 150px;
+    /* 제목 길면 ... 해주는거 할려면 길이 고정이 필요 */
 }
