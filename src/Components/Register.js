@@ -177,8 +177,8 @@ function RegisterPage(){
     }
 
     return (
-        <div className="register_box">
-            <h1 className="register_title">&#xE001;_ Register</h1>
+        <div className="box register_box">
+            <h1 className="boxBigTitle">&#xE001;_ Register</h1>
             <h3 className="message">회원가입을 위해 아래 정보를 입력해주세요.</h3>
             <form>
                 <div className="input_msg">이름</div>
@@ -196,7 +196,7 @@ function RegisterPage(){
                         : <div className={dupIdFlag ? 'success' : 'failure'}>{dupIdMsg}</div>
                 }
                 <div className="button_container">
-                    <button type="button" className="idcheck_button" onClick={dupIdCheck}>중복 체크</button>
+                    <button type="button" className="ebutton idcheck_button" onClick={dupIdCheck}>중복 체크</button>
                 </div>
                 <div className="input_msg">비밀번호</div>
                 <div className="input_row">
@@ -217,10 +217,10 @@ function RegisterPage(){
                         : <div className={dupEmailFlag ? 'success' : 'failure'}>{dupEmailMsg}</div>
                 }
                 <div className="button_container">
-                    <button type="button" className="emailcheck_button" onClick={dupEmailCheck}>중복 체크</button>
+                    <button type="button" className="ebutton emailcheck_button" onClick={dupEmailCheck}>중복 체크</button>
                 </div>
                 <div className="button_container">
-                    <button type="button" className="register_button" onClick={onSubmit}>회원가입</button>
+                    <button type="button" className="mbutton register_button" onClick={onSubmit}>회원가입</button>
                 </div>
             </form>
         </div>

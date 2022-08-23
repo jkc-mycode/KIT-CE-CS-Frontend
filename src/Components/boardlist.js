@@ -6,7 +6,7 @@ import BoardFooter from './boardlist_footer';
 
 function BoardList() {
     return(
-        <div className = "view_section">
+        <div className = "viewSection">
             <div className = "body_section">
             <div className="box left_section">
                 <div className="boxTitle">&#xE001;_ 전체 게시판</div>

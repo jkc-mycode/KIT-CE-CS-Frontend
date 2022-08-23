@@ -54,7 +54,7 @@ function LoginPage(){
     }
     return (
         <div className="box login_box">
-            <h1 className="boxTitle">&#xE001;_ Login</h1>
+            <h1 className="boxBigTitle">&#xE001;_ Login</h1>
             <form>
                 <div className="input_row">
                     <input type="text" name="id" value={id || ''} placeholder="ID" className="id_input" onChange={onIdHandler} /><br/>

@@ -1,18 +1,29 @@
 /* -------------------- 공통 CSS -------------------- */
 
 body {
-    background-color: #f9f9f9;
+    background-color: #f6f6f6;
 }
 
 
 /* --------------- 틀 --------------- */
 
-.main {
+.viewSection {
+    width: 80%;
 
+    max-width: 1300px;
+    min-width: 300px;
+
+    margin: 0 auto;
 }
-
+.bodySection {
+    display: flex;
+    flex-wrap: wrap;
+}
+.main {
+    flex-basis: auto;
+}
 .side {
-
+    flex-basis: auto;
 }
 
 .box {
@@ -81,6 +92,7 @@ body {
 }
 
 .ebutton {
+    border: none;
     background: none;
 
     color: #224459;
