@@ -164,6 +164,15 @@ function ViewPage(){
                                     <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
                                     <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
                                     <div className="post_report" onClick={openReport}><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
+                                    <Report open={reportOpen} close={closeReport} submit={reportSubmit} header="신고하기">
+                                        {
+                                            reasonText.map((item) => {
+                                                return(
+                                                    <button type="button" className="Reason" name="article" value={item.reason} onClick={reportData}>{item.reason}</button>
+                                                )
+                                            })
+                                        }
+                                    </Report>
                                 </>
                                 : <>
                                     <Report open={reportOpen} close={closeReport} submit={reportSubmit} header="신고하기">

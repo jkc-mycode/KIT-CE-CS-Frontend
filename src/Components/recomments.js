@@ -3,6 +3,7 @@ import { getCookie, removeCookie } from '../cookie';
 import {Button, Dialog, DialogContent, IconButton, TextField} from "@mui/material";
 import axios from 'axios';
 import './comments.scss';
+import Report from "./report_popup";
 
 
 const Recomments = (props) => {
@@ -58,7 +59,6 @@ const Recomments = (props) => {
     const headers = {
         "Content-Type": `application/json`,
     };
-
     //댓글 작성 axios
     const commentOnSubmit = async () => {
         // if(!`${content}`){
@@ -108,6 +108,56 @@ const Recomments = (props) => {
             })
     }
 
+    const [reportOpen, setReportOpen] = useState(false); //신고 팝업창
+    const [reportReason, setReportReason] = useState(""); //신고사유
+    const [reportType, setReportType] = useState("");
+    const reasonText = [
+        {reason: "음란물/불건전한 만남 및 대화"},
+        {reason: "상업적 광고 및 판매"},
+        {reason: "욕설/비하"},
+        {reason: "낚시/놀람/도배"},
+        {reason: "게시판 성격에 부적절함"},
+        {reason: "정당/정치인 비하 및 선거운동"},
+        {reason: "유출/사칭/사기"}
+    ]
+
+    const openReport = () => {
+        setReportOpen(true);
+    }
+    const closeReport = () => {
+        setReportOpen(false);
+    }
+
+    const reportData = (e) => {
+        console.log(e.currentTarget.value);
+        console.log(e.currentTarget.name);
+        setReportReason(e.currentTarget.value);
+        setReportType(e.currentTarget.name);
+    }
+
+    let data2 = {
+        id: `${comment._id}`,
+        targetType: `${reportType}`,
+        reason: `${reportReason}`
+    }
+    //신고사유 보내는 axios
+    const reportSubmit = async (e) => {
+        console.log(comment);
+        if(window.confirm(reportReason + " 사유가 맞나요?")){
+            const res = await axios.post('/report', data2, headers)
+                .then((res) => {
+                    console.log(res);
+                    alert("신고되었습니다!");
+                    window.location.reload();
+                })
+                .catch((e) => {
+                    console.log(e);
+                })
+        }else{
+            console.log("취소");
+        }
+    }
+
     useEffect(() => {
         setReCommentsList(props.recomments)
         setComment(props.comment)
@@ -137,7 +187,18 @@ const Recomments = (props) => {
                 }
                 {
                     comment.isDeleted === false
-                        ? <div className="post_report" ><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
+                        ? <>
+                            <div className="post_report" onClick={openReport}><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
+                            <Report open={reportOpen} close={closeReport} submit={reportSubmit} header="신고하기">
+                                {
+                                    reasonText.map((item) => {
+                                        return(
+                                            <button type="button" className="Reason" name="comment" value={item.reason} onClick={reportData}>{item.reason}</button>
+                                        )
+                                    })
+                                }
+                            </Report>
+                        </>
                         : null
                 }
                 <hr/>
