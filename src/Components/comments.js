@@ -104,7 +104,11 @@ const Comments = (props) => {
                                                <div className="comment_date">{timer(item.date)}</div>
                                            </div>
                                            <div className="comment_content">{item.content}</div>
-                                           <div className="comment_username">{item.authorName}({item.author})</div>
+                                           {
+                                               item.author === ""
+                                                   ? <div className="comment_username">(알 수 없음)</div>
+                                                   : <div className="comment_username">{item.authorName}({item.author})</div>
+                                           }
                                        </>
                                }
                                <div className="recomment_box">

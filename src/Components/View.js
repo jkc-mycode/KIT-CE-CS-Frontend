@@ -110,6 +110,7 @@ function ViewPage(){
     }
     const getPost = async () => {
         const posts = await axios.get("/article/view/" + id)
+        console.log(posts.data)
         setList(posts.data.articleInfo);
         setNext(posts.data.next[0]);
         setPrev(posts.data.prev[0]);
@@ -134,7 +135,15 @@ function ViewPage(){
                     <h1 className="title">&#xE001;_ {list.title}</h1>
                     <div>
                         <div className="post_info_table">
-                            <div className="post_info_author"><span class="material-symbols-outlined">&#xe7fd;</span>{list.authorName}({list.author})</div>
+                            {
+                                list.authorName === ""
+                                    ? <div className="post_info_author"><span
+                                        className="material-symbols-outlined">&#xe7fd;</span>(알 수 없음)
+                                    </div>
+                                    : <div className="post_info_author"><span
+                                        className="material-symbols-outlined">&#xe7fd;</span>{list.authorName}({list.author})
+                                    </div>
+                            }
                             <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span>{list.views}</div>
                             <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span>{date}</div>
                         </div>
@@ -196,7 +205,7 @@ function ViewPage(){
                     <br/>
                     <div className="line"></div>
                     <br/>
-                    <div className="post_list" onClick={() => navigate("/")}><span class="material-symbols-outlined">&#xe241;</span> 목록</div>
+                    <div className="post_list" onClick={() => navigate("/" + list.tag)}><span class="material-symbols-outlined">&#xe241;</span> 목록</div>
                     <table className="post_table">
                         <tr>
                             <td><span class="material-symbols-outlined">&#xe316;</span> 다음글</td>
