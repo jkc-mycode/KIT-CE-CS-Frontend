@@ -135,6 +135,7 @@ function MyInfoPage(){
                     window.location.reload();
                 })
                 .catch((e) => {
+                    alert("현재 비밀번호가 틀렸습니다!");
                     console.log(e);
                 })
         }
@@ -155,7 +156,11 @@ function MyInfoPage(){
                     navigate('/');
                 })
                 .catch((e) => {
-                    console.log(e);
+                    if(e.response.data.message === "Wrong Password"){
+                        alert("비밀번호가 틀렸습니다!");
+                    }else{
+                        alert("에러!!");
+                    }
                 })
         }else{
             console.log("취소");
@@ -185,6 +190,7 @@ function MyInfoPage(){
                     window.location.reload();
                 })
                 .catch((e) => {
+                    alert("에러!!");
                     console.log(e);
                 })
         }else{
@@ -210,6 +216,7 @@ function MyInfoPage(){
                     window.location.reload();
                 })
                 .catch((e) => {
+                    console.log("입력값 에러!!");
                     console.log(e);
                 })
         }else{
