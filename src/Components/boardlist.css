@@ -1,37 +1,3 @@
-.view_section {
-    margin: 0 auto;
-    width: 85%;
-}
-
-.body_section {
-    display: flex;
-    position: absolute;
-    width: 100%;
-}
-
-.left_section {
-    margin-top: 50px;
-    width: 70%;
-    display: flex;
-    position: relative;
-}
-
-.margin_section {
-    width: 3%;
-}
-
-.right_section {
-    margin-top: 50px;
-    width: 27%;
-    display: flex;
-    position: relative;
-}
-
-.board_head {
-    font-size: 16px;
-    font-weight: 500;
-}
-
 .board_list_table tr, .boardlist_table tr {
     width: 100%;
 }
@@ -49,15 +15,10 @@ tr > td {
     padding: 1%;
 }
 
-.right_section {
-    text-align: left;
-}
-
 .title_length:hover {
     font-weight: bold;
     cursor: pointer;
 }
-
 
 /* 전체 게시판, 공지사항 테이블 설정 */
 

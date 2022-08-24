@@ -5,27 +5,29 @@
     height: 100px;
 }
 
-.header_container{
+.header_container {
     display: flex;
-    margin : 0 auto;
-    width : 100%;
-    height : 100%;
+    justify-content: space-between;
 }
 
-.header_right_container{
+.left_header {
+    flex: 2;
+}
+
+.center_header {
+    flex: 4;
+}
+
+.right_header {
+    flex: 4;
     display: flex;
-    position : absolute;
-    right: 7.5%;
 }
 
 .header_items{
     margin : 30px;
-    /* width : 100px; */
     height : 50px;
-    /* text-align: center; */
     line-height : 50px;
     flex-shrink: 0;
-    position: relative;
     text-align: center;
 }
 
@@ -40,7 +42,6 @@
 }
 
 .header_search {
-    
     vertical-align: middle;
 }
 

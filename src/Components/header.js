@@ -45,7 +45,7 @@ function Header(){
     if(getCookie('kit_acs')){
         return(
             <div className = "header">
-                <div className ="header_container">
+                <div className ="viewSection">
                     <Link to="/" className="header_items">CE-SE</Link>
                     <div className="header_right_container">
                         <div className="header_items">
@@ -85,38 +85,43 @@ function Header(){
     }else{
         return(
             <div className = "header">
-                <div className ="header_container">
-                    <Link to="/" className="header_items">CE-SE</Link>
-                    <div className="header_right_container">
-                        <div className="header_items">
-                            <div className="post_dropdown_box">
-                                <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
-                                    {
-                                        dropdownVisibility
-                                            ? `${dropdownName}`
-                                            : `${dropdownName}`
-                                    }
-                                </button>
-                                <Dropdown visibility={dropdownVisibility}>
-                                    <ul>
-                                        <li><button type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></li>
-                                        <li><button type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></li>
-                                    </ul>
-                                </Dropdown>
-                            </div>
-                            <div className="header_search">
-                                <form action={location.pathname}>
-                                    <span className="search_row">
-                                        <input type="text" placeholder="       입력해주세요." name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
-                                    </span>
-                                    <button type="submit" className="search_button"><span class="material-icons">search</span></button>
-                                </form>
-                            </div>
-                        </div>   
-                        <div className="header_line"></div>
-                        <Link to="/login" className="header_items">로그인</Link>
-                        <div className="header_line"></div>
-                        <Link to="/signup" className="header_items">회원가입</Link>
+                <div className = "viewSection">
+                    <div className="header_container">
+                        <div className = "left_header">
+                            <Link to="/" className="header_items">CE-SE</Link>
+                        </div>
+                        <div className="center_header"></div>
+                        <div className="right_header">
+                            <div className="header_items">
+                                <div className="post_dropdown_box">
+                                    <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
+                                        {
+                                            dropdownVisibility
+                                                ? `${dropdownName}`
+                                                : `${dropdownName}`
+                                        }
+                                    </button>
+                                    <Dropdown visibility={dropdownVisibility}>
+                                        <ul>
+                                            <li><button type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></li>
+                                            <li><button type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></li>
+                                        </ul>
+                                    </Dropdown>
+                                </div>
+                                <div className="header_search">
+                                    <form action={location.pathname}>
+                                        <span className="search_row">
+                                            <input type="text" placeholder="       입력해주세요." name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
+                                        </span>
+                                        <button type="submit" className="search_button"><span class="material-icons">search</span></button>
+                                    </form>
+                                </div>
+                            </div>   
+                            <div className="header_line"></div>
+                            <Link to="/login" className="header_items">로그인</Link>
+                            <div className="header_line"></div>
+                            <Link to="/signup" className="header_items">회원가입</Link>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -127,12 +127,12 @@ function ViewPage(){
     }, [])
 
     return (
-        <div className="view_section">
-            <div className = "body_section">
-                <div className="box left_section">
-                    <div className="post_tag" onClick={() => navigate("/"+list.tag)}>#{list.tag}</div>
-                    <h1 className="boxBigTitle">&#xE001;_ {list.title}</h1>
-                    <div>
+        <div className = "viewSection">
+            <div className = "bodySection">
+                <div className = "main">
+                    <div className='box'>
+                        <div className="post_tag" onClick={() => navigate("/"+list.tag)}>#{list.tag}</div>
+                        <h1 className="boxBigTitle">&#xE001;_ {list.title}</h1>
                         <div className="post_info_table">
                             <div className="post_info_author"><span class="material-icons-outlined">&#xe7fd;</span>{list.authorName}({list.author})</div>
                             <div className="post_info_hit"><span class="material-icons-outlined">&#xe8f4;</span>{list.views}</div>
@@ -156,8 +156,7 @@ function ViewPage(){
                         }
                         <div className="line"></div>
                         <div className="post_content"  dangerouslySetInnerHTML={{__html : list.content}}></div>
-                    </div>
-                    <div className="edit_delete_report_table">
+                        <div className="edit_delete_report_table">
                         {
                             list.isMine
                                 ? <>
@@ -178,37 +177,34 @@ function ViewPage(){
                                     <div className="post_report" onClick={openReport}><span className="material-icons-outlined">&#xe160;</span> 신고</div>
                                 </>
                         }
+                        </div>
                     </div>
-                    <div className="line"></div>
-                    <br/>
-                    <div className="post_comments_box">
+                    <div className="box post_comments_box">
                         <Comments post_id={id} />
                     </div>
-                    <br/>
-                    <div className="line"></div>
-                    <br/>
-                    <div className="post_list" onClick={() => navigate("/")}><span class="material-icons-outlined">&#xe241;</span> 목록</div>
-                    <table className="post_table">
-                        <tr>
-                            <td><span class="material-icons-outlined">&#xe316;</span> 다음글</td>
-                            {
-                                next === undefined
-                                    ? <td>다음 글이 없습니다.</td>
-                                    : <td onClick={() => {navigate('/view/'+next._id); window.location.reload(); }}>{next.title}</td>
-                            }
-                        </tr>
-                        <tr>
-                            <td><span class="material-icons-outlined">&#xe313;</span> 이전글</td>
-                            {
-                                prev === undefined
-                                    ? <td>이전 글이 없습니다.</td>
-                                    : <td onClick={() => {navigate('/view/'+prev._id); window.location.reload(); }}>{prev.title}</td>
-                            }
-                        </tr>
-                    </table>
+                    <div className='box'>
+                        <div className="post_list" onClick={() => navigate("/")}><span class="material-icons-outlined">&#xe241;</span> 목록</div>
+                        <table className="post_table">
+                            <tr>
+                                <td><span class="material-icons-outlined">&#xe316;</span> 다음글</td>
+                                {
+                                    next === undefined
+                                        ? <td>다음 글이 없습니다.</td>
+                                        : <td onClick={() => {navigate('/view/'+next._id); window.location.reload(); }}>{next.title}</td>
+                                }
+                            </tr>
+                            <tr>
+                                <td><span class="material-icons-outlined">&#xe313;</span> 이전글</td>
+                                {
+                                    prev === undefined
+                                        ? <td>이전 글이 없습니다.</td>
+                                        : <td onClick={() => {navigate('/view/'+prev._id); window.location.reload(); }}>{prev.title}</td>
+                                }
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <div className="margin_section"></div>
-                <div className='right_section'>
+                <div className='side'>
                     <Crawling></Crawling>
                 </div>
             </div>
