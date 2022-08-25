@@ -1,53 +1,16 @@
-.view_section {
-    margin: 0 auto;
-    width: 85%;
-
-}
-
-.left_section {
-    margin-top: 50px;
-    width: 70%;
-    display: table-cell;
-}
-
-.margin_section {
-    width: 3%;
-}
-
-.right_section {
-    margin-top: 50px;
-    width: 27%;
-    display: table-cell;
-}
-
-/* .board_list_table {
-    width: 100%;
-} */
-
-.title {
+.boxBigTitle {
     margin-top: 20px;
-    margin-left: 15px;
-
-    font-weight: 700;
-    font-size: 32px;
-
-    color: #0D0D0D;
     word-break: break-all;
-}
-
-.line {
-    width: 100%;
-
-    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
 }
 
 .post_info_table {
     margin-top: 20px;
-    margin-left: 15px;
+    /* margin-left: 15px; */
     margin-bottom: 10px;
     border: 0px;
 
-    width: calc(100% - 15px * 2);
+    width: 100%;
+    /* width: calc(100% - 15px * 2); */
 
     display: table;
 
@@ -83,7 +46,8 @@
 }
 
 .post_tag {
-    margin-left: 15px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .edit_delete_list {
@@ -121,11 +85,10 @@
     color: #224459;
 }
 
-.post_table{
+.post_table {
     width: 100%;
 }
 
-tr> td:nth-child(1) {
-    width: 70px;
-    text-align: center;
+.post_table tr > td:nth-child(1) {
+    width: 90px;
 }

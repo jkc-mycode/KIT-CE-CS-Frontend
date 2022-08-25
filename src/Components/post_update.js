@@ -88,54 +88,60 @@ function PostUpdate(){
     }
 
     return (
-        <div className="post_write">
-            <div className="input_title_box">
-                <input type="text"
-                       name="title"
-                       value={title}
-                       placeholder="제목을 입력해주세요."
-                       className="input_title"
-                       onChange={onTitleHandler}
-                       style={{height: "20px", width: "800px"}}
-                />
-            </div>
-            <br/>
-            <div className="post_dropdown_box">
-                <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
-                    {
-                        dropdownVisibility
-                            ? `${dropdownName}`
-                            : `${dropdownName}`
-                    }
-                </button>
-                <Dropdown visibility={dropdownVisibility}>
-                    <ul>
-                        <li><button type="button" value="free" name="자유게시판" onClick={onDropdownHandler}>자유게시판</button></li>
-                        <li><button type="button" value="notice" name="공지사항" onClick={onDropdownHandler}>공지사항</button></li>
-                        <li><button type="button" value="study" name="학업게시판" onClick={onDropdownHandler}>학업게시판</button></li>
-                        <li><button type="button" value="graduate" name="졸업생게시판" onClick={onDropdownHandler}>졸업생게시판</button></li>
-                    </ul>
-                </Dropdown>
-            </div>
-            <br/>
-            <br/>
-            <div className="post_write_box">
-                <ReactQuill
-                    style={{height: "300px", width: "800px"}}
-                    theme="snow"
-                    modules={modules}
-                    formats={formats}
-                    placeholder="내용을 입력해주세요."
-                    onChange={onContentHandler}
-                    value={content || ''}
-                />
-            </div>
-            <br/><br/><br/>
-            <input type="file" id="file" onChange={onFileHandler} multiple="multiple" />
-            <br/><br/>
-            <div className="post_write_button">
-                <button type="button" className="post_register_button" onClick={postUpdate}>등록</button>
-                <button type="button" className="post_cancel_button" onClick={() => navigate('/view/'+location.state._id)}>취소</button>
+        <div className="viewSection">
+            <div className='bodySection'>
+                <div className="main">
+                    <div className='box'>
+                        <div className="input_title_box">
+                            <input type="text"
+                                name="title"
+                                value={title}
+                                placeholder="제목을 입력해주세요."
+                                className="input_title"
+                                onChange={onTitleHandler}
+                                style={{height: "20px", width: "800px"}}
+                            />
+                        </div>
+                        <br/>
+                        <div className="post_dropdown_box">
+                            <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
+                                {
+                                    dropdownVisibility
+                                        ? `${dropdownName}`
+                                        : `${dropdownName}`
+                                }
+                            </button>
+                            <Dropdown visibility={dropdownVisibility}>
+                                <ul>
+                                    <li><button type="button" value="free" name="자유게시판" onClick={onDropdownHandler}>자유게시판</button></li>
+                                    <li><button type="button" value="notice" name="공지사항" onClick={onDropdownHandler}>공지사항</button></li>
+                                    <li><button type="button" value="study" name="학업게시판" onClick={onDropdownHandler}>학업게시판</button></li>
+                                    <li><button type="button" value="graduate" name="졸업생게시판" onClick={onDropdownHandler}>졸업생게시판</button></li>
+                                </ul>
+                            </Dropdown>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div className="post_write_box">
+                            <ReactQuill
+                                style={{height: "300px", width: "800px"}}
+                                theme="snow"
+                                modules={modules}
+                                formats={formats}
+                                placeholder="내용을 입력해주세요."
+                                onChange={onContentHandler}
+                                value={content || ''}
+                            />
+                        </div>
+                        <br/><br/><br/>
+                        <input type="file" id="file" onChange={onFileHandler} multiple="multiple" />
+                        <br/><br/>
+                        <div className="post_write_button">
+                            <button type="button" className="post_register_button" onClick={postUpdate}>등록</button>
+                            <button type="button" className="post_cancel_button" onClick={() => navigate('/view/'+location.state._id)}>취소</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

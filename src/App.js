@@ -23,11 +23,10 @@ import Footer from './Components/footer';
 import Crawling from './Components/crawling';
 
 function App() {
-  return (
-    <Fragment>
-      {/* <div className="view_section"> */}
-        <Header></Header>
-        <MenuBar></MenuBar>
+    return (
+        <Fragment>
+            <Header></Header>
+            <MenuBar></MenuBar>
 
             <Routes>
                 <Route path="/" element={<BoardList/>}></Route>
@@ -49,8 +48,7 @@ function App() {
                 <Route path="/idsearch" element={<IDSearch/>}></Route>
             </Routes>
             
-            {/*<Footer></Footer>*/}
-            {/* </div> */}
+            <Footer />
         </Fragment>
     );
 }

@@ -1,8 +1,9 @@
 .login_box {
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 30px;
 
-    width: 500px;
+    max-width: 500px;
+    min-width: 280px;
 }
 
 .login_title {
@@ -45,11 +46,7 @@
     position: absolute;
     right: 90px;
 
-    font-size: 14px;
     text-align: right;
-
-    color: #224459;
-    background: none;
 }
 
 .signup_button {
@@ -59,41 +56,30 @@
 
     position: absolute;
     right: 15px;
-
-    font-size: 14px;
     text-align: right;
+}
 
-    color: #224459;
-    background: none;
+.signup_button {
+    margin-top : 15px;
+    padding: 0px;
+    border: 0px;
+
+    position: absolute;
+    right: 15px;
+    text-align: right;
 }
 
 .login_button {
     margin-top: 72px;
-    border: 2px solid rgba(115, 115, 115, 0.8);
 
     position: absolute;
     right: 0%;
 
     width: 140px;
     height: 50px;
-
-    font-size: 18px;
-
-    background: #fff;
-}
-
-.idsearch_button:hover {
-    color: rgba(115, 115, 115, 0.8);
-}
-
-.signup_button:hover {
-    color: rgba(115, 115, 115, 0.8);
-}
-
-.login_button:hover {
-    background: rgba(115, 115, 115, 0.4);
 }
 
 .button_container{
     position: relative;
+    height: 110px;
 }

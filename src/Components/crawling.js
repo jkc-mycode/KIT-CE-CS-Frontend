@@ -42,8 +42,8 @@ function Crawling() {
     }, [])
 
     return (
-        <div className="crawlingBox">
-            <div className="crawlingBoxMsg">&#xE001;_ 학과 공지사항</div>
+        <div className="box crawlingBox">
+            <div className="boxTitle">&#xE001;_ 학과 공지사항</div>
             <div className="crawlingBox_tab">
                 <input type="radio" name="tabmenu" id="tab_AI" defaultChecked/>
                 <label for="tab_AI">AI</label>
