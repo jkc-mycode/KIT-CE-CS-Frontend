@@ -20,57 +20,37 @@ const testlist = [{
 ]
 
 function Crawling() {
-    const [list, setList] = useState([]);
-    useEffect(() => {
-        axios.get("/")
+    const [ceList, setCeList] = useState([]);
+    const [csList, setCsList] = useState([]);
+    const [aiList, setAiList] = useState([]);
+
+    const getCrawler = async () => {
+        const res = await axios.get('/crawler')
             .then((res) => {
-                setList(res.data);
+                console.log(res.data);
+                setCeList(res.data.ce);
+                setCsList(res.data.cs);
+                setAiList(res.data.ai);
             })
             .catch((err) => {
                 console.log(err);
             })
+    }
+
+    useEffect(() => {
+        getCrawler();
     }, [])
 
     return (
         <div className="crawlingBox">
             <div className="crawlingBoxMsg">&#xE001;_ 학과 공지사항</div>
             <div className="crawlingBox_tab">
-                <input type="radio" name="tabmenu" id="tab_all" checked />
-                <label for="tab_all">전체</label>
-                <input type="radio" name="tabmenu" id="tab_AI" />
+                <input type="radio" name="tabmenu" id="tab_AI" defaultChecked/>
                 <label for="tab_AI">AI</label>
                 <input type="radio" name="tabmenu" id="tab_CE" />
                 <label for="tab_CE">CE</label>
                 <input type="radio" name="tabmenu" id="tab_SE" />
                 <label for="tab_SE">SE</label>
-
-                <div className="conbox all">
-                    <table className="crawling">
-                        <thead className = "board_head">
-                            <tr>
-                                <th>구분</th>
-                                <th>제목</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {
-                            testlist.map((i) => {
-                                let goView = (e) => {
-                                    window.open("http://www.naver.com", '_blank').focus();
-                                }
-                                return (
-                                    <>
-                                        <tr onClick={goView}>
-                                            <td>{i.tag}</td>
-                                            <td>{i.title}</td>
-                                        </tr>
-                                    </>
-                                )
-                            })
-                        }
-                        </tbody>
-                    </table>
-                </div>
 
                 <div className="conbox AI">
                     <table className="crawling">
@@ -82,14 +62,14 @@ function Crawling() {
                         </thead>
                         <tbody>
                         {
-                            testlist.map((i) => {
+                            aiList.slice(0,10).map((i) => {
                                 let goView = (e) => {
-                                    window.open("http://www.naver.com", '_blank').focus();
+                                    window.open(i.link, '_blank').focus();
                                 }
                                 return (
                                     <>
                                         <tr onClick={goView}>
-                                            <td>{i.tag}</td>
+                                            <td>[AI]</td>
                                             <td>{i.title}</td>
                                         </tr>
                                     </>
@@ -110,14 +90,14 @@ function Crawling() {
                         </thead>
                         <tbody>
                         {
-                            testlist.map((i) => {
+                            ceList.slice(0,10).map((i) => {
                                 let goView = (e) => {
-                                    window.open("http://www.naver.com", '_blank').focus();
+                                    window.open(i.link, '_blank').focus();
                                 }
                                 return (
                                     <>
                                         <tr onClick={goView}>
-                                            <td>{i.tag}</td>
+                                            <td>[CE]</td>
                                             <td>{i.title}</td>
                                         </tr>
                                     </>
@@ -138,14 +118,14 @@ function Crawling() {
                         </thead>
                         <tbody>
                         {
-                            testlist.map((i) => {
+                            csList.slice(0,10).map((i) => {
                                 let goView = (e) => {
-                                    window.open("http://www.naver.com", '_blank').focus();
+                                    window.open(i.link, '_blank').focus();
                                 }
                                 return (
                                     <>
                                         <tr onClick={goView}>
-                                            <td>{i.tag}</td>
+                                            <td>[SE]</td>
                                             <td>{i.title}</td>
                                         </tr>
                                     </>
