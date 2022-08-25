@@ -18,6 +18,7 @@ import MyInfoPage from './Components/mypage';
 import PostWrite from './Components/post_write';
 import PostUpdate from './Components/post_update';
 import About from './Components/about';
+import IDSearch from './Components/idsearch';
 import Footer from './Components/footer';
 import Crawling from './Components/crawling';
 
@@ -45,6 +46,7 @@ function App() {
                 <Route path="/post_write" element={<PostWrite/>}></Route>
                 <Route path="/post_update/:viewId" element={<PostUpdate/>}></Route>
                 <Route path="/about" element={<About/>}></Route>
+                <Route path="/idsearch" element={<IDSearch/>}></Route>
             </Routes>
             
             {/*<Footer></Footer>*/}

@@ -64,8 +64,8 @@ function LoginPage(){
                 </div>
                 <div className="button_container">
                     <button type="submit" className="login_button" onClick={onClickLogin} >Login</button>
+                    <button className="idsearch_button" onClick={()=>navigate('/idsearch')}>아이디 찾기/비밀번호 초기화</button>
                     <button className="signup_button" onClick={()=>navigate('/signup')}>Sign Up</button>
-
                 </div>
             </form>
         </div>
