@@ -10,7 +10,8 @@ function MyInfoPage(){
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(2); //20개 고정
     const [total, setTotal] = useState(12); //전체 게시물 수
-    let reportNum = 0; //신고리스트 num
+    const [reportNum, setReportNum] = useState(0); //신고리스트 num
+    let z = -1;
 
     //유저정보 및 페이지네이션
     const [user, setUser] = useState([]); //user 정보
@@ -30,7 +31,6 @@ function MyInfoPage(){
     const [pwCheckMsg, setpwCheckMsg] = useState(""); // 비밀번호 확인 메시지
     const [pwMsgBool, setpwMsgBool] = useState(false); //같은지 유무 메시지
     const navigate = useNavigate();
-    //let num = myArticle.length; //article 길이
 
     //유저등급변경
     const [userId, setUserId] = useState("");
@@ -175,6 +175,7 @@ function MyInfoPage(){
                 setReportList(res.data.reports);
                 setTotal(res.data.totalReport);
                 setLimit(res.data.postLimit);
+                setReportNum((page * res.data.postLimit) - res.data.postLimit + 1)
             })
             .catch((e) => {
                 console.log(e);
@@ -340,7 +341,7 @@ function MyInfoPage(){
                                 {
                                     reportList.map((item) => {
                                         let type = null;
-                                        reportNum++;
+                                        z = z + 1;
                                         if(item.targetType === "article"){
                                             type = "게시물"
                                         }else{
@@ -348,7 +349,7 @@ function MyInfoPage(){
                                         }
                                         return(
                                             <tr>
-                                                <td>{reportNum}</td>
+                                                <td>{reportNum + z}</td>
                                                 <td>{type}</td>
                                                 <td><Link to={`/view/${item.articleId}`}>바로가기</Link></td>
                                                 <td>{item.reason}</td>
