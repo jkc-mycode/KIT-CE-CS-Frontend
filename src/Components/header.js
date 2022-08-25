@@ -48,7 +48,7 @@ function Header(){
                 <div className = "viewSection">
                     <div className="header_container">
                         <div className = "left_header">
-                            <Link to="/" className="header_items">CE-SE</Link>
+                            <Link to="/" className="header_items"><img src="img/acs_logo.png" alt='logo' /></Link>
                         </div>
                         <div className="center_header"></div>
                         <div className="right_header">
@@ -93,7 +93,7 @@ function Header(){
                 <div className = "viewSection">
                     <div className="header_container">
                         <div className = "left_header">
-                            <Link to="/" className="header_items">CE-SE</Link>
+                            <Link to="/" className="header_items"><img className='header_logo' src="img/acs_logo.png" alt='logo' /></Link>
                         </div>
                         <div className="center_header"></div>
                         <div className="right_header">
