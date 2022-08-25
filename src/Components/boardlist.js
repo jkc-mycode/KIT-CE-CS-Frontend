@@ -29,6 +29,7 @@ function BoardList() {
                         <BoardFooter />
                     </div>
                 </div>
+                <div className="margin"></div>
                 <div className="side">
                     <Crawling></Crawling>
                 </div>

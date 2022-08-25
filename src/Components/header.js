@@ -45,10 +45,14 @@ function Header(){
     if(getCookie('kit_acs')){
         return(
             <div className = "header">
-                <div className ="viewSection">
-                    <Link to="/" className="header_items">CE-SE</Link>
-                    <div className="header_right_container">
-                        <div className="header_items">
+                <div className = "viewSection">
+                    <div className="header_container">
+                        <div className = "left_header">
+                            <Link to="/" className="header_items">CE-SE</Link>
+                        </div>
+                        <div className="center_header"></div>
+                        <div className="right_header">
+                            <div className="header_items">
                                 <div className="post_dropdown_box">
                                     <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
                                         {
@@ -73,10 +77,11 @@ function Header(){
                                     </form>
                                 </div>
                             </div>     
-                        <div className="header_line"></div>
-                        <Link to="" className="header_items" onClick={onClickLogout}>로그아웃</Link>
-                        <div className="header_line"></div>
-                        <Link to="/info" className="header_items">마이페이지</Link>
+                            <div className="header_line"></div>
+                            <Link to="" className="header_items" onClick={onClickLogout}>로그아웃</Link>
+                            <div className="header_line"></div>
+                            <Link to="/info" className="header_items">마이페이지</Link>
+                        </div>
                     </div>
                 </div>
             </div>

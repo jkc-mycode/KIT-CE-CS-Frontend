@@ -21,24 +21,24 @@ body {
     justify-self: space-between;
 }
 .main {
-    flex-grow: 2;
-    flex-shrink: 1;
-    flex-basis: auto;
+    flex: 7 1 auto;
 
     min-width: 300px;
 }
 .side {
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 300px;
+    flex: 3 0 auto;
 
     min-width: 300px;
+}
+.margin {
+    flex-basis: 20px;
+    max-width: 20px;
 }
 
 .box {
     margin-bottom: 20px;
     border: 0px;
-    border-bottom: 1px solid rgba(115, 115, 115, 0.2);
+    border-bottom: 1px solid #73737333;
     border-radius: 10px;
     padding: 20px;
 
@@ -60,7 +60,7 @@ body {
 }
 
 .line {
-    border-bottom: 1px solid rgba(115, 115, 115, 0.8);
+    border-bottom: 1px solid #737373cc;
     width: 100%;
 }
 
