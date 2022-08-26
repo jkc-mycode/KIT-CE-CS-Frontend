@@ -1,0 +1,15 @@
+.content {
+    padding: 15px;
+}
+
+.ul_1 {
+    margin-top: 30px;
+}
+
+.block {
+    display: flex;
+}
+
+.block_inner {
+    margin-right: 80px;
+}
