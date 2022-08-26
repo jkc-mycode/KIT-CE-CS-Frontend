@@ -44,7 +44,7 @@ tr > td {
 }
 
 .board_list_table tr > th:nth-child(4), .board_list_table td:nth-child(4) {
-    width : 10%;
+    width: 15%;
 }
 
 .board_list_table tr > th:nth-child(5), .board_list_table td:nth-child(5) {
@@ -70,16 +70,16 @@ tr > td {
     width: 100%;
 }
 
-.boardlist_table tr > th:nth-child(1), .boardlist_table td:nth-child(1) {
+.boardlist_table tr > th :nth-child(1), .boardlist_table td:nth-child(1) {
     width : 10%;
 }
 
 .boardlist_table tr > th:nth-child(2), .boardlist_table td:nth-child(2) {
-    width : 60%;
+    width : 50%;
 }
 
 .boardlist_table tr > th:nth-child(3), .boardlist_table td:nth-child(3) {
-    width : 10%;
+    width : 15%;
 }
 
 .boardlist_table tr > th:nth-child(4), .boardlist_table td:nth-child(4) {

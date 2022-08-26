@@ -70,7 +70,7 @@ function Crawling() {
                                     <>
                                         <tr onClick={goView}>
                                             <td>[AI]</td>
-                                            <td>{i.title}</td>
+                                            <td>{i.title.length > 20 ? `${i.title.substring(0, 20)}...` : i.title}</td>
                                         </tr>
                                     </>
                                 )
@@ -98,7 +98,7 @@ function Crawling() {
                                     <>
                                         <tr onClick={goView}>
                                             <td>[CE]</td>
-                                            <td>{i.title}</td>
+                                            <td>{i.title.length > 20 ? `${i.title.substring(0, 20)}...` : i.title}</td>
                                         </tr>
                                     </>
                                 )
@@ -126,7 +126,7 @@ function Crawling() {
                                     <>
                                         <tr onClick={goView}>
                                             <td>[SE]</td>
-                                            <td>{i.title}</td>
+                                            <td>{i.title.length > 20 ? `${i.title.substring(0, 20)}...` : i.title}</td>
                                         </tr>
                                     </>
                                 )

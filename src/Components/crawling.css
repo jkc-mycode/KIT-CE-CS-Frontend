@@ -17,6 +17,11 @@
     text-align: center;
 }
 
+td:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .crawlingBox_tab {
     margin-top: 15px;
     width: 100%;
@@ -26,6 +31,10 @@
 
 input[type="radio"] {
     display: none;
+}
+
+input[type="radio"] + label:hover {
+    cursor: pointer;
 }
 
 input[type="radio"] + label {

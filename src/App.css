@@ -26,8 +26,7 @@ body {
     min-width: 300px;
 }
 .side {
-    flex: 3 0 auto;
-
+    flex: 30%;
     min-width: 300px;
 }
 .margin {
