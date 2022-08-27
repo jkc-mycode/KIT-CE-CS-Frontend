@@ -8,7 +8,7 @@ body {
 /* --------------- 틀 --------------- */
 
 .viewSection {
-    width: 80%;
+    width: calc(80% + 20px);
 
     max-width: 1300px;
     min-width: 340px;
@@ -29,12 +29,10 @@ body {
     flex: 30%;
     min-width: 300px;
 }
-.margin {
-    flex-basis: 20px;
-    max-width: 20px;
-}
 
 .box {
+    margin-left: 10px;
+    margin-right: 10px;
     margin-bottom: 20px;
     border: 0px;
     border-bottom: 1px solid #73737333;
