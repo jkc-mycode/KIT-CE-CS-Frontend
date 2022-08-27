@@ -51,12 +51,11 @@ function Crawling() {
                 <label for="tab_CE">CE</label>
                 <input type="radio" name="tabmenu" id="tab_SE" />
                 <label for="tab_SE">SE</label>
-
+                
                 <div className="conbox AI">
                     <table className="crawling">
                         <thead className = "board_head">
                             <tr>
-                                <th>구분</th>
                                 <th>제목</th>
                             </tr>
                         </thead>
@@ -69,7 +68,6 @@ function Crawling() {
                                 return (
                                     <>
                                         <tr onClick={goView}>
-                                            <td>[AI]</td>
                                             <td>{i.title}</td>
                                         </tr>
                                     </>
@@ -84,7 +82,6 @@ function Crawling() {
                     <table className="crawling">
                         <thead className = "board_head">
                         <tr>
-                            <th>구분</th>
                             <th>제목</th>
                         </tr>
                         </thead>
@@ -97,7 +94,6 @@ function Crawling() {
                                 return (
                                     <>
                                         <tr onClick={goView}>
-                                            <td>[CE]</td>
                                             <td>{i.title}</td>
                                         </tr>
                                     </>
@@ -112,7 +108,6 @@ function Crawling() {
                     <table className="crawling">
                         <thead className = "board_head">
                         <tr>
-                            <th>구분</th>
                             <th>제목</th>
                         </tr>
                         </thead>
@@ -125,7 +120,6 @@ function Crawling() {
                                 return (
                                     <>
                                         <tr onClick={goView}>
-                                            <td>[SE]</td>
                                             <td>{i.title}</td>
                                         </tr>
                                     </>
