@@ -63,9 +63,9 @@ function LoginPage(){
                     <input type="password" name="password" value={password || ''} placeholder="Password" className="pw_input" onChange={onPasswordHandler} /><br/>
                 </div>
                 <div className="button_container">
-                    <button type="submit" className="mbutton login_button" onClick={onClickLogin} >Login</button>
+                    <button type="submit" className="mbutton login_button" onClick={onClickLogin} >로그인</button>
                     <button className="ebutton idsearch_button" onClick={()=>navigate('/idsearch')}>아이디 찾기/비밀번호 초기화</button>
-                    <button className="ebutton signup_button" onClick={()=>navigate('/signup')}>Sign Up</button>
+                    <button className="ebutton signup_button" onClick={()=>navigate('/signup')}>회원가입</button>
                 </div>
             </form>
         </div>
