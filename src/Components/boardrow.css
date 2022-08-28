@@ -69,3 +69,7 @@ ul.pagination li a.active {
 .title_length:visited {
     color: purple;
 }
+
+table {
+    width: 100%;
+}

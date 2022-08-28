@@ -1,3 +1,7 @@
+.board_list_table, .board_list_body tr, .boardlist_table, .boardlist_body tr {
+    width: 100%;
+}
+
 .board_list_table tr, .boardlist_table tr {
     width: 100%;
 }
