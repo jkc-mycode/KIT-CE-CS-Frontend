@@ -17,6 +17,10 @@
     text-align: center;
 }
 
+.crawling td {
+    text-align: left;
+}
+
 td:hover {
     font-weight: bold;
     cursor: pointer;
