@@ -23,9 +23,11 @@ function BoardList() {
                             </tr>
                             </thead>
                             <tbody className = "board_body">
-                            <BoardRow />
                             </tbody>
                         </table>
+                        <div className="board_list_body">
+                            <BoardRow />
+                        </div>
                         <BoardFooter />
                     </div>
                 </div>

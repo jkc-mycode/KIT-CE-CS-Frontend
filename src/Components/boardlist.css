@@ -20,7 +20,7 @@ tr > td {
     cursor: pointer;
 }
 
-/* 전체 게시판, 공지사항 테이블 설정 */
+/* 전체 게시판 테이블 설정 */
 
 .board_list_table {
     margin-top: 15px;
@@ -31,35 +31,35 @@ tr > td {
     width: 100%;
 }
 
-.board_list_table tr > th:nth-child(1), .board_list_table td:nth-child(1) {
+.board_list_table tr > th:nth-child(1), .board_list_body td:nth-child(1) {
     width : 10%;
 }
 
-.board_list_table tr > th:nth-child(2), .board_list_table td:nth-child(2) {
+.board_list_table tr > th:nth-child(2), .board_list_body td:nth-child(2) {
     width : 10%;
 }
 
-.board_list_table tr > th:nth-child(3), .board_list_table td:nth-child(3) {
+.board_list_table tr > th:nth-child(3), .board_list_body td:nth-child(3) {
     width : 40%;
 }
 
-.board_list_table tr > th:nth-child(4), .board_list_table td:nth-child(4) {
+.board_list_table tr > th:nth-child(4), .board_list_body td:nth-child(4) {
     width: 15%;
 }
 
-.board_list_table tr > th:nth-child(5), .board_list_table td:nth-child(5) {
+.board_list_table tr > th:nth-child(5), .board_list_body td:nth-child(5) {
     width : 10%;
 }
 
-.board_list_table tr > th:nth-child(6), .board_list_table td:nth-child(6) {
+.board_list_table tr > th:nth-child(6), .board_list_body td:nth-child(6) {
     width : 10%;
 }
 
-.board_list_table tr > td:nth-child(3) {
+.board_list_body tr > td:nth-child(3) {
     text-align: left;
 }
 
-/* 전체 게시판, 공지사항 외 게시판 테이블 설정 */
+/* 전체 게시판 외 게시판 테이블 설정 */
 
 .boardlist_table {
     margin-top: 15px;
@@ -70,26 +70,26 @@ tr > td {
     width: 100%;
 }
 
-.boardlist_table tr > th :nth-child(1), .boardlist_table td:nth-child(1) {
+.boardlist_table tr > th :nth-child(1), .boardlist_body td:nth-child(1) {
     width : 10%;
 }
 
-.boardlist_table tr > th:nth-child(2), .boardlist_table td:nth-child(2) {
+.boardlist_table tr > th:nth-child(2), .boardlist_body td:nth-child(2) {
     width : 50%;
 }
 
-.boardlist_table tr > th:nth-child(3), .boardlist_table td:nth-child(3) {
+.boardlist_table tr > th:nth-child(3), .boardlist_body td:nth-child(3) {
     width : 15%;
 }
 
-.boardlist_table tr > th:nth-child(4), .boardlist_table td:nth-child(4) {
+.boardlist_table tr > th:nth-child(4), .boardlist_body td:nth-child(4) {
     width : 10%;
 }
 
-.boardlist_table tr > th:nth-child(5), .boardlist_table td:nth-child(5) {
+.boardlist_table tr > th:nth-child(5), .boardlist_body td:nth-child(5) {
     width : 10%;
 }
 
-.boardlist_table tr > td:nth-child(2) {
+.boardlist_body tr > td:nth-child(2) {
     text-align: left;
 }
