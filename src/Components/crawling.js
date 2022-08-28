@@ -60,23 +60,27 @@ function Crawling() {
                                 <th>제목</th>
                             </tr>
                         </thead>
-                        <tbody>
                         {
-                            aiList.slice(0,10).map((i) => {
-                                let goView = (e) => {
-                                    window.open(i.link, '_blank').focus();
+                            aiList[0] === undefined
+                                ? <tbody><div>업데이트중입니다....</div></tbody>
+                                : <tbody>
+                                {
+                                    aiList.slice(0,10).map((i) => {
+                                        let goView = (e) => {
+                                            window.open(i.link, '_blank').focus();
+                                        }
+                                        return (
+                                            <>
+                                                <tr onClick={goView}>
+                                                    <td>[AI]</td>
+                                                    <td>{i.title}</td>
+                                                </tr>
+                                            </>
+                                        )
+                                    })
                                 }
-                                return (
-                                    <>
-                                        <tr onClick={goView}>
-                                            <td>[AI]</td>
-                                            <td>{i.title}</td>
-                                        </tr>
-                                    </>
-                                )
-                            })
+                                </tbody>
                         }
-                        </tbody>
                     </table>
                 </div>
 
@@ -88,23 +92,27 @@ function Crawling() {
                             <th>제목</th>
                         </tr>
                         </thead>
-                        <tbody>
                         {
-                            ceList.slice(0,10).map((i) => {
-                                let goView = (e) => {
-                                    window.open(i.link, '_blank').focus();
+                            ceList[0] === undefined
+                                ? <tbody><div>업데이트중입니다....</div></tbody>
+                                : <tbody>
+                                {
+                                    ceList.slice(0,10).map((i) => {
+                                        let goView = (e) => {
+                                            window.open(i.link, '_blank').focus();
+                                        }
+                                        return (
+                                            <>
+                                                <tr onClick={goView}>
+                                                    <td>[CE]</td>
+                                                    <td>{i.title}</td>
+                                                </tr>
+                                            </>
+                                        )
+                                    })
                                 }
-                                return (
-                                    <>
-                                        <tr onClick={goView}>
-                                            <td>[CE]</td>
-                                            <td>{i.title}</td>
-                                        </tr>
-                                    </>
-                                )
-                            })
+                                </tbody>
                         }
-                        </tbody>
                     </table>
                 </div>
 
@@ -116,23 +124,27 @@ function Crawling() {
                             <th>제목</th>
                         </tr>
                         </thead>
-                        <tbody>
                         {
-                            csList.slice(0,10).map((i) => {
-                                let goView = (e) => {
-                                    window.open(i.link, '_blank').focus();
+                            csList[0] === undefined
+                                ? <tbody><div>업데이트중입니다....</div></tbody>
+                                : <tbody>
+                                {
+                                    csList.slice(0,10).map((i) => {
+                                        let goView = (e) => {
+                                            window.open(i.link, '_blank').focus();
+                                        }
+                                        return (
+                                            <>
+                                                <tr onClick={goView}>
+                                                    <td>[SE]</td>
+                                                    <td>{i.title}</td>
+                                                </tr>
+                                            </>
+                                        )
+                                    })
                                 }
-                                return (
-                                    <>
-                                        <tr onClick={goView}>
-                                            <td>[SE]</td>
-                                            <td>{i.title}</td>
-                                        </tr>
-                                    </>
-                                )
-                            })
+                                </tbody>
                         }
-                        </tbody>
                     </table>
                 </div>
             </div>
