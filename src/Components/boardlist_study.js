@@ -25,11 +25,10 @@ function BoardList() {
                         <div className="boardlist_body">
                             <BoardRow />
                         </div>
-                        <BoardFooter />
                     </div>
                 </div>
                 <div className="side">
-                    <Crawling></Crawling>
+                    <Crawling />
                 </div>
             </div>
         </div>

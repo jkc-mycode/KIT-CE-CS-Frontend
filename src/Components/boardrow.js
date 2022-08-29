@@ -1,5 +1,6 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import {useNavigate, useLocation} from 'react-router-dom';
+import { getCookie } from '../cookie';
 import axios from "axios";
 import Pagination from "react-js-pagination";
 import './boardrow.css';
@@ -72,6 +73,15 @@ function BoardRow (){
         return returnDate;
     }
 
+    const loginCheck = () => {
+        if(!getCookie("kit_acs")){
+            alert("로그인 후 이용 가능합니다.");
+            navigate('/login')
+        }else{
+            navigate('/post_write');
+        }
+    }
+
     return(
         <>
             {
@@ -98,9 +108,7 @@ function BoardRow (){
                                         ? <td>{cat}</td>
                                         : null
                                 }
-                                <td>
-                                    <div className="title_length">{i.title}</div>
-                                </td>
+                                <td>{i.title.length > 15 ? `${i.title.substring(0, 15)}...` : i.title}</td>
                                 <td>{i.authorName}</td>
                                 <td>{timer(i.date)}</td>
                                 <td>{i.views}</td>
@@ -119,6 +127,9 @@ function BoardRow (){
                 onChange={handlePageChange} //페이지가 바뀔 때 핸들링해줄 함수
                 onClick={getList}
             />
+            <div className = "boardlist_footer">
+                <button type="button" className="sbutton post_write" onClick={loginCheck}>글쓰기</button>
+            </div>
         </>
     )
 }

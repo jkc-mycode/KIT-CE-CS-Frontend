@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 15px;
+    margin-bottom: 0px;
     width: 100%;
 }
 
@@ -58,19 +59,33 @@ ul.pagination li a.active {
     color: #4AA4F4;
 }
 
-.title_length {
+/* .title_length {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 200px;
-    /* 제목 길면 ... 해주는거 할려면 길이 고정이 필요 */
-}
+    width: 100%;
+} */
 
-.title_length:visited {
+/* .title_length:visited {
     color: purple;
-}
+} */
 
 .boardrow {
     width: 100%;
     text-align: center;
+}
+
+.boardlist_footer{
+    position: relative;
+}
+
+.boardlist_footer button{
+    position: absolute;
+    right: 0%;
+
+    width: 80px;
+    height: 34px;
+    margin-top: -34px;
+
+    font-size: 16px;
 }
