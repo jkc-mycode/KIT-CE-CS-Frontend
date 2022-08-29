@@ -21,8 +21,6 @@ function BoardList() {
                                 <th>조회수</th>
                             </tr>
                             </thead>
-                            <tbody className = "board_body">
-                            </tbody>
                         </table>
                         <div className="boardlist_body">
                             <BoardRow />

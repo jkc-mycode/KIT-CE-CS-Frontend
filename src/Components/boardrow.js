@@ -90,20 +90,22 @@ function BoardRow (){
                         cat = "[졸업]";
                     }
                     return ( //각 페이지에서 시작하는 번호가 필요할듯
-                        <tr onClick={goView}>
-                            <td>{num-x}</td>
-                            {
-                                location.pathname === '/'
-                                    ? <td>{cat}</td>
-                                    : null
-                            }
-                            <td>
-                                <div className="title_length">{i.title}</div>
-                            </td>
-                            <td>{i.authorName}</td>
-                            <td>{timer(i.date)}</td>
-                            <td>{i.views}</td>
-                        </tr>
+                        <table className='boardrow'>
+                            <tr onClick={goView}>
+                                <td>{num-x}</td>
+                                {
+                                    location.pathname === '/'
+                                        ? <td>{cat}</td>
+                                        : null
+                                }
+                                <td>
+                                    <div className="title_length">{i.title}</div>
+                                </td>
+                                <td>{i.authorName}</td>
+                                <td>{timer(i.date)}</td>
+                                <td>{i.views}</td>
+                            </tr>
+                        </table>
                     )
                 })
             }

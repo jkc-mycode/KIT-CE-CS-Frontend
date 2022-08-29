@@ -35,27 +35,27 @@ tr > td {
     width: 100%;
 }
 
-.board_list_table tr > th:nth-child(1), .board_list_body td:nth-child(1) {
+.board_list_table tr > th:nth-child(1), .board_list_body tr > td:nth-child(1) {
     width : 10%;
 }
 
-.board_list_table tr > th:nth-child(2), .board_list_body td:nth-child(2) {
+.board_list_table tr > th:nth-child(2), .board_list_body tr > td:nth-child(2) {
     width : 10%;
 }
 
-.board_list_table tr > th:nth-child(3), .board_list_body td:nth-child(3) {
-    width : 40%;
+.board_list_table tr > th:nth-child(3), .board_list_body tr > td:nth-child(3) {
+    width : 45%;
 }
 
-.board_list_table tr > th:nth-child(4), .board_list_body td:nth-child(4) {
-    width: 15%;
+.board_list_table tr > th:nth-child(4), .board_list_body tr > td:nth-child(4) {
+    width : 15%;
 }
 
-.board_list_table tr > th:nth-child(5), .board_list_body td:nth-child(5) {
+.board_list_table tr > th:nth-child(5), .board_list_body tr > td:nth-child(5) {
     width : 10%;
 }
 
-.board_list_table tr > th:nth-child(6), .board_list_body td:nth-child(6) {
+.board_list_table tr > th:nth-child(6), .board_list_body tr > td:nth-child(6) {
     width : 10%;
 }
 
@@ -74,23 +74,23 @@ tr > td {
     width: 100%;
 }
 
-.boardlist_table tr > th :nth-child(1), .boardlist_body td:nth-child(1) {
+.boardlist_table tr > th :nth-child(1), .boardlist_body tr > td:nth-child(1) {
     width : 10%;
 }
 
-.boardlist_table tr > th:nth-child(2), .boardlist_body td:nth-child(2) {
-    width : 50%;
+.boardlist_table tr > th:nth-child(2), .boardlist_body tr > td:nth-child(2) {
+    width : 55%;
 }
 
-.boardlist_table tr > th:nth-child(3), .boardlist_body td:nth-child(3) {
+.boardlist_table tr > th:nth-child(3), .boardlist_body tr > td:nth-child(3) {
     width : 15%;
 }
 
-.boardlist_table tr > th:nth-child(4), .boardlist_body td:nth-child(4) {
+.boardlist_table tr > th:nth-child(4), .boardlist_body tr > td:nth-child(4) {
     width : 10%;
 }
 
-.boardlist_table tr > th:nth-child(5), .boardlist_body td:nth-child(5) {
+.boardlist_table tr > th:nth-child(5), .boardlist_body tr > td:nth-child(5) {
     width : 10%;
 }
 

@@ -70,6 +70,7 @@ ul.pagination li a.active {
     color: purple;
 }
 
-table {
+.boardrow {
     width: 100%;
+    text-align: center;
 }
