@@ -32,11 +32,8 @@
     text-align: right;
 }
 
-.post_content {
-    margin: 15px 15px;
-
-    font-weight: 400;
-    font-size: 24px;
+.post_content img {
+    max-width: 100%;
 }
 
 .post_tag, .edit_delete_list {
