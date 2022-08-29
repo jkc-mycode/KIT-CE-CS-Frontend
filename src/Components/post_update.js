@@ -124,7 +124,7 @@ function PostUpdate(){
                         <br/>
                         <div className="post_write_box">
                             <ReactQuill
-                                style={{height: "300px", width: "800px"}}
+                                style={{height: "350px", width: "100%"}}
                                 theme="snow"
                                 modules={modules}
                                 formats={formats}
@@ -137,8 +137,8 @@ function PostUpdate(){
                         <input type="file" id="file" onChange={onFileHandler} multiple="multiple" />
                         <br/><br/>
                         <div className="post_write_button">
-                            <button type="button" className="post_register_button" onClick={postUpdate}>등록</button>
-                            <button type="button" className="post_cancel_button" onClick={() => navigate('/view/'+location.state._id)}>취소</button>
+                            <button type="button" className="mbutton post_register_button" onClick={postUpdate}>등록</button>
+                            <button type="button" className="sbutton post_cancel_button" onClick={() => navigate('/view/'+location.state._id)}>취소</button>
                         </div>
                     </div>
                 </div>

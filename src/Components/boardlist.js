@@ -22,18 +22,14 @@ function BoardList() {
                                 <th>조회수</th>
                             </tr>
                             </thead>
-                            <tbody className = "board_body">
-                            </tbody>
                         </table>
                         <div className="board_list_body">
                             <BoardRow />
                         </div>
-                        <BoardFooter />
                     </div>
                 </div>
-                <div className="margin"></div>
                 <div className="side">
-                    <Crawling></Crawling>
+                    <Crawling />
                 </div>
             </div>
         </div>
