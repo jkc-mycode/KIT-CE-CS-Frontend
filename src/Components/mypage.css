@@ -1,38 +1,4 @@
-.view_section {
-    margin: 0 auto;
-    width: 85%;
-
-}
-
-.left_mypage {
-    margin-top: 50px;
-    width: 35%;
-    display: table-cell;
-}
-
-.margin_section {
-    width: 3%;
-}
-
-.right_mypage {
-    margin-top: 50px;
-    width: 62%;
-    display: table-cell;
-}
-
-.mypage_box {
-    margin: 0 auto;
-    margin-top: 50px;
-
-    /* width: 500px; */
-    height : 800px
-}
-
-.mypage_title {
-    margin-bottom: 30px;
-}
-
-.name_show, .webmail_show, .id_show, .reg_pw_input, .confirm_pw_input, .pw_edit_button, .mypage_msg {
+.name_show, .webmail_show, .id_show, .reg_pw_input, .confirm_pw_input, .pw_edit_button, .mypage_msg, .delete_account_password, .grade_input {
     width: 100%;
     padding: 0px;
 
@@ -40,7 +6,7 @@
     font-size: 20px;
 }
 
-.reg_pw_input, .confirm_pw_input {
+.reg_pw_input::placeholder, .confirm_pw_input::placeholder, .delete_account_password::placeholder, .grade_input::placeholder {
     color: rgba(115, 115, 115, 0.8);
 }
 
@@ -52,7 +18,7 @@
     font-weight: 500;
 }
 
-.name_show, .webmail_show, .id_show, .reg_pw_input, .confirm_pw_input {
+.name_show, .webmail_show, .id_show, .reg_pw_input, .confirm_pw_input, .delete_account_password, .grade_input {
     border: 0;
 }
 
@@ -66,33 +32,29 @@
     width: 100%;
 }
 
-.button_container{
+.mypage_button_container{
     position: relative;
+    height: 70px;
 }
 
 .pw_edit_button {
     margin-top: 10px;
-    border: 2px solid rgba(115, 115, 115, 0.8);
 
     position: absolute;
     right: 0%;
 
-    width: 140px;
+    width: 160px;
     height: 50px;
-
-    font-size: 18px;
-
-    background: #fff;
 }
 
-.grade_box {
-    width: 100%;
-    height: 200px;
-}
+.delete_account, .grade_edit {
+    margin-top: 20px;
 
-.mypost_box {
-    width: 100%;
-    height: 300px;
+    position: absolute;
+    right: 0%;
+
+    width: 110px;
+    height: 50px;
 }
 
 .mypost_box > table {
@@ -103,10 +65,13 @@
     width: 100%;
 }
 
-.title_length {
+/* .title_length {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 150px;
-    /* 제목 길면 ... 해주는거 할려면 길이 고정이 필요 */
+} */
+
+.report_delete_button {
+    color: #EE4451;
 }
