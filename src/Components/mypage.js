@@ -237,149 +237,162 @@ function MyInfoPage(){
     }, [page, postPage])
 
     return (
-        <div className='view_section'>
-            <div className='left_mypage'>
-                <div className="mypage_box">
-                    <h1 className="mypage_title">&#xE001;_ MyPage</h1>
-                    <form>
-                        <div className="mypage_msg">이름</div>
-                        <div className="mypage_row">
-                            <div className="name_show">{user.name}</div>
-                        </div>
-                        <div className="mypage_msg">금오공대 웹메일</div>
-                        <div className="mypage_row">
-                            <div className="webmail_show">{user.email}</div>
-                        </div>
-                        <div className="mypage_msg">아이디</div>
-                        <div className="mypage_row">
-                            <div className="id_show">{user.id}</div>
-                        </div>
-                        <div className="mypage_msg">비밀번호 수정</div>
-                        <div className="mypage_row">
-                            <input type="password" name="password" value={currentPassword} placeholder="Current Password" className="reg_pw_input" onChange={onCurrentPasswordHandler} /><br/>
-                        </div>
-                        <div className="mypage_row">
-                            <input type="password" name="password" value={newPassword} placeholder="New Password" className="reg_pw_input" onChange={onNewPasswordHandler} /><br/>
-                        </div>
-                        <div className="mypage_row">
-                            <input type="password" name="confirmPassword" value={confirmPassword} placeholder="New Password Confirm" className="confirm_pw_input" onChange={onConfirmPasswordHandler} /><br/>
-                        </div>
-                        <div className={pwMsgBool ? 'success' : 'failure'}>{pwCheckMsg}</div>
-                        <div className="button_container">
-                            <button type="submit" className="pw_edit_button" onClick={onPasswordChange} >비밀번호 변경</button>
-                        </div>
-                    </form>
+        <div className='viewSection'>
+            <div className='bodySection'>
+                <div className='side'>
+                    <div className="box mypage_box">
+                        <h1 className="boxTitle">&#xE001;_ 마이페이지</h1>
+                        <form>
+                            <div className="mypage_msg">이름</div>
+                            <div className="mypage_row">
+                                <div className="name_show">{user.name}</div>
+                            </div>
+                            <div className="mypage_msg">금오공대 웹메일</div>
+                            <div className="mypage_row">
+                                <div className="webmail_show">{user.email}</div>
+                            </div>
+                            <div className="mypage_msg">아이디</div>
+                            <div className="mypage_row">
+                                <div className="id_show">{user.id}</div>
+                            </div>
+                            <div className="mypage_msg">비밀번호 수정</div>
+                            <div className="mypage_row">
+                                <input type="password" name="password" value={currentPassword} placeholder="현재 비밀번호" className="reg_pw_input" onChange={onCurrentPasswordHandler} /><br/>
+                            </div>
+                            <div className="mypage_row">
+                                <input type="password" name="password" value={newPassword} placeholder="새 비밀번호" className="reg_pw_input" onChange={onNewPasswordHandler} /><br/>
+                            </div>
+                            <div className="mypage_row">
+                                <input type="password" name="confirmPassword" value={confirmPassword} placeholder="다시 입력하세요" className="confirm_pw_input" onChange={onConfirmPasswordHandler} /><br/>
+                            </div>
+                            <div className={pwMsgBool ? 'success' : 'failure'}>{pwCheckMsg}</div>
+                            <div className="mypage_button_container">
+                                <button type="submit" className="mbutton pw_edit_button" onClick={onPasswordChange} >비밀번호 변경</button>
+                            </div>
+                            <div className="mypage_msg">회원탈퇴</div>
+                            <div className='mypage_row'>
+                                <input type="password" className="delete_account_password" onChange={onDeleteAccountPassword} placeholder="비밀번호를 입력해주세요"/>
+                            </div>
+                            <div className='mypage_button_container'>
+                                <button type="button" className="sbutton delete_account" onClick={onDeleteAccount}>회원탈퇴</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                {
-                    user.id === "admin"
-                        ? <div className='grade_box'>
-                            <h1>&#xE001;_ UserGrade</h1>
-                            <form>
-                                <input type="text" name="user" placeholder="아이디 입력" onChange={onUserIdHandler}/>
-                                <input type="text" name="grade" placeholder="등급 입력" onChange={onGradeHandler}/>
-                                <button type="button" onClick={gradeChange}>변경하기</button>
-                            </form>
-                        </div>
-                        : null
-                }
+                <div className='main'>
+                    <div className="box mypost_box">
+                        <div className='boxTitle'>&#xE001;_ 내 작성글</div>
+                        <table>
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>작성일</th>
+                                <th>댓글수</th>
+                            </tr>
+                            {
+                                myArticle.slice(0).map((i) => {
+                                    x = x + 1;
+                                    let goView = (e) => {
+                                        navigate('/view/'+i._id, {state : i});
+                                    }
+                                    return (
+                                        <tr onClick={goView}>
+                                            <td>{num-x}</td>
+                                            <td>{i.title.length > 15 ? `${i.title.substring(0, 15)}...` : i.title}</td>
+                                            <td>{timer(i.date)}</td>
+                                            <td>{i.commentList.length}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </table>
+                        <Pagination
+                            activePage={postPage} //현재 페이지
+                            itemsCountPerPage={postLimit} //한 페이지당 보여줄 리스트 아이템의 개수
+                            totalItemsCount={postTotal} //총 아이템의 개수
+                            pageRangeDisplayed={4} //Paginator 내에서 보여줄 페이지의 범위(10개)
+                            prevPageText={"‹"} //"이전"을 나타낼 텍스트
+                            nextPageText={"›"} //"다음"을 나타낼 텍스트
+                            onChange={handlePostPageChange} //페이지가 바뀔 때 핸들링해줄 함수
+                            onClick={getUserInfo}
+                        />
+                    </div>
+                </div>
             </div>
-            <div className="margin_section"></div>
-            <div className='right_mypage'>
-                <div className="mypost_box">
-                    <h1>&#xE001;_ MyPost</h1>
-                    <table>
-                        <tr>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>작성일</th>
-                            <th>댓글수</th>
-                        </tr>
-                        {
-                            myArticle.slice(0).map((i) => {
-                                x = x + 1;
-                                let goView = (e) => {
-                                    navigate('/view/'+i._id, {state : i});
-                                }
-                                return (
-                                    <tr onClick={goView}>
-                                        <td>{num-x}</td>
-                                        <td>
-                                            <div className="title_length">{i.title}</div>
-                                        </td>
-                                        <td>{timer(i.date)}</td>
-                                        <td>{i.commentList.length}</td>
+            {
+                user.id === "admin"
+                    ? <div className='bodySection'>
+                        <div className='side'>
+                            <div className='box grade_box'>
+                                <div className='boxTitle'>&#xE001;_ 유저 등급 조정</div>
+                                <form>
+                                    <div className="mypage_msg">아이디</div>
+                                    <div className="mypage_row">
+                                    <input type="text" name="user" placeholder="아이디 입력" className='grade_input' onChange={onUserIdHandler}/>
+                                    </div>
+                                    <div className="mypage_msg">등급</div>
+                                    <div className="mypage_row">
+                                    <input type="text" name="grade" placeholder="등급 입력" className='grade_input' onChange={onGradeHandler}/>
+                                    </div>
+                                    <div className='mypage_button_container'>
+                                        <button type="button" className='mbutton grade_edit' onClick={gradeChange}>변경하기</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div className='main'>
+                            <div className='box report_box'>
+                                <div className='boxTitle'>&#xE001;_ 신고함</div>
+                                <table>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>카테고리</th>
+                                        <th>링크</th>
+                                        <th>신고사유</th>
+                                        <th>신고자</th>
+                                        <th>신고일</th>
+                                        <th></th>
                                     </tr>
-                                )
-                            })
-                        }
-                    </table>
-                    <Pagination
-                        activePage={postPage} //현재 페이지
-                        itemsCountPerPage={postLimit} //한 페이지당 보여줄 리스트 아이템의 개수
-                        totalItemsCount={postTotal} //총 아이템의 개수
-                        pageRangeDisplayed={4} //Paginator 내에서 보여줄 페이지의 범위(10개)
-                        prevPageText={"‹"} //"이전"을 나타낼 텍스트
-                        nextPageText={"›"} //"다음"을 나타낼 텍스트
-                        onChange={handlePostPageChange} //페이지가 바뀔 때 핸들링해줄 함수
-                        onClick={getUserInfo}
-                    />
-                </div>
-                {
-                    user.id === "admin"
-                        ? <div className='report_box'>
-                            <h1>&#xE001;_ ReportList</h1>
-                            <table>
-                                <tr>
-                                    <th>번호</th>
-                                    <th>카테고리</th>
-                                    <th>링크</th>
-                                    <th>신고사유</th>
-                                    <th>신고자</th>
-                                    <th>신고일</th>
-                                    <th></th>
-                                </tr>
-                                {
-                                    reportList.map((item) => {
-                                        let type = null;
-                                        z = z + 1;
-                                        if(item.targetType === "article"){
-                                            type = "게시물"
-                                        }else{
-                                            type = "댓글"
-                                        }
-                                        return(
-                                            <tr>
-                                                <td>{reportNum + z}</td>
-                                                <td>{type}</td>
-                                                <td><Link to={`/view/${item.articleId}`}>바로가기</Link></td>
-                                                <td>{item.reason}</td>
-                                                <td>{item.reporter}</td>
-                                                <td>{timer(item.date)}</td>
-                                                <td>
-                                                    <button type="button" className="report_delete_button" value={item._id} onClick={deleteReport}>삭제</button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })
-                                }
-                            </table>
-                            <Pagination
-                                activePage={page} //현재 페이지
-                                itemsCountPerPage={limit} //한 페이지당 보여줄 리스트 아이템의 개수
-                                totalItemsCount={total} //총 아이템의 개수
-                                pageRangeDisplayed={4} //Paginator 내에서 보여줄 페이지의 범위(10개)
-                                prevPageText={"‹"} //"이전"을 나타낼 텍스트
-                                nextPageText={"›"} //"다음"을 나타낼 텍스트
-                                onChange={handlePageChange} //페이지가 바뀔 때 핸들링해줄 함수
-                                onClick={getReportList}
-                            />
+                                    {
+                                        reportList.map((item) => {
+                                            let type = null;
+                                            z = z + 1;
+                                            if(item.targetType === "article"){
+                                                type = "게시물"
+                                            }else{
+                                                type = "댓글"
+                                            }
+                                            return(
+                                                <tr>
+                                                    <td>{reportNum + z}</td>
+                                                    <td>{type}</td>
+                                                    <td><Link to={`/view/${item.articleId}`}>바로가기</Link></td>
+                                                    <td>{item.reason}</td>
+                                                    <td>{item.reporter}</td>
+                                                    <td>{timer(item.date)}</td>
+                                                    <td>
+                                                        <button type="button" className="ebutton report_delete_button" value={item._id} onClick={deleteReport}>삭제</button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </table>
+                                <Pagination
+                                    activePage={page} //현재 페이지
+                                    itemsCountPerPage={limit} //한 페이지당 보여줄 리스트 아이템의 개수
+                                    totalItemsCount={total} //총 아이템의 개수
+                                    pageRangeDisplayed={4} //Paginator 내에서 보여줄 페이지의 범위(10개)
+                                    prevPageText={"‹"} //"이전"을 나타낼 텍스트
+                                    nextPageText={"›"} //"다음"을 나타낼 텍스트
+                                    onChange={handlePageChange} //페이지가 바뀔 때 핸들링해줄 함수
+                                    onClick={getReportList}
+                                />
+                            </div>
                         </div>
-                        : null
-                }
-                <br/><br/><br/>
-                <input type="password" className="delete_account_password" onChange={onDeleteAccountPassword} placeholder="비밀번호를 입력해주세요"/>
-                <button type="button" className="delete_account" onClick={onDeleteAccount}>회원탈퇴</button>
-            </div>
+                    </div>
+                    : null
+            }
         </div>
     )
 }
