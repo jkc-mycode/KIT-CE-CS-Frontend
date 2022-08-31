@@ -71,10 +71,22 @@
 .post_edit, .post_delete, .post_report {
     display: table-cell;
     text-align: right;
+    color: rgba(115, 115, 115, 0.9);
 }
 
 .post_delete, .post_report {
     width: 65px;
+}
+
+.comment_report {
+    width: 65px;
+    text-align: left;
+    color: rgba(115, 115, 115, 0.9);
+}
+
+.post_edit:hover, .post_delete:hover, .post_report:hover, .comment_report:hover, .post_list:hover {
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .post_list {
@@ -88,4 +100,8 @@
 
 .post_table tr > td:nth-child(1) {
     width: 90px;
+}
+
+.material-symbols-outlined {
+    vertical-align: middle;
 }
