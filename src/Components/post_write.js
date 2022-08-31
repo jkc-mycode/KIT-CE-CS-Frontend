@@ -61,6 +61,12 @@ function PostWrite(){
         if (dropdownValue === '') {
             alert("게시판을 선택해주세요.")
             return
+        }else if(title === ""){
+            alert("제목을 입력해주세요.")
+            return
+        }else if(content === ""){
+            alert("내용을 입력해주세요.")
+            return
         }
         const formData = new FormData();
         [].forEach.call(fileUpload, (file) => {
