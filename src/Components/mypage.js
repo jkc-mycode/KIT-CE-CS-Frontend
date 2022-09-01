@@ -40,7 +40,7 @@ function MyInfoPage(){
         let timestamp = d;
         let date = new Date(timestamp);
 
-        let year = date.getFullYear().toString().slice(0); //년도 뒤에 두자리
+        let year = date.getFullYear().toString().slice(-2); //년도 뒤에 두자리
         let month = ("0" + (date.getMonth() + 1)).slice(-2); //월 2자리 (01, 02 ... 12)
         let day = ("0" + date.getDate()).slice(-2); //일 2자리 (01, 02 ... 31)
         let hour = ("0" + date.getHours()).slice(-2); //시 2자리 (00, 01 ... 23)
@@ -300,7 +300,7 @@ function MyInfoPage(){
                                             <td>{num-x}</td>
                                             <td>{i.title.length > 15 ? `${i.title.substring(0, 15)}...` : i.title}</td>
                                             <td>{timer(i.date)}</td>
-                                            <td>{i.commentList.length}</td>
+                                            <td>{i.commentCount}</td>
                                         </tr>
                                     )
                                 })
@@ -347,7 +347,7 @@ function MyInfoPage(){
                                     <tr>
                                         <th>번호</th>
                                         <th>카테고리</th>
-                                        <th>링크</th>
+                                        <th>내용</th>
                                         <th>신고사유</th>
                                         <th>신고자</th>
                                         <th>신고일</th>
@@ -357,16 +357,23 @@ function MyInfoPage(){
                                         reportList.map((item) => {
                                             let type = null;
                                             z = z + 1;
+                                            let goView = (e) => {
+                                                navigate(`/view/${item.articleId}`, {state : item});
+                                            }
                                             if(item.targetType === "article"){
                                                 type = "게시물"
                                             }else{
                                                 type = "댓글"
                                             }
                                             return(
-                                                <tr>
+                                                <tr onClick={goView}>
                                                     <td>{reportNum + z}</td>
                                                     <td>{type}</td>
-                                                    <td><Link to={`/view/${item.articleId}`}>바로가기</Link></td>
+                                                    {
+                                                        item.targetType === "article"
+                                                            ? <td>바로가기</td>
+                                                            : <td>{item.content.length > 5 ? `${item.content.substring(0, 5)}...` : item.content}</td>
+                                                    }
                                                     <td>{item.reason}</td>
                                                     <td>{item.reporter}</td>
                                                     <td>{timer(item.date)}</td>

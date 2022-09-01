@@ -144,8 +144,8 @@ function ViewPage(){
                                         className="material-symbols-outlined">&#xe7fd;</span>{list.authorName}({list.author})
                                     </div>
                             }
-                            <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span>{list.views}</div>
-                            <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span>{date}</div>
+                            <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span> {list.views}</div>
+                            <div className="post_info_date"><span class="material-symbols-outlined">&#xebcc;</span> {date}</div>
                         </div>
                         {
                             test === true
@@ -171,7 +171,7 @@ function ViewPage(){
                                 ? <>
                                     <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
                                     <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
-                                    <div className="post_report" onClick={openReport}><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
+                                    <div className="post_report" onClick={openReport}><span className="material-symbols-outlined">&#xe645;</span> 신고</div>
                                     <Report open={reportOpen} close={closeReport} submit={reportSubmit} header="신고하기">
                                         {
                                             reasonText.map((item) => {
@@ -192,7 +192,7 @@ function ViewPage(){
                                             })
                                         }
                                     </Report>
-                                    <div className="post_report" onClick={openReport}><span className="material-icons-outlined">&#xe160;</span> 신고</div>
+                                    <div className="post_report" onClick={openReport}><span className="material-icons-outlined">&#xe645;</span> 신고</div>
                                 </>
                         }
                         </div>

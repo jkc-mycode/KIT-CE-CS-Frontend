@@ -188,7 +188,7 @@ const Recomments = (props) => {
                 {
                     comment.isDeleted === false
                         ? <>
-                            <div className="post_report" onClick={openReport}><span className="material-symbols-outlined">&#xe160;</span> 신고</div>
+                            <div className="comment_report" onClick={openReport}><span className="material-symbols-outlined">&#xe645;</span> 신고</div>
                             <Report open={reportOpen} close={closeReport} submit={reportSubmit} header="신고하기">
                                 {
                                     reasonText.map((item) => {

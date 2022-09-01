@@ -65,10 +65,14 @@ function RegisterPage(){
         }
     }, [])
     const onPasswordHandler = useCallback((e) => {
-        const passwordRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+        const passwordRegExp = /^(?=.*[a-zA-Z!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+        let space = /\s/g;
         setPassword(e.currentTarget.value);
-        if (!passwordRegExp.test(e.currentTarget.value)) {
-            setpwCheckMsg('숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!');
+        if(space.test(e.currentTarget.value)) {
+            setpwCheckMsg('공백은 사용불가입니다!');
+            setIsPassword(false);
+        } else if (!passwordRegExp.test(e.currentTarget.value)) {
+            setpwCheckMsg('숫자+영문자(+특수문자) 조합으로 8자리 이상 입력해주세요!');
             setIsPassword(false);
         } else {
             setpwCheckMsg('안전한 비밀번호에요 :)');
@@ -110,7 +114,7 @@ function RegisterPage(){
                 .then((res) => {
                     console.log(res.data);
                     alert("가입완료!!");
-                    alert("*****웹메일에서 인증 진행후 로그인 가능합니다.*****");
+                    alert("*****웹메일에서 인증 진행후 로그인 가능합니다.***** \n(인증메일이 도착하지 않을 시 대표메일로 문의바랍니다)");
                 })
                 .catch((e) => {
                     console.log(e);

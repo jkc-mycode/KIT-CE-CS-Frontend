@@ -52,32 +52,43 @@ function Header(){
                         </div>
                         <div className="center_header"></div>
                         <div className="right_header">
-                            <div className="header_items">
-                                <div className="post_dropdown_box">
-                                    <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
-                                        {
-                                            dropdownVisibility
-                                                ? `${dropdownName}`
-                                                : `${dropdownName}`
-                                        }
-                                    </button>
-                                    <Dropdown visibility={dropdownVisibility}>
-                                        <ul>
-                                            <li><button type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></li>
-                                            <li><button type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></li>
-                                        </ul>
-                                    </Dropdown>
-                                </div>
-                                <div className="header_search">
-                                    <form action={location.pathname}>
-                                        <span className="search_row">
-                                            <input type="text" placeholder="       입력해주세요." name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
-                                        </span>
-                                        <button type="submit" className="search_button"><span class="material-icons">search</span></button>
-                                    </form>
-                                </div>
-                            </div>     
-                            <div className="header_line"></div>
+                            {
+                                location.pathname === "/" || location.pathname === "/study" || location.pathname === "/free" ||location.pathname === "/notice" || location.pathname === "/graduate"
+                                ? <>
+                                    <div className="header_items">
+                                        <div className="post_dropdown_box">
+                                            <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
+                                                {
+                                                    dropdownVisibility
+                                                        ? `${dropdownName}`
+                                                        : `${dropdownName}`
+                                                }
+                                            </button>
+                                            <Dropdown visibility={dropdownVisibility}>
+                                                <ul>
+                                                    <li>
+                                                        <button type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button>
+                                                    </li>
+                                                    <li>
+                                                        <button type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button>
+                                                    </li>
+                                                </ul>
+                                            </Dropdown>
+                                        </div>
+                                        <div className="header_search">
+                                            <form action={location.pathname}>
+                                                <span className="search_row">
+                                                    <input type="text" placeholder="입력해주세요." name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
+                                                </span>
+                                                <button type="submit" className="search_button"><span
+                                                    className="material-icons">search</span></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div className="header_line"></div>
+                                </>
+                                : <div className="header_items" style={{width: "54%"}}></div>
+                            }
                             <Link to="" className="header_items" onClick={onClickLogout}>로그아웃</Link>
                             <div className="header_line"></div>
                             <Link to="/info" className="header_items">마이페이지</Link>
@@ -97,32 +108,43 @@ function Header(){
                         </div>
                         <div className="center_header"></div>
                         <div className="right_header">
-                            <div className="header_items">
-                                <div className="post_dropdown_box">
-                                    <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
-                                        {
-                                            dropdownVisibility
-                                                ? `${dropdownName}`
-                                                : `${dropdownName}`
-                                        }
-                                    </button>
-                                    <Dropdown visibility={dropdownVisibility}>
-                                        <ul>
-                                            <li><button type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></li>
-                                            <li><button type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></li>
-                                        </ul>
-                                    </Dropdown>
-                                </div>
-                                <div className="header_search">
-                                    <form action={location.pathname}>
-                                        <span className="search_row">
-                                            <input type="text" placeholder="       입력해주세요." name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
-                                        </span>
-                                        <button type="submit" className="search_button"><span class="material-icons">search</span></button>
-                                    </form>
-                                </div>
-                            </div>   
-                            <div className="header_line"></div>
+                            {
+                                location.pathname === "/" || location.pathname === "/study" || location.pathname === "/free" ||location.pathname === "/notice" || location.pathname === "/graduate"
+                                    ? <>
+                                        <div className="header_items">
+                                            <div className="post_dropdown_box">
+                                                <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
+                                                    {
+                                                        dropdownVisibility
+                                                            ? `${dropdownName}`
+                                                            : `${dropdownName}`
+                                                    }
+                                                </button>
+                                                <Dropdown visibility={dropdownVisibility}>
+                                                    <ul>
+                                                        <li>
+                                                            <button type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button>
+                                                        </li>
+                                                    </ul>
+                                                </Dropdown>
+                                            </div>
+                                            <div className="header_search">
+                                                <form action={location.pathname}>
+                                                <span className="search_row">
+                                                    <input type="text" placeholder="입력해주세요." name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
+                                                </span>
+                                                    <button type="submit" className="search_button"><span
+                                                        className="material-icons">search</span></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div className="header_line"></div>
+                                    </>
+                                    : <div className="header_items" style={{width: "54%"}}></div>
+                            }
                             <Link to="/login" className="header_items">로그인</Link>
                             <div className="header_line"></div>
                             <Link to="/signup" className="header_items">회원가입</Link>

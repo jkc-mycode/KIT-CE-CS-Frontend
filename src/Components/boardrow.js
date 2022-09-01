@@ -108,7 +108,7 @@ function BoardRow (){
                                         ? <td>{cat}</td>
                                         : null
                                 }
-                                <td>{i.title.length > 15 ? `${i.title.substring(0, 15)}...` : i.title}</td>
+                                <td>{i.title.length > 15 ? `${i.title.substring(0, 15)}...` : i.title} ({i.commentCount})</td>
                                 <td>{i.authorName}</td>
                                 <td>{timer(i.date)}</td>
                                 <td>{i.views}</td>
