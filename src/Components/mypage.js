@@ -366,17 +366,17 @@ function MyInfoPage(){
                                                 type = "댓글"
                                             }
                                             return(
-                                                <tr onClick={goView}>
-                                                    <td>{reportNum + z}</td>
-                                                    <td>{type}</td>
+                                                <tr>
+                                                    <td onClick={goView}>{reportNum + z}</td>
+                                                    <td onClick={goView}>{type}</td>
                                                     {
                                                         item.targetType === "article"
                                                             ? <td>바로가기</td>
                                                             : <td>{item.content.length > 5 ? `${item.content.substring(0, 5)}...` : item.content}</td>
                                                     }
-                                                    <td>{item.reason}</td>
-                                                    <td>{item.reporter}</td>
-                                                    <td>{timer(item.date)}</td>
+                                                    <td onClick={goView}>{item.reason}</td>
+                                                    <td onClick={goView}>{item.reporter}</td>
+                                                    <td onClick={goView}>{timer(item.date)}</td>
                                                     <td>
                                                         <button type="button" className="ebutton report_delete_button" value={item._id} onClick={deleteReport}>삭제</button>
                                                     </td>

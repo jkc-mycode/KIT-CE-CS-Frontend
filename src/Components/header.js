@@ -57,22 +57,12 @@ function Header(){
                                 ? <>
                                     <div className="header_items">
                                         <div className="post_dropdown_box">
-                                            <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
-                                                {
-                                                    dropdownVisibility
-                                                        ? `${dropdownName}`
-                                                        : `${dropdownName}`
-                                                }
+                                            <button className="sbutton" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
+                                                {dropdownName}
                                             </button>
                                             <Dropdown visibility={dropdownVisibility}>
-                                                <ul>
-                                                    <li>
-                                                        <button type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button>
-                                                    </li>
-                                                    <li>
-                                                        <button type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button>
-                                                    </li>
-                                                </ul>
+                                                <div><button className="sbutton" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
+                                                <div><button className="sbutton" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
                                             </Dropdown>
                                         </div>
                                         <div className="header_search">

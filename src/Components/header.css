@@ -48,6 +48,12 @@
 
 .header_search {
     vertical-align: middle;
+    float: left;
+}
+
+.post_dropdown_box {
+    float: left;
+    position: relative !important;
 }
 
 .search_row {
