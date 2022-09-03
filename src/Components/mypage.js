@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 import './mypage.css';
@@ -64,12 +64,23 @@ function MyInfoPage(){
     //비밀번호 변경관련 핸들러
     const onCurrentPasswordHandler = (event) => {
         setCurrentPassword(event.currentTarget.value);
-        checkPassword(event.currentTarget.value);
     }
-    const onNewPasswordHandler = (event) => {
-        setNewPassword(event.currentTarget.value);
-        checkPassword(event.currentTarget.value);
-    }
+
+    const onNewPasswordHandler = useCallback((e) => {
+        const passwordRegExp = /^(?=.*[a-zA-Z!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+        let space = /\s/g;
+        setNewPassword(e.currentTarget.value);
+        if(space.test(e.currentTarget.value)) {
+            setpwCheckMsg('공백은 사용불가입니다!');
+            setpwMsgBool(false);
+        } else if (!passwordRegExp.test(e.currentTarget.value)) {
+            setpwCheckMsg('숫자+영문자(+특수문자) 조합으로 8자리 이상 입력해주세요!');
+            setpwMsgBool(false);
+        } else {
+            setpwCheckMsg('안전한 비밀번호에요 :)');
+            setpwMsgBool(true);
+        }
+    }, [])
     const onConfirmPasswordHandler = (event) => {
         setConfirmPassword(event.currentTarget.value);
         checkPassword(event.currentTarget.value);
@@ -217,7 +228,7 @@ function MyInfoPage(){
                     window.location.reload();
                 })
                 .catch((e) => {
-                    console.log("입력값 에러!!");
+                    alert("잘못된 입력값입니다.");
                     console.log(e);
                 })
         }else{
