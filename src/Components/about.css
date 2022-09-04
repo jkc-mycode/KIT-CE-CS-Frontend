@@ -8,6 +8,7 @@
 
 .block {
     display: flex;
+    justify-content: space-between;
 }
 
 .block_inner {

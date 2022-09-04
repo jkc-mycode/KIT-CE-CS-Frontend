@@ -73,8 +73,8 @@ function About() {
                   </li>
                   <br />
                   <li>
-                    ㆍ작성한 게시글은 로그인 후 우측 상단에 표시되는 MyPage에서
-                    확인이 가능하며, 상단의 검색 기능을 통해 원하는 키워드를
+                    ㆍ작성한 게시글은 로그인 후 우측 상단 마이페이지에서
+                    확인이 가능하며, 상단의 검색 기능을 통해 게시판별로 원하는 키워드를
                     검색하실 수 있습니다.
                   </li>
                   <br />
@@ -95,7 +95,7 @@ function About() {
                     <ul class="ul_1">
                       <li>컴퓨터공학과 - 20' 서준혁</li>
                       <br />
-                      <li>컴퓨터소프트웨어공학과 - 16' 김현진</li>
+                      <li>컴퓨터소프트웨어공학과 -<br /> 16' 김현진</li>
                     </ul>
                   </div>
                   <div className="block_inner">
@@ -103,9 +103,9 @@ function About() {
                     <ul class="ul_1">
                       <li>컴퓨터공학과 - 18' 박준수</li>
                       <br />
-                      <li>컴퓨터공학과 - 20' 김혜진</li>
-                      <br />
                       <li>컴퓨터공학과 - 20' 김원렬</li>
+                      <br />
+                      <li>컴퓨터공학과 - 20' 김혜진</li>
                     </ul>
                   </div>
                   <div className="block_inner">
@@ -115,7 +115,7 @@ function About() {
                       <br />
                       <li>컴퓨터공학과 - 22' 장성진</li>
                       <br />
-                      <li>컴퓨터소프트웨어공학과 - 20' 나영준</li>
+                      <li>컴퓨터소프트웨어공학과 -<br /> 20' 나영준</li>
                     </ul>
                   </div>
                   <div className="block_inner">
