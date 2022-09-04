@@ -49,7 +49,7 @@ function Header(){
         }else if(location.pathname === "/free"){
             setPlaceHolder("자유 게시판에서 검색")
         }else if(location.pathname === "/notice"){
-            setPlaceHolder("공지 게시판에서 검색")
+            setPlaceHolder("공지사항에서 검색")
         }else if(location.pathname === "/study"){
             setPlaceHolder("학업 게시판에서 검색")
         }else {
@@ -71,23 +71,22 @@ function Header(){
                                 location.pathname === "/" || location.pathname === "/study" || location.pathname === "/free" ||location.pathname === "/notice" || location.pathname === "/graduate"
                                 ? <>
                                     <div className="header_items">
-                                        <div className="post_dropdown_box">
-                                            <button className="sbutton" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
-                                                {dropdownName}
-                                            </button>
-                                            <Dropdown visibility={dropdownVisibility}>
-                                                <div><button className="sbutton" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
-                                                <div><button className="sbutton" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
-                                            </Dropdown>
-                                        </div>
-                                        <div className="header_search">
-                                            <form action={location.pathname}>
-                                                <span className="search_row">
+                                        <div className="search_row">
+                                            <div className="post_dropdown_box">
+                                                <button className="dropdown" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
+                                                    {dropdownName} <span className="material-icons-outlined expand_more">expand_more</span>
+                                                </button>
+                                                <Dropdown visibility={dropdownVisibility}>
+                                                    <div><button className="sbutton" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
+                                                    <div><button className="sbutton" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
+                                                </Dropdown>
+                                            </div>
+                                            <span className="header_search">
+                                                <form action={location.pathname}>
                                                     <input type="text" placeholder={placeHolder} name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
-                                                </span>
-                                                <button type="submit" className="search_button"><span
-                                                    className="material-icons">search</span></button>
-                                            </form>
+                                                    <button type="submit" className="search_button"><span className="material-icons-outlined">search</span></button>
+                                                </form>
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="header_line"></div>
@@ -117,23 +116,22 @@ function Header(){
                                 location.pathname === "/" || location.pathname === "/study" || location.pathname === "/free" ||location.pathname === "/notice" || location.pathname === "/graduate"
                                     ? <>
                                         <div className="header_items">
-                                            <div className="post_dropdown_box">
-                                                <button className="sbutton" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
-                                                    {dropdownName}
-                                                </button>
-                                                <Dropdown visibility={dropdownVisibility}>
-                                                    <div><button className="sbutton" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
-                                                    <div><button className="sbutton" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
-                                                </Dropdown>
-                                            </div>
-                                            <div className="header_search">
-                                                <form action={location.pathname}>
-                                                <span className="search_row">
-                                                    <input type="text" placeholder={placeHolder} name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
+                                            <div className="search_row">
+                                                <div className="post_dropdown_box">
+                                                    <button className="dropdown" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
+                                                        {dropdownName} <span className="material-icons-outlined expand_more">expand_more</span>
+                                                    </button>
+                                                    <Dropdown visibility={dropdownVisibility}>
+                                                        <div><button className="sbutton" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
+                                                        <div><button className="sbutton" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
+                                                    </Dropdown>
+                                                </div>
+                                                <span className="header_search">
+                                                    <form action={location.pathname}>
+                                                        <input type="text" placeholder={placeHolder} name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
+                                                        <button type="submit" className="search_button"><span className="material-icons-outlined">search</span></button>
+                                                    </form>
                                                 </span>
-                                                    <button type="submit" className="search_button"><span
-                                                        className="material-icons">search</span></button>
-                                                </form>
                                             </div>
                                         </div>
                                         <div className="header_line"></div>
