@@ -89,3 +89,8 @@ ul.pagination li a.active {
 
     font-size: 16px;
 }
+
+.commentCount {
+    color: #737373b0;
+    font-size: 16px;
+}
