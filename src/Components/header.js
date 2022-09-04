@@ -63,9 +63,8 @@ function Header(){
                 <div className = "viewSection">
                     <div className="header_container">
                         <div className = "left_header">
-                        <Link to="/" className="header_items"><img className='header_logo' src="img/acs_logo.png" alt='logo' /></Link>
+                            <Link to="/" className="header_items"><img className='header_logo' src="img/acs_logo.png" alt='logo' /></Link>
                         </div>
-                        <div className="center_header"></div>
                         <div className="right_header">
                             {
                                 location.pathname === "/" || location.pathname === "/study" || location.pathname === "/free" ||location.pathname === "/notice" || location.pathname === "/graduate"
@@ -91,7 +90,7 @@ function Header(){
                                     </div>
                                     <div className="header_line"></div>
                                 </>
-                                : <div className="header_items" style={{width: "54%"}}></div>
+                                : <div className="header_items"></div>
                             }
                             <Link to="" className="header_items" onClick={onClickLogout}>로그아웃</Link>
                             <div className="header_line"></div>
@@ -110,7 +109,6 @@ function Header(){
                         <div className = "left_header">
                             <Link to="/" className="header_items"><img className='header_logo' src="img/acs_logo.png" alt='logo' /></Link>
                         </div>
-                        <div className="center_header"></div>
                         <div className="right_header">
                             {
                                 location.pathname === "/" || location.pathname === "/study" || location.pathname === "/free" ||location.pathname === "/notice" || location.pathname === "/graduate"
@@ -136,7 +134,7 @@ function Header(){
                                         </div>
                                         <div className="header_line"></div>
                                     </>
-                                    : <div className="header_items" style={{width: "54%"}}></div>
+                                    : <div className="header_items"></div>
                             }
                             <Link to="/login" className="header_items">로그인</Link>
                             <div className="header_line"></div>
