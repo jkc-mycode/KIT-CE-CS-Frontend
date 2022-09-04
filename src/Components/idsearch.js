@@ -103,26 +103,41 @@ function IDSearch (){
     }
 
     return(
-        <>
-            <div className="search_box">
-                <div className="id_search_box">
-                    <h1>&#xE001;_ 아이디 찾기</h1>
-                    <div>이름</div>
-                    <input type="text" className="id_search_name" onChange={onNameHandler}/>
-                    <div>웹메일</div>
-                    <input type="text" className="id_search_webmail" onChange={onWebmailHandler}/>@kumoh.ac.kr<br/><br/>
-                    <button type="button" className="id_search_button" onClick={submitSearchId}>아이디찾기</button>
+        <div className='viewSection'>
+            <div className='bodySection'>
+                <div className="box id_search_box">
+                    <p className='boxTitle'>&#xE001;_ 아이디 찾기</p>
+                    <div className='input_msg'>이름</div>
+                    <div className='input_row'>
+                        <input type="text" className="id_search_name" onChange={onNameHandler}/>
+                    </div>
+                    <div className='input_msg'>웹메일</div>
+                    <div className='email_container'>
+                        <div className='email_input_row'>
+                            <input type="text" className="id_search_webmail" onChange={onWebmailHandler}/>
+                            <div className='email_msg'>@kumoh.ac.kr</div>
+                        </div>
+                    </div>
+                    <div className="idpw_button_container">
+                        <button type="button" className="mbutton id_search_button" onClick={submitSearchId}>아이디 찾기</button>
+                    </div>
                 </div>
-                <div className="pw_search_box">
-                    <h1>&#xE001;_ 비밀번호 재설정</h1>
-                    <div>이름</div>
-                    <input type="text" className="pw_search_name" onChange={onPwNameHandler}/>
-                    <div>아이디</div>
-                    <input type="text" className="pw_search_id" onChange={onIdHandler}/><br/><br/>
-                    <button type="button" className="pw_search_button" onClick={submitSearchPw}>비밀번호재설정</button>
+                <div className="box pw_search_box">
+                    <p className='boxTitle'>&#xE001;_ 비밀번호 재설정</p>
+                    <div className='input_msg'>이름</div>
+                    <div className='input_row'>
+                        <input type="text" className="pw_search_name" onChange={onPwNameHandler}/>
+                    </div>
+                    <div className='input_msg'>아이디</div>
+                    <div className='input_row'>
+                        <input type="text" className="pw_search_id" onChange={onIdHandler}/>
+                    </div>
+                    <div className="idpw_button_container">
+                        <button type="button" className="mbutton pw_search_button" onClick={submitSearchPw}>비밀번호 재설정</button>
+                    </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

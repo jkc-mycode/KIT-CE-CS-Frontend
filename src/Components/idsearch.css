@@ -1,0 +1,76 @@
+.bodySection {
+    justify-content: center;
+}
+
+.id_search_box, .pw_search_box {
+    max-width: 500px;
+    min-width: 280px;
+}
+
+.input_msg {
+    box-sizing: border-box;
+    margin-top: 35px;
+    margin-bottom: -19px;
+
+    font-weight: 500;
+    color: #0D0D0D;
+}
+
+.input_row {
+    box-sizing: border-box;
+    margin-top: 22px;
+    height: 50px;
+    padding: 13px 15px;
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+
+    width: 100%;
+}
+
+.id_search_name, .id_search_webmail, .pw_search_name, .pw_search_id {
+    width: 100%;
+    padding: 0px;
+    border: 0px;
+
+    font-size: 20px;
+    letter-spacing: -0.05em;
+}
+
+.email_container {
+    width: 400px;
+}
+
+.email_input_row {
+    box-sizing: border-box;
+    margin-top: 22px;
+    height: 50px;
+    padding: 13px 15px;
+    border-bottom: 2px solid rgba(115, 115, 115, 0.8);
+
+    width: 255px;
+}
+
+.email_msg {
+    margin-top: -25px;
+    margin-left: 250px;
+
+    font-size: 20px;
+}
+
+.idpw_button_container {
+    position: relative;
+    height: 90px;
+}
+
+.id_search_button, .pw_search_button {
+    margin-top: 42px;
+
+    position: absolute;
+    right: 0%;
+
+    width: 140px;
+    height: 50px;
+}
+
+.pw_search_button {
+    width: 160px;
+}

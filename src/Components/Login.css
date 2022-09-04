@@ -10,12 +10,10 @@
     margin-bottom: 30px;
 }
 
-.id_input, .pw_input, .login_button {
+.id_input, .pw_input {
     width: 100%;
     padding: 0px;
-
-    font-family: 'Inter';
-    font-weight: 400;
+    border: 0px;
     font-size: 20px;
     letter-spacing: -0.05em;
 }
@@ -28,10 +26,6 @@
     border-bottom: 2px solid rgba(115, 115, 115, 0.8);
 
     width: 100%;
-}
-
-.id_input, .pw_input {
-    border: 0px;
 }
 
 .id_input::placeholder, .pw_input::placeholder {
