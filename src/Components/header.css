@@ -21,7 +21,7 @@
 
 .header_items{
     margin : 30px;
-    height : 50px;
+    height : 40px;
     line-height : 50px;
     flex-shrink: 0;
     text-align: center;
@@ -40,11 +40,15 @@
 .header_search {
     vertical-align: middle;
     float: left;
+
+    line-height: 40px;
 }
 
 .post_dropdown_box {
     float: left;
     position: relative !important;
+
+    line-height: 40px;
 }
 
 .search_row {
@@ -92,4 +96,5 @@
 
 .expand_more {
     font-size: 18px;
+    vertical-align: middle;
 }
