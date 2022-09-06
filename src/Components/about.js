@@ -1,8 +1,6 @@
 import React from "react";
 import "./about.css";
 import "./boardlist.css";
-import BoardRow from "./boardrow";
-import BoardFooter from "./boardlist_footer";
 
 function About() {
   return (

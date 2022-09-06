@@ -6,10 +6,9 @@ import Crawling from './crawling.js';
 import Comments from './comments';
 import Report from './report_popup';
 
+
 function ViewPage(){
-    const location = useLocation();
     const navigate = useNavigate();
-    //const data = location.state.data;
     const [list, setList] = useState([]);
     const [next, setNext] = useState([]);
     const [prev, setPrev] = useState([]);
@@ -54,7 +53,7 @@ function ViewPage(){
     //신고사유 보내는 axios
     const reportSubmit = async (e) => {
         if(window.confirm(reportReason + " 사유가 맞나요?")){
-            const res = await axios.post('/report', data, headers)
+            await axios.post('/report', data, headers)
                 .then((res) => {
                     alert("신고되었습니다!");
                     window.location.reload();

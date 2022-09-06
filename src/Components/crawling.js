@@ -9,7 +9,7 @@ function Crawling() {
     const [aiList, setAiList] = useState([]);
 
     const getCrawler = async () => {
-        const res = await axios.get('/crawler')
+        await axios.get('/crawler')
             .then((res) => {
                 setCeList(res.data.ce);
                 setCsList(res.data.cs);
@@ -66,11 +66,6 @@ function Crawling() {
             ),
             tabCont:(
                 <table className="crawling">
-                    {/* <thead className = "board_head">
-                    <tr>
-                        <th>제목</th>
-                    </tr>
-                    </thead> */}
                     {
                         ceList[0] === undefined
                             ? <tbody><div>업데이트중입니다....</div></tbody>
@@ -100,11 +95,6 @@ function Crawling() {
             ),
             tabCont:(
                 <table className="crawling">
-                    {/* <thead className = "board_head">
-                    <tr>
-                        <th>제목</th>
-                    </tr>
-                    </thead> */}
                     {
                         csList[0] === undefined
                             ? <tbody><div>업데이트중입니다....</div></tbody>

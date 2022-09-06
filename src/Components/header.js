@@ -21,8 +21,6 @@ const onClickLogout = async (event) => {
 }
 
 function Header(){
-    const [search, setSearch] = useState("");
-
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [dropdownName, setDropdownName] = useState("제목");
     const [dropdownValue, setDropdownValue] = useState("title");
@@ -34,11 +32,6 @@ function Header(){
         setDropdownName(event.currentTarget.name);
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
-    }
-    const onSearchHandler = async (e) => {
-        e.preventDefault();
-        const temp = await e.currentTarget.value;
-        setSearch(temp);
     }
 
     useEffect(() => {
@@ -81,7 +74,7 @@ function Header(){
                                         <div className="header_search">
                                             <form action={location.pathname}>
                                                 <span className="search_row">
-                                                    <input type="text" placeholder={placeHolder} name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
+                                                    <input type="text" placeholder={placeHolder} name={dropdownValue} className="search_input"/>
                                                 </span>
                                                 <button type="submit" className="search_button"><span
                                                     className="material-icons">search</span></button>
@@ -127,7 +120,7 @@ function Header(){
                                             <div className="header_search">
                                                 <form action={location.pathname}>
                                                 <span className="search_row">
-                                                    <input type="text" placeholder={placeHolder} name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
+                                                    <input type="text" placeholder={placeHolder} name={dropdownValue} className="search_input"/>
                                                 </span>
                                                     <button type="submit" className="search_button"><span
                                                         className="material-icons">search</span></button>

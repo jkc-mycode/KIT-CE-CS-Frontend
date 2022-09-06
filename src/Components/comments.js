@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { getCookie, removeCookie } from '../cookie';
-import {Button, Dialog, DialogContent, IconButton, TextField} from "@mui/material";
+import { getCookie } from '../cookie';
+import {Button, TextField} from "@mui/material";
 import axios from 'axios';
 import './comments.scss';
 import Recomments from './recomments';
@@ -43,7 +43,7 @@ const Comments = (props) => {
 
     //댓글 작성 axios
     const commentOnSubmit = async () => {
-        const res = await axios.post('/comment/' + props.post_id, data, headers)
+        await axios.post('/comment/' + props.post_id, data, headers)
             .then((res) => {
                 window.location.reload();
             })
@@ -56,7 +56,7 @@ const Comments = (props) => {
 
     //댓글 리스트 가져오는 axios
     const getCommentList = async () => {
-        const list = await axios.get('/comment/' + props.post_id)
+        await axios.get('/comment/' + props.post_id)
             .then((res) => {
                 setCommentsList(res.data);
             })

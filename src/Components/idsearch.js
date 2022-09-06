@@ -64,7 +64,7 @@ function IDSearch (){
         }else if(!webmailCheck){
             alert("웹메일이 잘못 입력되었습니다.")
         }else{
-            const res = await axios.post('/sign/findID', data, headers)
+            await axios.post('/sign/id', data, headers)
                 .then((res) => {
                     alert(name + "님의 아이디 : " + res.data);
                     window.location.reload();
@@ -87,7 +87,7 @@ function IDSearch (){
         }else if(!idCheck){
             alert("아이디가 잘못 입력되었습니다.")
         }else{
-            const res = await axios.post('/sign/findPassword', data, headers)
+            await axios.post('/sign/password', data, headers)
                 .then((res) => {
                     alert("웹메일로 임시 비밀번호 링크를 전송했습니다.");
                     window.location.replace('/login');

@@ -7,7 +7,6 @@ import 'react-quill/dist/quill.snow.css';
 import Dropdown from './post_dropdown';
 import './post_write.css';
 
-
 function PostWrite(){
     const [title, setTitle] = useState(""); //제목
     const [content, setContent ] = useState(""); //내용 (HTML 통째로 저장)

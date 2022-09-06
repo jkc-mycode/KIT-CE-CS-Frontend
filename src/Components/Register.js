@@ -1,7 +1,8 @@
-import React, {useState, useCallback, useEffect} from 'react';
+import React, {useState, useCallback} from 'react';
 import './Register.css';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
+
 
 function RegisterPage(){
     const [name, setName] = useState(""); //이름

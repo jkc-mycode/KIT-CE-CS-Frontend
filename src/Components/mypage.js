@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import {useNavigate, Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './mypage.css';
 import { getCookie, removeCookie } from '../cookie';
@@ -111,7 +111,7 @@ function MyInfoPage(){
 
     //mypage 정보 가져오는 axios
     const getUserInfo = async () =>{
-        const res = await axios.get('/mypage/?page=' + postPage)
+        await axios.get('/mypage/?page=' + postPage)
             .then((res) => {
                 setUser(res.data.userMypage);
                 setMyArticle(res.data.userMypage.articles)
@@ -177,7 +177,7 @@ function MyInfoPage(){
 
     //신고 리스트 가져오는 axios
     const getReportList = async () => {
-        const res = await axios.get('/report?page=' + page)
+        await axios.get('/report?page=' + page)
             .then((res) => {
                 setReportList(res.data.reports);
                 setTotal(res.data.totalReport);

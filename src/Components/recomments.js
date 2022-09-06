@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import { getCookie, removeCookie } from '../cookie';
-import {Button, Dialog, DialogContent, IconButton, TextField} from "@mui/material";
+import { getCookie} from '../cookie';
+import {Button, TextField} from "@mui/material";
 import axios from 'axios';
 import './comments.scss';
 import Report from "./report_popup";
-
 
 const Recomments = (props) => {
     const [reCommentsList, setReCommentsList] = useState([]);
@@ -61,12 +60,7 @@ const Recomments = (props) => {
     };
     //댓글 작성 axios
     const commentOnSubmit = async () => {
-        // if(!`${content}`){
-        //     data = {content: `${reCommentContent}`}
-        // }else{
-        //     data = {content: `${content}`}
-        // }
-        const res = await axios.post('/comment/' + props.comment._id, data, headers)
+        await axios.post('/comment/' + props.comment._id, data, headers)
             .then((res) => {
                 window.location.reload();
             })
@@ -80,7 +74,7 @@ const Recomments = (props) => {
     //댓글 삭제 axios
     const deleteComment = async (e) => {
         if(window.confirm("정말 삭제하시겠습니까?")){
-            const res = await axios.delete('/comment/' + e.currentTarget.value)
+            await axios.delete('/comment/' + e.currentTarget.value)
                 .then((res) => {
                     alert("댓글이 삭제되었습니다.");
                     window.location.reload();
@@ -95,7 +89,7 @@ const Recomments = (props) => {
 
     //댓글 수정 axios
     const updateComment = async (e) => {
-        const res = await axios.patch('/comment/' + e.currentTarget.value, data, headers)
+        await axios.patch('/comment/' + e.currentTarget.value, data, headers)
             .then((res) => {
                 window.location.reload();
             })
@@ -137,7 +131,7 @@ const Recomments = (props) => {
     //신고사유 보내는 axios
     const reportSubmit = async (e) => {
         if(window.confirm(reportReason + " 사유가 맞나요?")){
-            const res = await axios.post('/report', data2, headers)
+            await axios.post('/report', data2, headers)
                 .then((res) => {
                     alert("신고되었습니다!");
                     window.location.reload();
