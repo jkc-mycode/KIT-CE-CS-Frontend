@@ -68,7 +68,6 @@ const Recomments = (props) => {
         // }
         const res = await axios.post('/comment/' + props.comment._id, data, headers)
             .then((res) => {
-                console.log(res);
                 window.location.reload();
             })
             .catch((e) => {
@@ -85,7 +84,6 @@ const Recomments = (props) => {
                 .then((res) => {
                     alert("댓글이 삭제되었습니다.");
                     window.location.reload();
-                    console.log(res);
                 })
                 .catch((e) => {
                     console.log(e);
@@ -97,10 +95,8 @@ const Recomments = (props) => {
 
     //댓글 수정 axios
     const updateComment = async (e) => {
-        console.log(e.currentTarget.value);
         const res = await axios.patch('/comment/' + e.currentTarget.value, data, headers)
             .then((res) => {
-                console.log(res);
                 window.location.reload();
             })
             .catch((e) => {
@@ -129,8 +125,6 @@ const Recomments = (props) => {
     }
 
     const reportData = (e) => {
-        console.log(e.currentTarget.value);
-        console.log(e.currentTarget.name);
         setReportReason(e.currentTarget.value);
         setReportType(e.currentTarget.name);
     }
@@ -142,11 +136,9 @@ const Recomments = (props) => {
     }
     //신고사유 보내는 axios
     const reportSubmit = async (e) => {
-        console.log(comment);
         if(window.confirm(reportReason + " 사유가 맞나요?")){
             const res = await axios.post('/report', data2, headers)
                 .then((res) => {
-                    console.log(res);
                     alert("신고되었습니다!");
                     window.location.reload();
                 })

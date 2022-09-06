@@ -29,10 +29,6 @@ function LoginPage(){
         if(id === "" && password === ""){
             alert("아이디와 비밀번호를 다시 입력해주세요.");
         }else{
-            console.log('click login')
-            console.log('ID : ', id)
-            console.log('PW : ', password)
-
             // axios.post('http://kittaxipool.iptime.org:3000/log/in', data, headers, {withCredentials : true})
             axios.post('/log/in', data, headers, {withCredentials : true})
                 .then((res) => {

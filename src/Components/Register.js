@@ -112,7 +112,6 @@ function RegisterPage(){
             };
             axios.post('/sign/up', data, headers)
                 .then((res) => {
-                    console.log(res.data);
                     alert("*****웹메일에서 인증 진행후 로그인 가능합니다.*****" +
                         "\n(인증메일이 도착하지 않을 시 대표메일로 문의바랍니다)" +
                         "\n(교직원/학생회/동아리임원에 한하여 권한 상승을 위해 대표 메일로 문의바랍니다.)");
@@ -146,7 +145,6 @@ function RegisterPage(){
         }else{
             await axios.get('/sign/dupId/?id=' + id)
                 .then((res) => {
-                    console.log(res);
                     setDupIdFlag(true);
                     setDupIdMsg("사용 가능한 ID입니다.");
                 })
@@ -173,7 +171,6 @@ function RegisterPage(){
                     setDupEmailMsg("사용 가능한 Email입니다.");
                 })
                 .catch((e) => {
-                    console.log(e.response.data.message);
                     if(e.response.data.message === "Duplicated Webmail"){
                         setDupEmailMsg("중복된 Email입니다.");
                     }else if(e.response.data.message === "No User"){

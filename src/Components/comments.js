@@ -45,7 +45,6 @@ const Comments = (props) => {
     const commentOnSubmit = async () => {
         const res = await axios.post('/comment/' + props.post_id, data, headers)
             .then((res) => {
-                console.log(res);
                 window.location.reload();
             })
             .catch((e) => {
@@ -60,7 +59,6 @@ const Comments = (props) => {
         const list = await axios.get('/comment/' + props.post_id)
             .then((res) => {
                 setCommentsList(res.data);
-                console.log(res);
             })
             .catch((e) => {
                 console.log(e);

@@ -39,8 +39,6 @@ function ViewPage(){
     }
 
     const reportData = (e) => {
-        console.log(e.currentTarget.value);
-        console.log(e.currentTarget.name);
         setReportReason(e.currentTarget.value);
         setReportType(e.currentTarget.name);
     }
@@ -58,7 +56,6 @@ function ViewPage(){
         if(window.confirm(reportReason + " 사유가 맞나요?")){
             const res = await axios.post('/report', data, headers)
                 .then((res) => {
-                    console.log(res);
                     alert("신고되었습니다!");
                     window.location.reload();
                 })
@@ -94,10 +91,8 @@ function ViewPage(){
     }
     const deletePost = () => {
         if(window.confirm("정말 삭제하시겠습니까?")){
-            console.log("여기",id);
             axios.delete('/article/' + id)
                 .then((res) => {
-                    console.log(res.data);
                     alert("삭제되었습니다.");
                     navigate('/');
                 })
@@ -110,7 +105,6 @@ function ViewPage(){
     }
     const getPost = async () => {
         const posts = await axios.get("/article/view/" + id)
-        console.log(posts.data)
         setList(posts.data.articleInfo);
         setNext(posts.data.next[0]);
         setPrev(posts.data.prev[0]);
@@ -158,7 +152,7 @@ function ViewPage(){
                                 let fileName = i.originName;
                                 return (
                                     <div>
-                                        <a href={"http://localhost:3001/article/download/"+id}>&#xE226;{fileName}</a>
+                                        <a href={"http://kitacs.com:3001/article/download/"+id}>&#xE226;{fileName}</a>
                                     </div>
                                 )
                             })

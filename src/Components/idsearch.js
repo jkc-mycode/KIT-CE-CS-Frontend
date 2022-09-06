@@ -59,8 +59,6 @@ function IDSearch (){
             name: `${name}`,
             webmail: `${webmail}@kumoh.ac.kr`
         }
-        console.log(name, nameCheck);
-        console.log(webmail, webmailCheck);
         if(!nameCheck){
             alert("이름이 잘못 입력되었습니다.");
         }else if(!webmailCheck){
@@ -91,7 +89,6 @@ function IDSearch (){
         }else{
             const res = await axios.post('/sign/findPassword', data, headers)
                 .then((res) => {
-                    console.log(res);
                     alert("웹메일로 임시 비밀번호 링크를 전송했습니다.");
                     window.location.replace('/login');
                 })

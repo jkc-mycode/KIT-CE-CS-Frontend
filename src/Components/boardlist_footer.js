@@ -43,9 +43,7 @@ function BoardFooter() {
             url = url + "&title="+title
         else if (content)
             url += "&content="+content
-        console.log(url);
         const posts = await axios.get(url)
-        console.log(posts);
         setTotal(posts.data.totalArticle);
         setLimit(posts.data.postLimit);
     }

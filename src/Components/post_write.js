@@ -22,7 +22,6 @@ function PostWrite(){
     }
     const onContentHandler = (value) => {
         setContent(value);
-        console.log(content);
     }
     const onDropdownHandler = (event) => {
         if (event.currentTarget.name === "공지사항" && parseInt(getCookie("kit_acs_class")) < 2) {

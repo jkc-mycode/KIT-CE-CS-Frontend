@@ -8,8 +8,6 @@ import './boardrow.css';
 function Search (){
     const params = new URLSearchParams(window.location.search);
     let content = params.get("content");
-    console.log(content);
-    console.log(window.location);
     //아직 쓸지 말지 모르겠음(보류)
     // const [list, setList] = useState([]);
     // const [page, setPage] = useState(1);

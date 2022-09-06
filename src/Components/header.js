@@ -9,7 +9,7 @@ import Dropdown from "./post_dropdown";
 const onClickLogout = async (event) => {
     await axios.delete('/log/out')
         .then((res) => {
-            removeCookie("kit_acs", { domain: "localhost", path: "/" });
+            removeCookie("kit_acs", { domain: "kitacs.com", path: "/" });
             removeCookie("kit_acs_class");
         })
         .catch((e) => {
@@ -31,7 +31,6 @@ function Header(){
     const location = useLocation();
 
     const onDropdownHandler = (event) => {
-        console.log(event.currentTarget.value);
         setDropdownName(event.currentTarget.name);
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
@@ -40,7 +39,6 @@ function Header(){
         e.preventDefault();
         const temp = await e.currentTarget.value;
         setSearch(temp);
-        console.log(temp);
     }
 
     useEffect(() => {

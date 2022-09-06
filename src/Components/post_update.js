@@ -9,7 +9,6 @@ import './post_write.css';
 
 function PostUpdate(){
     const location = useLocation(); //navigate로 보낸 파라미터 가져오기 위해 사용
-    console.log(location.state);
     const [title, setTitle] = useState(location.state.title); //제목
     let content = location.state.content //내용 (HTML 통째로 저장)
     const viewId = useParams(); //게시물id
@@ -33,17 +32,14 @@ function PostUpdate(){
         setTitle(event.currentTarget.value);
     }
     const onContentHandler = (value) => {
-        console.log(value);
         content = value;
     }
     const onDropdownHandler = (event) => {
-        console.log(event.currentTarget.name);
         setDropdownName(event.currentTarget.name);
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
     }
     const onFileHandler = useCallback(async (e) => {
-        console.log(e.target.files);
         setFileUpload(e.target.files[0]);
     }, [fileUpload])
 
@@ -89,7 +85,7 @@ function PostUpdate(){
         };
         axios.patch('/article/' + location.state._id, data, headers)
             .then((res) => {
-                console.log(res.data);
+
             })
             .catch((e) => {
                 console.log(e);

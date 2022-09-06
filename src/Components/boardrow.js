@@ -29,9 +29,7 @@ function BoardRow (){
         //     url = url + "&title="+title
         // else if (content)
         //     url += "&content="+content
-        // console.log(url);
         // const posts = await axios.get(url)
-        // console.log(posts);
         const obj = new URLSearchParams(location.search)
         let posts = null;
         if(!obj.get("title") && !obj.get("content")){
@@ -41,7 +39,6 @@ function BoardRow (){
         }else{
             posts = await axios.get("/article" + location.pathname + "/?page=" + page + "&content=" + obj.get("content"))
         }
-        console.log(posts);
         const _list = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
         setList(_list);
         setTotal(posts.data.totalArticle);

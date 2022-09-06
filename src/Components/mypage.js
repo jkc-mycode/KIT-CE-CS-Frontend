@@ -113,7 +113,6 @@ function MyInfoPage(){
     const getUserInfo = async () =>{
         const res = await axios.get('/mypage/?page=' + postPage)
             .then((res) => {
-                console.log(res.data);
                 setUser(res.data.userMypage);
                 setMyArticle(res.data.userMypage.articles)
                 setPostTotal(res.data.totalArticle);
@@ -141,7 +140,6 @@ function MyInfoPage(){
             };
             axios.patch('/mypage/password', data, headers)
                 .then((res) => {
-                    console.log(res);
                     alert("변경되었습니다.");
                     window.location.reload();
                 })
@@ -161,9 +159,8 @@ function MyInfoPage(){
                 }
             })
                 .then((res) => {
-                    console.log(res);
                     alert("탈퇴되었습니다ㅠㅠ");
-                    removeCookie("kit_acs", { domain: "localhost", path: "/" });
+                    removeCookie("kit_acs", { domain: "kitacs.com", path: "/" });
                     navigate('/');
                 })
                 .catch((e) => {
@@ -182,7 +179,6 @@ function MyInfoPage(){
     const getReportList = async () => {
         const res = await axios.get('/report?page=' + page)
             .then((res) => {
-                console.log(res.data);
                 setReportList(res.data.reports);
                 setTotal(res.data.totalReport);
                 setLimit(res.data.postLimit);
@@ -198,7 +194,6 @@ function MyInfoPage(){
         if(window.confirm("정말 삭제하시겠습니까?")){
             axios.delete('/report/' + e.currentTarget.value)
                 .then((res) => {
-                    console.log(res);
                     window.location.reload();
                 })
                 .catch((e) => {
@@ -223,7 +218,6 @@ function MyInfoPage(){
         if(window.confirm("변경하시겠습니까?")){
             axios.patch('/mypage/class', data, headers)
                 .then((res) => {
-                    console.log(res);
                     alert("변경되었습니다!");
                     window.location.reload();
                 })

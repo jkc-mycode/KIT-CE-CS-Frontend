@@ -11,7 +11,6 @@ function Crawling() {
     const getCrawler = async () => {
         const res = await axios.get('/crawler')
             .then((res) => {
-                console.log(res.data);
                 setCeList(res.data.ce);
                 setCsList(res.data.cs);
                 setAiList(res.data.ai);
