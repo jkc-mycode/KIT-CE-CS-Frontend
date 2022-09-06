@@ -7,7 +7,6 @@ import axios from 'axios';
 function LoginPage(){
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
-    let sessionStorage = window.sessionStorage;
     const navigate = useNavigate();
 
     const onIdHandler = (event) => {
@@ -29,15 +28,9 @@ function LoginPage(){
         if(id === "" && password === ""){
             alert("아이디와 비밀번호를 다시 입력해주세요.");
         }else{
-            console.log('click login')
-            console.log('ID : ', id)
-            console.log('PW : ', password)
-
-            // axios.post('http://kittaxipool.iptime.org:3000/log/in', data, headers, {withCredentials : true})
             axios.post('/log/in', data, headers, {withCredentials : true})
                 .then((res) => {
                     navigate('/'); //임시로 메인으로 이동
-                    //window.location.reload();
                     setCookie('kit_acs_class', res.data.class)
                 })
                 .catch((e) => {

@@ -7,7 +7,6 @@ import 'react-quill/dist/quill.snow.css';
 import Dropdown from './post_dropdown';
 import './post_write.css';
 
-
 function PostWrite(){
     const [title, setTitle] = useState(""); //제목
     const [content, setContent ] = useState(""); //내용 (HTML 통째로 저장)
@@ -22,7 +21,6 @@ function PostWrite(){
     }
     const onContentHandler = (value) => {
         setContent(value);
-        console.log(content);
     }
     const onDropdownHandler = (event) => {
         if (event.currentTarget.name === "공지사항" && parseInt(getCookie("kit_acs_class")) < 2) {

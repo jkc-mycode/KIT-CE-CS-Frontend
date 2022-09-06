@@ -9,7 +9,7 @@ import Dropdown from "./post_dropdown";
 const onClickLogout = async (event) => {
     await axios.delete('/log/out')
         .then((res) => {
-            removeCookie("kit_acs", { domain: "localhost", path: "/" });
+            removeCookie("kit_acs", { domain: "kitacs.com", path: "/" });
             removeCookie("kit_acs_class");
         })
         .catch((e) => {
@@ -21,8 +21,6 @@ const onClickLogout = async (event) => {
 }
 
 function Header(){
-    const [search, setSearch] = useState("");
-
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [dropdownName, setDropdownName] = useState("제목");
     const [dropdownValue, setDropdownValue] = useState("title");
@@ -31,16 +29,9 @@ function Header(){
     const location = useLocation();
 
     const onDropdownHandler = (event) => {
-        console.log(event.currentTarget.value);
         setDropdownName(event.currentTarget.name);
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
-    }
-    const onSearchHandler = async (e) => {
-        e.preventDefault();
-        const temp = await e.currentTarget.value;
-        setSearch(temp);
-        console.log(temp);
     }
 
     useEffect(() => {
@@ -82,7 +73,7 @@ function Header(){
                                             </div>
                                             <span className="header_search">
                                                 <form action={location.pathname}>
-                                                    <input type="text" placeholder={placeHolder} name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
+                                                    <input type="text" placeholder={placeHolder} name={dropdownValue} className="search_input"/>
                                                     <button type="submit" className="search_button"><span className="material-icons-outlined">search</span></button>
                                                 </form>
                                             </span>
@@ -126,7 +117,7 @@ function Header(){
                                                 </div>
                                                 <span className="header_search">
                                                     <form action={location.pathname}>
-                                                        <input type="text" placeholder={placeHolder} name={dropdownValue} onChange={onSearchHandler} className="search_input"/>
+                                                        <input type="text" placeholder={placeHolder} name={dropdownValue} className="search_input"/>
                                                         <button type="submit" className="search_button"><span className="material-icons-outlined">search</span></button>
                                                     </form>
                                                 </span>

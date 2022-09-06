@@ -2,7 +2,6 @@ import React from "react";
 import './boardlist.css';
 import BoardRow from './boardrow';
 import Crawling from './crawling.js';
-import BoardFooter from './boardlist_footer';
 
 function BoardList() {
     return(

@@ -1,18 +1,15 @@
 import React, {useState, useCallback} from 'react';
-import {useLocation, useNavigate, useParams} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Dropdown from './post_dropdown';
 import './post_write.css';
 
-
 function PostUpdate(){
     const location = useLocation(); //navigate로 보낸 파라미터 가져오기 위해 사용
-    console.log(location.state);
     const [title, setTitle] = useState(location.state.title); //제목
     let content = location.state.content //내용 (HTML 통째로 저장)
-    const viewId = useParams(); //게시물id
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [dropdownName, setDropdownName] = useState(() => {
         if(location.state.tag === "notice"){
@@ -33,17 +30,14 @@ function PostUpdate(){
         setTitle(event.currentTarget.value);
     }
     const onContentHandler = (value) => {
-        console.log(value);
         content = value;
     }
     const onDropdownHandler = (event) => {
-        console.log(event.currentTarget.name);
         setDropdownName(event.currentTarget.name);
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
     }
     const onFileHandler = useCallback(async (e) => {
-        console.log(e.target.files);
         setFileUpload(e.target.files[0]);
     }, [fileUpload])
 
@@ -89,7 +83,7 @@ function PostUpdate(){
         };
         axios.patch('/article/' + location.state._id, data, headers)
             .then((res) => {
-                console.log(res.data);
+
             })
             .catch((e) => {
                 console.log(e);

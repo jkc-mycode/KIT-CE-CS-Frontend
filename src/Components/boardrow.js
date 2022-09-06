@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import {useNavigate, useLocation} from 'react-router-dom';
 import { getCookie } from '../cookie';
 import axios from "axios";
@@ -15,23 +15,11 @@ function BoardRow (){
     let cat = ""; //카테고리
     const [num, setNum] = useState(0); //각 페이지 제일 윗번호
     let x = -1;
-    // const [title, setTitle] = useState("");
-    // const [content, setContent] = useState("");
 
     const handlePageChange = (page) => {
         setPage(page);
     };
     const getList = async () => {
-        // let url = "/article"+ location.pathname + "?pageNum=" + page
-        // if(!title && !content)
-        //     url = "/article"+ location.pathname + "?pageNum=" + page
-        // else if (title)
-        //     url = url + "&title="+title
-        // else if (content)
-        //     url += "&content="+content
-        // console.log(url);
-        // const posts = await axios.get(url)
-        // console.log(posts);
         const obj = new URLSearchParams(location.search)
         let posts = null;
         if(!obj.get("title") && !obj.get("content")){
@@ -41,7 +29,6 @@ function BoardRow (){
         }else{
             posts = await axios.get("/article" + location.pathname + "/?page=" + page + "&content=" + obj.get("content"))
         }
-        console.log(posts);
         const _list = posts.data.articles.slice(); //slice()는 배열의 복사복을 만듦
         setList(_list);
         setTotal(posts.data.totalArticle);
@@ -49,14 +36,6 @@ function BoardRow (){
         setNum(posts.data.totalArticle - (page * posts.data.postLimit)+posts.data.postLimit);
     }
     useEffect(() => {
-        // const obj = new URLSearchParams(location.search)
-        // if(Number(obj.get("pageNum")) === 0){
-        //     setPage(1);
-        // }else{
-        //     setPage(Number(obj.get("pageNum")));
-        // }
-        // setTitle(obj.get("title"));
-        // setContent(obj.get("content"));
         getList();
     }, [page, location])
 
@@ -64,7 +43,6 @@ function BoardRow (){
         let timestamp = d;
         let date = new Date(timestamp);
 
-        let year = date.getFullYear().toString(); //년도 뒤에 두자리
         let month = ("0" + (date.getMonth() + 1)).slice(-2); //월 2자리 (01, 02 ... 12)
         let day = ("0" + date.getDate()).slice(-2); //일 2자리 (01, 02 ... 31)
 
