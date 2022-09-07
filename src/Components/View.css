@@ -53,7 +53,7 @@
     border: 0px;
 }
 
-.edit_delete_report_table {
+.edit_delete_report_container {
     margin-top: 20px;
     margin-left: 15px;
     margin-bottom: 10px;
@@ -61,7 +61,8 @@
 
     width: calc(100% - 15px * 2);
 
-    display: table;
+    display: flex;
+    flex-direction: row-reverse;
 
     /* font-weight: 500; */
     font-size: 16px;
@@ -69,22 +70,15 @@
 }
 
 .post_edit, .post_delete, .post_report {
-    display: table-cell;
     text-align: right;
-    color: rgba(115, 115, 115, 0.9);
+    width: 60px;
 }
 
-.post_delete, .post_report {
-    width: 65px;
+.post_report > .material-symbols-outlined {
+    color: #EE4451;
 }
 
-.comment_report {
-    width: 65px;
-    text-align: left;
-    color: rgba(115, 115, 115, 0.9);
-}
-
-.post_edit:hover, .post_delete:hover, .post_report:hover, .comment_report:hover, .post_list:hover {
+.post_edit:hover, .post_delete:hover, .post_report:hover, .post_list:hover {
     font-weight: bold;
     cursor: pointer;
 }

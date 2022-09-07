@@ -81,7 +81,7 @@ function ViewPage(){
         let minute = ("0" + date.getMinutes()).slice(-2); //분 2자리 (00, 01 ... 59)
         let second = ("0" + date.getSeconds()).slice(-2); //초 2자리 (00, 01 ... 59)
         
-        let returnDate = year + "/" + month + "/" + day + "/ " + hour + ":" + minute + ":" + second;
+        let returnDate = year + "." + month + "." + day + ". " + hour + ":" + minute + ":" + second;
         return returnDate;
     }
 
@@ -138,10 +138,10 @@ function ViewPage(){
                             {
                                 list.authorName === ""
                                     ? <div className="post_info_author"><span
-                                        className="material-symbols-outlined">&#xe7fd;</span>(알 수 없음)
+                                        className="material-symbols-outlined">&#xe7fd;</span> (알 수 없음)
                                     </div>
                                     : <div className="post_info_author"><span
-                                        className="material-symbols-outlined">&#xe7fd;</span>{list.authorName}({list.author})
+                                        className="material-symbols-outlined">&#xe7fd;</span> {list.authorName}({list.author})
                                     </div>
                             }
                             <div className="post_info_hit"><span class="material-symbols-outlined">&#xe8f4;</span> {list.views}</div>
@@ -165,13 +165,13 @@ function ViewPage(){
                         }
                         <div className="line"></div>
                         <div className="post_content"  dangerouslySetInnerHTML={{__html : list.content}}></div>
-                        <div className="edit_delete_report_table">
+                        <div className="edit_delete_report_container">
                         {
                             list.isMine
                                 ? <>
-                                    <div className="post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
-                                    <div className="post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
-                                    <div className="post_report" onClick={openReport}><span className="material-symbols-outlined">&#xe645;</span> 신고</div>
+                                    <div className="ebutton post_edit" onClick={updateLoginCheck}><span className="material-symbols-outlined">&#xe3c9;</span> 수정</div>
+                                    <div className="ebutton post_delete" onClick={deletePost}><span className="material-symbols-outlined">&#xe92b;</span> 삭제</div>
+                                    <div className="ebutton post_report" onClick={openReport}><span className="material-symbols-outlined">&#xe645;</span> 신고</div>
                                     <Report open={reportOpen} close={closeReport} submit={reportSubmit} header="신고하기">
                                         {
                                             reasonText.map((item) => {
@@ -192,7 +192,7 @@ function ViewPage(){
                                             })
                                         }
                                     </Report>
-                                    <div className="post_report" onClick={openReport}><span className="material-icons-outlined">&#xe645;</span> 신고</div>
+                                    <div className="ebutton post_report" onClick={openReport}><span className="material-symbols-outlined">&#xe645;</span> 신고</div>
                                 </>
                         }
                         </div>
