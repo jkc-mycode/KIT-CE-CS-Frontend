@@ -21,7 +21,7 @@ const Comments = (props) => {
         let minute = ("0" + date.getMinutes()).slice(-2); //분 2자리 (00, 01 ... 59)
         let second = ("0" + date.getSeconds()).slice(-2); //초 2자리 (00, 01 ... 59)
 
-        let returnDate = year + "/" + month + "/" + day + "/ " + hour + ":" + minute + ":" + second;
+        let returnDate = year + "." + month + "." + day + ". " + hour + ":" + minute + ":" + second;
         return returnDate;
     }
 
@@ -100,26 +100,30 @@ const Comments = (props) => {
                                    item.isDeleted === true
                                        ? <div className="delete_message">삭제된 댓글입니다.</div>
                                        : <>
-                                           <div className="comment_username_date">
-                                               <div className="comment_date">{timer(item.date)}</div>
-                                           </div>
-                                           <div className="comment_content">{item.content}</div>
-                                           {
-                                               item.author === ""
-                                                   ? <div className="comment_username">(알 수 없음)</div>
-                                                   : <div className="comment_username">{item.authorName}({item.author})</div>
-                                           }
+                                            <div className='comment_info_box'>
+                                                <div className='comment_user_box'>
+                                                    {
+                                                    item.author === ""
+                                                        ? <div className="comment_username"><span
+                                                        className="material-symbols-outlined">&#xe7fd;</span> (알 수 없음)</div>
+                                                        : <div className="comment_username"><span
+                                                        className="material-symbols-outlined">&#xe7fd;</span> {item.authorName}({item.author})</div>
+                                                    }
+                                                </div>
+                                                <div className="comment_date"><span class="material-symbols-outlined">&#xebcc;</span> {timer(item.date)}</div>
+                                            </div>
+                                            <div className="comment_content">{item.content}</div>
                                        </>
                                }
                                <div className="recomment_box">
                                    <Recomments comment={item} recomments={item.recommentList}></Recomments>
                                </div>
                            </div>
-                           {
+                           {/* {
                                item.recommentList.length !==0
                                ? <hr className="asdasd"/>
                                : null
-                           }
+                           } */}
                        </>
                    ))
                }

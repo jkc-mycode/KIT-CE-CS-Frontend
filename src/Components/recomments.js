@@ -25,7 +25,7 @@ const Recomments = (props) => {
         let minute = ("0" + date.getMinutes()).slice(-2); //분 2자리 (00, 01 ... 59)
         let second = ("0" + date.getSeconds()).slice(-2); //초 2자리 (00, 01 ... 59)
 
-        let returnDate = year + "/" + month + "/" + day + "/ " + hour + ":" + minute + ":" + second;
+        let returnDate = year + "." + month + "." + day + ". " + hour + ":" + minute + ":" + second;
         return returnDate;
     }
 
@@ -170,25 +170,29 @@ const Recomments = (props) => {
                     comment.isDeleted === true
                         ? null
                         : <>
+                            <div className='comment_button_box'>
                             {
                                 comment.isMine
                                     ? <>
-                                        <button type="button" className="comment_update" value={comment.content} onClick={onCheckUpdate}>수정</button>
-                                        <button type="button" className="comment_delete" value={comment._id} onClick={deleteComment}>삭제</button>
+                                        <button type="button" className="ebutton comment_update" value={comment.content} onClick={onCheckUpdate}>
+                                            <span className="material-icons">&#xe3c9;</span> 수정</button>
+                                        <button type="button" className="ebutton comment_delete" value={comment._id} onClick={deleteComment}>
+                                            <span className="material-icons">&#xe92b;</span> 삭제</button>
                                     </>
                                     : null
                             }
                             {
                                 comment.isRecomment === false
-                                    ? <button type="button" className="recomment_button" onClick={onCheckRecomment}>댓글달기</button>
+                                    ? <button type="button" className="sbutton recomment_button" onClick={onCheckRecomment}>댓글달기</button>
                                     : null
                             }
+                            </div>
                         </>
                 }
                 {
                     comment.isDeleted === false
                         ? <>
-                            <div className="comment_report" onClick={openReport}><span className="material-symbols-outlined">&#xe645;</span> 신고</div>
+                            <button type='button' className="ebutton comment_report" onClick={openReport}><span className="material-icons">&#xe645;</span> 신고</button>
                             <Report open={reportOpen} close={closeReport} submit={reportSubmit} header="신고하기">
                                 {
                                     reasonText.map((item) => {
@@ -248,15 +252,19 @@ const Recomments = (props) => {
                     reCommentsList.map((item, index) => (
                         <>
                             <div key={index} className="comments_comment">
-                                <div className="comment_username_date">
-                                    <div className="comment_date">{timer(item.date)}</div>
+                                <div className='comment_info_box'>
+                                    <div className='comment_user_box'>
+                                        {
+                                        item.author === ""
+                                            ? <div className="comment_username"><span
+                                            className="material-symbols-outlined">&#xe7fd;</span> (알 수 없음)</div>
+                                            : <div className="comment_username"><span
+                                            className="material-symbols-outlined">&#xe7fd;</span> {item.authorName}({item.author})</div>
+                                        }
+                                    </div>
+                                    <div className="comment_date"><span class="material-symbols-outlined">&#xebcc;</span> {timer(item.date)}</div>
                                 </div>
                                 <div className="comment_content">{item.content}</div>
-                                {
-                                    item.author === ""
-                                        ? <div className="comment_username">(알 수 없음)</div>
-                                        : <div className="comment_username">{item.authorName}({item.author})</div>
-                                }
                             </div>
                             <div className="recomment_box">
                                 <Recomments comment={item} recomments={item.recommentList}></Recomments>
