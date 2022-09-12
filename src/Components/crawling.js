@@ -42,14 +42,14 @@ function Crawling() {
                             ? <tbody><div>업데이트중입니다....</div></tbody>
                             : <tbody>
                             {
-                                aiList.slice(0,10).map((i) => {
+                                aiList.slice(0,15).map((i) => {
                                     let goView = (e) => {
                                         window.open(i.link, '_blank').focus();
                                     }
                                     return (
                                         <>
                                             <tr onClick={goView}>
-                                                <td>{i.title.length > 25 ? `${i.title.substring(0, 25)}...` : i.title}</td>
+                                                <td>{i.title.length > 34 ? `${i.title.substring(0,34)}...` : i.title}</td>
                                             </tr>
                                         </>
                                     )
@@ -71,14 +71,14 @@ function Crawling() {
                             ? <tbody><div>업데이트중입니다....</div></tbody>
                             : <tbody>
                             {
-                                ceList.slice(0,10).map((i) => {
+                                ceList.slice(0,15).map((i) => {
                                     let goView = (e) => {
                                         window.open(i.link, '_blank').focus();
                                     }
                                     return (
                                         <>
                                             <tr onClick={goView}>
-                                                <td>{i.title.length > 25 ? `${i.title.substring(0, 25)}...` : i.title}</td>
+                                                <td>{i.title.length > 34 ? `${i.title.substring(0, 34)}...` : i.title}</td>
                                             </tr>
                                         </>
                                     )
@@ -100,14 +100,14 @@ function Crawling() {
                             ? <tbody><div>업데이트중입니다....</div></tbody>
                             : <tbody>
                             {
-                                csList.slice(0,10).map((i) => {
+                                csList.slice(0,15).map((i) => {
                                     let goView = (e) => {
                                         window.open(i.link, '_blank').focus();
                                     }
                                     return (
                                         <>
                                             <tr onClick={goView}>
-                                                <td>{i.title.length > 25 ? `${i.title.substring(0, 25)}...` : i.title}</td>
+                                                <td>{i.title.length > 34 ? `${i.title.substring(0, 34)}...` : i.title}</td>
                                             </tr>
                                         </>
                                     )

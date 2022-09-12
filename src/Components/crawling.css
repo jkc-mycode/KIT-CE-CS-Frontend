@@ -2,13 +2,14 @@
     width: 100%;
 
     border-collapse: collapse;
-    border-top: 2px solid rgba(115, 115, 115, 0.8);
+    border-top: 2.5px solid rgba(115, 115, 115, 0.8);
     border-bottom: 2px solid rgba(115, 115, 115, 0.8);
 }
 
 .crawling td {
     text-align: left;
-    padding: 7px;
+    padding: 7.1px;
+    font-size: 13px;
 }
 
 td:hover {
@@ -21,17 +22,20 @@ td:hover {
     display: flex;
     justify-items: center;
     justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .crawlingTabButton {
     display: inline-block;
     width: 65px;
-    height: 27px;
+    height: 25px;
 
-    padding-top: 3px;
+    padding-top: 0;
 
     margin-left: 10px;
     margin-right: 10px;
 
     text-align: center;
+    font-size: 17px;
 }
