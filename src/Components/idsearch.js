@@ -51,20 +51,13 @@ function IDSearch (){
     }, [])
 
     //아이디찾기 axios
-    const headers = {
-        "Content-Type": `application/json`,
-    };
     const submitSearchId = async () => {
-        let data = {
-            name: `${name}`,
-            webmail: `${webmail}@kumoh.ac.kr`
-        }
         if(!nameCheck){
             alert("이름이 잘못 입력되었습니다.");
         }else if(!webmailCheck){
             alert("웹메일이 잘못 입력되었습니다.")
         }else{
-            await axios.post('/sign/id', data, headers)
+            await axios.get(`/sign/id?name=${name}&webmail=${webmail}@kumoh.ac.kr`)
                 .then((res) => {
                     alert(name + "님의 아이디 : " + res.data);
                     window.location.reload();
@@ -78,16 +71,12 @@ function IDSearch (){
 
     //비밀번호 재설정 axios
     const submitSearchPw = async () => {
-        let data = {
-            name: `${pwName}`,
-            id: `${id}`
-        }
         if(!pwNameCheck){
             alert("이름이 잘못 입력되었습니다.");
         }else if(!idCheck){
             alert("아이디가 잘못 입력되었습니다.")
         }else{
-            await axios.post('/sign/password', data, headers)
+            await axios.get(`/sign/password?name=${pwName}&id=${id}`)
                 .then((res) => {
                     alert("웹메일로 임시 비밀번호 링크를 전송했습니다.");
                     window.location.replace('/login');
