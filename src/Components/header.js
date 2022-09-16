@@ -54,7 +54,7 @@ function Header(){
                 <div className = "viewSection">
                     <div className="header_container">
                         <div className = "left_header">
-                            <Link to="/" className="header_items"><img className='header_logo' src="img/acs_logo_edit_low.png" alt='logo' /></Link>
+                            <Link to="/" className="header_items"><img className='header_logo' src={process.env.PUBLIC_URL + "/img/acs_logo_edit_low.png"} alt='logo' /></Link>
                         </div>
                         <div className="right_header">
                             {
@@ -62,13 +62,13 @@ function Header(){
                                 ? <>
                                     <div className="header_items">
                                         <div className="search_row">
-                                            <div className="post_dropdown_box">
+                                            <div className="search_dropdown_box">
                                                 <button className="dropdown" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
                                                     {dropdownName} <span className="material-icons-outlined expand_more">expand_more</span>
                                                 </button>
                                                 <Dropdown visibility={dropdownVisibility}>
-                                                    <div><button className="sbutton" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
-                                                    <div><button className="sbutton" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
+                                                    <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
+                                                    <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
                                                 </Dropdown>
                                             </div>
                                             <span className="header_search">
@@ -98,7 +98,7 @@ function Header(){
                 <div className = "viewSection">
                     <div className="header_container">
                         <div className = "left_header">
-                            <Link to="/" className="header_items"><img className='header_logo' src="img/acs_logo.png" alt='logo' /></Link>
+                            <Link to="/" className="header_items"><img className='header_logo' src={process.env.PUBLIC_URL + "/img/acs_logo.png"} alt='logo' /></Link>
                         </div>
                         <div className="right_header">
                             {
@@ -106,13 +106,13 @@ function Header(){
                                     ? <>
                                         <div className="header_items">
                                             <div className="search_row">
-                                                <div className="post_dropdown_box">
+                                                <div className="search_dropdown_box">
                                                     <button className="dropdown" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
                                                         {dropdownName} <span className="material-icons-outlined expand_more">expand_more</span>
                                                     </button>
                                                     <Dropdown visibility={dropdownVisibility}>
-                                                        <div><button className="sbutton" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
-                                                        <div><button className="sbutton" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
+                                                        <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
+                                                        <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
                                                     </Dropdown>
                                                 </div>
                                                 <span className="header_search">
