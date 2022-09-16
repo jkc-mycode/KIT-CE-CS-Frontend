@@ -11,7 +11,7 @@ body {
     width: calc(80% + 20px);
 
     max-width: 1300px;
-    min-width: 340px;
+    min-width: 750px;
 
     margin: 0 auto;
 }
