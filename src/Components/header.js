@@ -16,7 +16,7 @@ const onClickLogout = async (event) => {
             console.log(e);
         })
         .finally(() => {
-            window.location.replace('/');
+            // window.location.replace('/');
         })
 }
 
