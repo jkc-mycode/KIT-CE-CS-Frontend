@@ -5,10 +5,12 @@ import './View.css';
 import Crawling from './crawling.js';
 import Comments from './comments';
 import Report from './report_popup';
+import dompurify from "dompurify";
 
 
 function ViewPage(){
     const navigate = useNavigate();
+    const sanitizer = dompurify.sanitize;
     const [list, setList] = useState([]);
     const [next, setNext] = useState([]);
     const [prev, setPrev] = useState([]);
@@ -59,6 +61,7 @@ function ViewPage(){
                     window.location.reload();
                 })
                 .catch((e) => {
+                    alert("로그인을 다시 확인해주세요.");
                     console.log(e);
                 })
         }else{
@@ -157,7 +160,7 @@ function ViewPage(){
                             })
                         }
                         <div className="line"></div>
-                        <div className="post_content"  dangerouslySetInnerHTML={{__html : list.content}}></div>
+                        <div className="post_content" dangerouslySetInnerHTML={{__html : sanitizer(list.content)}}></div>
                         <div className="edit_delete_report_container">
                         {
                             list.isMine
