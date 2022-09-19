@@ -9,8 +9,11 @@ import Dropdown from "./post_dropdown";
 const onClickLogout = async (event) => {
     await axios.delete('/log/out')
         .then((res) => {
+            console.log(1);
             removeCookie("kit_acs", { domain: "kitacs.com", path: "/" });
-            removeCookie("kit_acs_class");
+            console.log(2);
+            removeCookie("kit_acs_class", { domain: "kitacs.com", path: "/" });
+            console.log(3);
         })
         .catch((e) => {
             console.log(e);
