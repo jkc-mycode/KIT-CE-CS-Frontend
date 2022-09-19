@@ -59,6 +59,20 @@
 
 .mypost_box > table {
     width: 100%;
+    
+    margin-top: 15px;
+}
+.mypost_box > table td:nth-child(1), td:nth-child(3), td:nth-child(4) {
+    text-align: center;
+}
+.mypost_box > table th:nth-child(1), td:nth-child(1) {
+    width: 50px;
+}
+.mypost_box > table th:nth-child(3), td:nth-child(3) {
+    width: 200px;
+}
+.mypost_box > table th:nth-child(4), td:nth-child(4) {
+    width: 60px;
 }
 
 .report_box > table {
