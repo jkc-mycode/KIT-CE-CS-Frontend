@@ -292,7 +292,6 @@ function MyInfoPage(){
                                 <th>번호</th>
                                 <th>제목</th>
                                 <th>작성일</th>
-                                <th>댓글수</th>
                             </tr>
                             {
                                 myArticle.slice(0).map((i) => {
@@ -303,14 +302,18 @@ function MyInfoPage(){
                                     return (
                                         <tr onClick={goView}>
                                             <td>{num-x}</td>
-                                            <td>{i.title.length > 15 ? `${i.title.substring(0, 15)}...` : i.title}</td>
+                                            <td>{i.title.length > 15 ? `${i.title.substring(0, 15)}...` : i.title}<span className='commentCount'>[{i.commentCount}]</span></td>
                                             <td>{timer(i.date)}</td>
-                                            <td>{i.commentCount}</td>
                                         </tr>
                                     )
                                 })
                             }
                         </table>
+                        {
+                            myArticle.length === 0
+                                ? <div className="noMyArticle">작성된 게시물이 없습니다.</div>
+                                : null
+                        }
                         <Pagination
                             activePage={postPage} //현재 페이지
                             itemsCountPerPage={postLimit} //한 페이지당 보여줄 리스트 아이템의 개수
@@ -376,10 +379,10 @@ function MyInfoPage(){
                                                     <td onClick={goView}>{type}</td>
                                                     {
                                                         item.targetType === "article"
-                                                            ? <td>바로가기</td>
-                                                            : <td>{item.content.length > 5 ? `${item.content.substring(0, 5)}...` : item.content}</td>
+                                                            ? <td onClick={goView}>바로가기</td>
+                                                            : <td onClick={goView}>{item.content.length > 15 ? `${item.content.substring(0, 15)}...` : item.content}</td>
                                                     }
-                                                    <td onClick={goView}>{item.reason}</td>
+                                                    <td onClick={goView}>{item.reason.length > 5 ? `${item.reason.substring(0, 5)}...` : item.reason}</td>
                                                     <td onClick={goView}>{item.reporter}</td>
                                                     <td onClick={goView}>{timer(item.date)}</td>
                                                     <td>
