@@ -34,8 +34,7 @@ function LoginPage(){
                     setCookie('kit_acs_class', res.data.class)
                 })
                 .catch((e) => {
-                    console.log(e);
-                    if(e.response.data.message === "Invalid ID" || e.response.data.message === "Wrong ID or Password"){
+                    if(e.response.data.message === "Wrong ID or Password"){
                         alert(e.response.data.message);
                         navigate('/login');
                     }
