@@ -74,6 +74,7 @@ function Header(){
                                                         <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
                                                         <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
                                                         <div className="dhidden">.</div>
+                                                        <div className="dhidden">.</div>
                                                     </ul>
                                                 </Dropdown>
                                             </div>
@@ -120,6 +121,7 @@ function Header(){
                                                         <ul>
                                                             <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
                                                             <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
+                                                            <div className="dhidden">.</div>
                                                             <div className="dhidden">.</div>
                                                         </ul>
                                                     </Dropdown>
