@@ -302,7 +302,7 @@ function MyInfoPage(){
                                     return (
                                         <tr onClick={goView}>
                                             <td>{num-x}</td>
-                                            <td>{i.title.length > 15 ? `${i.title.substring(0, 15)}...` : i.title}<span className='commentCount'>[{i.commentCount}]</span></td>
+                                            <td>{i.title.length > 15 ? `${i.title.substring(0, 15)}...` : i.title}<span className='commentCount'> [{i.commentCount}]</span></td>
                                             <td>{timer(i.date)}</td>
                                         </tr>
                                     )
