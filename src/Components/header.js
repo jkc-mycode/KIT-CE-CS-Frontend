@@ -3,7 +3,7 @@ import {Link, useLocation} from 'react-router-dom';
 import './header.css';
 import axios from "axios";
 import { getCookie, removeCookie } from '../cookie';
-import Dropdown from "./dropdown";
+import Dropdown from './dropdown';
 
 
 const onClickLogout = async (event) => {
