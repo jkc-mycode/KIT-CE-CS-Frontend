@@ -88,7 +88,7 @@ function ViewPage(){
         if(!list.isMine){
             alert("사용이 불가합니다.");
         }else{
-            navigate('/post_update/' + id, {state: list});
+            navigate('/post_update/' + id, {state: {list : list, file : file}});
         }
     }
     const deletePost = () => {
@@ -107,6 +107,7 @@ function ViewPage(){
     }
     const getPost = async () => {
         const posts = await axios.get("/article/view/" + id)
+        console.log(posts);
         setList(posts.data.articleInfo);
         setNext(posts.data.next[0]);
         setPrev(posts.data.prev[0]);

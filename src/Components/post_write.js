@@ -6,6 +6,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Dropdown from './dropdown';
 import './post_write.css';
+import { useDropzone } from "react-dropzone"
 
 function PostWrite(){
     const [title, setTitle] = useState(""); //제목
@@ -31,9 +32,6 @@ function PostWrite(){
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
     }
-    const onFileHandler = useCallback(async (e) => {
-        setFileUpload(e.target.files);
-    }, [fileUpload])
 
     const modules = {
         toolbar: [
@@ -99,6 +97,26 @@ function PostWrite(){
         })
     }, [fileUpload, title, dropdownValue, content])
 
+    const onDrop = useCallback(acceptedFiles => {
+        setFileUpload([...fileUpload, ...acceptedFiles])
+    }, [fileUpload])
+
+    const { getRootProps, getInputProps } = useDropzone({
+        onDrop,
+    })
+
+    const removeFile = file => () => {
+        const newFiles = [...fileUpload]
+        newFiles.splice(newFiles.indexOf(file), 1)
+        setFileUpload(newFiles)
+    }
+
+    const files = fileUpload.map(file => (
+        <li key={file.path}>
+            {file.path} - {file.size} bytes{" "}
+            <button onClick={removeFile(file)}>x</button>
+        </li>
+    ))
     return (
         <div className="viewSection">
             <div className='bodySection'>
@@ -144,7 +162,19 @@ function PostWrite(){
                             />
                         </div>
                         <br/><br/><br/>
-                        <input type="file" id="file" onChange={onFileHandler} multiple/>
+                        <div className="file">
+                            <div className="file_box">
+                                <div {...getRootProps({ className: "dropzone" })}>
+                                    <input {...getInputProps()} />
+                                    <p>클릭 또는 파일을 여기에 드래그 해주세요.</p>
+                                </div>
+                            </div>
+                            {
+                                fileUpload.length !== 0
+                                    ?<div className="file_list"><ul>{files}</ul></div>
+                                    : null
+                            }
+                        </div>
                         <br/><br/>
                         <div className="post_write_button">
                             <button type="button" className="mbutton post_register_button" onClick={postWrite}>등록</button>
