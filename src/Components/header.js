@@ -3,7 +3,7 @@ import {Link, useLocation} from 'react-router-dom';
 import './header.css';
 import axios from "axios";
 import { getCookie, removeCookie } from '../cookie';
-import Dropdown from "./post_dropdown";
+import Dropdown from "./dropdown";
 
 
 const onClickLogout = async (event) => {
@@ -65,21 +65,24 @@ function Header(){
                                 ? <>
                                     <div className="header_items">
                                         <div className="search_row">
-                                            <div className="search_dropdown_box">
+                                            <div className="search_dropdown_box dropdown_box">
                                                 <button className="dropdown" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
                                                     {dropdownName} <span className="material-icons-outlined expand_more">expand_more</span>
                                                 </button>
                                                 <Dropdown visibility={dropdownVisibility}>
-                                                    <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
-                                                    <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
+                                                    <ul>
+                                                        <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
+                                                        <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
+                                                        <div className="dhidden">.</div>
+                                                    </ul>
                                                 </Dropdown>
                                             </div>
-                                            <span className="header_search">
+                                            <div className="header_search">
                                                 <form action={location.pathname}>
                                                     <input type="text" placeholder={placeHolder} name={dropdownValue} className="search_input"/>
                                                     <button type="submit" className="search_button"><span className="material-icons-outlined">search</span></button>
                                                 </form>
-                                            </span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="header_line"></div>
@@ -109,21 +112,24 @@ function Header(){
                                     ? <>
                                         <div className="header_items">
                                             <div className="search_row">
-                                                <div className="search_dropdown_box">
+                                                <div className="search_dropdown_box dropdown_box">
                                                     <button className="dropdown" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
                                                         {dropdownName} <span className="material-icons-outlined expand_more">expand_more</span>
                                                     </button>
                                                     <Dropdown visibility={dropdownVisibility}>
-                                                        <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
-                                                        <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
+                                                        <ul>
+                                                            <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
+                                                            <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
+                                                            <div className="dhidden">.</div>
+                                                        </ul>
                                                     </Dropdown>
                                                 </div>
-                                                <span className="header_search">
+                                                <div className="header_search">
                                                     <form action={location.pathname}>
                                                         <input type="text" placeholder={placeHolder} name={dropdownValue} className="search_input"/>
                                                         <button type="submit" className="search_button"><span className="material-icons-outlined">search</span></button>
                                                     </form>
-                                                </span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="header_line"></div>
