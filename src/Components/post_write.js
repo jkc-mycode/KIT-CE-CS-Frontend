@@ -4,7 +4,7 @@ import { getCookie } from '../cookie';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import Dropdown from './post_dropdown';
+import Dropdown from './dropdown';
 import './post_write.css';
 
 function PostWrite(){
@@ -105,20 +105,17 @@ function PostWrite(){
                 <div className="main">
                     <div className='box'>
                         <div className="board_title_section">
-                            <div className="post_dropdown_box">
+                            <div className="post_dropdown_box dropdown_box">
                                 <button onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
-                                    {
-                                        dropdownVisibility
-                                            ? `${dropdownName}`
-                                            : `${dropdownName}`
-                                    }
+                                    {dropdownName}
                                 </button>
                                 <Dropdown visibility={dropdownVisibility}>
                                     <ul>
-                                        <li><button type="button" value="free" name="자유 게시판" onClick={onDropdownHandler}>자유게시판</button></li>
-                                        <li><button type="button" value="study" name="학업 게시판" onClick={onDropdownHandler}>학업게시판</button></li>
-                                        <li><button type="button" value="graduate" name="졸업생 게시판" onClick={onDropdownHandler}>졸업생게시판</button></li>
-                                        <li><button type="button" value="notice" name="공지사항" onClick={onDropdownHandler}>공지사항</button></li>
+                                        <div><button className='dtbutton post_dropdown_button' type="button" value="free" name="자유 게시판" onClick={onDropdownHandler}>자유게시판</button></div>
+                                        <div><button className='dbutton post_dropdown_button' type="button" value="study" name="학업 게시판" onClick={onDropdownHandler}>학업게시판</button></div>
+                                        <div><button className='dbutton post_dropdown_button' type="button" value="graduate" name="졸업생 게시판" onClick={onDropdownHandler}>졸업생게시판</button></div>
+                                        <div><button className='dbbutton post_dropdown_button' type="button" value="notice" name="공지사항" onClick={onDropdownHandler}>공지사항</button></div>
+                                        <div className='dhidden'>.</div>
                                     </ul>
                                 </Dropdown>
                             </div>
@@ -130,7 +127,7 @@ function PostWrite(){
                                         placeholder="제목을 입력해주세요."
                                         className="input_title"
                                         onChange={onTitleHandler}
-                                        style={{height: "20px", width: "800px"}}
+                                        // style={{height: "20px", width: "800px"}}
                                     />
                                 </div>
                             </div>
