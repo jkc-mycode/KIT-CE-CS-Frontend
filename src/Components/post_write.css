@@ -97,3 +97,8 @@
     width: 120px;
     height: 50px;
 }
+
+.file_box {
+    border: 3px dashed rgba(115, 115, 115, 0.5);
+    text-align: center;
+}
