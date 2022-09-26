@@ -113,8 +113,8 @@ function PostWrite(){
 
     const files = fileUpload.map(file => (
         <li key={file.path}>
+            <button className='file_delete_button' onClick={removeFile(file)}><span className="material-icons-outlined">&#xe92b;</span></button>
             {file.path} - {file.size} bytes{" "}
-            <button onClick={removeFile(file)}>x</button>
         </li>
     ))
     return (

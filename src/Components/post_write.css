@@ -71,4 +71,23 @@
 .file_box {
     border: 3px dashed rgba(115, 115, 115, 0.5);
     text-align: center;
+    
+    cursor: pointer;
 }
+
+.file_delete_button {
+    border: none;
+    background: none;
+
+    color: #EE4451;
+
+    cursor: pointer;
+
+    margin-bottom: 5px;
+}
+
+.file_delete_button > .material-icons-outlined {
+    font-size: 20px;
+    vertical-align: bottom;
+}
+    
