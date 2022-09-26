@@ -5,11 +5,13 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Dropdown from './dropdown';
 import './post_write.css';
+import { useDropzone } from "react-dropzone"
+import {getCookie} from "../cookie";
 
 function PostUpdate(){
     const location = useLocation(); //navigate로 보낸 파라미터 가져오기 위해 사용
-    const [title, setTitle] = useState(location.state.title); //제목
-    let content = location.state.content //내용 (HTML 통째로 저장)
+    const [title, setTitle] = useState(location.state.list.title); //제목
+    let content = location.state.list.content //내용 (HTML 통째로 저장)
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [dropdownName, setDropdownName] = useState(() => {
         if(location.state.tag === "notice"){
@@ -22,8 +24,10 @@ function PostUpdate(){
             return "졸업생게시판";
         }
     });
-    const [dropdownValue, setDropdownValue] = useState(location.state.tag);
-    const [fileUpload, setFileUpload] = useState(location.state.fileList[0]);	//파일
+    const [dropdownValue, setDropdownValue] = useState(location.state.list.tag);
+    const [fileUpload, setFileUpload] = useState([]);	//파일
+    const [deletedFile, setDeletedFile] = useState([]); //삭제할 기존 파일
+    const [files, setFiles] = useState(location.state.file);
     const navigate = useNavigate();
 
     const onTitleHandler = (event) => {
@@ -33,13 +37,14 @@ function PostUpdate(){
         content = value;
     }
     const onDropdownHandler = (event) => {
+        if (event.currentTarget.name === "공지사항" && parseInt(getCookie("kit_acs_class")) < 2) {
+            alert("공지사항 쓰기 권한이 없습니다.")
+            return
+        }
         setDropdownName(event.currentTarget.name);
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
     }
-    const onFileHandler = useCallback(async (e) => {
-        setFileUpload(e.target.files[0]);
-    }, [fileUpload])
 
     const modules = {
         toolbar: [
@@ -61,8 +66,7 @@ function PostUpdate(){
         'align', 'color', 'background',
     ]
 
-    const postUpdate = (event) => {
-        event.preventDefault();
+    const postUpdate = useCallback(async () => {
         if (dropdownValue === '') {
             alert("게시판을 선택해주세요.")
             return
@@ -73,23 +77,75 @@ function PostUpdate(){
             alert("내용을 입력해주세요.")
             return
         }
+        const formData = new FormData();
+        [].forEach.call(fileUpload, (file) => {
+            formData.append('fileList', file)
+        })
         let data = {
             title: `${title}`,
             tag: `${dropdownValue}`,
-            content: `${content}`
+            content: `${content}`,
+            deletedFile: `${deletedFile}`
         };
-        const headers = {
-            "Content-Type": `application/json`,
-        };
-        axios.patch('/article/' + location.state._id, data, headers)
-            .then((res) => {
+        formData.append("data", JSON.stringify(data));
 
+        await axios.patch(
+            '/article/' + location.state.list._id,
+            formData,
+            {
+                headers : {
+                    "Content-Type": 'multipart/form-data'
+                }
+            })
+            .then((res) => {
+                alert("게시물이 수정되었습니다!");
             })
             .catch((e) => {
                 console.log(e);
+                if (e.response.data.message === "Unauthorized") {
+                    alert("다시 로그인해주세요.");
+                }
+                else if (e.response.data.message === "No Permission") {
+                    alert("공지사항 쓰기 권한이 없습니다.");
+                }
             })
         navigate('/');
+    }, [fileUpload, title, dropdownValue, content])
+
+    const onDrop = useCallback(acceptedFiles => {
+        setFileUpload([...fileUpload, ...acceptedFiles])
+    }, [fileUpload])
+
+    const { getRootProps, getInputProps } = useDropzone({
+        onDrop,
+    })
+
+    const removeFile = file => () => {
+        console.log(file);
+        if(file.originName){
+            setDeletedFile(deletedFile => [...deletedFile, file])
+            const newFiles = [...files]
+            newFiles.splice(newFiles.indexOf(file), 1)
+            setFiles(newFiles)
+        }else{
+            const newFiles = [...fileUpload]
+            newFiles.splice(newFiles.indexOf(file), 1)
+            setFileUpload(newFiles)
+        }
     }
+
+    const beforeFilesList = files.map(file => (
+        <li key={file.originName}>
+            {file.originName}
+            <button onClick={removeFile(file)}>x</button>
+        </li>
+    ))
+    const newFileList = fileUpload.map(file => (
+        <li key={file.path}>
+            {file.path}
+            <button onClick={removeFile(file)}>x</button>
+        </li>
+    ))
 
     return (
         <div className="viewSection">
@@ -135,7 +191,37 @@ function PostUpdate(){
                             />
                         </div>
                         <br/><br/><br/>
-                        <input type="file" id="file" onChange={onFileHandler} multiple="multiple" />
+                        {/*<input type="file" id="file" onChange={onFileHandler} multiple="multiple" />*/}
+                        <div className="file">
+                            <div className="file_box">
+                                <div {...getRootProps({ className: "dropzone" })}>
+                                    <input {...getInputProps()} />
+                                    <p>클릭 또는 파일을 여기에 드래그 해주세요.</p>
+                                </div>
+                            </div>
+                            <div className="file_list">
+                                <ul>
+                                {
+                                    files.length !== 0
+                                        ? <>{beforeFilesList}</>
+                                        : null
+                                }
+                                {
+                                    fileUpload.length !== 0
+                                        ? <>{newFileList}</>
+                                        : null
+                                }
+                                </ul>
+                            </div>
+                        </div>
+                        <br/><br/>
+                        {/*{*/}
+                        {/*    files.slice().map((file) => {*/}
+                        {/*        return(*/}
+                        {/*            <li>{file.originName}<button onClick={removeFile(file)}>x</button></li>*/}
+                        {/*        )*/}
+                        {/*    })*/}
+                        {/*}*/}
                         <br/><br/>
                         <div className="post_write_button">
                             <button type="button" className="mbutton post_register_button" onClick={postUpdate}>등록</button>
