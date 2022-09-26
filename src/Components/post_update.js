@@ -28,6 +28,7 @@ function PostUpdate(){
     const [fileUpload, setFileUpload] = useState([]);	//파일
     const [deletedFile, setDeletedFile] = useState([]); //삭제할 기존 파일
     const [files, setFiles] = useState(location.state.file);
+    //const deletedFile = [];
     const navigate = useNavigate();
 
     const onTitleHandler = (event) => {
@@ -85,7 +86,7 @@ function PostUpdate(){
             title: `${title}`,
             tag: `${dropdownValue}`,
             content: `${content}`,
-            deletedFile: `${deletedFile}`
+            deletedFile: deletedFile
         };
         formData.append("data", JSON.stringify(data));
 
@@ -109,7 +110,7 @@ function PostUpdate(){
                     alert("공지사항 쓰기 권한이 없습니다.");
                 }
             })
-        navigate('/');
+        //navigate('/');
     }, [fileUpload, title, dropdownValue, content])
 
     const onDrop = useCallback(acceptedFiles => {
@@ -123,7 +124,8 @@ function PostUpdate(){
     const removeFile = file => () => {
         console.log(file);
         if(file.originName){
-            setDeletedFile(deletedFile => [...deletedFile, file])
+            //setDeletedFile(deletedFile => [...deletedFile, file])
+            deletedFile.push(file)
             const newFiles = [...files]
             newFiles.splice(newFiles.indexOf(file), 1)
             setFiles(newFiles)
@@ -194,7 +196,6 @@ function PostUpdate(){
                             />
                         </div>
                         <br/><br/><br/>
-                        {/*<input type="file" id="file" onChange={onFileHandler} multiple="multiple" />*/}
                         <div className="file">
                             <div className="file_box">
                                 <div {...getRootProps({ className: "dropzone" })}>
@@ -217,14 +218,6 @@ function PostUpdate(){
                                 </ul>
                             </div>
                         </div>
-                        <br/><br/>
-                        {/*{*/}
-                        {/*    files.slice().map((file) => {*/}
-                        {/*        return(*/}
-                        {/*            <li>{file.originName}<button onClick={removeFile(file)}>x</button></li>*/}
-                        {/*        )*/}
-                        {/*    })*/}
-                        {/*}*/}
                         <br/><br/>
                         <div className="post_write_button">
                             <button type="button" className="mbutton post_register_button" onClick={postUpdate}>등록</button>

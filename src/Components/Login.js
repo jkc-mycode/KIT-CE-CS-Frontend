@@ -36,10 +36,11 @@ function LoginPage(){
                 .catch((e) => {
                     if(e.response.data.message === "Wrong ID or Password"){
                         alert(e.response.data.message);
-                        navigate('/login');
+                    }else if(e.response.data.message === "Invalid ID"){
+                        alert("회원정보가 존재하지 않거나 인증되지 않은 아이디입니다.");
                     }
                     if(e.response.data.message === "Try again"){
-                        onClickLogin();
+                        alert("다시 시도해 주세요.");
                     }
                 })
         }
