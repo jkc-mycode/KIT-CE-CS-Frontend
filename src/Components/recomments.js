@@ -8,6 +8,7 @@ import Report from "./report_popup";
 const Recomments = (props) => {
     const [reCommentsList, setReCommentsList] = useState([]);
     const [comment, setComment] = useState([]);
+    const [commentCheck, setCommentCheck] = useState(true) //댓글 등록 버튼 체크
     const [content, setContent] = useState(""); //댓글 내용
     const [isReComment, setIsReComment] = useState(false); //댓글달기 버튼 클릭 체크
     const [isUpdateButton, setIsUpdateButton] = useState(false); //수정 버튼 클릭 체크
@@ -60,42 +61,57 @@ const Recomments = (props) => {
     };
     //댓글 작성 axios
     const commentOnSubmit = async () => {
-        await axios.post('/comment/' + props.comment._id, data, headers)
-            .then((res) => {
-                window.location.reload();
-            })
-            .catch((e) => {
-                if (e.response.data.message === "Unauthorized") {
-                    alert("로그인 후 이용 가능합니다.");
-                }
-            })
+        if(commentCheck) {
+            setCommentCheck(false);
+            await axios.post('/comment/' + props.comment._id, data, headers)
+                .then((res) => {
+                    window.location.reload();
+                })
+                .catch((e) => {
+                    if (e.response.data.message === "Unauthorized") {
+                        alert("로그인 후 이용 가능합니다.");
+                    }
+                })
+        }else{
+            alert("잠시만 기다려주세요!!");
+        }
     }
 
     //댓글 삭제 axios
     const deleteComment = async (e) => {
-        if(window.confirm("정말 삭제하시겠습니까?")){
-            await axios.delete('/comment/' + e.currentTarget.value)
+        if(commentCheck) {
+            setCommentCheck(false);
+            if(window.confirm("정말 삭제하시겠습니까?")){
+                await axios.delete('/comment/' + e.currentTarget.value)
+                    .then((res) => {
+                        alert("댓글이 삭제되었습니다.");
+                        window.location.reload();
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    })
+            }else{
+                console.log("취소");
+            }
+        }else{
+            alert("잠시만 기다려주세요!!");
+        }
+    }
+
+    //댓글 수정 axios
+    const updateComment = async (e) => {
+        if(commentCheck) {
+            setCommentCheck(false);
+            await axios.patch('/comment/' + e.currentTarget.value, data, headers)
                 .then((res) => {
-                    alert("댓글이 삭제되었습니다.");
                     window.location.reload();
                 })
                 .catch((e) => {
                     console.log(e);
                 })
         }else{
-            console.log("취소");
+            alert("잠시만 기다려주세요!!");
         }
-    }
-
-    //댓글 수정 axios
-    const updateComment = async (e) => {
-        await axios.patch('/comment/' + e.currentTarget.value, data, headers)
-            .then((res) => {
-                window.location.reload();
-            })
-            .catch((e) => {
-                console.log(e);
-            })
     }
 
     const [reportOpen, setReportOpen] = useState(false); //신고 팝업창
@@ -130,17 +146,22 @@ const Recomments = (props) => {
     }
     //신고사유 보내는 axios
     const reportSubmit = async (e) => {
-        if(window.confirm(reportReason + " 사유가 맞나요?")){
-            await axios.post('/report', data2, headers)
-                .then((res) => {
-                    alert("신고되었습니다!");
-                    window.location.reload();
-                })
-                .catch((e) => {
-                    console.log(e);
-                })
+        if(commentCheck) {
+            setCommentCheck(false);
+            if(window.confirm(reportReason + " 사유가 맞나요?")){
+                await axios.post('/report', data2, headers)
+                    .then((res) => {
+                        alert("신고되었습니다!");
+                        window.location.reload();
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    })
+            }else{
+                console.log("취소");
+            }
         }else{
-            console.log("취소");
+            alert("잠시만 기다려주세요!!");
         }
     }
 

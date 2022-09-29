@@ -3,6 +3,7 @@ import axios from 'axios';
 import './idsearch.css';
 
 function IDSearch (){
+    const [searchCheck, setSearchCheck] = useState(true) //찾기 버튼 체크
     const [name, setName] = useState("");
     const [webmail, setWebmail] = useState("");
     const [pwName, setPwName] = useState("");
@@ -52,39 +53,49 @@ function IDSearch (){
 
     //아이디찾기 axios
     const submitSearchId = async () => {
-        if(!nameCheck){
-            alert("이름이 잘못 입력되었습니다.");
-        }else if(!webmailCheck){
-            alert("웹메일이 잘못 입력되었습니다.")
+        if(searchCheck){
+            setSearchCheck(false);
+            if(!nameCheck){
+                alert("이름이 잘못 입력되었습니다.");
+            }else if(!webmailCheck){
+                alert("웹메일이 잘못 입력되었습니다.")
+            }else{
+                await axios.get(`/sign/id?name=${name}&webmail=${webmail}@kumoh.ac.kr`)
+                    .then((res) => {
+                        alert(name + "님의 아이디 : " + res.data);
+                        window.location.reload();
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                        alert("일치하는 정보가 없습니다.");
+                    })
+            }
         }else{
-            await axios.get(`/sign/id?name=${name}&webmail=${webmail}@kumoh.ac.kr`)
-                .then((res) => {
-                    alert(name + "님의 아이디 : " + res.data);
-                    window.location.reload();
-                })
-                .catch((e) => {
-                    console.log(e);
-                    alert("일치하는 정보가 없습니다.");
-                })
+            alert("잠시만 기다려주세요!!");
         }
     }
 
     //비밀번호 재설정 axios
     const submitSearchPw = async () => {
-        if(!pwNameCheck){
-            alert("이름이 잘못 입력되었습니다.");
-        }else if(!idCheck){
-            alert("아이디가 잘못 입력되었습니다.")
+        if(searchCheck) {
+            setSearchCheck(false);
+            if(!pwNameCheck){
+                alert("이름이 잘못 입력되었습니다.");
+            }else if(!idCheck){
+                alert("아이디가 잘못 입력되었습니다.")
+            }else{
+                await axios.get(`/sign/password?name=${pwName}&id=${id}`)
+                    .then((res) => {
+                        alert("웹메일로 임시 비밀번호 링크를 전송했습니다.");
+                        window.location.replace('/login');
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                        alert("일치하는 정보가 없습니다.");
+                    })
+            }
         }else{
-            await axios.get(`/sign/password?name=${pwName}&id=${id}`)
-                .then((res) => {
-                    alert("웹메일로 임시 비밀번호 링크를 전송했습니다.");
-                    window.location.replace('/login');
-                })
-                .catch((e) => {
-                    console.log(e);
-                    alert("일치하는 정보가 없습니다.");
-                })
+            alert("잠시만 기다려주세요!!");
         }
     }
 

@@ -7,6 +7,7 @@ import axios from 'axios';
 function LoginPage(){
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
+    const [loginButtonCheck, setLoginButtonCheck] = useState(true) //로그인 버튼 체크
     const navigate = useNavigate();
 
     const onIdHandler = (event) => {
@@ -16,33 +17,38 @@ function LoginPage(){
         setPassword(event.currentTarget.value);
     }
     const onClickLogin = (event) => {
-        event.preventDefault();
-        let data = {
-            id: `${id}`,
-            password: `${password}`,
-            verify: true
-        }
-        const headers = {
-            "Content-Type": `application/json`,
-        };
-        if(id === "" && password === ""){
-            alert("아이디와 비밀번호를 다시 입력해주세요.");
+        if(loginButtonCheck){
+            setLoginButtonCheck(false);
+            event.preventDefault();
+            let data = {
+                id: `${id}`,
+                password: `${password}`,
+                verify: true
+            }
+            const headers = {
+                "Content-Type": `application/json`,
+            };
+            if(id === "" && password === ""){
+                alert("아이디와 비밀번호를 다시 입력해주세요.");
+            }else{
+                axios.post('/log/in', data, headers, {withCredentials : true})
+                    .then((res) => {
+                        navigate('/'); //임시로 메인으로 이동
+                        setCookie('kit_acs_class', res.data.class)
+                    })
+                    .catch((e) => {
+                        if(e.response.data.message === "Wrong ID or Password"){
+                            alert(e.response.data.message);
+                        }else if(e.response.data.message === "Invalid ID"){
+                            alert("회원정보가 존재하지 않거나 인증되지 않은 아이디입니다.");
+                        }
+                        if(e.response.data.message === "Try again"){
+                            alert("다시 시도해 주세요.");
+                        }
+                    })
+            }
         }else{
-            axios.post('/log/in', data, headers, {withCredentials : true})
-                .then((res) => {
-                    navigate('/'); //임시로 메인으로 이동
-                    setCookie('kit_acs_class', res.data.class)
-                })
-                .catch((e) => {
-                    if(e.response.data.message === "Wrong ID or Password"){
-                        alert(e.response.data.message);
-                    }else if(e.response.data.message === "Invalid ID"){
-                        alert("회원정보가 존재하지 않거나 인증되지 않은 아이디입니다.");
-                    }
-                    if(e.response.data.message === "Try again"){
-                        alert("다시 시도해 주세요.");
-                    }
-                })
+            alert("잠시만 기다려주세요!!");
         }
     }
     return (

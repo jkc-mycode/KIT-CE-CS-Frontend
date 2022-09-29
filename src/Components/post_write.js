@@ -10,6 +10,7 @@ import { useDropzone } from "react-dropzone"
 
 function PostWrite(){
     const [title, setTitle] = useState(""); //제목
+    const [postWriteCheck, setPostWriteCheck] = useState(true); //게시물 등록 버튼 체크용
     const [content, setContent ] = useState(""); //내용 (HTML 통째로 저장)
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [dropdownName, setDropdownName] = useState("게시판을 선택해주세요.");
@@ -53,6 +54,7 @@ function PostWrite(){
         'align', 'color', 'background',
     ]
 
+    //게시물 작성 axios
     const postWrite = useCallback(async () => {
         if (dropdownValue === '') {
             alert("게시판을 선택해주세요.")
@@ -64,38 +66,44 @@ function PostWrite(){
             alert("내용을 입력해주세요.")
             return
         }
-        const formData = new FormData();
-        [].forEach.call(fileUpload, (file) => {
-            formData.append('fileList', file)
-        })
+        if(postWriteCheck){
+            setPostWriteCheck(false)
+            const formData = new FormData();
+            [].forEach.call(fileUpload, (file) => {
+                formData.append('fileList', file)
+            })
 
-        let data = {
-            title: `${title}`,
-            tag: `${dropdownValue}`,
-            content: `${content}`
-        };
-        formData.append("data", JSON.stringify(data));
-        await axios.post(
-            '/article/',
-            formData,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
+            let data = {
+                title: `${title}`,
+                tag: `${dropdownValue}`,
+                content: `${content}`
+            };
+            formData.append("data", JSON.stringify(data));
+            await axios.post(
+                '/article/',
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
                 }
-            }
-        ).then((res) => {
-            alert("게시물이 등록되었습니다!");
-            navigate(-1);
-        }).catch((e) => {
-            console.log(e)
-            if (e.response.data.message === "Unauthorized") {
-                alert("다시 로그인해주세요.");
-            }
-            else if (e.response.data.message === "No Permission") {
-                alert("공지사항 쓰기 권한이 없습니다.");
-            }
-        })
-    }, [fileUpload, title, dropdownValue, content])
+            ).then((res) => {
+                alert("게시물이 등록되었습니다!");
+                navigate('/');
+            }).catch((e) => {
+                console.log(e)
+                if (e.response.data.message === "Unauthorized") {
+                    alert("다시 로그인해주세요.");
+                }
+                else if (e.response.data.message === "No Permission") {
+                    alert("공지사항 쓰기 권한이 없습니다.");
+                }
+            })
+        }else{
+            alert("잠시만 기다려주세요!!");
+        }
+
+    }, [fileUpload, title, dropdownValue, content, postWriteCheck])
 
     const onDrop = useCallback(acceptedFiles => {
         setFileUpload([...fileUpload, ...acceptedFiles])

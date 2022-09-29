@@ -5,14 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter } from 'react-router-dom';
 import axios from "axios";
+import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
-
+    <CookiesProvider>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </CookiesProvider>
 );
 axios.defaults.withCredentials = true;
 // If you want to start measuring performance in your app, pass a function

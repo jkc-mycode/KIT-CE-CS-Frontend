@@ -10,6 +10,7 @@ function RegisterPage(){
     const [id, setId] = useState(""); //아이디
     const [password, setPassword] = useState(""); //비밀번호
     const [confirmPassword, setConfirmPassword] = useState(""); //비밀번호 확인
+    const [registerButtonCheck, setRegisterButtonCheck] = useState(true) //등록하기 버튼 체크
     const navigate = useNavigate();
 
     //오류메시지 상태 저장
@@ -85,47 +86,53 @@ function RegisterPage(){
         checkPassword(event.currentTarget.value);
     }
 
+    //회원가입 등록 axios
     const onSubmit = (event) => {
-        event.preventDefault();
-        if(!isName){
-            return alert("이름을 다시 확인해주세요!");
-        }else if(!isId){
-            return alert("아이디를 다시 확인해주세요!");
-        }else if(!dupIdFlag){
-            return alert("아이디 중복체크해주세요!");
-        }else if(!isPassword){
-            return alert("비밀번호를 다시 확인해주세요!");
-        }else if(!isEmail){
-            return alert("웹메일을 다시 확인해주세요!");
-        }else if(!dupEmailFlag){
-            return alert("웹메일 중복체크해주세요!");
+        if(registerButtonCheck){
+            setRegisterButtonCheck(false);
+            event.preventDefault();
+            if(!isName){
+                return alert("이름을 다시 확인해주세요!");
+            }else if(!isId){
+                return alert("아이디를 다시 확인해주세요!");
+            }else if(!dupIdFlag){
+                return alert("아이디 중복체크해주세요!");
+            }else if(!isPassword){
+                return alert("비밀번호를 다시 확인해주세요!");
+            }else if(!isEmail){
+                return alert("웹메일을 다시 확인해주세요!");
+            }else if(!dupEmailFlag){
+                return alert("웹메일 중복체크해주세요!");
+            }else{
+                let data = {
+                    name: `${name}`,
+                    webmail: `${webmail}`,
+                    id: `${id}`,
+                    password: `${password}`,
+                    confirmPassword: `${confirmPassword}`,
+                    verify: true
+                };
+                const headers = {
+                    "Content-Type": `application/json`,
+                };
+                axios.post('/sign/up', data, headers)
+                    .then((res) => {
+                        alert("*****웹메일에서 인증 진행후 로그인 가능합니다.*****" +
+                            "\n(인증메일이 도착하지 않을 시 대표메일로 문의바랍니다)" +
+                            "\n(교직원/학생회/동아리임원에 한하여 권한 상승을 위해 대표 메일로 문의바랍니다.)");
+                    })
+                    .catch((e) => {
+                        alert("에러!!")
+                        console.log(e);
+                    })
+                navigate('/login');
+            }
         }else{
-            let data = {
-                name: `${name}`,
-                webmail: `${webmail}`,
-                id: `${id}`,
-                password: `${password}`,
-                confirmPassword: `${confirmPassword}`,
-                verify: true
-            };
-            const headers = {
-                "Content-Type": `application/json`,
-            };
-            axios.post('/sign/up', data, headers)
-                .then((res) => {
-                    alert("*****웹메일에서 인증 진행후 로그인 가능합니다.*****" +
-                        "\n(인증메일이 도착하지 않을 시 대표메일로 문의바랍니다)" +
-                        "\n(교직원/학생회/동아리임원에 한하여 권한 상승을 위해 대표 메일로 문의바랍니다.)");
-                })
-                .catch((e) => {
-                    console.log(e);
-                })
-            navigate('/login');
+            alert("잠시만 기다려주세요!!");
         }
     }
 
-    function checkPassword(target)
-    {
+    function checkPassword(target) {
         if (password !== target)
         {
             setIsPassword(false);

@@ -9,6 +9,7 @@ import Recomments from './recomments';
 const Comments = (props) => {
     const [commentsList, setCommentsList] = useState([]); //보여줄 comments 리스트
     const [content, setContent] = useState(""); //댓글 내용
+    const [commentOnSubmitCheck, setCommentOnSubmitCheck] = useState(true) //댓글 등록 버튼 체크
 
     function timer(d) {
         let timestamp = d;
@@ -43,15 +44,21 @@ const Comments = (props) => {
 
     //댓글 작성 axios
     const commentOnSubmit = async () => {
-        await axios.post('/comment/' + props.post_id, data, headers)
-            .then((res) => {
-                window.location.reload();
-            })
-            .catch((e) => {
-                if (e.response.data.message === "Unauthorized") {
-                    alert("로그인 후 이용 가능합니다.");
-                }
-            })
+        if(commentOnSubmitCheck){
+            setCommentOnSubmitCheck(false);
+            await axios.post('/comment/' + props.post_id, data, headers)
+                .then((res) => {
+                    window.location.reload();
+                })
+                .catch((e) => {
+                    if (e.response.data.message === "Unauthorized") {
+                        alert("로그인 후 이용 가능합니다.");
+                    }
+                })
+        }else{
+            alert("잠시만 기다려주세요!!");
+        }
+
     }
 
     //댓글 리스트 가져오는 axios

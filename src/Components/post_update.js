@@ -11,6 +11,7 @@ import {getCookie} from "../cookie";
 function PostUpdate(){
     const location = useLocation(); //navigate로 보낸 파라미터 가져오기 위해 사용
     const [title, setTitle] = useState(location.state.list.title); //제목
+    const [postUpdateCheck, setPostUpdateCheck] = useState(true) //게시물 수정 버튼 체크
     let content = location.state.list.content //내용 (HTML 통째로 저장)
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [dropdownName, setDropdownName] = useState(() => {
@@ -67,6 +68,7 @@ function PostUpdate(){
         'align', 'color', 'background',
     ]
 
+    //게시물 수정 axios
     const postUpdate = useCallback(async () => {
         if (dropdownValue === '') {
             alert("게시판을 선택해주세요.")
@@ -78,39 +80,43 @@ function PostUpdate(){
             alert("내용을 입력해주세요.")
             return
         }
-        const formData = new FormData();
-        [].forEach.call(fileUpload, (file) => {
-            formData.append('fileList', file)
-        })
-        let data = {
-            title: `${title}`,
-            tag: `${dropdownValue}`,
-            content: `${content}`,
-            deletedFile: deletedFile
-        };
-        formData.append("data", JSON.stringify(data));
-
-        await axios.patch(
-            '/article/' + location.state.list._id,
-            formData,
-            {
-                headers : {
-                    "Content-Type": 'multipart/form-data'
-                }
+        if(postUpdateCheck){
+            setPostUpdateCheck(false);
+            const formData = new FormData();
+            [].forEach.call(fileUpload, (file) => {
+                formData.append('fileList', file)
             })
-            .then((res) => {
-                alert("게시물이 수정되었습니다!");
-            })
-            .catch((e) => {
-                console.log(e);
-                if (e.response.data.message === "Unauthorized") {
-                    alert("다시 로그인해주세요.");
-                }
-                else if (e.response.data.message === "No Permission") {
-                    alert("공지사항 쓰기 권한이 없습니다.");
-                }
-            })
-        //navigate('/');
+            let data = {
+                title: `${title}`,
+                tag: `${dropdownValue}`,
+                content: `${content}`,
+                deletedFile: deletedFile
+            };
+            formData.append("data", JSON.stringify(data));
+            await axios.patch(
+                '/article/' + location.state.list._id,
+                formData,
+                {
+                    headers : {
+                        "Content-Type": 'multipart/form-data'
+                    }
+                })
+                .then((res) => {
+                    alert("게시물이 수정되었습니다!");
+                    navigate('/');
+                })
+                .catch((e) => {
+                    console.log(e);
+                    if (e.response.data.message === "Unauthorized") {
+                        alert("다시 로그인해주세요.");
+                    }
+                    else if (e.response.data.message === "No Permission") {
+                        alert("공지사항 쓰기 권한이 없습니다.");
+                    }
+                })
+        }else{
+            alert("잠시만 기다려주세요!!");
+        }
     }, [fileUpload, title, dropdownValue, content])
 
     const onDrop = useCallback(acceptedFiles => {
