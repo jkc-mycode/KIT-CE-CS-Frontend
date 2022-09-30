@@ -7,7 +7,7 @@ body {
 
 /* --------------- 틀 --------------- */
 
-.viewSection {
+.viewArea {
     width: calc(80% + 20px);
 
     max-width: 1300px;
@@ -15,17 +15,17 @@ body {
 
     margin: 0 auto;
 }
-.bodySection {
+.bodyArea {
     display: flex;
     flex-flow: row wrap;
     justify-self: space-between;
 }
-.main {
+.mainSection {
     flex: 7 1 auto;
 
     min-width: 300px;
 }
-.side {
+.sideSection {
     flex: 30%;
     min-width: 300px;
 }
@@ -63,6 +63,17 @@ body {
 
 /* --------------- 입력창 --------------- */
 
+.input_row {
+    box-sizing: border-box;
+    border-bottom: 2px solid #737373cc;
+    height: 50px;
+    padding: 13px 15px;
+}
+.input {
+    border: none;
+    width: 100%;
+    padding: 0;
+}
 .input::placeholder {
     color: #737373cc;
 }

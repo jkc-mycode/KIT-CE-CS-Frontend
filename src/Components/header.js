@@ -54,7 +54,7 @@ function Header(){
     if(getCookie('kit_acs')){
         return(
             <div className = "header">
-                <div className = "viewSection">
+                <div className = "viewArea">
                     <div className="header_container">
                         <div className = "left_header">
                             <Link to="/" className="header_items"><img className='header_logo' src={process.env.PUBLIC_URL + "/img/acs_logo_edit_low.png"} alt='logo' /></Link>
@@ -102,7 +102,7 @@ function Header(){
     }else{
         return(
             <div className = "header">
-                <div className = "viewSection">
+                <div className = "viewArea">
                     <div className="header_container">
                         <div className = "left_header">
                             <Link to="/" className="header_items"><img className='header_logo' src={process.env.PUBLIC_URL + "/img/acs_logo.png"} alt='logo' /></Link>

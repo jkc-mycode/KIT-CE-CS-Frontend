@@ -243,9 +243,9 @@ function MyInfoPage(){
     }, [page, postPage])
 
     return (
-        <div className='viewSection'>
-            <div className='bodySection'>
-                <div className='side'>
+        <div className='viewArea'>
+            <div className='bodyArea'>
+                <div className='sideSection'>
                     <div className="box mypage_box">
                         <h1 className="boxTitle">&#xE001;_ 마이페이지</h1>
                         <form>
@@ -285,7 +285,7 @@ function MyInfoPage(){
                         </form>
                     </div>
                 </div>
-                <div className='main'>
+                <div className='mainSection'>
                     <div className="box mypost_box">
                         <div className='boxTitle'>&#xE001;_ 내 작성글</div>
                         <table>
@@ -330,8 +330,8 @@ function MyInfoPage(){
             </div>
             {
                 user.id === "admin"
-                    ? <div className='bodySection'>
-                        <div className='side'>
+                    ? <div className='bodyArea'>
+                        <div className='sideSection'>
                             <div className='box grade_box'>
                                 <div className='boxTitle'>&#xE001;_ 유저 등급 조정</div>
                                 <form>
@@ -349,7 +349,7 @@ function MyInfoPage(){
                                 </form>
                             </div>
                         </div>
-                        <div className='main'>
+                        <div className='mainSection'>
                             <div className='box report_box'>
                                 <div className='boxTitle'>&#xE001;_ 신고함</div>
                                 <table>

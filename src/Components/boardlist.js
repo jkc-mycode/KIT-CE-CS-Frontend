@@ -5,9 +5,9 @@ import Crawling from './crawling.js';
 
 function BoardList() {
     return(
-        <div className = "viewSection">
-            <div className = "bodySection">
-                <div className="main">
+        <div className = "viewArea">
+            <div className = "bodyArea">
+                <div className="mainSection">
                     <div className="box">
                         <div className="boxTitle">&#xE001;_ 전체 게시판</div>
                         <table className = "board_list_table">
@@ -27,7 +27,7 @@ function BoardList() {
                         </div>
                     </div>
                 </div>
-                <div className="side">
+                <div className="sideSection">
                     <Crawling />
                 </div>
             </div>

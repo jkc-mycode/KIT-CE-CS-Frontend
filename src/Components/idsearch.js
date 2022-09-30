@@ -89,8 +89,8 @@ function IDSearch (){
     }
 
     return(
-        <div className='viewSection'>
-            <div className='bodySection'>
+        <div className='viewArea'>
+            <div className='bodyArea'>
                 <div className="box id_search_box">
                     <p className='boxTitle'>&#xE001;_ 아이디 찾기</p>
                     <div className='input_msg'>이름</div>

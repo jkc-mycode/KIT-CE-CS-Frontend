@@ -1,12 +1,15 @@
 .board_title_section {
     width: 100%;
-    /* display: table; */
+    position: relative;
 }
 
+
+.post_dropdown_box {
+    float: left;
+}
 .post_dropdown_box > button {
     width: 150px;
 }
-
 .post_dropdown_button {
     width: 150px;
     height: 40px;
@@ -16,29 +19,19 @@
     font-size: 16px;
 
     float: left;
+    
 }
 
 
 .input_title_row {
     box-sizing: border-box;
-    /* margin-top: 22px; */
-    margin-left: 150px;
     height: 50px;
     padding: 13px 15px;
     border-bottom: 2px solid rgba(115, 115, 115, 0.8);
-
-    width: calc(100% - 150px);
 }
 
 .input_title {
-    width: 100%;
-    padding: 0px;
-
-    border: 0px;
-
     font-size: 20px;
-
-    color: rgba(115, 115, 115, 0.8);
 }
 
 
@@ -89,5 +82,9 @@
 .file_delete_button > .material-icons-outlined {
     font-size: 20px;
     vertical-align: bottom;
+}
+
+.file_box {
+    border-color: #4AA4F4;
 }
     

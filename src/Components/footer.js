@@ -4,7 +4,7 @@ import './footer.css';
 const Footer = () => {
     return (
         <div className="footer">
-            <div className='viewSection'>
+            <div className='viewArea'>
                 <div className='footer_container'>
                     <div className='left_footer'>
                         <p className='copyright'>ⓒ 2022 Semtle. - All rights reserved.</p>

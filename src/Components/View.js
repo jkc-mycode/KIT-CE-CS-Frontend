@@ -125,9 +125,9 @@ function ViewPage(){
     }, [])
 
     return (
-        <div className = "viewSection">
-            <div className = "bodySection">
-                <div className = "main">
+        <div className = "viewArea">
+            <div className = "bodyArea">
+                <div className = "mainSection">
                     <div className='box'>
                         <div className="post_tag" onClick={() => navigate("/"+list.tag)}>#{list.tag}</div>
                         <h1 className="boxBigTitle">&#xE001;_ {list.title}</h1>
@@ -219,7 +219,7 @@ function ViewPage(){
                         </table>
                     </div>
                 </div>
-                <div className='side'>
+                <div className='sideSection'>
                     <Crawling></Crawling>
                 </div>
             </div>

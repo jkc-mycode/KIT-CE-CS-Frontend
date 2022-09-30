@@ -5,9 +5,9 @@ import "./boardlist.css";
 function About() {
   return (
     <>
-      <div className="viewSection">
-        <div className="bodySection">
-          <div className="main">
+      <div className="viewArea">
+        <div className="bodyArea">
+          <div className="mainSection">
             <div className="box">
               <div className="boxTitle">&#xE001;_ 도움말</div>
               <br />

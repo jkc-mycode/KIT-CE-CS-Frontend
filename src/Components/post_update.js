@@ -148,9 +148,9 @@ function PostUpdate(){
     ))
 
     return (
-        <div className="viewSection">
-            <div className='bodySection'>
-                <div className="main">
+        <div className="viewArea">
+            <div className='bodyArea'>
+                <div className="mainSection">
                     <div className='box'>
                         <div className="input_title_box">
                             <input type="text"

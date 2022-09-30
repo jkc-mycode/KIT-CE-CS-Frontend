@@ -12,8 +12,8 @@ function PostWrite(){
     const [title, setTitle] = useState(""); //제목
     const [content, setContent ] = useState(""); //내용 (HTML 통째로 저장)
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
-    const [dropdownName, setDropdownName] = useState("게시판을 선택해주세요.");
-    const [dropdownValue, setDropdownValue] = useState("");
+    const [dropdownName, setDropdownName] = useState("자유 게시판");
+    const [dropdownValue, setDropdownValue] = useState("free");
     const [fileUpload, setFileUpload] = useState([]);	//파일
     const navigate = useNavigate();
 
@@ -118,9 +118,9 @@ function PostWrite(){
         </li>
     ))
     return (
-        <div className="viewSection">
-            <div className='bodySection'>
-                <div className="main">
+        <div className="viewArea">
+            <div className='bodyArea'>
+                <div className="mainSection">
                     <div className='box'>
                         <div className="board_title_section">
                             <div className="post_dropdown_box dropdown_box">

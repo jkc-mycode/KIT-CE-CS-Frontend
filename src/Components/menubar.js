@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 function MenuBar(){
     return (
-        <div className="viewSection">
+        <div className="viewArea">
             <div className = "box menubar">
                 <Link className="menubar_items" to="/">전체 게시판</Link>
                 <div className="menubar_line"></div>
