@@ -22,6 +22,7 @@ function ViewPage(){
     const [reportOpen, setReportOpen] = useState(false); //신고 팝업창
     const [reportReason, setReportReason] = useState(""); //신고사유
     const [reportType, setReportType] = useState("");
+    const [reportSubmitCheck, setReportSubmitCheck] = useState(true); //신고하기 버튼 체크용
     const reasonText = [
         {reason: "음란물/불건전한 만남 및 대화"},
         {reason: "상업적 광고 및 판매"},
@@ -38,7 +39,6 @@ function ViewPage(){
     const closeReport = () => {
         setReportOpen(false);
     }
-
     const reportData = (e) => {
         setReportReason(e.currentTarget.value);
         setReportType(e.currentTarget.name);
@@ -54,18 +54,23 @@ function ViewPage(){
     };
     //신고사유 보내는 axios
     const reportSubmit = async (e) => {
-        if(window.confirm(reportReason + " 사유가 맞나요?")){
-            await axios.post('/report', data, headers)
-                .then((res) => {
-                    alert("신고되었습니다!");
-                    window.location.reload();
-                })
-                .catch((e) => {
-                    alert("로그인을 다시 확인해주세요.");
-                    console.log(e);
-                })
+        if(reportSubmitCheck){
+            setReportSubmitCheck(false);
+            if(window.confirm(reportReason + " 사유가 맞나요?")){
+                await axios.post('/report', data, headers)
+                    .then((res) => {
+                        alert("신고되었습니다!");
+                        window.location.reload();
+                    })
+                    .catch((e) => {
+                        alert("로그인을 다시 확인해주세요.");
+                        console.log(e);
+                    })
+            }else{
+                console.log("취소");
+            }
         }else{
-            console.log("취소");
+            alert("잠시만 기다려주세요!!");
         }
     }
 
@@ -84,6 +89,7 @@ function ViewPage(){
         return returnDate;
     }
 
+    //게시물 수정페이지 이동(로그인 유무 확인 후)
     const updateLoginCheck = () => {
         if(!list.isMine){
             alert("사용이 불가합니다.");
@@ -91,18 +97,25 @@ function ViewPage(){
             navigate('/post_update/' + id, {state: {list : list, file : file}});
         }
     }
+
+    //게시물 삭제 axios
     const deletePost = () => {
-        if(window.confirm("정말 삭제하시겠습니까?")){
-            axios.delete('/article/' + id)
-                .then((res) => {
-                    alert("삭제되었습니다.");
-                    navigate('/');
-                })
-                .catch((e) => {
-                    console.log(e);
-                })
+        if(reportSubmitCheck){
+            setReportSubmitCheck(false);
+            if(window.confirm("정말 삭제하시겠습니까?")){
+                axios.delete('/article/' + id)
+                    .then((res) => {
+                        alert("삭제되었습니다.");
+                        navigate('/');
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    })
+            }else{
+                console.log("취소");
+            }
         }else{
-            console.log("취소");
+            alert("잠시만 기다려주세요!!");
         }
     }
     const getPost = async () => {

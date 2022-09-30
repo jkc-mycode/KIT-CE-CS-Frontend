@@ -36,6 +36,8 @@ function MyInfoPage(){
     const [userId, setUserId] = useState("");
     const [grade, setGrade] = useState(0);
 
+    const [myPageCheck, setMyPageCheck] = useState(true) //마이페이지 버튼 체크
+
     function timer(d){
         let timestamp = d;
         let date = new Date(timestamp);
@@ -126,53 +128,63 @@ function MyInfoPage(){
 
     //비밀번호 변경 axios
     const onPasswordChange = (event) => {
-        event.preventDefault();
-        if(newPassword !== confirmPassword){ //비밀번호 입력이 같은지 확인
-            return alert("비밀번호가 서로 일치하지 않습니다.");
+        if(myPageCheck){
+            setMyPageCheck(false);
+            event.preventDefault();
+            if(newPassword !== confirmPassword){ //비밀번호 입력이 같은지 확인
+                return alert("비밀번호가 서로 일치하지 않습니다.");
+            }else{
+                //비밀번호 변경 axios
+                let data = {
+                    newPassword: `${newPassword}`,
+                    password: `${currentPassword}`
+                };
+                const headers = {
+                    "Content-Type": `application/json`,
+                };
+                axios.patch('/mypage/password', data, headers)
+                    .then((res) => {
+                        alert("변경되었습니다.");
+                        window.location.reload();
+                    })
+                    .catch((e) => {
+                        alert("현재 비밀번호가 틀렸습니다!");
+                        console.log(e);
+                    })
+            }
         }else{
-            //비밀번호 변경 axios
-            let data = {
-                newPassword: `${newPassword}`,
-                password: `${currentPassword}`
-            };
-            const headers = {
-                "Content-Type": `application/json`,
-            };
-            axios.patch('/mypage/password', data, headers)
-                .then((res) => {
-                    alert("변경되었습니다.");
-                    window.location.reload();
-                })
-                .catch((e) => {
-                    alert("현재 비밀번호가 틀렸습니다!");
-                    console.log(e);
-                })
+            alert("잠시만 기다려주세요!!");
         }
     }
 
     //회원탈퇴 axios
     const onDeleteAccount = async () => {
-        if(window.confirm("정말로 탈퇴하시겠습니까??")){
-            await axios.delete('/sign/', {
-                data: {
-                    password: `${deleteAccountPassword}`
-                }
-            })
-                .then((res) => {
-                    alert("탈퇴되었습니다ㅠㅠ");
-                    removeCookie("kit_acs", { domain: "kitacs.com", path: "/" });
-                    removeCookie("kit_acs_class", { domain: "kitacs.com", path: "/" });
-                    navigate('/');
-                })
-                .catch((e) => {
-                    if(e.response.data.message === "Wrong Password"){
-                        alert("비밀번호가 틀렸습니다!");
-                    }else{
-                        alert("에러!!");
+        if(myPageCheck) {
+            setMyPageCheck(false);
+            if(window.confirm("정말로 탈퇴하시겠습니까??")){
+                await axios.delete('/sign/', {
+                    data: {
+                        password: `${deleteAccountPassword}`
                     }
                 })
+                    .then((res) => {
+                        alert("탈퇴되었습니다ㅠㅠ");
+                        removeCookie("kit_acs", { domain: "kitacs.com", path: "/" });
+                        removeCookie("kit_acs_class", { domain: "kitacs.com", path: "/" });
+                        navigate('/');
+                    })
+                    .catch((e) => {
+                        if(e.response.data.message === "Wrong Password"){
+                            alert("비밀번호가 틀렸습니다!");
+                        }else{
+                            alert("에러!!");
+                        }
+                    })
+            }else{
+                console.log("취소");
+            }
         }else{
-            console.log("취소");
+            alert("잠시만 기다려주세요!!");
         }
     }
 
@@ -192,17 +204,22 @@ function MyInfoPage(){
 
     //신고 리스트 삭제 axios
     const deleteReport = (e) => {
-        if(window.confirm("정말 삭제하시겠습니까?")){
-            axios.delete('/report/' + e.currentTarget.value)
-                .then((res) => {
-                    window.location.reload();
-                })
-                .catch((e) => {
-                    alert("에러!!");
-                    console.log(e);
-                })
+        if(myPageCheck) {
+            setMyPageCheck(false);
+            if(window.confirm("정말 삭제하시겠습니까?")){
+                axios.delete('/report/' + e.currentTarget.value)
+                    .then((res) => {
+                        window.location.reload();
+                    })
+                    .catch((e) => {
+                        alert("에러!!");
+                        console.log(e);
+                    })
+            }else{
+                console.log("취소");
+            }
         }else{
-            console.log("취소");
+            alert("잠시만 기다려주세요!!");
         }
     }
 
@@ -216,18 +233,23 @@ function MyInfoPage(){
         "Content-Type": `application/json`,
     };
     const gradeChange = () => {
-        if(window.confirm("변경하시겠습니까?")){
-            axios.patch('/mypage/class', data, headers)
-                .then((res) => {
-                    alert("변경되었습니다!");
-                    window.location.reload();
-                })
-                .catch((e) => {
-                    alert("잘못된 입력값입니다.");
-                    console.log(e);
-                })
+        if(myPageCheck) {
+            setMyPageCheck(false);
+            if(window.confirm("변경하시겠습니까?")){
+                axios.patch('/mypage/class', data, headers)
+                    .then((res) => {
+                        alert("변경되었습니다!");
+                        window.location.reload();
+                    })
+                    .catch((e) => {
+                        alert("잘못된 입력값입니다.");
+                        console.log(e);
+                    })
+            }else{
+                console.log("취소");
+            }
         }else{
-            console.log("취소");
+            alert("잠시만 기다려주세요!!");
         }
     }
 

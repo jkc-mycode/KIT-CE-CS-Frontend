@@ -6,28 +6,14 @@ import { getCookie, removeCookie } from '../cookie';
 import Dropdown from './dropdown';
 
 
-const onClickLogout = async (event) => {
-    await axios.delete('/log/out')
-        .then((res) => {
-            console.log(1);
-            removeCookie("kit_acs", { domain: "kitacs.com", path: "/" });
-            console.log(2);
-            removeCookie("kit_acs_class", { domain: "kitacs.com", path: "/" });
-            console.log(3);
-        })
-        .catch((e) => {
-            console.log(e);
-        })
-        .finally(() => {
-            // window.location.replace('/');
-        })
-}
+
 
 function Header(){
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [dropdownName, setDropdownName] = useState("제목");
     const [dropdownValue, setDropdownValue] = useState("title");
     const [placeHolder, setPlaceHolder] = useState("");
+    const [logoutCheck, setLogoutCheck] = useState(true) //댓글 등록 버튼 체크
 
     const location = useLocation();
 
@@ -35,6 +21,28 @@ function Header(){
         setDropdownName(event.currentTarget.name);
         setDropdownValue(event.currentTarget.value);
         setDropdownVisibility(false);
+    }
+
+    const onClickLogout = async (event) => {
+        if(logoutCheck){
+            setLogoutCheck(false);
+            await axios.delete('/log/out')
+                .then((res) => {
+                    console.log(1);
+                    removeCookie("kit_acs", { domain: "localhost", path: "/" });
+                    console.log(2);
+                    removeCookie("kit_acs_class", { domain: "localhost", path: "/" });
+                    console.log(3);
+                })
+                .catch((e) => {
+                    console.log(e);
+                })
+                .finally(() => {
+                    // window.location.replace('/');
+                })
+        }else{
+            alert("잠시만 기다려주세요!!");
+        }
     }
 
     useEffect(() => {

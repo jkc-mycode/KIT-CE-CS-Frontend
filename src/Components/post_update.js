@@ -11,6 +11,7 @@ import {getCookie} from "../cookie";
 function PostUpdate(){
     const location = useLocation(); //navigate로 보낸 파라미터 가져오기 위해 사용
     const [title, setTitle] = useState(location.state.list.title); //제목
+    const [postUpdateCheck, setPostUpdateCheck] = useState(true) //게시물 수정 버튼 체크
     let content = location.state.list.content //내용 (HTML 통째로 저장)
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [dropdownName, setDropdownName] = useState(() => {
@@ -28,6 +29,7 @@ function PostUpdate(){
     const [fileUpload, setFileUpload] = useState([]);	//파일
     const [deletedFile, setDeletedFile] = useState([]); //삭제할 기존 파일
     const [files, setFiles] = useState(location.state.file);
+    //const deletedFile = [];
     const navigate = useNavigate();
 
     const onTitleHandler = (event) => {
@@ -66,6 +68,7 @@ function PostUpdate(){
         'align', 'color', 'background',
     ]
 
+    //게시물 수정 axios
     const postUpdate = useCallback(async () => {
         if (dropdownValue === '') {
             alert("게시판을 선택해주세요.")
@@ -77,39 +80,43 @@ function PostUpdate(){
             alert("내용을 입력해주세요.")
             return
         }
-        const formData = new FormData();
-        [].forEach.call(fileUpload, (file) => {
-            formData.append('fileList', file)
-        })
-        let data = {
-            title: `${title}`,
-            tag: `${dropdownValue}`,
-            content: `${content}`,
-            deletedFile: `${deletedFile}`
-        };
-        formData.append("data", JSON.stringify(data));
-
-        await axios.patch(
-            '/article/' + location.state.list._id,
-            formData,
-            {
-                headers : {
-                    "Content-Type": 'multipart/form-data'
-                }
+        if(postUpdateCheck){
+            setPostUpdateCheck(false);
+            const formData = new FormData();
+            [].forEach.call(fileUpload, (file) => {
+                formData.append('fileList', file)
             })
-            .then((res) => {
-                alert("게시물이 수정되었습니다!");
-            })
-            .catch((e) => {
-                console.log(e);
-                if (e.response.data.message === "Unauthorized") {
-                    alert("다시 로그인해주세요.");
-                }
-                else if (e.response.data.message === "No Permission") {
-                    alert("공지사항 쓰기 권한이 없습니다.");
-                }
-            })
-        navigate('/');
+            let data = {
+                title: `${title}`,
+                tag: `${dropdownValue}`,
+                content: `${content}`,
+                deletedFile: deletedFile
+            };
+            formData.append("data", JSON.stringify(data));
+            await axios.patch(
+                '/article/' + location.state.list._id,
+                formData,
+                {
+                    headers : {
+                        "Content-Type": 'multipart/form-data'
+                    }
+                })
+                .then((res) => {
+                    alert("게시물이 수정되었습니다!");
+                    navigate('/');
+                })
+                .catch((e) => {
+                    console.log(e);
+                    if (e.response.data.message === "Unauthorized") {
+                        alert("다시 로그인해주세요.");
+                    }
+                    else if (e.response.data.message === "No Permission") {
+                        alert("공지사항 쓰기 권한이 없습니다.");
+                    }
+                })
+        }else{
+            alert("잠시만 기다려주세요!!");
+        }
     }, [fileUpload, title, dropdownValue, content])
 
     const onDrop = useCallback(acceptedFiles => {
@@ -123,7 +130,8 @@ function PostUpdate(){
     const removeFile = file => () => {
         console.log(file);
         if(file.originName){
-            setDeletedFile(deletedFile => [...deletedFile, file])
+            //setDeletedFile(deletedFile => [...deletedFile, file])
+            deletedFile.push(file)
             const newFiles = [...files]
             newFiles.splice(newFiles.indexOf(file), 1)
             setFiles(newFiles)
@@ -191,7 +199,6 @@ function PostUpdate(){
                             />
                         </div>
                         <br/><br/><br/>
-                        {/*<input type="file" id="file" onChange={onFileHandler} multiple="multiple" />*/}
                         <div className="file">
                             <div className="file_box">
                                 <div {...getRootProps({ className: "dropzone" })}>
@@ -214,14 +221,6 @@ function PostUpdate(){
                                 </ul>
                             </div>
                         </div>
-                        <br/><br/>
-                        {/*{*/}
-                        {/*    files.slice().map((file) => {*/}
-                        {/*        return(*/}
-                        {/*            <li>{file.originName}<button onClick={removeFile(file)}>x</button></li>*/}
-                        {/*        )*/}
-                        {/*    })*/}
-                        {/*}*/}
                         <br/><br/>
                         <div className="post_write_button">
                             <button type="button" className="mbutton post_register_button" onClick={postUpdate}>등록</button>
