@@ -4,7 +4,7 @@ import './header.css';
 import axios from "axios";
 import { getCookie, removeCookie } from '../cookie';
 import {useCookies} from "react-cookie";
-import Dropdown from "./post_dropdown";
+import Dropdown from "./dropdown";
 
 
 
