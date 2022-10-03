@@ -1,51 +1,21 @@
-/*드롭다운 css*/
-@keyframes slide-fade-in-dropdown-animation {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-.slide-fade-in-dropdown {
-    overflow: hidden;
-}
-.slide-fade-in-dropdown > ul {
-    animation: slide-fade-in-dropdown-animation .4s ease;
-}
-@keyframes slide-fade-out-dropdown-animation {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-100%);
-    }
-}
-.slide-fade-out-dropdown {
-    overflow: hidden;
-}
-.slide-fade-out-dropdown > ul {
-    animation: slide-fade-out-dropdown-animation 0.4s ease;
-    animation-fill-mode: forwards;
-}
-.components-dropdown > ul {
-    position: relative;
-    top: 5px;
-    margin-top: 0;
-    margin-bottom: 5px;
-    padding-left: 0;
-    list-style: none;
-    background-color: white;
-    z-index: 32;
-}
-.post_dropdown_box {
-    position : absolute;
-}
-/*======================================*/
-
 .board_title_section {
     width: 100%;
     /* display: table; */
+}
+
+.post_dropdown_box > button {
+    width: 150px;
+}
+
+.post_dropdown_button {
+    width: 150px;
+    height: 40px;
+
+    background: #FFFFFF;
+
+    font-size: 16px;
+
+    float: left;
 }
 
 
@@ -101,4 +71,23 @@
 .file_box {
     border: 3px dashed rgba(115, 115, 115, 0.5);
     text-align: center;
+    
+    cursor: pointer;
 }
+
+.file_delete_button {
+    border: none;
+    background: none;
+
+    color: #EE4451;
+
+    cursor: pointer;
+
+    margin-bottom: 5px;
+}
+
+.file_delete_button > .material-icons-outlined {
+    font-size: 20px;
+    vertical-align: bottom;
+}
+    

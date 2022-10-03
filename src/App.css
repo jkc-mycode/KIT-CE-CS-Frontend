@@ -75,6 +75,7 @@ body {
     border-radius: 5px;
     background-color: #FFFFFF;
 
+    color: #0D0D0D;
     font-size: 18px;
 
     cursor: pointer;
@@ -90,6 +91,7 @@ body {
     border-radius: 5px;
     background-color: #FFFFFF;
 
+    color: #0D0D0D;
     font-size: 18px;
     
     cursor: pointer;
@@ -109,41 +111,4 @@ body {
 }
 .ebutton:hover {
     color: #6D8797;
-}
-
-.dbutton {
-    border: none;
-    border-left: 1px solid #737373cc;
-    border-right: 1px solid #737373cc;
-  
-    background: #FFFFFF;
-  
-    cursor: pointer;
-}
-.dtbutton {
-    border: none;
-    border-top: 1px solid #737373cc;
-    border-left: 1px solid #737373cc;
-    border-right: 1px solid #737373cc;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  
-    background: #FFFFFF;
-  
-    cursor: pointer;
-}
-.dbbutton {
-    border: none;
-    border-left: 1px solid #737373cc;
-    border-right: 1px solid #737373cc;
-    border-bottom: 1px solid #737373cc;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  
-    background: #FFFFFF;
-  
-    cursor: pointer;
-}
-.dbutton:hover, .dtbutton:hover .dbbutton:hover{
-    background-color: #D9D9D9;
 }

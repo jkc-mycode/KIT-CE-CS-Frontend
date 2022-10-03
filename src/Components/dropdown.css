@@ -1,0 +1,89 @@
+/* --------------- 애니메이션 --------------- */
+
+@keyframes slide-fade-in-dropdown-animation {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.slide-fade-in-dropdown {
+    overflow: hidden;
+}
+.slide-fade-in-dropdown > ul {
+    animation: slide-fade-in-dropdown-animation 0.4s ease;
+}
+@keyframes slide-fade-out-dropdown-animation {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+.slide-fade-out-dropdown {
+    overflow: hidden;
+}
+.slide-fade-out-dropdown > ul {
+    animation: slide-fade-out-dropdown-animation 0.4s ease;
+    animation-fill-mode: forwards;
+}
+
+.components-dropdown > ul {
+    position: relative;
+    margin-top: 3px;
+    z-index: 32;
+    list-style: none;
+}
+
+.dropdown_box {
+    position : absolute;
+}
+
+
+/* --------------- 버튼 --------------- */
+
+.dbutton {
+    border: none;
+    border-left: 1px solid #737373cc;
+    border-right: 1px solid #737373cc;
+  
+    color: #0D0D0D;
+    background: #FFFFFF;
+  
+    cursor: pointer;
+}
+.dtbutton {
+    border: none;
+    border-top: 1px solid #737373cc;
+    border-left: 1px solid #737373cc;
+    border-right: 1px solid #737373cc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  
+    color: #0D0D0D;
+    background: #FFFFFF;
+  
+    cursor: pointer;
+}
+.dbbutton {
+    border: none;
+    border-left: 1px solid #737373cc;
+    border-right: 1px solid #737373cc;
+    border-bottom: 1px solid #737373cc;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  
+    color: #0D0D0D;
+    background: #FFFFFF;
+  
+    cursor: pointer;
+}
+.dbutton:hover, .dtbutton:hover, .dbbutton:hover{
+    background-color: #D9D9D9;
+}
+
+.dhidden {
+    visibility: hidden;
+}
