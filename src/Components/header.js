@@ -3,6 +3,7 @@ import {Link, useLocation} from 'react-router-dom';
 import './header.css';
 import axios from "axios";
 import { getCookie, removeCookie } from '../cookie';
+import {useCookies} from "react-cookie";
 import Dropdown from "./post_dropdown";
 
 
@@ -14,6 +15,7 @@ function Header(){
     const [dropdownValue, setDropdownValue] = useState("title");
     const [placeHolder, setPlaceHolder] = useState("");
     const [logoutCheck, setLogoutCheck] = useState(true) //댓글 등록 버튼 체크
+    const [cookies,  setCookie, removeCookies] = useCookies([]);
 
     const location = useLocation();
 
@@ -29,10 +31,11 @@ function Header(){
             await axios.delete('/log/out')
                 .then((res) => {
                     console.log(1);
-                    removeCookie("kit_acs", { domain: "localhost", path: "/" });
+                    removeCookies("kit_acs", { domain: "kitacs.com", path: "/" });
                     console.log(2);
-                    removeCookie("kit_acs_class", { domain: "localhost", path: "/" });
+                    removeCookies("kit_acs_class", { domain: "kitacs.com", path: "/" });
                     console.log(3);
+
                 })
                 .catch((e) => {
                     console.log(e);
