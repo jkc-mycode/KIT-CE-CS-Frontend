@@ -3,9 +3,8 @@ import {Link, useLocation} from 'react-router-dom';
 import './header.css';
 import axios from "axios";
 import { getCookie, removeCookie } from '../cookie';
-import Dropdown from './dropdown';
-
-
+import {useCookies} from "react-cookie";
+import Dropdown from "./dropdown";
 
 
 function Header(){
@@ -14,6 +13,7 @@ function Header(){
     const [dropdownValue, setDropdownValue] = useState("title");
     const [placeHolder, setPlaceHolder] = useState("");
     const [logoutCheck, setLogoutCheck] = useState(true) //댓글 등록 버튼 체크
+    const [cookies,  setCookie, removeCookies] = useCookies([]);
 
     const location = useLocation();
 
@@ -29,10 +29,11 @@ function Header(){
             await axios.delete('/log/out')
                 .then((res) => {
                     console.log(1);
-                    removeCookie("kit_acs", { domain: "kitacs.com", path: "/" });
+                    removeCookies("kit_acs", { domain: "kitacs.com", path: "/" });
                     console.log(2);
-                    removeCookie("kit_acs_class", { domain: "kitacs.com", path: "/" });
+                    removeCookies("kit_acs_class", { domain: "kitacs.com", path: "/" });
                     console.log(3);
+
                 })
                 .catch((e) => {
                     console.log(e);
@@ -73,25 +74,21 @@ function Header(){
                                 ? <>
                                     <div className="header_items">
                                         <div className="search_row">
-                                            <div className="search_dropdown_box dropdown_box">
+                                            <div className="search_dropdown_box">
                                                 <button className="dropdown" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
                                                     {dropdownName} <span className="material-icons-outlined expand_more">expand_more</span>
                                                 </button>
                                                 <Dropdown visibility={dropdownVisibility}>
-                                                    <ul>
-                                                        <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
-                                                        <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
-                                                        <div className="dhidden">.</div>
-                                                        <div className="dhidden">.</div>
-                                                    </ul>
+                                                    <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
+                                                    <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
                                                 </Dropdown>
                                             </div>
-                                            <div className="header_search">
+                                            <span className="header_search">
                                                 <form action={location.pathname}>
                                                     <input type="text" placeholder={placeHolder} name={dropdownValue} className="search_input"/>
                                                     <button type="submit" className="search_button"><span className="material-icons-outlined">search</span></button>
                                                 </form>
-                                            </div>
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="header_line"></div>
@@ -121,25 +118,21 @@ function Header(){
                                     ? <>
                                         <div className="header_items">
                                             <div className="search_row">
-                                                <div className="search_dropdown_box dropdown_box">
+                                                <div className="search_dropdown_box">
                                                     <button className="dropdown" onClick={(e) => setDropdownVisibility(!dropdownVisibility)}>
                                                         {dropdownName} <span className="material-icons-outlined expand_more">expand_more</span>
                                                     </button>
                                                     <Dropdown visibility={dropdownVisibility}>
-                                                        <ul>
-                                                            <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
-                                                            <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
-                                                            <div className="dhidden">.</div>
-                                                            <div className="dhidden">.</div>
-                                                        </ul>
+                                                        <div><button className="dtbutton search_dropdown_button" type="button" value="title" name="제목" onClick={onDropdownHandler}>제목</button></div>
+                                                        <div><button className="dbbutton search_dropdown_button" type="button" value="content" name="내용" onClick={onDropdownHandler}>내용</button></div>
                                                     </Dropdown>
                                                 </div>
-                                                <div className="header_search">
+                                                <span className="header_search">
                                                     <form action={location.pathname}>
                                                         <input type="text" placeholder={placeHolder} name={dropdownValue} className="search_input"/>
                                                         <button type="submit" className="search_button"><span className="material-icons-outlined">search</span></button>
                                                     </form>
-                                                </div>
+                                                </span>
                                             </div>
                                         </div>
                                         <div className="header_line"></div>
