@@ -68,6 +68,7 @@ function ViewPage(){
                     })
             }else{
                 console.log("취소");
+                setReportSubmitCheck(true);
             }
         }else{
             alert("잠시만 기다려주세요!!");
@@ -113,6 +114,7 @@ function ViewPage(){
                     })
             }else{
                 console.log("취소");
+                setReportSubmitCheck(true);
             }
         }else{
             alert("잠시만 기다려주세요!!");

@@ -92,6 +92,7 @@ const Recomments = (props) => {
                     })
             }else{
                 console.log("취소");
+                setCommentCheck(true);
             }
         }else{
             alert("잠시만 기다려주세요!!");
@@ -159,6 +160,7 @@ const Recomments = (props) => {
                     })
             }else{
                 console.log("취소");
+                setCommentCheck(true);
             }
         }else{
             alert("잠시만 기다려주세요!!");
