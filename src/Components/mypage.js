@@ -434,4 +434,5 @@ function MyInfoPage(){
         </div>
     )
 }
+
 export default MyInfoPage;
