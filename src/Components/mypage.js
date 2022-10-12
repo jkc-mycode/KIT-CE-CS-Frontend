@@ -182,6 +182,7 @@ function MyInfoPage(){
                     })
             }else{
                 console.log("취소");
+                setMyPageCheck(true);
             }
         }else{
             alert("잠시만 기다려주세요!!");
@@ -217,6 +218,7 @@ function MyInfoPage(){
                     })
             }else{
                 console.log("취소");
+                setMyPageCheck(true);
             }
         }else{
             alert("잠시만 기다려주세요!!");
@@ -247,6 +249,7 @@ function MyInfoPage(){
                     })
             }else{
                 console.log("취소");
+                setMyPageCheck(true);
             }
         }else{
             alert("잠시만 기다려주세요!!");

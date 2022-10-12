@@ -29,9 +29,9 @@ function Header(){
             await axios.delete('/log/out')
                 .then((res) => {
                     console.log(1);
-                    removeCookies("kit_acs", { domain: "kitacs.com", path: "/" });
+                    removeCookies("kit_acs", { domain: "localhost", path: "/" });
                     console.log(2);
-                    removeCookies("kit_acs_class", { domain: "kitacs.com", path: "/" });
+                    removeCookies("kit_acs_class", { domain: "localhost", path: "/" });
                     console.log(3);
 
                 })
@@ -39,7 +39,7 @@ function Header(){
                     console.log(e);
                 })
                 .finally(() => {
-                    // window.location.replace('/');
+                    window.location.replace('/');
                 })
         }else{
             alert("잠시만 기다려주세요!!");
