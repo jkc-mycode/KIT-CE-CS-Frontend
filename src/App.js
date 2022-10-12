@@ -20,7 +20,8 @@ import PostUpdate from './Components/post_update';
 import About from './Components/about';
 import IDSearch from './Components/idsearch';
 import Footer from './Components/footer';
-import Crawling from './Components/crawling';
+import PwCheck from './Components/pwcheck';
+import Welcome from './Components/welcome';
 
 function App() {
     return (
@@ -46,6 +47,8 @@ function App() {
                 <Route path="/post_update/:viewId" element={<PostUpdate/>}></Route>
                 <Route path="/about" element={<About/>}></Route>
                 <Route path="/idsearch" element={<IDSearch/>}></Route>
+                <Route path="/sign/password/:code" element={<PwCheck/>}></Route>
+                <Route path="/welcome" element={<Welcome/>}></Route>
             </Routes>
             
             <Footer />
