@@ -26,7 +26,7 @@ function Header(){
     const onClickLogout = async (event) => {
         if(logoutCheck){
             setLogoutCheck(false);
-            await axios.delete('/log/out')
+            await axios.delete('/log/out', {withCredentials : true})
                 .then((res) => {
                     console.log(1);
                     removeCookies("kit_acs", { domain: "kitacs.com", path: "/" });
