@@ -163,7 +163,7 @@ function MyInfoPage(){
         if(myPageCheck) {
             setMyPageCheck(false);
             if(window.confirm("정말로 탈퇴하시겠습니까??")){
-                await axios.delete('/sign/', {
+                await axios.delete('/sign/', {withCredentials : true}, {
                     data: {
                         password: `${deleteAccountPassword}`
                     }
