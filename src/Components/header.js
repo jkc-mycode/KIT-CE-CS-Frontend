@@ -29,9 +29,9 @@ function Header(){
             await axios.delete('/log/out', {withCredentials : true})
                 .then((res) => {
                     console.log(1);
-                    removeCookies("kit_acs", { domain: "kitacs.com", path: "/" });
+                    removeCookies("kit_acs", { path: "/" });
                     console.log(2);
-                    removeCookies("kit_acs_class", { domain: "kitacs.com", path: "/" });
+                    removeCookies("kit_acs_class", { path: "/" });
                     console.log(3);
 
                 })
