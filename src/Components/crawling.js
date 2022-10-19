@@ -49,7 +49,7 @@ function Crawling() {
                                     return (
                                         <>
                                             <tr onClick={goView}>
-                                                <td>{i.title.length > 30 ? `${i.title.substring(0,30)}...` : i.title}</td>
+                                                <td>{i.title.length > 28 ? `${i.title.substring(0,28)}...` : i.title}</td>
                                             </tr>
                                         </>
                                     )
@@ -78,7 +78,7 @@ function Crawling() {
                                     return (
                                         <>
                                             <tr onClick={goView}>
-                                                <td>{i.title.length > 30 ? `${i.title.substring(0, 30)}...` : i.title}</td>
+                                                <td>{i.title.length > 28 ? `${i.title.substring(0, 28)}...` : i.title}</td>
                                             </tr>
                                         </>
                                     )
@@ -107,7 +107,7 @@ function Crawling() {
                                     return (
                                         <>
                                             <tr onClick={goView}>
-                                                <td>{i.title.length > 30 ? `${i.title.substring(0, 30)}...` : i.title}</td>
+                                                <td>{i.title.length > 28 ? `${i.title.substring(0, 28)}...` : i.title}</td>
                                             </tr>
                                         </>
                                     )

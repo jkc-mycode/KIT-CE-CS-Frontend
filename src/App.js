@@ -48,7 +48,7 @@ function App() {
                 <Route path="/about" element={<About/>}></Route>
                 <Route path="/idsearch" element={<IDSearch/>}></Route>
                 <Route path="/sign/password/:code" element={<PwCheck/>}></Route>
-                <Route path="/welcome" element={<Welcome/>}></Route>
+                <Route path="/sign/up/confirmEmail/:code" element={<Welcome/>}></Route>
             </Routes>
             
             <Footer />

@@ -149,6 +149,7 @@ function MyInfoPage(){
                     })
                     .catch((e) => {
                         alert("현재 비밀번호가 틀렸습니다!");
+                        setMyPageCheck(true);
                         console.log(e);
                     })
             }
@@ -179,6 +180,7 @@ function MyInfoPage(){
                         }else{
                             alert("에러!!");
                         }
+                        setMyPageCheck(true);
                     })
             }else{
                 console.log("취소");
