@@ -2,7 +2,8 @@ import React, {useState, useEffect, useCallback} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './mypage.css';
-import { getCookie, removeCookie } from '../cookie';
+import { getCookie} from '../cookie';
+import {useCookies} from "react-cookie";
 import Pagination from "react-js-pagination";
 
 function MyInfoPage(){
@@ -11,6 +12,7 @@ function MyInfoPage(){
     const [limit, setLimit] = useState(2); //20개 고정
     const [total, setTotal] = useState(12); //전체 게시물 수
     const [reportNum, setReportNum] = useState(0); //신고리스트 num
+    const [cookies,  setCookie, removeCookies] = useCookies([]);
     let z = -1;
 
     //유저정보 및 페이지네이션
@@ -170,8 +172,8 @@ function MyInfoPage(){
                 }, {withCredentials : true})
                     .then((res) => {
                         alert("탈퇴되었습니다ㅠㅠ");
-                        removeCookie("kit_acs", { path: "/" });
-                        removeCookie("kit_acs_class", { path: "/" });
+                        removeCookies("kit_acs", { path: "/" });
+                        removeCookies("kit_acs_class", { path: "/" });
                         navigate('/');
                     })
                     .catch((e) => {

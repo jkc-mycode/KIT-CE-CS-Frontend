@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Link, useLocation} from 'react-router-dom';
 import './header.css';
 import axios from "axios";
-import { getCookie, removeCookie } from '../cookie';
+import { getCookie} from '../cookie';
 import {useCookies} from "react-cookie";
 import Dropdown from "./dropdown";
 
