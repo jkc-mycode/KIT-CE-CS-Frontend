@@ -170,8 +170,8 @@ function MyInfoPage(){
                 })
                     .then((res) => {
                         alert("탈퇴되었습니다ㅠㅠ");
-                        removeCookie("kit_acs", { domain: "kitacs.com", path: "/" });
-                        removeCookie("kit_acs_class", { domain: "kitacs.com", path: "/" });
+                        removeCookie("kit_acs", { path: "/" });
+                        removeCookie("kit_acs_class", { path: "/" });
                         navigate('/');
                     })
                     .catch((e) => {
