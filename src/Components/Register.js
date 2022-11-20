@@ -11,6 +11,7 @@ function RegisterPage(){
     const [password, setPassword] = useState(""); //비밀번호
     const [confirmPassword, setConfirmPassword] = useState(""); //비밀번호 확인
     const [registerButtonCheck, setRegisterButtonCheck] = useState(true) //등록하기 버튼 체크
+    const [agreeCheck, setAgreeCheck] = useState(false); //약관동의 체크
     const navigate = useNavigate();
 
     //오류메시지 상태 저장
@@ -85,6 +86,9 @@ function RegisterPage(){
         setConfirmPassword(event.currentTarget.value);
         checkPassword(event.currentTarget.value);
     }
+    const onAgreeCheckHandler = useCallback((e) => {
+        setAgreeCheck(!agreeCheck);
+    })
 
     //회원가입 등록 axios
     const onSubmit = (event) => {
@@ -103,6 +107,8 @@ function RegisterPage(){
                 return alert("웹메일을 다시 확인해주세요!");
             }else if(!dupEmailFlag){
                 return alert("웹메일 중복체크해주세요!");
+            }else if(!agreeCheck){
+                return alert("개입정보 수집에 동의해주세요!");
             }else{
                 let data = {
                     name: `${name}`,
@@ -232,6 +238,8 @@ function RegisterPage(){
                     <button type="button" className="ebutton emailcheck_button" onClick={dupEmailCheck}>중복 체크</button>
                 </div>
                 <div className="button_container">
+                    <span>개인정보 수집 및 이용에 동의합니다.</span>
+                    <input type="checkbox" checked={agreeCheck} onChange={onAgreeCheckHandler}/>
                     <button type="button" className="mbutton register_button" onClick={onSubmit}>회원가입</button>
                 </div>
             </form>
